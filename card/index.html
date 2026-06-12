@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kyle Knight — Plumbline</title>
+<meta name="description" content="Plumbline builds tools that rebalance unfair equations — for the capable but constrained. Book a call, or explore Toolwright and Plumbline Studio." />
+<meta name="theme-color" content="#111d2e" />
+
+<!-- Open Graph / link-preview: makes the reshared link look right in texts, Slack, LinkedIn -->
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Kyle Knight — Plumbline" />
+<meta property="og:description" content="Tools built true. Book a call, or explore Toolwright (for builders) and Plumbline Studio (for businesses)." />
+<meta property="og:image" content="" /><!-- TODO: paste a hosted 1200x630 preview image URL -->
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#111d2e; --brass:#b88a4a; --brass-bright:#d2a868; --brass-dark:#caa05e;
+    --text:#dde3ec; --text-strong:#f3f6fa; --muted:#94a1b4; --cream:#c8d2e0;
+    --line:rgba(210,200,191,0.16);
+    --panel:rgba(18,30,48,0.66); --card:rgba(22,35,56,0.66);
+    --serif:"Fraunces",Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--ink);scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    background:
+      radial-gradient(900px 600px at 80% -10%, rgba(184,138,74,.08), transparent 60%),
+      radial-gradient(700px 500px at -10% 110%, rgba(59,146,201,.10), transparent 55%),
+      var(--ink);
+    display:flex;justify-content:center;padding:0 18px 64px}
+
+  /* Toolwright particle field — fixed behind everything, interactive, pointer-events none */
+  #pcanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+
+  .card-wrap{width:100%;max-width:430px;position:relative;z-index:1}
+  /* readability scrim so the moving field never fights the text */
+  .card-wrap::before{content:"";position:absolute;inset:-24px 0;z-index:-1;
+    background:radial-gradient(120% 80% at 50% 30%, rgba(15,25,40,.78), rgba(15,25,40,.42) 70%, transparent);
+    backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);pointer-events:none}
+
+  /* plumb-line motif down the left */
+  .spine{position:absolute;left:0;top:0;width:1px;height:128px;background:linear-gradient(var(--brass),var(--brass-bright));transform-origin:top;animation:drop 1s cubic-bezier(.6,.05,.2,1) both}
+  .spine::after{content:"";position:absolute;bottom:-6px;left:-5px;width:11px;height:11px;background:var(--brass-bright);transform:rotate(45deg)}
+  @keyframes drop{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+  /* header */
+  header{padding:3.4rem 6px 1.8rem}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-bright);margin-bottom:1rem}
+  h1{font-family:var(--serif);font-weight:900;font-size:2.5rem;line-height:1;color:#fff;letter-spacing:-.01em;margin-bottom:.4rem}
+  .role{font-family:var(--mono);font-size:.8rem;letter-spacing:.03em;color:var(--cream)}
+  .role b{color:#fff;font-weight:500}
+  .tag{font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--brass-bright);margin-top:1rem;line-height:1.35}
+
+  /* primary CTA */
+  .cta{display:flex;align-items:center;justify-content:center;gap:.5rem;
+    font-family:var(--mono);font-size:.92rem;letter-spacing:.04em;color:var(--ink);
+    background:var(--brass-bright);padding:1.05rem 1.4rem;border-radius:4px;text-decoration:none;
+    margin:1.6rem 0 .6rem;font-weight:500;transition:background .2s,transform .15s}
+  .cta:hover{background:#fff;transform:translateY(-2px)}
+  .cta-note{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-align:center;letter-spacing:.04em}
+
+  /* path cards */
+  .paths{display:flex;flex-direction:column;gap:14px;margin-top:1.8rem}
+  .path{display:block;background:var(--card);border:1px solid var(--line);border-left:3px solid transparent;
+    border-radius:5px;padding:1.2rem 1.3rem;text-decoration:none;color:inherit;
+    transition:transform .2s,border-color .2s,box-shadow .2s}
+  .path:hover{transform:translateY(-3px);border-left-color:var(--brass);box-shadow:0 16px 40px -22px rgba(0,0,0,.7)}
+  .path .label{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-dark);margin-bottom:.5rem}
+  .path h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--text-strong);line-height:1.05;margin-bottom:.3rem;display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+  .path h3 .arrow{font-family:var(--sans);font-size:1rem;color:var(--brass-bright);font-weight:400}
+  .path .who{font-style:italic;color:var(--muted);font-size:.85rem;margin-bottom:.5rem}
+  .path .desc{font-size:.9rem;color:var(--text)}
+
+  /* secondary links / share row */
+  .links{margin-top:1.8rem;display:flex;flex-direction:column;gap:.55rem}
+  .links a,.links button{font-family:var(--mono);font-size:.82rem;letter-spacing:.02em;
+    color:var(--cream);text-decoration:none;background:none;border:none;cursor:pointer;
+    display:flex;align-items:center;gap:.55rem;padding:.5rem 2px;text-align:left;width:100%}
+  .links a:hover,.links button:hover{color:var(--brass-bright)}
+  .links .ic{width:1.1rem;text-align:center;color:var(--brass-dark)}
+
+  .share-row{display:flex;gap:10px;margin-top:1.4rem}
+  .share-row button{flex:1;font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;
+    color:var(--brass-bright);background:rgba(22,35,56,.5);border:1px solid var(--line);
+    padding:.8rem;border-radius:3px;cursor:pointer;transition:border-color .2s,color .2s}
+  .share-row button:hover{border-color:var(--brass);color:#fff}
+
+  footer{margin-top:2.4rem;padding-top:1.3rem;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--muted);text-align:center}
+  footer b{color:var(--cream);font-weight:400}
+
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+    background:var(--brass-bright);color:var(--ink);font-family:var(--mono);font-size:.78rem;
+    padding:.7rem 1.2rem;border-radius:3px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:9}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* wallet + qr */
+  .wallet-row{display:flex;gap:10px;margin-top:10px;align-items:stretch}
+  .wallet-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;color:var(--text-strong);
+    background:#000;border:1px solid rgba(255,255,255,.18);border-radius:7px;
+    padding:.8rem;text-decoration:none;transition:border-color .2s,transform .15s}
+  .wallet-btn:hover{border-color:var(--brass);transform:translateY(-2px)}
+  .wallet-btn .wic{font-family:var(--sans);font-size:1rem;line-height:1}
+  .qr-toggle{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;color:var(--brass-bright);
+    background:rgba(22,35,56,.5);border:1px solid var(--line);border-radius:7px;
+    padding:.8rem 1rem;cursor:pointer;transition:border-color .2s,color .2s;white-space:nowrap}
+  .qr-toggle:hover{border-color:var(--brass);color:#fff}
+  .qr-panel{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:.7rem;
+    background:rgba(15,25,40,.55);border:1px solid var(--line);border-radius:8px;padding:1.4rem}
+  .qr-panel .qr{width:180px;height:180px;display:block}
+  .qr-cap{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted)}
+</style>
+</head>
+<body>
+  <canvas id="pcanvas" aria-hidden="true"></canvas>
+  <div class="card-wrap">
+    <div class="spine"></div>
+
+    <header>
+      <p class="eyebrow">Plumbline · Build it true</p>
+      <h1>Kyle Knight</h1>
+      <p class="role"><b>Founder</b> &nbsp;·&nbsp; AI-built software &amp; business development</p>
+      <p class="tag">The tools that tell you what is true — and the leverage to build it straight.</p>
+    </header>
+
+    <!-- PRIMARY CTA -->
+    <a class="cta" href="https://cal.com/toolwright" target="_blank" rel="noopener" id="calLink">
+      Book a call &nbsp;▸
+    </a>
+    <p class="cta-note">30 minutes · no pitch · we find the one thing worth building</p>
+
+    <!-- TWO PATHS -->
+    <div class="paths">
+      <a class="path" href="https://tool-maker-app.vercel.app/" target="_blank" rel="noopener">
+        <p class="label">For builders &amp; individuals</p>
+        <h3>Toolwright <span class="arrow">↗</span></h3>
+        <p class="who">You know exactly what to build — but not the language that builds it.</p>
+        <p class="desc">An SME-to-software engine that turns your domain expertise into code-ready briefs.</p>
+      </a>
+
+      <a class="path" href="https://otiumtec.github.io/Plumbline/" target="_blank" rel="noopener">
+        <p class="label">For businesses</p>
+        <h3>Plumbline Studio <span class="arrow">↗</span></h3>
+        <p class="who">Skimmed by a middleman, capped by geography, or boxed in by complexity.</p>
+        <p class="desc">Commissioned, owned-fair software that returns margin, reach, and capability to the people doing the real work.</p>
+      </a>
+    </div>
+
+    <!-- DIRECT CONTACT -->
+    <div class="links">
+      <a href="tel:+15402930617"><span class="ic">☎</span> 540-293-0617</a>
+      <a href="mailto:kknight_ltd@yahoo.com"><span class="ic">✉</span> kknight_ltd@yahoo.com</a>
+      <a href="https://www.linkedin.com/in/kyleknightbizdev/" target="_blank" rel="noopener"><span class="ic">in</span> LinkedIn</a>
+      <button id="vcardBtn"><span class="ic">⤓</span> Save to contacts</button>
+    </div>
+
+    <!-- SHARE -->
+    <div class="share-row">
+      <button id="shareBtn">Share this card</button>
+      <button id="copyBtn">Copy link</button>
+    </div>
+
+    <!-- WALLET + QR -->
+    <div class="wallet-row">
+      <!-- Apple Wallet: Wave Connect profile — visitors add the pass from here. -->
+      <a class="wallet-btn" id="walletBtn" href="https://app.wavecnct.com/kyle.knight.plumbline" target="_blank" rel="noopener">
+        <span class="wic"></span> Add to Apple Wallet
+      </a>
+      <button class="qr-toggle" id="qrToggle">Show QR</button>
+    </div>
+
+    <div class="qr-panel" id="qrPanel" hidden>
+      <svg class="qr" viewBox="0 0 29 29" role="img" aria-label="QR code linking to this card">
+        <rect width="100%" height="100%" fill="transparent"/>
+        <path d="M0,0H1V1H0zM1,0H2V1H1zM2,0H3V1H2zM3,0H4V1H3zM4,0H5V1H4zM5,0H6V1H5zM6,0H7V1H6zM8,0H9V1H8zM9,0H10V1H9zM11,0H12V1H11zM12,0H13V1H12zM14,0H15V1H14zM16,0H17V1H16zM17,0H18V1H17zM18,0H19V1H18zM22,0H23V1H22zM23,0H24V1H23zM24,0H25V1H24zM25,0H26V1H25zM26,0H27V1H26zM27,0H28V1H27zM28,0H29V1H28zM0,1H1V2H0zM6,1H7V2H6zM9,1H10V2H9zM10,1H11V2H10zM11,1H12V2H11zM13,1H14V2H13zM14,1H15V2H14zM16,1H17V2H16zM17,1H18V2H17zM20,1H21V2H20zM22,1H23V2H22zM28,1H29V2H28zM0,2H1V3H0zM2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM6,2H7V3H6zM8,2H9V3H8zM9,2H10V3H9zM11,2H12V3H11zM13,2H14V3H13zM15,2H16V3H15zM17,2H18V3H17zM18,2H19V3H18zM19,2H20V3H19zM22,2H23V3H22zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM28,2H29V3H28zM0,3H1V4H0zM2,3H3V4H2zM3,3H4V4H3zM4,3H5V4H4zM6,3H7V4H6zM9,3H10V4H9zM10,3H11V4H10zM13,3H14V4H13zM14,3H15V4H14zM17,3H18V4H17zM20,3H21V4H20zM22,3H23V4H22zM24,3H25V4H24zM25,3H26V4H25zM26,3H27V4H26zM28,3H29V4H28zM0,4H1V5H0zM2,4H3V5H2zM3,4H4V5H3zM4,4H5V5H4zM6,4H7V5H6zM9,4H10V5H9zM10,4H11V5H10zM11,4H12V5H11zM12,4H13V5H12zM13,4H14V5H13zM14,4H15V5H14zM18,4H19V5H18zM22,4H23V5H22zM24,4H25V5H24zM25,4H26V5H25zM26,4H27V5H26zM28,4H29V5H28zM0,5H1V6H0zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM13,5H14V6H13zM17,5H18V6H17zM18,5H19V6H18zM22,5H23V6H22zM28,5H29V6H28zM0,6H1V7H0zM1,6H2V7H1zM2,6H3V7H2zM3,6H4V7H3zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM12,6H13V7H12zM14,6H15V7H14zM16,6H17V7H16zM18,6H19V7H18zM20,6H21V7H20zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM25,6H26V7H25zM26,6H27V7H26zM27,6H28V7H27zM28,6H29V7H28zM9,7H10V8H9zM12,7H13V8H12zM14,7H15V8H14zM15,7H16V8H15zM16,7H17V8H16zM0,8H1V9H0zM2,8H3V9H2zM6,8H7V9H6zM7,8H8V9H7zM11,8H12V9H11zM16,8H17V9H16zM20,8H21V9H20zM23,8H24V9H23zM26,8H27V9H26zM28,8H29V9H28zM3,9H4V10H3zM4,9H5V10H4zM5,9H6V10H5zM11,9H12V10H11zM15,9H16V10H15zM16,9H17V10H16zM17,9H18V10H17zM19,9H20V10H19zM20,9H21V10H20zM22,9H23V10H22zM23,9H24V10H23zM27,9H28V10H27zM28,9H29V10H28zM0,10H1V11H0zM1,10H2V11H1zM2,10H3V11H2zM5,10H6V11H5zM6,10H7V11H6zM7,10H8V11H7zM9,10H10V11H9zM13,10H14V11H13zM14,10H15V11H14zM15,10H16V11H15zM17,10H18V11H17zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM24,10H25V11H24zM25,10H26V11H25zM26,10H27V11H26zM28,10H29V11H28zM0,11H1V12H0zM3,11H4V12H3zM4,11H5V12H4zM7,11H8V12H7zM8,11H9V12H8zM9,11H10V12H9zM12,11H13V12H12zM14,11H15V12H14zM18,11H19V12H18zM20,11H21V12H20zM21,11H22V12H21zM23,11H24V12H23zM25,11H26V12H25zM0,12H1V13H0zM1,12H2V13H1zM4,12H5V13H4zM6,12H7V13H6zM12,12H13V13H12zM16,12H17V13H16zM19,12H20V13H19zM22,12H23V13H22zM28,12H29V13H28zM1,13H2V14H1zM3,13H4V14H3zM8,13H9V14H8zM10,13H11V14H10zM11,13H12V14H11zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM17,13H18V14H17zM19,13H20V14H19zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM23,13H24V14H23zM27,13H28V14H27zM28,13H29V14H28zM2,14H3V15H2zM4,14H5V15H4zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM9,14H10V15H9zM11,14H12V15H11zM12,14H13V15H12zM14,14H15V15H14zM15,14H16V15H15zM16,14H17V15H16zM19,14H20V15H19zM22,14H23V15H22zM24,14H25V15H24zM28,14H29V15H28zM2,15H3V16H2zM3,15H4V16H3zM5,15H6V16H5zM7,15H8V16H7zM9,15H10V16H9zM10,15H11V16H10zM12,15H13V16H12zM16,15H17V16H16zM18,15H19V16H18zM24,15H25V16H24zM0,16H1V17H0zM2,16H3V17H2zM4,16H5V17H4zM5,16H6V17H5zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM16,16H17V17H16zM18,16H19V17H18zM20,16H21V17H20zM22,16H23V17H22zM23,16H24V17H23zM28,16H29V17H28zM7,17H8V18H7zM9,17H10V18H9zM10,17H11V18H10zM11,17H12V18H11zM15,17H16V18H15zM16,17H17V18H16zM17,17H18V18H17zM19,17H20V18H19zM20,17H21V18H20zM22,17H23V18H22zM23,17H24V18H23zM26,17H27V18H26zM27,17H28V18H27zM28,17H29V18H28zM0,18H1V19H0zM1,18H2V19H1zM5,18H6V19H5zM6,18H7V19H6zM7,18H8V19H7zM10,18H11V19H10zM12,18H13V19H12zM13,18H14V19H13zM15,18H16V19H15zM16,18H17V19H16zM19,18H20V19H19zM22,18H23V19H22zM23,18H24V19H23zM24,18H25V19H24zM25,18H26V19H25zM28,18H29V19H28zM2,19H3V20H2zM3,19H4V20H3zM4,19H5V20H4zM5,19H6V20H5zM7,19H8V20H7zM8,19H9V20H8zM15,19H16V20H15zM18,19H19V20H18zM19,19H20V20H19zM20,19H21V20H20zM21,19H22V20H21zM23,19H24V20H23zM0,20H1V21H0zM1,20H2V21H1zM2,20H3V21H2zM5,20H6V21H5zM6,20H7V21H6zM7,20H8V21H7zM9,20H10V21H9zM10,20H11V21H10zM13,20H14V21H13zM14,20H15V21H14zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM19,20H20V21H19zM20,20H21V21H20zM21,20H22V21H21zM22,20H23V21H22zM23,20H24V21H23zM24,20H25V21H24zM25,20H26V21H25zM27,20H28V21H27zM8,21H9V22H8zM9,21H10V22H9zM11,21H12V22H11zM13,21H14V22H13zM15,21H16V22H15zM16,21H17V22H16zM18,21H19V22H18zM20,21H21V22H20zM24,21H25V22H24zM25,21H26V22H25zM26,21H27V22H26zM28,21H29V22H28zM0,22H1V23H0zM1,22H2V23H1zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM10,22H11V23H10zM11,22H12V23H11zM12,22H13V23H12zM15,22H16V23H15zM17,22H18V23H17zM18,22H19V23H18zM20,22H21V23H20zM22,22H23V23H22zM24,22H25V23H24zM28,22H29V23H28zM0,23H1V24H0zM6,23H7V24H6zM12,23H13V24H12zM13,23H14V24H13zM16,23H17V24H16zM19,23H20V24H19zM20,23H21V24H20zM24,23H25V24H24zM27,23H28V24H27zM0,24H1V25H0zM2,24H3V25H2zM3,24H4V25H3zM4,24H5V25H4zM6,24H7V25H6zM9,24H10V25H9zM13,24H14V25H13zM16,24H17V25H16zM19,24H20V25H19zM20,24H21V25H20zM21,24H22V25H21zM22,24H23V25H22zM23,24H24V25H23zM24,24H25V25H24zM25,24H26V25H25zM27,24H28V25H27zM0,25H1V26H0zM2,25H3V26H2zM3,25H4V26H3zM4,25H5V26H4zM6,25H7V26H6zM9,25H10V26H9zM10,25H11V26H10zM11,25H12V26H11zM13,25H14V26H13zM15,25H16V26H15zM16,25H17V26H16zM17,25H18V26H17zM20,25H21V26H20zM21,25H22V26H21zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM26,25H27V26H26zM28,25H29V26H28zM0,26H1V27H0zM2,26H3V27H2zM3,26H4V27H3zM4,26H5V27H4zM6,26H7V27H6zM8,26H9V27H8zM10,26H11V27H10zM13,26H14V27H13zM14,26H15V27H14zM15,26H16V27H15zM17,26H18V27H17zM21,26H22V27H21zM24,26H25V27H24zM27,26H28V27H27zM28,26H29V27H28zM0,27H1V28H0zM6,27H7V28H6zM11,27H12V28H11zM13,27H14V28H13zM14,27H15V28H14zM16,27H17V28H16zM20,27H21V28H20zM23,27H24V28H23zM24,27H25V28H24zM25,27H26V28H25zM0,28H1V29H0zM1,28H2V29H1zM2,28H3V29H2zM3,28H4V29H3zM4,28H5V29H4zM5,28H6V29H5zM6,28H7V29H6zM8,28H9V29H8zM9,28H10V29H9zM10,28H11V29H10zM12,28H13V29H12zM13,28H14V29H13zM15,28H16V29H15zM19,28H20V29H19zM20,28H21V29H20zM25,28H26V29H25zM28,28H29V29H28z" fill="#f3f6fa"/>
+      </svg>
+      <p class="qr-cap">Scan to open this card</p>
+    </div>
+
+    <footer><b>Plumbline</b> · An evergreen studio for the capable but constrained · Est. 2026</footer>
+  </div>
+
+  <div class="toast" id="toast">Copied</div>
+
+<script>
+/* ============================================================
+   Toolwright particle field — ported verbatim from the app's
+   lib/particle-life engine + ParticleBackground controller.
+   Constants, matrix, colors, distribution, force curve, depth,
+   parallax and touch model are exact.
+   ============================================================ */
+(function(){
+  // --- constants (matrix.ts) ---
+  const INTERACTION_MATRIX = [
+    [0.15, 0.50, -0.30, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+    [-0.30, 0.15, 0.50, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+    [0.50, -0.30, 0.15, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+    [0.10, 0.10, 0.10, 0.05, 0.00, 0.10, 0.10, 0.10, -0.20],
+    [0.00, 0.00, 0.00, -0.15, -0.20, 0.00, 0.00, 0.00, 0.00],
+    [0.00, 0.00, 0.00, 0.00, 0.00, 0.15, 0.50, -0.30, 0.00],
+    [0.00, 0.00, 0.00, 0.00, 0.00, -0.30, 0.15, 0.50, 0.00],
+    [0.00, 0.00, 0.00, 0.00, 0.00, 0.50, -0.30, 0.15, 0.00],
+    [0.00, 0.00, 0.00, 0.35, 0.00, 0.00, 0.00, 0.00, -0.15],
+  ];
+  const R_MAX = 80;
+  const R_CLOSE = 0.2 * R_MAX;
+  const FRICTION = 0.80;
+  const FORCE_SCALE = 0.06;
+  const PARTICLE_COLORS = ["#475569","#1e3a5f","#3b92c9","#134e4a","#c9b88a","#b86b5e","#4a7c64","#7a4a8a","#5eb8c4"];
+  const TYPE_DISTRIBUTION = [0.13,0.13,0.13,0.13,0.045,0.13,0.13,0.13,0.045];
+
+  // --- engine.ts ---
+  const R_MAX_SQ = R_MAX * R_MAX;
+  const BETA = R_CLOSE / R_MAX;
+  const ONE_MINUS_BETA = 1 - BETA;
+  const CELL_SIZE = R_MAX;
+  const GLOW_TYPE = 2;
+  const DEPTH_FAR_SCALE = 0.5, DEPTH_NEAR_SCALE = 1.7;
+  const DEPTH_SCALE_RANGE = DEPTH_NEAR_SCALE - DEPTH_FAR_SCALE;
+  const DEPTH_FAR_ALPHA = 0.3, DEPTH_NEAR_ALPHA = 1.0;
+  const DEPTH_ALPHA_RANGE = DEPTH_NEAR_ALPHA - DEPTH_FAR_ALPHA;
+  const PARALLAX_MAX_PX = 14;
+  const TOUCH_RADIUS = 200, TOUCH_RADIUS_SQ = TOUCH_RADIUS * TOUCH_RADIUS;
+  const TOUCH_FORCE_SCALE = 0.4;
+  const TOUCH_STRENGTH = [-0.4,-0.4,1.2,-0.3,0.6,-0.4,-0.4,-0.4,1.0];
+
+  function pickType(){
+    const r = Math.random(); let acc = 0;
+    for (let i=0;i<TYPE_DISTRIBUTION.length;i++){ acc += TYPE_DISTRIBUTION[i]; if (r<acc) return i; }
+    return TYPE_DISTRIBUTION.length - 1;
+  }
+  function init(config){
+    const {count,width,height,dpr} = config;
+    const particles = new Array(count);
+    for (let i=0;i<count;i++){
+      particles[i] = { x:Math.random()*width, y:Math.random()*height, z:Math.random(),
+        vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.2, type:pickType() };
+    }
+    particles.sort((a,b)=>a.z-b.z);
+    return { particles, width, height, dpr, forcePoints:new Map() };
+  }
+  function setForcePoint(s,id,x,y){ s.forcePoints.set(id,{x,y}); }
+  function removeForcePoint(s,id){ s.forcePoints.delete(id); }
+  function resize(s,width,height,dpr){
+    for (let i=0;i<s.particles.length;i++){
+      const p = s.particles[i];
+      p.x = ((p.x/s.width)*width + width) % width;
+      p.y = ((p.y/s.height)*height + height) % height;
+    }
+    s.width=width; s.height=height; s.dpr=dpr;
+  }
+  function forceFn(u,a){
+    if (u<BETA) return u/BETA - 1;
+    if (u<1){ const t=(u-BETA)/ONE_MINUS_BETA; return a*(1-Math.abs(2*t-1)); }
+    return 0;
+  }
+  function step(state){
+    const {particles,width,height} = state;
+    const halfW = width*0.5, halfH = height*0.5, n = particles.length;
+    const cols = Math.max(1,Math.ceil(width/CELL_SIZE));
+    const rows = Math.max(1,Math.ceil(height/CELL_SIZE));
+    const cells = new Array(cols*rows);
+    for (let i=0;i<cells.length;i++) cells[i]=[];
+    for (let i=0;i<n;i++){
+      const p=particles[i];
+      let cx=Math.floor(p.x/CELL_SIZE), cy=Math.floor(p.y/CELL_SIZE);
+      if(cx<0)cx=0; else if(cx>=cols)cx=cols-1;
+      if(cy<0)cy=0; else if(cy>=rows)cy=rows-1;
+      cells[cy*cols+cx].push(i);
+    }
+    for (let i=0;i<n;i++){
+      const pi=particles[i]; const row=INTERACTION_MATRIX[pi.type];
+      let fx=0, fy=0;
+      let cx=Math.floor(pi.x/CELL_SIZE), cy=Math.floor(pi.y/CELL_SIZE);
+      if(cx<0)cx=0; else if(cx>=cols)cx=cols-1;
+      if(cy<0)cy=0; else if(cy>=rows)cy=rows-1;
+      for (let oy=-1;oy<=1;oy++){
+        const ncy=(((cy+oy)%rows)+rows)%rows;
+        for (let ox=-1;ox<=1;ox++){
+          const ncx=(((cx+ox)%cols)+cols)%cols;
+          const cellList=cells[ncy*cols+ncx];
+          for (let k=0;k<cellList.length;k++){
+            const j=cellList[k]; if(i===j) continue;
+            const pj=particles[j];
+            let dx=pj.x-pi.x, dy=pj.y-pi.y;
+            if(dx>halfW)dx-=width; else if(dx<-halfW)dx+=width;
+            if(dy>halfH)dy-=height; else if(dy<-halfH)dy+=height;
+            const r2=dx*dx+dy*dy;
+            if(r2>R_MAX_SQ||r2===0) continue;
+            const r=Math.sqrt(r2);
+            const f=forceFn(r/R_MAX,row[pj.type]);
+            const inv=1/r; fx+=dx*inv*f; fy+=dy*inv*f;
+          }
+        }
+      }
+      pi.vx=(pi.vx+fx*FORCE_SCALE)*FRICTION;
+      pi.vy=(pi.vy+fy*FORCE_SCALE)*FRICTION;
+    }
+    if (state.forcePoints.size>0){
+      state.forcePoints.forEach((fp)=>{
+        for (let i=0;i<n;i++){
+          const p=particles[i];
+          const dx=p.x-fp.x, dy=p.y-fp.y, r2=dx*dx+dy*dy;
+          if(r2>TOUCH_RADIUS_SQ||r2<1) continue;
+          const r=Math.sqrt(r2);
+          const factor=1-r/TOUCH_RADIUS;
+          const strength=TOUCH_STRENGTH[p.type]*factor*TOUCH_FORCE_SCALE;
+          const inv=1/r; p.vx-=dx*inv*strength; p.vy-=dy*inv*strength;
+        }
+      });
+    }
+    for (let i=0;i<n;i++){
+      const p=particles[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x+=width; else if(p.x>=width)p.x-=width;
+      if(p.y<0)p.y+=height; else if(p.y>=height)p.y-=height;
+    }
+  }
+  function draw(ctx,state,options){
+    options = options||{};
+    const {particles,width,height} = state;
+    const radius=2.0, ps=particles, n=ps.length, TWO_PI=Math.PI*2;
+    const px=(options.parallaxX??0)*PARALLAX_MAX_PX;
+    const py=(options.parallaxY??0)*PARALLAX_MAX_PX;
+    ctx.clearRect(0,0,width,height);
+    ctx.globalCompositeOperation="source-over";
+    let currentType=-1;
+    for (let i=0;i<n;i++){
+      const p=ps[i]; if(p.type===GLOW_TYPE) continue;
+      if(p.type!==currentType){ ctx.fillStyle=PARTICLE_COLORS[p.type]; currentType=p.type; }
+      const z=p.z, shift=(z-0.5)*2;
+      ctx.globalAlpha=0.45*(DEPTH_FAR_ALPHA+DEPTH_ALPHA_RANGE*z);
+      ctx.beginPath();
+      ctx.arc(p.x+px*shift, p.y+py*shift, radius*(DEPTH_FAR_SCALE+DEPTH_SCALE_RANGE*z), 0, TWO_PI);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation="lighter";
+    ctx.fillStyle=PARTICLE_COLORS[GLOW_TYPE];
+    const haloRadius=radius*3.5;
+    for (let i=0;i<n;i++){
+      const p=ps[i]; if(p.type!==GLOW_TYPE) continue;
+      const z=p.z, shift=(z-0.5)*2;
+      const depthScale=DEPTH_FAR_SCALE+DEPTH_SCALE_RANGE*z;
+      ctx.globalAlpha=0.18*(DEPTH_FAR_ALPHA+DEPTH_ALPHA_RANGE*z);
+      ctx.beginPath();
+      ctx.arc(p.x+px*shift, p.y+py*shift, haloRadius*depthScale, 0, TWO_PI);
+      ctx.fill();
+    }
+    for (let i=0;i<n;i++){
+      const p=ps[i]; if(p.type!==GLOW_TYPE) continue;
+      const z=p.z, shift=(z-0.5)*2;
+      ctx.globalAlpha=0.85*(DEPTH_FAR_ALPHA+DEPTH_ALPHA_RANGE*z);
+      ctx.beginPath();
+      ctx.arc(p.x+px*shift, p.y+py*shift, radius*(DEPTH_FAR_SCALE+DEPTH_SCALE_RANGE*z), 0, TWO_PI);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation="source-over";
+    ctx.globalAlpha=1;
+  }
+
+  // --- controller (ParticleBackground.tsx) ---
+  const DESKTOP_COUNT=4000, MOBILE_COUNT=1500, MOBILE_BREAKPOINT=768, PARALLAX_EASE=0.08;
+  const getCount = (w)=> w<MOBILE_BREAKPOINT ? MOBILE_COUNT : DESKTOP_COUNT;
+
+  const canvas = document.getElementById("pcanvas");
+  const ctx = canvas.getContext("2d",{alpha:true});
+  if(!ctx) return;
+  const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let state=null, rafId=0, running=false;
+  let targetParX=0, targetParY=0, parX=0, parY=0;
+
+  function applyCanvasSize(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    const cssW=window.innerWidth, cssH=window.innerHeight;
+    canvas.width=Math.floor(cssW*dpr); canvas.height=Math.floor(cssH*dpr);
+    canvas.style.width=cssW+"px"; canvas.style.height=cssH+"px";
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    if(state) resize(state,cssW,cssH,dpr);
+    else state=init({count:getCount(cssW),width:cssW,height:cssH,dpr});
+  }
+  function renderFrame(){
+    if(!state) return;
+    step(state);
+    parX += (targetParX-parX)*PARALLAX_EASE;
+    parY += (targetParY-parY)*PARALLAX_EASE;
+    draw(ctx,state,{parallaxX:parX,parallaxY:parY});
+  }
+  function updateParallaxTarget(cx,cy){
+    targetParX=(cx/window.innerWidth-0.5)*2;
+    targetParY=(cy/window.innerHeight-0.5)*2;
+  }
+  function loop(){ if(!running) return; renderFrame(); rafId=requestAnimationFrame(loop); }
+  function start(){
+    if(running) return;
+    if(reducedMotionMedia.matches){ if(state) draw(ctx,state); return; }
+    if(document.hidden) return;
+    running=true; rafId=requestAnimationFrame(loop);
+  }
+  function stop(){ running=false; if(rafId) cancelAnimationFrame(rafId); rafId=0; }
+  function onResize(){
+    applyCanvasSize();
+    const targetCount = state?getCount(state.width):0;
+    if(state && state.particles.length!==targetCount)
+      state=init({count:targetCount,width:state.width,height:state.height,dpr:state.dpr});
+  }
+  function onVisibility(){ document.hidden?stop():start(); }
+  function onMotionChange(){
+    if(reducedMotionMedia.matches){ stop(); if(state) draw(ctx,state); } else start();
+  }
+  function onPointerDown(e){ if(state) setForcePoint(state,e.pointerId,e.clientX,e.clientY); updateParallaxTarget(e.clientX,e.clientY); }
+  function onPointerMove(e){
+    if(state && e.buttons!==0) setForcePoint(state,e.pointerId,e.clientX,e.clientY);
+    updateParallaxTarget(e.clientX,e.clientY);
+  }
+  function onPointerUp(e){ if(state) removeForcePoint(state,e.pointerId); }
+
+  applyCanvasSize();
+  if(state) draw(ctx,state);
+  start();
+  window.addEventListener("resize",onResize);
+  document.addEventListener("visibilitychange",onVisibility);
+  window.addEventListener("pointerdown",onPointerDown,{passive:true});
+  window.addEventListener("pointermove",onPointerMove,{passive:true});
+  window.addEventListener("pointerup",onPointerUp,{passive:true});
+  window.addEventListener("pointercancel",onPointerUp,{passive:true});
+  if(typeof reducedMotionMedia.addEventListener==="function") reducedMotionMedia.addEventListener("change",onMotionChange);
+  else reducedMotionMedia.addListener(onMotionChange);
+})();
+</script>
+
+<script>
+  // --- vCard: lets anyone save you to their phone in one tap ---
+  const vcard = [
+    "BEGIN:VCARD","VERSION:3.0",
+    "N:Knight;Kyle;;;","FN:Kyle Knight",
+    "ORG:Plumbline","TITLE:Founder",
+    "EMAIL;TYPE=INTERNET:kknight_ltd@yahoo.com",
+    "TEL;TYPE=CELL:+15402930617",
+    "URL:https://www.linkedin.com/in/kyleknightbizdev/",
+    "NOTE:Tools built true — for the capable but constrained.",
+    "END:VCARD"
+  ].join("\n");
+  document.getElementById("vcardBtn").addEventListener("click",()=>{
+    const blob=new Blob([vcard],{type:"text/vcard"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download="Kyle-Knight.vcf";a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  const toast=(m)=>{const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1600)};
+
+  // --- Native share sheet (mobile), falls back to copy ---
+  document.getElementById("shareBtn").addEventListener("click",async()=>{
+    const data={title:"Kyle Knight — Plumbline",text:"Tools built true.",url:location.href};
+    if(navigator.share){try{await navigator.share(data);}catch(e){}}
+    else{await navigator.clipboard.writeText(location.href);toast("Link copied");}
+  });
+  document.getElementById("copyBtn").addEventListener("click",async()=>{
+    await navigator.clipboard.writeText(location.href);toast("Link copied");
+  });
+
+  // --- QR show/hide ---
+  (function(){
+    var btn=document.getElementById("qrToggle");
+    var panel=document.getElementById("qrPanel");
+    if(btn&&panel){
+      btn.addEventListener("click",function(){
+        var hidden=panel.hasAttribute("hidden");
+        if(hidden){panel.removeAttribute("hidden");btn.textContent="Hide QR";}
+        else{panel.setAttribute("hidden","");btn.textContent="Show QR";}
+      });
+    }
+  })();
+</script>
+</body>
+</html>
