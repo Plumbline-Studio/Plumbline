@@ -169,8 +169,11 @@
 
     <!-- WALLET + QR -->
     <div class="wallet-row">
-      <!-- Apple Wallet: Wave Connect profile — visitors add the pass from here. -->
-      <a class="wallet-btn" id="walletBtn" href="https://app.wavecnct.com/kyle.knight.plumbline" target="_blank" rel="noopener">
+      <!-- Apple Wallet: hidden until a real, tappable .pkpass link exists.
+           Wave's free tier only adds the pass on-device (dashboard QR icon →
+           "Add to Wallet") and shares it by QR scan — it provides no shareable
+           wallet URL. To re-enable: drop the .pkpass URL into href and remove `hidden`. -->
+      <a class="wallet-btn" id="walletBtn" href="https://app.wavecnct.com/kyle.knight.plumbline" target="_blank" rel="noopener" hidden>
         <span class="wic"></span> Add to Apple Wallet
       </a>
       <button class="qr-toggle" id="qrToggle">Show QR</button>
