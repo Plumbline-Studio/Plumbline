@@ -68,6 +68,11 @@
     margin:1.6rem 0 .6rem;font-weight:500;transition:background .2s,transform .15s}
   .cta:hover{background:#fff;transform:translateY(-2px)}
   .cta-note{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-align:center;letter-spacing:.04em}
+  /* CTA row: primary "Book a call" + secondary "Save contact" side by side */
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin:1.6rem 0 .6rem}
+  .cta-row .cta{flex:1 1 150px;margin:0}
+  .cta-alt{background:rgba(22,35,56,.5);color:var(--brass-bright);border:1px solid var(--brass);cursor:pointer}
+  .cta-alt:hover{background:rgba(22,35,56,.85);border-color:var(--brass-bright);color:#fff}
 
   /* path cards */
   .paths{display:flex;flex-direction:column;gap:14px;margin-top:1.8rem}
@@ -124,9 +129,12 @@
     </header>
 
     <!-- PRIMARY CTA -->
-    <a class="cta" href="https://cal.com/toolwright" target="_blank" rel="noopener" id="calLink">
-      Book a call &nbsp;▸
-    </a>
+    <div class="cta-row">
+      <a class="cta" href="https://cal.com/toolwright" target="_blank" rel="noopener" id="calLink">
+        Book a call &nbsp;▸
+      </a>
+      <button class="cta cta-alt" id="vcardBtnTop">⤓ Save contact</button>
+    </div>
     <p class="cta-note">30 minutes · no pitch · we find the one thing worth building</p>
 
     <!-- TWO PATHS -->
@@ -149,7 +157,7 @@
     <!-- DIRECT CONTACT -->
     <div class="links">
       <a href="tel:+15402930617"><span class="ic">☎</span> 540-293-0617</a>
-      <a href="mailto:kknight_ltd@yahoo.com"><span class="ic">✉</span> kknight_ltd@yahoo.com</a>
+      <a href="mailto:kyle@toolwright.dev"><span class="ic">✉</span> kyle@toolwright.dev</a>
       <a href="https://www.linkedin.com/in/kyleknightbizdev/" target="_blank" rel="noopener"><span class="ic">in</span> LinkedIn</a>
       <button id="vcardBtn"><span class="ic">⤓</span> Save to contacts</button>
     </div>
@@ -422,34 +430,26 @@
 
 <script>
   // --- vCard: lets anyone save you to their phone in one tap ---
-  const vcard = [
-    "BEGIN:VCARD","VERSION:3.0",
-    "N:Knight;Kyle;;;","FN:Kyle Knight",
-    "ORG:Plumbline","TITLE:Founder",
-    "EMAIL;TYPE=INTERNET:kknight_ltd@yahoo.com",
-    "TEL;TYPE=CELL:+15402930617",
-    "URL:https://www.linkedin.com/in/kyleknightbizdev/",
-    "NOTE:Tools built true — for the capable but constrained.",
-    "END:VCARD"
-  ].join("\n");
-  document.getElementById("vcardBtn").addEventListener("click",()=>{
-    const blob=new Blob([vcard],{type:"text/vcard"});
-    const a=document.createElement("a");
-    a.href=URL.createObjectURL(blob);a.download="Kyle-Knight.vcf";a.click();
-    URL.revokeObjectURL(a.href);
-  });
-
-  const toast=(m)=>{const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1600)};
-
-  // --- Native share sheet (mobile), falls back to copy ---
-  document.getElementById("shareBtn").addEventListener("click",async()=>{
-    const data={title:"Kyle Knight — Plumbline",text:"Tools built true.",url:location.href};
-    if(navigator.share){try{await navigator.share(data);}catch(e){}}
-    else{await navigator.clipboard.writeText(location.href);toast("Link copied");}
-  });
-  document.getElementById("copyBtn").addEventListener("click",async()=>{
-    await navigator.clipboard.writeText(location.href);toast("Link copied");
-  });
-</script>
-</body>
-</html>
+  // Build the vCard at click time so we can embed the photo (card/photo.jpg) if present.
+  const buildVcard=async()=>{
+    const lines=[
+      "BEGIN:VCARD","VERSION:3.0",
+      "N:Knight;Kyle;;;","FN:Kyle Knight",
+      "ORG:Plumbline","TITLE:Founder",
+      "EMAIL;TYPE=INTERNET:kyle@toolwright.dev",
+      "TEL;TYPE=CELL:+15402930617",
+      "URL:https://www.linkedin.com/in/kyleknightbizdev/",
+      "NOTE:Tools built true — for the capable but constrained."
+    ];
+    try{
+      const r=await fetch("photo.jpg",{cache:"no-store"});
+      if(r.ok){
+        const bytes=new Uint8Array(await r.arrayBuffer());
+        let bin=""; for(let i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+        lines.push("PHOTO;ENCODING=b;TYPE=JPEG:"+btoa(bin));
+      }
+    }catch(e){}
+    lines.push("END:VCARD");
+    return lines.join("\r\n");
+  };
+ 
