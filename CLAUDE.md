@@ -14,3 +14,7 @@ Philosophy through-line: build true, well-made tools that should exist, for peop
 already worthy of their path; meet people where they are. Grow one product at a time
 (Pieter Levels model): one live and earning before the next.
 **This repo's place:** Plumbline Studio — the parent company brand and site.
+
+## Loose ends (from the Plumbline dashboard)
+
+At session start, list the open GitHub issues labeled `loose-end` on this repo and offer to pick one up. These are notes Kyle captured from dashboard.toolwright.dev — the context for each lives in the issue body. When one is finished, close the issue.
