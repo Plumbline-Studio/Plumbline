@@ -40,8 +40,7 @@ jobs:
       # sitemap.xml must be well-formed.
       - name: Sitemap
         run: |
-          sudo apt-get install -y -qq libxml2-utils >/dev/null
-          xmllint --noout storefront/sitemap.xml
+          python3 -c "import xml.dom.minidom as m; m.parse('storefront/sitemap.xml')"
 
       # Every local file an HTML page links to must exist.
       - name: Local links
