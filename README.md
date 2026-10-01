@@ -23,7 +23,7 @@ Then open http://localhost:8000. Any static file server pointed at `storefront/`
 
 `ci-report.yml` then posts the result on the pull request as a `CI-RESULT: CI <result> on <sha>` comment. To run the same steps by hand, copy the `run:` blocks from `ci.yml` into a shell at the repo root (Node and Python 3 are all they need).
 
-**Deploy.** Merge to `main`. The Cloudflare Worker `plumbline-storefront` (see `wrangler.toml`) is Git-connected and redeploys on every push to `main`, serving `storefront/` as the site root for plumblinestudio.dev and www. Files outside `storefront/` (this README, the portfolio PWA) are not served by it. There are no preview deploys for pull requests yet.
+**Deploy.** Merge to `main`. The Git-connected Cloudflare Worker (config in `wrangler.toml`) redeploys on every push to `main`, serving `storefront/` as the site root for plumblinestudio.dev and www. Files outside `storefront/` (this README, the portfolio PWA) are not served by it. Each pull request also gets a Cloudflare preview build; the Cloudflare bot comments its status and preview URLs on the PR.
 
 **Roll back.** Revert the bad commit on `main` (`git revert <sha>` in a pull request, or the Revert button on the merged PR) and merge it; Cloudflare redeploys the previous files. *Not yet tried on this repo.*
 
