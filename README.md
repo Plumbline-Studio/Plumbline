@@ -35,6 +35,8 @@ The repo root used to hold the original single-page portfolio ("Plumbline — To
 
 `signature/` stays: it is the source of Kyle's email signature, and it already points at plumblinestudio.dev.
 
+`sw.js`, `CNAME` and `.nojekyll` stay at the root for about two weeks: `sw.js` is now a clean-up worker that clears the old page from browsers that cached it. They go when GitHub Pages is switched off (see the archive note).
+
 ---
 
 Plumbline · Build it true.

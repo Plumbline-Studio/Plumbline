@@ -12,9 +12,9 @@ The last commit that held every file is **08e4cffdaa094fdae22367d44961b17d3e4c79
 | -- | -- |
 | `index.html` | The portfolio page: "An evergreen studio building tools that rebalance unfair equations", four delivery models, and a project grid that named client and venture projects, each opening a preview deploy. |
 | `card/` | A digital business card: photo, "Book a call", "Save contact", phone, kyle@toolwright.dev, LinkedIn, the Toolwright free-logo offer, a QR code to itself, and `regen_qr.py` to redraw that QR for a new URL. |
-| `sw.js`, `manifest.webmanifest`, `icons/`, `.nojekyll` | Made the page an installable, offline-capable PWA on GitHub Pages. |
+| `sw.js`, `manifest.webmanifest`, `icons/` | Made the page an installable, offline-capable PWA (cache-first service worker). |
 | `shots/` | Screenshots for the project grid. |
-| `CNAME` | Bound Pages to plumbline.toolwright.dev. |
+| `CNAME`, `.nojekyll` | Bound Pages to plumbline.toolwright.dev, with Jekyll off. Kept for now (see below). |
 
 `signature/` (Kyle's email signature source) was in the root too. It is not part of the page and stays.
 
@@ -26,6 +26,11 @@ The last commit that held every file is **08e4cffdaa094fdae22367d44961b17d3e4c79
 
 Not carried over: the four delivery models (commissioned, owned, operated, stewardship), which predate the one-offer storefront, and the PWA plumbing.
 
-## After the page is off
+## Retiring it in two steps (the service worker)
 
-Browsers that visited the old page may still hold its service worker. The next time such a browser checks `sw.js` and gets a 404, it unregisters the worker, so the cached copy stops being served without anyone doing anything.
+The old `sw.js` was cache-first: a browser that ever visited the page kept serving its cached copy without asking the server, so deleting the files alone would not retire it for returning visitors (a failed update leaves the old worker running). So this change keeps three files at the root for now:
+
+- `sw.js` is replaced by a clean-up worker. When a returning browser next checks for an update, it gets this worker, which deletes every cache, unregisters itself and reloads the open tab.
+- `CNAME` and `.nojekyll` keep Pages serving that file at plumbline.toolwright.dev (and keep Jekyll from publishing this README at the root, which now 404s).
+
+Step 1: merge this change with Pages still on. Step 2, about two weeks later: turn Pages off, delete the `plumbline` DNS record at toolwright.dev, and remove the last three files in a small follow-up PR.
