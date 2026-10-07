@@ -23,48 +23,17 @@ Then open http://localhost:8000. Any static file server pointed at `storefront/`
 
 `ci-report.yml` then posts the result on the pull request as a `CI-RESULT: CI <result> on <sha>` comment. To run the same steps by hand, copy the `run:` blocks from `ci.yml` into a shell at the repo root (Node and Python 3 are all they need).
 
-**Deploy.** Merge to `main`. The Git-connected Cloudflare Worker (config in `wrangler.toml`) redeploys on every push to `main`, serving `storefront/` as the site root for plumblinestudio.dev and www. Files outside `storefront/` (this README, the portfolio PWA) are not served by it. Each pull request also gets a Cloudflare preview build; the Cloudflare bot comments its status and preview URLs on the PR.
+**Deploy.** Merge to `main`. The Git-connected Cloudflare Worker (config in `wrangler.toml`) redeploys on every push to `main`, serving `storefront/` as the site root for plumblinestudio.dev and www. Files outside `storefront/` (this README, `signature/`, `docs/`) are not served by it. Each pull request also gets a Cloudflare preview build; the Cloudflare bot comments its status and preview URLs on the PR.
 
 **Roll back.** Revert the bad commit on `main` (`git revert <sha>` in a pull request, or the Revert button on the merged PR) and merge it; Cloudflare redeploys the previous files. *Not yet tried on this repo.*
 
 ---
 
-## Portfolio (PWA)
+## Retired: the old portfolio page
 
-The repo also contains the original single-page, installable portfolio for Plumbline. Static files only — no build step.
+The repo root used to hold the original single-page portfolio ("Plumbline — Tools built true"), published by GitHub Pages at plumbline.toolwright.dev, with a digital business card at `/card/`. It was retired on Kyle's word (2026-10-06, PLU-386). What it held, the last commit that had it, and what is worth carrying over are in [`docs/archive/old-github-pages-page.md`](docs/archive/old-github-pages-page.md).
 
-### Files (keep this structure)
-
-```
-.
-├── index.html
-├── manifest.webmanifest
-├── sw.js
-├── .nojekyll
-└── icons/
-    ├── icon-192.png
-    ├── icon-512.png
-    ├── icon-192-maskable.png
-    ├── icon-512-maskable.png
-    ├── apple-touch-icon.png
-    └── favicon.png
-```
-
-All paths in the site are relative, so it works at a project URL
-(`https://<user>.github.io/<repo>/`) without any edits.
-
-### Updating later
-
-The service worker caches the site for offline use. When you change any file,
-bump the cache name in `sw.js` (`const CACHE = 'plumbline-v1'` → `'plumbline-v2'`)
-so returning visitors get the new version instead of the cached one.
-
-### Historical notes
-
-The original GitHub Pages deploy instructions and the `plumbline.studio` custom-domain
-DNS records that used to live here are superseded: the studio's domain is
-**plumblinestudio.dev**, DNS is on Cloudflare, and the storefront deploys from this
-repo automatically. See the git history of this file if you ever need the old steps.
+`signature/` stays: it is the source of Kyle's email signature, and it already points at plumblinestudio.dev.
 
 ---
 
