@@ -1,18 +1,17 @@
-const CACHE = 'plumbline-v4';
-const ASSETS = ['./','./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png','./icons/favicon.png'];
-self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(ASSETS); }).then(function () { return self.skipWaiting(); }));
+// The old page at plumbline.toolwright.dev is retired (PLU-386).
+// Its service worker was cache-first, so browsers that visited it kept the old
+// page. This replacement deletes every cache, unregisters itself and reloads
+// any open tab. Remove it, with CNAME and .nojekyll, once GitHub Pages is off.
+self.addEventListener('install', function () {
+  self.skipWaiting();
 });
 self.addEventListener('activate', function (e) {
-  e.waitUntil(caches.keys().then(function (keys) { return Promise.all(keys.filter(function (k) { return k !== CACHE; }).map(function (k) { return caches.delete(k); })); }).then(function () { return self.clients.claim(); }));
-});
-self.addEventListener('fetch', function (e) {
-  if (e.request.method !== 'GET') return;
-  e.respondWith(caches.match(e.request).then(function (r) {
-    return r || fetch(e.request).then(function (resp) {
-      var copy = resp.clone();
-      caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
-      return resp;
-    }).catch(function () { return caches.match('./index.html'); });
-  }));
+  e.waitUntil(
+    caches.keys()
+      .then(function (keys) { return Promise.all(keys.map(function (k) { return caches.delete(k); })); })
+      .then(function () { return self.registration.unregister(); })
+      .then(function () { return self.clients.matchAll({ type: 'window' }); })
+      .then(function (tabs) { tabs.forEach(function (t) { t.navigate(t.url).catch(function () {}); }); })
+      .catch(function () {})
+  );
 });
