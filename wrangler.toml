@@ -1,10 +1,19 @@
 name = "plumbline-storefront"
 compatibility_date = "2026-08-29"
 
-# Static site: serve the storefront directory as the site root.
-# No Worker script needed — assets-only deployment.
+# Worker: serves the storefront assets, plus the outreach tracking routes
+# (/o/, /book/, /u/) handled in src/worker.js. Everything else is static.
+main = "src/worker.js"
+
 [assets]
 directory = "./storefront"
+binding = "ASSETS"
+run_worker_first = ["/o/*", "/book/*", "/u/*"]
+
+# Publishable (anon) key: safe in the repo, it can only call outreach_track_hit().
+[vars]
+SUPABASE_URL = "https://ghddsckqbwrjsjvbjwya.supabase.co"
+SUPABASE_PUBLISHABLE_KEY = "sb_publishable_9yqJnbBguKbA9zbHIztyPw_-B2XDYCR"
 
 # Custom domains: attached automatically on deploy. The placeholder DNS
 # records imported from GoDaddy were deleted 2026-08-29 to unblock this;
