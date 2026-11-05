@@ -89,6 +89,10 @@
   .cta:hover{background:var(--gold-bright);}
   .subcta{display:block; margin-top:14px; font-size:.9rem; color:var(--slate);}
 
+  /* client login, top right */
+  .toplink{position:absolute; top:18px; right:22px; z-index:2; font:500 .82rem 'Inter',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); text-decoration:none; border:1px solid var(--line); border-radius:20px; padding:7px 13px; background:rgba(27,36,51,.6); backdrop-filter:blur(4px);}
+  .toplink:hover{color:var(--gold-bright); border-color:var(--gold);}
+
   section{padding:58px 0 6px;}
   h2{font:500 1.6rem 'Playfair Display',Georgia,serif; margin:0 0 6px; color:var(--gold-bright); text-wrap:balance;}
   .rule{width:44px; border:0; border-top:1px solid var(--gold); margin:0 0 26px; opacity:.6;}
@@ -129,6 +133,7 @@
 <body>
 
 <div class="heroband">
+<a class="toplink" href="https://clients.plumblinestudio.dev/">Client login →</a>
 <canvas id="field" aria-hidden="true"></canvas>
 <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
 
