@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build partners — Plumbline Studio</title>
+<meta name="description" content="For advisors, consultants and fractional leaders: you keep the client and the strategy. When they need something built that you can't build, you bring Plumbline in. Fixed price, billed in advance, white-label or co-branded.">
+<link rel="canonical" href="https://plumblinestudio.dev/partners/">
+<meta property="og:title" content="Build partners — Plumbline Studio">
+<meta property="og:description" content="You keep the client and the strategy. When they need something built that you can't build, you bring me in.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumblinestudio.dev/partners/">
+<meta property="og:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<style>
+  /* Tokens copied from storefront/index.html; no new values. */
+  :root{
+    --navy:#1b2433; --peak:#292d36; --gold:#c8a878; --gold-bright:#d8b884; --slate:#9ba5b4;
+    --text:#e8e6df; --line:#323b4b;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--navy); color:var(--text); font:16px/1.65 'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none!important;} }
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px;}
+  a{color:var(--gold-bright);}
+  a:focus-visible, .cta:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  .plumb{display:flex; flex-direction:column; align-items:center; padding-top:56px;}
+  .plumb .line{width:1px; height:72px; background:linear-gradient(to bottom, transparent, var(--gold));}
+  .plumb .bob{width:11px; height:11px; background:var(--gold); transform:rotate(45deg); margin-top:6px; box-shadow:0 0 18px rgba(200,168,120,.45);}
+
+  .toplink{position:absolute; top:18px; right:22px; z-index:2; font:500 .82rem 'Inter',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); text-decoration:none; border:1px solid var(--line); border-radius:20px; padding:7px 13px; background:rgba(27,36,51,.6);}
+  .toplink:hover{color:var(--gold-bright); border-color:var(--gold);}
+
+  header.hero{text-align:center; padding:28px 0 20px;}
+  .word{font:500 15px 'Inter',sans-serif; letter-spacing:.34em; text-transform:uppercase; color:var(--slate); margin:26px 0 30px;}
+  .word b{color:var(--gold); font-weight:500;}
+  .word a{color:inherit; text-decoration:none;}
+  h1{font:500 clamp(2rem,6vw,3.1rem)/1.18 'Playfair Display',Georgia,serif; margin:0 0 22px; text-wrap:balance; color:var(--text);}
+  .hero p.lede{font-size:1.13rem; color:var(--slate); max-width:36em; margin:0 auto 34px; text-wrap:pretty;}
+  .cta{display:inline-block; background:var(--gold); color:#171d28; font-weight:600; text-decoration:none; padding:14px 30px; border-radius:6px; letter-spacing:.02em;}
+  .cta:hover{background:var(--gold-bright);}
+  .subcta{display:block; margin-top:14px; font-size:.9rem; color:var(--slate);}
+
+  section{padding:58px 0 6px;}
+  h2{font:500 1.6rem 'Playfair Display',Georgia,serif; margin:0 0 6px; color:var(--gold-bright); text-wrap:balance;}
+  .rule{width:44px; border:0; border-top:1px solid var(--gold); margin:0 0 26px; opacity:.6;}
+  p{max-width:40em;}
+  .muted{color:var(--slate);}
+
+  .offer{background:var(--peak); border:1px solid var(--line); border-radius:12px; padding:30px 32px; margin-top:8px;}
+  .offer .price{font-family:'JetBrains Mono',monospace; color:var(--gold); font-size:1.05rem; margin:2px 0 14px;}
+  ul.diamond{list-style:none; padding:0; margin:18px 0 0;}
+  ul.diamond li{padding-left:26px; position:relative; margin-bottom:12px; max-width:38em;}
+  ul.diamond li::before{content:"◆"; position:absolute; left:2px; color:var(--gold); font-size:.72rem; top:.34em;}
+
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin-top:10px;}
+  .step{background:var(--peak); border:1px solid var(--line); border-radius:12px; padding:22px 20px;}
+  .step .n{font-family:'JetBrains Mono',monospace; color:var(--gold); font-size:.85rem; display:block; margin-bottom:8px;}
+  .step b{display:block; margin-bottom:6px; font-weight:600;}
+  .step p{font-size:.93rem; color:var(--slate); margin:0;}
+
+  .terms{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:10px;}
+  .case{background:var(--peak); border:1px solid var(--line); border-radius:12px; padding:22px 20px;}
+  .case b{display:block; margin-bottom:8px; font-weight:600; color:var(--gold-bright);}
+  .case p{font-size:.93rem; color:var(--slate); margin:0;}
+
+  .quotebox{border-left:2px solid var(--gold); padding:6px 0 6px 22px; margin:30px 0 0; max-width:38em;}
+  .quotebox p{font:500 1.2rem 'Playfair Display',Georgia,serif; margin:0 0 6px; color:var(--text);}
+  .quotebox span{font-size:.85rem; color:var(--slate);}
+
+  footer{margin-top:70px; border-top:1px solid var(--line); padding:30px 0 46px; text-align:center; color:var(--slate); font-size:.88rem;}
+  footer .bob{display:inline-block; width:8px; height:8px; background:var(--gold); transform:rotate(45deg); margin-bottom:14px;}
+  footer .tag{font-family:'Playfair Display',Georgia,serif; color:var(--gold); font-size:1rem; margin:0 0 8px;}
+</style>
+</head>
+<body>
+
+<div style="position:relative">
+<a class="toplink" href="https://plumblinestudio.dev/">← Plumbline Studio</a>
+<div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
+
+<header class="hero wrap">
+  <p class="word"><a href="https://plumblinestudio.dev/">PLUMBLINE <b>STUDIO</b></a> · PARTNERS</p>
+  <h1>You keep the client and the strategy.<br>I handle the build.</h1>
+  <p class="lede">For AI advisors, consultants, fractional COOs, CTOs and CFOs, EOS implementers, coaches and small agencies. When your client needs something built that you can't build, you bring me in.</p>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a 30-minute partner call</a>
+  <span class="subcta">Prefer email? <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></span>
+</header>
+</div>
+
+<section class="wrap" id="how">
+  <h2>How it works</h2>
+  <hr class="rule">
+  <p class="muted">You are my client. Your client stays yours. You contract with them and set your own price.</p>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><b>Bring one build</b><p>One bounded problem for one of your clients. Name the client before we talk, and they are registered to you.</p></div>
+    <div class="step"><span class="n">02</span><b>Scope in two days</b><p>A 30-minute scoping call (your client joins only if you want). Within 2 business days: a one-page scope with the outcome, the acceptance test, the trade price, the start week and what is not included.</p></div>
+    <div class="step"><span class="n">03</span><b>I build, you're informed</b><p>You sign the scope and pay. I build. You get a written status note every week.</p></div>
+    <div class="step"><span class="n">04</span><b>Handoff you can present</b><p>Plain-language docs and a short walkthrough you can present as your own.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="money">
+  <h2>Money</h2>
+  <hr class="rule">
+  <div class="offer">
+    <p style="margin-top:0"><strong>Fixed price per build, quoted on the scope.</strong></p>
+    <p class="price">Trade rate · 15% below published price · billed in advance</p>
+    <ul class="diamond">
+      <li><strong>Trade rate.</strong> 15% below Plumbline's published price for the same work (published range $2,500–$5,000 for a 2–4 week build). Larger work is split into more than one fixed-price build.</li>
+      <li><strong>You set your client's price.</strong> I never see, set or limit it.</li>
+      <li><strong>Billed in advance. Always.</strong> The full build price is paid before work starts. No net terms.</li>
+      <li><strong>Changes</strong> go in writing: I quote time and price, you approve in writing and pay, then work starts. The price never drifts silently.</li>
+      <li><strong>Outside costs</strong> (hosting, paid APIs, seats) are named in the scope and paid by the end client directly or passed through at cost.</li>
+      <li><strong>No referral fees and no revenue share,</strong> in either direction.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="wrap" id="terms">
+  <h2>Your client stays yours</h2>
+  <hr class="rule">
+  <div class="terms">
+    <div class="case"><b>No poaching</b><p>I will not sell to, or take work directly from, your client for 12 months after the last build for them, unless you agree in writing. If your client contacts me directly, I tell you the same day and send them back to you.</p></div>
+    <div class="case"><b>Your brand or mine</b><p>Your choice on each build: white-label (you present it as your work; I'm not named to the client) or co-branded ("Built by Plumbline"). I don't name you, your client or the work in my marketing without your written OK.</p></div>
+    <div class="case"><b>You own the build</b><p>Once paid, the deliverables for that build are yours (or your client's, as you direct). I keep my pre-existing tools and methods and license them to you inside the build, perpetually and royalty-free.</p></div>
+    <div class="case"><b>Confidential</b><p>Your client's identity, your methods and pricing, and the arrangement itself stay confidential. A mutual NDA before the first scoping call when you or your client need one.</p></div>
+    <div class="case"><b>Support</b><p>Reply within one business day. 30 days of fixes after handoff for anything that fails the agreed acceptance test. Ongoing support is quoted separately, billed in advance, and yours to resell.</p></div>
+    <div class="case"><b>Plain limits</b><p>Liability is capped at the fees paid for that build. Either side can end the partnership with 30 days' written notice; paid work is finished and handed off.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="start">
+  <h2>Pilot first, terms after</h2>
+  <hr class="rule">
+  <p>We start with one client and one small, defined build, paid in advance at trade rate. If it works, we sign a short build-partner agreement with these terms.</p>
+  <p class="muted">I'm one builder. Builds are scheduled in the order payments arrive, the scope states the start week, and I'll tell you up front when the queue is full.</p>
+  <div class="quotebox">
+    <p>"I build what you recommend."</p>
+    <span>Kyle Knight, Plumbline Studio · Roanoke, Virginia. Recent work includes a contractor's customer portal, a physician's screening engine and a nonprofit's reporting pipeline. Ask on the call and I'll walk you through them.</span>
+  </div>
+</section>
+
+<section class="wrap" id="contact" style="text-align:center; padding-bottom:30px;">
+  <h2 style="text-wrap:balance">Have a client who needs something built?</h2>
+  <hr class="rule" style="margin:0 auto 26px;">
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Pick a time on my calendar</a>
+  <span class="subcta"><a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a> · Roanoke, VA · remote everywhere</span>
+</section>
+
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a95101c74d0f4101aeef196ecb64de1e"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>
