@@ -9,6 +9,7 @@ main = "src/worker.js"
 directory = "./storefront"
 binding = "ASSETS"
 run_worker_first = ["/o/*", "/book/*", "/u/*"]
+not_found_handling = "404-page"
 
 # Publishable (anon) key: safe in the repo, it can only call outreach_track_hit().
 [vars]

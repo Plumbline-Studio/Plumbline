@@ -1,8 +1,14 @@
-# Plumbline Studio
+# Plumbline Studio (Roanoke, Virginia)
 
-> Plumbline Studio takes the operations work that eats a small business owner's week — intake, scheduling, tracking, reporting — and fixes it in three steps: a diagnostic ($500–$2,000, credited toward the build), a fixed-scope build ($2,500–$15,000), and an optional care plan with named monthly deliverables ($300–$2,000 a month). The deliverable is a working tool, not a report.
+> Plumbline Studio is a one-person custom software studio in Roanoke, Virginia, run by Kyle Knight. It builds custom software for small businesses: customer portals, client intake forms, job and order tracking, and reports that assemble themselves, often inside the tools a business already uses (Google Sheets and AppSheet, an existing website or platform). Three steps: a diagnostic ($500–$2,000, credited toward the build), a fixed-scope build ($2,500–$15,000; price, deliverables and schedule agreed before work begins), and an optional care plan with named monthly deliverables ($300–$2,000 a month). It is also a US-based white-label, co-branded or "alongside you" build partner for AI consultants, managed IT providers (MSPs) and marketing agencies.
 
-Founder: Kyle Knight, Roanoke, Virginia (works remotely everywhere).
+Not to be confused with: Plumbline (the New Zealand and Australian bathware brand), plumblinestudio.com (a ceramics studio), or Plumbline Consulting (a Microsoft Dynamics firm in Ohio). This studio's site is plumblinestudio.dev.
+
+Service area: in person across the Roanoke Valley, Lynchburg and the New River Valley (Blacksburg, Christiansburg); remotely across the United States.
+Kinds of clients so far: a commercial fabricator, a one-person metal and wood shop, a lighting and furniture manufacturer (as an in-house employee), a nonprofit's staff platform, and the studio's own operating system. Case studies below.
+Build schedules are set per project, never a blanket promise.
+
+Founder: Kyle Knight, Roanoke, Virginia.
 Contact: kyle@plumblinestudio.dev — a 30-minute scoping call is free.
 Book directly: https://calendly.com/plumblinestudio/30min — prospects (or agents acting for them) can pick any
 open 30-minute slot on Kyle's calendar; no email round-trip needed.
