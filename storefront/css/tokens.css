@@ -1,17 +1,27 @@
 /* Brand tokens for pages outside the home page (PLU-720, D6).
    Every colour and font on /case-studies comes from here. Site A (PLU-660) replaces these
    values with the plum tokens copied from plumbline-template; no case-study file changes.
-   Today's values are the live storefront's navy set, so the pages match the home page. */
+   Values follow plumbline-template/brand/plumbline.brand.json 1.2.2. */
 :root {
-  --bg: #1b2433;          /* page ground (navy) */
-  --surface: #292d36;     /* cards, panels */
-  --deep: #151c28;        /* wells, image frames */
-  --ink: #e8e6df;         /* text */
-  --muted: #9ba5b4;       /* secondary text (slate) */
-  --line: #323b4b;        /* rules and borders */
-  --accent: #c8a878;      /* gold */
+  /* plum ground, brand.json 1.2.2 modes.dark (Kyle, 2026-09-10; adopted on the site 2026-11-15) */
+  --bg: #2c1f33;          /* page ground (plum) */
+  --surface: #3a2a42;     /* cards, panels (peak) */
+  --raised: #43324c;
+  --deep: #241a2a;        /* wells, image frames: a step darker than the ground */
+  --ink: #f2ece2;         /* text */
+  --muted: #9ba5b4;       /* secondary text (slate): 6.2:1 on plum, 5.3:1 on peak */
+  --line: #54435d;        /* rules and borders */
+  --accent: #c8a878;      /* brass */
   --accent-bright: #d8b884;
-  --on-accent: #171d28;   /* text on a gold button */
+  --on-accent: #2c1f33;   /* text on a brass button */
+
+  /* light surfaces, brand.json modes.light: paper sections inside the marketing pages */
+  --paper: #f4e3da;
+  --cream: #fff6ef;
+  --paper-ink: #2c1f33;
+  --paper-muted: #625769;
+  --paper-line: #e0cbbf;
+  --paper-accent: #7d6334; /* brass dark enough to read on paper */
 
   --f-display: 'Playfair Display', Georgia, serif;
   --f-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;

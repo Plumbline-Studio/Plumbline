@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/site.css">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -23,8 +23,8 @@
 <style>
   /* Tokens copied from storefront/index.html; no new values. */
   :root{
-    --navy:#1b2433; --peak:#292d36; --gold:#c8a878; --gold-bright:#d8b884; --slate:#9ba5b4;
-    --text:#e8e6df; --line:#323b4b;
+    --navy:#2c1f33; --peak:#3a2a42; --gold:#c8a878; --gold-bright:#d8b884; --slate:#9ba5b4;
+    --text:#f2ece2; --line:#54435d;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -46,7 +46,7 @@
   .word a{color:inherit; text-decoration:none;}
   h1{font:500 clamp(2rem,6vw,3.1rem)/1.18 'Playfair Display',Georgia,serif; margin:0 0 22px; text-wrap:balance; color:var(--text);}
   .hero p.lede{font-size:1.13rem; color:var(--slate); max-width:36em; margin:0 auto 34px; text-wrap:pretty;}
-  .cta{display:inline-block; background:var(--gold); color:#171d28; font-weight:600; text-decoration:none; padding:14px 30px; border-radius:6px; letter-spacing:.02em;}
+  .cta{display:inline-block; background:var(--gold); color:var(--on-accent); font-weight:600; text-decoration:none; padding:14px 30px; border-radius:6px; letter-spacing:.02em;}
   .cta:hover{background:var(--gold-bright);}
   .subcta{display:block; margin-top:14px; font-size:.9rem; color:var(--slate);}
 
@@ -72,7 +72,7 @@
   footer .bob{display:inline-block; width:8px; height:8px; background:var(--gold); transform:rotate(45deg); margin-bottom:14px;}
   footer p{margin-left:auto; margin-right:auto;}
   footer .tag{font-family:'Playfair Display',Georgia,serif; color:var(--gold); font-size:1rem; margin:0 auto 8px;}
-  .shot-frame{display:block; margin-top:var(--s5); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; transition:border-color var(--t-fast) var(--ease);}
+  .shot-frame{display:block; margin-top:var(--s5); border:1px solid var(--paper-line); box-shadow:12px 12px 0 var(--paper-line); border-radius:var(--r-md); overflow:hidden; transition:border-color var(--t-fast) var(--ease);}
   .shot-frame:hover{border-color:var(--gold);}
   .shot-frame img{display:block; width:100%; height:auto;}
 </style>
@@ -82,7 +82,7 @@
 <div style="position:relative">
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/" aria-current="page">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/" aria-current="page">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a><a class="book" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a call</a></nav>
 </header>
 <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
 
@@ -95,6 +95,7 @@
 </header>
 </div>
 
+<div class="paper" style="margin-top:var(--s7); padding-bottom:var(--s8)">
 <section class="wrap" id="fit">
   <p class="kicker">How I fit in</p>
   <h2>Built inside someone else's system, then handed back</h2>
@@ -102,6 +103,7 @@
   <a class="shot-frame" href="/case-studies/staff-platform-tools/"><img src="/case-studies/vendor-enrollment/img/dashboard.jpg" alt="The vendor inbox inside the nonprofit's platform, as Accounts Payable sees it. Fake data, client details blurred." loading="lazy"></a>
   <p style="margin-top:var(--s4)"><a href="/case-studies/staff-platform-tools/">Read the case study →</a> &nbsp;·&nbsp; <a href="/security-and-handover/">Security and handover: what's agreed for every project →</a></p>
 </section>
+</div>
 
 <section class="wrap" id="who">
   <p class="kicker">Who it's for</p>

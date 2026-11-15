@@ -15,7 +15,7 @@
 <meta name="twitter:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/site.css">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -23,8 +23,8 @@
 <style>
   /* Tokens copied from storefront/index.html; no new values. */
   :root{
-    --navy:#1b2433; --peak:#292d36; --gold:#c8a878; --gold-bright:#d8b884; --slate:#9ba5b4;
-    --text:#e8e6df; --line:#323b4b;
+    --navy:#2c1f33; --peak:#3a2a42; --gold:#c8a878; --gold-bright:#d8b884; --slate:#9ba5b4;
+    --text:#f2ece2; --line:#54435d;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -46,7 +46,7 @@
   .word a{color:inherit; text-decoration:none;}
   h1{font:500 clamp(2rem,6vw,3.1rem)/1.18 'Playfair Display',Georgia,serif; margin:0 0 22px; text-wrap:balance; color:var(--text);}
   .hero p.lede{font-size:1.13rem; color:var(--slate); max-width:36em; margin:0 auto 34px; text-wrap:pretty;}
-  .cta{display:inline-block; background:var(--gold); color:#171d28; font-weight:600; text-decoration:none; padding:14px 30px; border-radius:6px; letter-spacing:.02em;}
+  .cta{display:inline-block; background:var(--gold); color:var(--on-accent); font-weight:600; text-decoration:none; padding:14px 30px; border-radius:6px; letter-spacing:.02em;}
   .cta:hover{background:var(--gold-bright);}
   .subcta{display:block; margin-top:14px; font-size:.9rem; color:var(--slate);}
 
@@ -81,7 +81,13 @@
   footer .bob{display:inline-block; width:8px; height:8px; background:var(--gold); transform:rotate(45deg); margin-bottom:14px;}
   footer p{margin-left:auto; margin-right:auto;}
   footer .tag{font-family:'Playfair Display',Georgia,serif; color:var(--gold); font-size:1rem; margin:0 auto 8px;}
-  .stage{display:grid; grid-template-columns:64px 1fr; gap:6px 18px; padding:30px 0; border-top:1px solid var(--line);}
+  .stage{display:grid; grid-template-columns:64px 1fr; gap:6px 18px; padding:30px 0; position:relative;}
+  /* one brass line runs through every step: the route from first call to handover */
+  .stage::before{content:""; position:absolute; left:11px; top:0; bottom:0; width:1px; background:var(--gold); opacity:.55;}
+  .stage:first-of-type::before{top:36px;}
+  .stage:last-of-type::before{bottom:auto; height:36px;}
+  .stage .num{position:relative; z-index:1; align-self:start; justify-self:start; background:var(--navy); color:var(--gold); padding:4px 0;}
+  .stage .num::after{content:""; display:block; width:9px; height:9px; background:var(--gold); transform:rotate(45deg); margin:8px 0 0 7px;}
   .stage:first-of-type{border-top:0;}
   .stage .num{font:500 .85rem 'JetBrains Mono',monospace; color:var(--gold); padding-top:6px;}
   .stage h3{font:500 1.3rem 'Playfair Display',Georgia,serif; margin:0 0 8px; color:var(--text);}
@@ -92,7 +98,7 @@
   figure > a{display:block; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;}
   figure img{display:block; width:100%; height:auto;}
   figcaption{font-size:.85rem; color:var(--slate); margin-top:8px;}
-  @media (max-width:560px){ .stage{grid-template-columns:1fr;} .stage .num{padding-top:0;} }
+  @media (max-width:560px){ .stage{grid-template-columns:40px 1fr; gap:6px 12px;} }
   .faq dt{font-weight:600; margin-top:18px;}
   .faq dd{margin:4px 0 0; color:var(--slate); max-width:40em;}
 </style>
@@ -102,7 +108,7 @@
 <div style="position:relative">
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/" aria-current="page">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/" aria-current="page">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a><a class="book" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a call</a></nav>
 </header>
 <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
 <header class="hero wrap">
@@ -174,8 +180,8 @@
   <div class="stage" id="build">
     <span class="num">07</span>
     <div>
-      <h3>The build, and how AI is used in it</h3>
-      <p>Most builds take two to four weeks. AI does a lot of the drafting, checking and record-keeping; every change still passes the same automated checks and a person's review before it's merged. Nothing is sent, published or paid in your name by an AI. You get a short written status note every week.</p>
+      <h3>Build and verify, and how AI is used</h3>
+      <p>The schedule is the one agreed with the price, with your review time and any outside dependencies counted in. AI does a lot of the drafting, checking and record-keeping; every change still passes the same automated checks and a person's review before it's merged. Nothing is sent, published or paid in your name by an AI. You get a short written status note every week.</p>
       <figure><a href="img/system-map.jpg"><img src="img/system-map.jpg" alt="The studio's system map: capture, intake workers, a shared record, build workers, quality gates, ship, oversight, and a person at the end." loading="lazy"></a><figcaption>How the studio runs, left to right: notes and messages are captured, AI workers file them into one shared record, build workers draft the changes, automated checks and a second AI review them, and a person merges. Click to enlarge. <a href="/case-studies/ai-staff/">More on the AI staff →</a></figcaption></figure>
     </div>
   </div>

@@ -1,6 +1,6 @@
 # Plumbline
 
-**Live storefront: [plumblinestudio.dev](https://plumblinestudio.dev)** — Plumbline Studio solves one bounded operations problem per engagement (intake, scheduling, tracking, reporting) for small businesses and professional practices. Fixed scope, 2–4 weeks. *Build it true.*
+**Live storefront: [plumblinestudio.dev](https://plumblinestudio.dev)** — Plumbline Studio solves one bounded operations problem per engagement (intake, scheduling, tracking, reporting) for small businesses and professional practices. Diagnostic, fixed-scope build, optional care plan; price and schedule agreed per project. *Build it true.*
 
 Source for the storefront lives in [`storefront/`](storefront/) (static files, no build step; deployed via a Git-connected Cloudflare Worker — every push to `main` redeploys). Agent-readable surface: [`storefront/llms.txt`](storefront/llms.txt), JSON-LD in `storefront/index.html`, `robots.txt` + `sitemap.xml`.
 
