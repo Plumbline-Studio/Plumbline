@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three tools inside a nonprofit's own staff platform — Plumbline Studio</title>
+<meta name="description" content="A stipend check that runs itself, a hiring handoff from HR to Communications, and a safe inbox for vendor bank details. All three were built inside a platform the client's own developer runs, and handed back to that developer.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/staff-platform-tools/">
+<meta property="og:title" content="Three tools inside a nonprofit's own staff platform — Plumbline Studio">
+<meta property="og:description" content="A stipend check that runs itself, a hiring handoff from HR to Communications, and a safe inbox for vendor bank details. All three were built inside a platform the client's own developer runs, and handed back to that developer.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/staff-platform-tools/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/vendor-enrollment/img/dashboard.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <header class="case-head">
+    <p class="eyebrow">A nonprofit staff platform</p>
+    <h1>Three tools inside a nonprofit's own staff platform</h1>
+    <p class="lede">A stipend check that runs itself, a hiring handoff from HR to Communications, and a safe inbox for vendor bank details. All three were built inside a platform the client's own developer runs, and handed back to that developer.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit staff platform</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Landed</dt><dd>Nov 5, 2026</dd></div><div><dt>Stack</dt><dd>Django · ADP · AWS S3 + KMS</dd></div><div><dt>Reaches</dt><dd>Employees, ministry leaders, HR, Finance and new vendors</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What this is</h2>
+<hr class="rule">
+<p>A nonprofit runs its staff work on one internal web app: 33 parts under one sign-in, covering everything from staff directories to budgets to board materials. The client's own developer built it and owns it.</p>
+<p>Between October and November 2026 I built three tools inside it, each one replacing a job that people had been doing by hand:</p>
+<ul class="diamond"><li><strong>A stipend check that runs itself.</strong> Employees with a phone and internet stipend confirm a few times a year that they still qualify. The forms, reminders and escalation now go out on their own.</li><li><strong>From approved request to job posting.</strong> Once a new position is approved, HR finalizes it and sends a ready job description to Communications without leaving the app.</li><li><strong>A safe inbox for vendor bank details.</strong> New vendors send their W-9 and bank documents through a link that works once, and the files delete themselves after Accounts Payable has the vendor set up.</li></ul>
+<h2>Why it's one story</h2>
+<hr class="rule">
+<p>Each tool works the way the rest of the platform already did: the same sign-in, the same staff roles, the same look and conventions. Each was also handed to the client's developer with tests they could keep running without me. That fit is the point. Outside work that the in-house person has to rewrite or babysit is a cost, not a help.</p>
+</div>
+<div class="version" data-version="technical">
+<h2>How the work fit in</h2>
+<hr class="rule">
+<p>The platform is one Django project with a shared email-based user model and staff roles. Each tool is its own app in that project and uses what was already there: the existing sign-in and roles, the existing ADP connection for employee data, and the deploy and scheduled-job setup already on the server. Each one came in as a pull request with its own tests.</p>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>3</b><span>tools built, October 20 to November 4, 2026</span></div><div class="fact"><b>33</b><span>apps in the client's platform</span></div><div class="fact"><b>19 of 458</b><span>commits on the platform's main branch are mine</span></div><div class="fact"><b>1</b><span>in-house developer who owns and runs the platform</span></div><div class="fact"><b>2 of 3</b><span>tools with a written blueprint (each is on its page)</span></div><div class="fact"><b class="u">Unknown</b><span>how many people each tool reaches today</span></div>
+</div>
+<div class="note">
+<p>The commit count is small on purpose. The rest of the platform is the client developer's work. They also merged, adjusted and kept each tool after handover; each part's page says what they changed.</p>
+</div>
+</div>
+<h2>The blueprint</h2>
+<hr class="rule">
+<p>Each tool has its own. The stipend check and the hiring handoff were each agreed in writing before the build and are shown on their pages. The vendor inbox has none.</p>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/stipend-automation/img/form.jpg"><img src="/case-studies/stipend-automation/img/form.jpg" alt="The stipend form" loading="lazy"></a><figcaption>The stipend check: the form an employee gets.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/hr-position-finalization/img/hr-queue.jpg"><img src="/case-studies/hr-position-finalization/img/hr-queue.jpg" alt="The HR queue" loading="lazy"></a><figcaption>The hiring handoff: HR's queue of approved positions.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/vendor-enrollment/img/dashboard.jpg"><img src="/case-studies/vendor-enrollment/img/dashboard.jpg" alt="The vendor dashboard" loading="lazy"></a><figcaption>The vendor inbox: what Accounts Payable sees.</figcaption></figure>
+  </article>
+  <section class="series"><h2>In this series</h2><hr class="rule"><div class="parts"><a class="part" href="/case-studies/stipend-automation/"><b>A stipend check that runs itself</b><span>Employees with a phone and internet stipend confirm a few times a year that they still qualify. The forms, reminders and escalation now go out on their own.</span></a><a class="part" href="/case-studies/hr-position-finalization/"><b>From approved request to job posting</b><span>Once a new position is approved, HR finalizes it and sends a ready job description to Communications without leaving the app.</span></a><a class="part" href="/case-studies/vendor-enrollment/"><b>A safe inbox for vendor bank details</b><span>New vendors send their W-9 and bank documents through a link that works once. The files delete themselves after Accounts Payable has the vendor set up.</span></a></div></section>
+  <p class="source">Facts from the client repo's git history and pull requests, checked November 15, 2026. &quot;Unknown&quot; means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred. <a href="/content/case-studies/staff-platform-tools.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>

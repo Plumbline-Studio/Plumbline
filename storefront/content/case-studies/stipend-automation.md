@@ -7,7 +7,8 @@ date: 2026-10-22
 role: Outside developer
 stack: Django · ADP · AWS S3
 reaches: Every employee with the stipend
-order: 2
+order: 31
+series: staff-platform-tools
 thumb: /case-studies/stipend-automation/img/form.jpg
 tags: [Django, ADP, Scheduled job]
 source: Facts from the client repo's git history and pull requests, checked November 15, 2026. "Unknown" means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred.
