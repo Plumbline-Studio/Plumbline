@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One content Studio for two brands — Plumbline Studio</title>
+<meta name="description" content="One Sanity Studio feeds both websites. Each product is one record tagged with its brands, and staff bring photos and drawings in through a queue that a person files.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/renaissance-content-system/">
+<meta property="og:title" content="One content Studio for two brands — Plumbline Studio">
+<meta property="og:description" content="One Sanity Studio feeds both websites. Each product is one record tagged with its brands, and staff bring photos and drawings in through a queue that a person files.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/renaissance-content-system/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/renaissance-content-system/img/content-model.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <p class="back">Part of the series <a href="/case-studies/renaissance/">Two websites and one content system for a lighting and furniture maker</a></p>
+  <header class="case-head">
+    <p class="eyebrow">Renaissance Contract Lighting &amp; Furnishings</p>
+    <h1>One content Studio for two brands</h1>
+    <p class="lede">One Sanity Studio feeds both websites. Each product is one record tagged with its brands, and staff bring photos and drawings in through a queue that a person files.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>Renaissance Contract Lighting &amp; Furnishings</dd></div><div><dt>Role</dt><dd>Lead developer</dd></div><div><dt>Landed</dt><dd>Aug 21, 2026</dd></div><div><dt>Stack</dt><dd>Sanity · TypeScript · Node scripts</dd></div><div><dt>Reaches</dt><dd>The company's own staff</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>Two brands, two old sites, and the same products typed into both. Photos lived in folders, matched to projects by memory.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>One Studio holds every product, finish, project and page for both brands. A product sold under both is edited once. Staff drop new photos and drawings into a queue that matches them to products by number, and nothing goes live until a person files it.</p>
+</div>
+</div>
+<h2>What the client got</h2>
+<hr class="rule">
+<ul class="diamond"><li>One place to edit both websites.</li><li>Photos and drawings that arrive matched, and wait for a person.</li><li>Old content moved in by scripts they can rerun safely.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li><strong>A content model of 25 document types and 6 object types,</strong> with a single shared <code>item</code> type tagged by brand and fields shown per brand.</li><li><strong>Schemas, the Studio and migrations in one repo;</strong> the second site only reads, with types generated from the same schema.</li><li><strong>A decision about roles:</strong> Sanity is the websites' read layer, and editors own copy and imagery fields. Operational data does not live in it.</li><li><strong>Migration scripts</strong> that dry-run by default, are safe to run twice (fixed record IDs) and are rate-limited, with about 90 dated scripts for later fixes.</li><li><strong>An intake queue</strong> for images, drawing PDFs and sales-order PDFs, matched by product number and filed by a person.</li><li><strong>Photo matching against the old site's image list:</strong> 99.7% matched, against 21% by filename; 536 photos were assigned through a review tool.</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>25</b><span>document types</span></div><div class="fact"><b>1</b><span>product record for an item sold under both brands</span></div><div class="fact"><b>99.7%</b><span>old photos matched to the right project</span></div><div class="fact"><b>536</b><span>photos assigned through the review tool</span></div><div class="fact"><b>~90</b><span>dated migration scripts</span></div><div class="fact"><b class="u">Unknown</b><span>how often staff use the intake queue today</span></div>
+</div>
+</div>
+<h2>The blueprint</h2>
+<hr class="rule">
+<p>No blueprint: this work predates them.</p>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/renaissance-content-system/img/content-model.jpg"><img src="/case-studies/renaissance-content-system/img/content-model.jpg" alt="The content model" loading="lazy"></a><figcaption>One Studio, two websites: what each site reads, and how content gets in. Drawn from the schema files.</figcaption></figure>
+  </article>
+  <section class="series"><h2>The rest of the series</h2><hr class="rule"><p>Part of <a href="/case-studies/renaissance/">Two websites and one content system for a lighting and furniture maker</a>.</p><div class="parts"><a class="part" href="/case-studies/renaissance-hospitality/"><b>A hospitality catalog staff can run themselves</b><span>The main brand's old static site became a 2,400-product catalog and 210-project portfolio on one content system, with copy and imagery the company's own staff now edit.</span></a><a class="part" href="/case-studies/renaissance-site-furnishings/"><b>An outdoor furniture catalog built for specifiers</b><span>A FrontPage-era site became a 262-model catalog for landscape architects and public agencies, with a spec sheet for every product built on request.</span></a></div></section>
+  <p class="source">Facts from the content schemas, migration scripts and design notes in the renaissance-hospitality repo (now owned by the client), checked November 15, 2026. The diagram is drawn from the schema files. Screenshots of the Studio itself are to come; it sits behind the client's login. <a href="/content/case-studies/renaissance-content-system.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>

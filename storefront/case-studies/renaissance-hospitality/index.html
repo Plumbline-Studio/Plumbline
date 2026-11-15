@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A hospitality catalog staff can run themselves — Plumbline Studio</title>
+<meta name="description" content="The main brand's old static site became a 2,400-product catalog and 210-project portfolio on one content system, with copy and imagery the company's own staff now edit.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/renaissance-hospitality/">
+<meta property="og:title" content="A hospitality catalog staff can run themselves — Plumbline Studio">
+<meta property="og:description" content="The main brand's old static site became a 2,400-product catalog and 210-project portfolio on one content system, with copy and imagery the company's own staff now edit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/renaissance-hospitality/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/renaissance-hospitality/img/pendants.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <p class="back">Part of the series <a href="/case-studies/renaissance/">Two websites and one content system for a lighting and furniture maker</a></p>
+  <header class="case-head">
+    <p class="eyebrow">Renaissance Contract Lighting &amp; Furnishings</p>
+    <h1>A hospitality catalog staff can run themselves</h1>
+    <p class="lede">The main brand's old static site became a 2,400-product catalog and 210-project portfolio on one content system, with copy and imagery the company's own staff now edit.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>Renaissance Contract Lighting &amp; Furnishings</dd></div><div><dt>Role</dt><dd>Lead developer</dd></div><div><dt>Landed</dt><dd>Aug 21, 2026</dd></div><div><dt>Stack</dt><dd>Next.js · Sanity · Vercel</dd></div><div><dt>Reaches</dt><dd>Hotel, restaurant and hospitality designers</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>A static site with no content system and no phone layout. Every product, photo and project lived in hand-edited pages, so a change meant a developer.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>A catalog of about 2,400 products across lighting, furniture and fine art, a portfolio of 210 installations, and pages for finishes, process and resources. Staff edit everything in a Studio at the site's own address, and the old domain redirects to the new one.</p>
+</div>
+</div>
+<h2>What the client got</h2>
+<hr class="rule">
+<ul class="diamond"><li>Products and projects they can add and change themselves.</li><li>A portfolio that only shows a project once it is ready: staged on purpose, with a hero image.</li><li>Photos upscaled and cleaned up inside the Studio, with one-click undo.</li><li>A 13-page staff handbook, and the code, hosting and content system in their own accounts.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li><strong>A Next.js 16 site:</strong> home, portfolio and project pages, about 30 product category routes, finishes, process, resources, a shade replacement program and a printable share page. The live sitemap lists 2,640 URLs.</li><li><strong>The shared content model</strong> that both brands' sites read (see the content system case study).</li><li><strong>Portfolio visibility as data:</strong> a stage field (none, portfolio, showcased) and a required hero image decide what is public, instead of a person remembering to hide things.</li><li><strong>AI image tools inside the Studio:</strong> upscaling and background removal on drafts, with undo.</li><li><strong>AI-written copy with rules:</strong> anything Claude drafts must avoid specifics anyone could dispute, and its commit says it was AI-written.</li><li><strong>Pages revalidate every 60 seconds,</strong> so edits show without a rebuild.</li><li><strong>An architecture review</strong> that weighed moving off Vercel and chose to stay.</li></ul>
+<h2>What was left</h2>
+<hr class="rule">
+<p>At the August 21 handover these were still open: the intake folder watcher (built, not scheduled), a staff retest of the image button, domain registrar recovery and password rotation, and moving the image-processing account to the client.</p>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>323</b><span>commits, March 30 to August 21, 2026</span></div><div class="fact"><b>2,640</b><span>URLs in the live sitemap</span></div><div class="fact"><b>210</b><span>installation pages in the live sitemap</span></div><div class="fact"><b>9</b><span>merged pull requests (most work went straight to main)</span></div><div class="fact"><b>0</b><span>automated tests in the site code</span></div><div class="fact"><b class="u">Unknown</b><span>exact go-live date (first production deploy April 24)</span></div>
+</div>
+<div class="note">
+<p>Claude co-authored most of these commits; the history shows it on 231 of them. The company's staff curated and reviewed the content.</p>
+</div>
+</div>
+<h2>The blueprint</h2>
+<hr class="rule">
+<p>No blueprint: this work predates them. The handover notes record what was finished and what was left, above.</p>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/renaissance-hospitality/img/pendants.jpg"><img src="/case-studies/renaissance-hospitality/img/pendants.jpg" alt="A product category" loading="lazy"></a><figcaption>A category page: pendants, under ceiling fixtures.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/renaissance-hospitality/img/finishes.jpg"><img src="/case-studies/renaissance-hospitality/img/finishes.jpg" alt="Finishes" loading="lazy"></a><figcaption>The finishes library: powder coats, leafing and decorative acrylics.</figcaption></figure>
+  </article>
+  <section class="series"><h2>The rest of the series</h2><hr class="rule"><p>Part of <a href="/case-studies/renaissance/">Two websites and one content system for a lighting and furniture maker</a>.</p><div class="parts"><a class="part" href="/case-studies/renaissance-site-furnishings/"><b>An outdoor furniture catalog built for specifiers</b><span>A FrontPage-era site became a 262-model catalog for landscape architects and public agencies, with a spec sheet for every product built on request.</span></a><a class="part" href="/case-studies/renaissance-content-system/"><b>One content Studio for two brands</b><span>One Sanity Studio feeds both websites. Each product is one record tagged with its brands, and staff bring photos and drawings in through a queue that a person files.</span></a></div></section>
+  <p class="source">Facts from the renaissance-hospitality repo (now owned by the client), its handoff notes and the live site, checked November 15, 2026. &quot;Unknown&quot; means none of them shows it. <a href="/content/case-studies/renaissance-hospitality.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>
