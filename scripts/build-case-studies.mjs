@@ -193,7 +193,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <body>
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
 </header>`;
 }
 
