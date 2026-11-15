@@ -63,7 +63,11 @@ Flat `key: value` lines between `---` fences. Lists are `[a, b]`.
 |---|---|---|
 | `public` | On `/case-studies`, the home page row, `sitemap.xml` and `llms.txt`. | Yes. |
 | `unlisted` | Its page answers by link, with `noindex`. Listed nowhere. | Yes, so it is findable on GitHub. |
-| hidden (draft) | Not on the site: the URL answers 404. | **No.** This repo is public, so a hidden case study lives in the vault or the Factory until it is at least unlisted. The build refuses any other `visibility` value. |
+
+There is **no hidden state** (Kyle, 2026-11-15). A case study is anonymized until the client signs off (no name,
+logo, domain or phone, in text or screenshots), so it is always safe to show. Anything committed here is on the
+site, public or unlisted. A case study that isn't finished yet waits in its Drive folder, not here, and the build
+refuses any other `visibility` value. A slug with no Markdown file answers 404.
 
 Removing a case study's Markdown file withdraws it: the build deletes its generated folder, screenshots included.
 

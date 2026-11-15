@@ -6,8 +6,9 @@
 //   node scripts/build-case-studies.mjs          write the pages
 //   node scripts/build-case-studies.mjs --check  fail if a committed page is out of date
 //
-// It refuses content that breaks the contract: an unknown visibility (hidden content never
-// enters this public repo), or a client name without recorded sign-off.
+// It refuses content that breaks the contract: a visibility other than public or unlisted
+// (there is no hidden state; an unfinished draft waits in Drive), or a client name without
+// recorded sign-off.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -52,7 +53,7 @@ function fail(file, msg) {
 function validate(cs, file) {
   for (const k of REQUIRED) if (cs[k] === undefined || cs[k] === '') fail(file, `missing "${k}"`);
   if (!VISIBILITY.includes(cs.visibility)) {
-    fail(file, `visibility must be ${VISIBILITY.join(' or ')}; hidden or draft case studies stay out of this public repo`);
+    fail(file, `visibility must be ${VISIBILITY.join(' or ')}; there is no hidden state; an unfinished draft waits in Drive (18 Plumbline / 07 Case Studies) until it is ready`);
   }
   if (cs.client_name && !(cs.signoff_by && cs.signoff_date)) {
     fail(file, 'client_name needs signoff_by and signoff_date (no client is named without recorded sign-off)');
