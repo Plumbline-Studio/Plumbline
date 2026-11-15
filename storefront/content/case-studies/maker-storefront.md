@@ -77,7 +77,7 @@ This is a pilot, and the blueprint below says so honestly: the site is live, but
 
 ## The blueprint
 
-Before the build, the owner and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026. What is still open is shown as open, and what was set aside on purpose is shown as parked. Agreed October 12, 2026.
+After the first version went up, the owner and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026. What is still open is shown as open, and what was set aside on purpose is shown as parked. Agreed October 12, 2026.
 
 ::: blueprint
 - met | Nov 1, 2026 | The site carries one intake path and one referral ask. |
