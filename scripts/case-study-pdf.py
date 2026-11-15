@@ -40,20 +40,20 @@ def inline(s):
 def sections(body):
     """Split into the plain version, the technical version, and what follows them (screenshots)."""
     blocks = {"plain": [], "technical": [], "after": []}
-    cur, depth = "after", 0
+    cur, stack = "after", []
     for line in body.splitlines():
         t = line.strip()
         if t == "## The paperwork":  # the documents list itself is not repeated inside a document
             break
         m = re.match(r"^:::\s*(\w+)$", t)
         if m:
-            depth += 1
+            stack.append(m.group(1))
             if m.group(1) in ("plain", "technical"):
                 cur = m.group(1)
                 continue
-        elif t == ":::":
-            depth -= 1
-            if depth == 0:
+        elif t == ":::" and stack:
+            # Only the close of a version block is swallowed; inner fences keep their close.
+            if stack.pop() in ("plain", "technical"):
                 cur = "after"
                 continue
         blocks[cur].append(line)
@@ -69,7 +69,14 @@ def emit(doc, lines, slug):
             doc.p(inline(" ".join(para)))
             para = []
         if items:
-            if fence and fence[-1] == "facts":
+            if fence and fence[-1] == "blueprint":
+                rows = [["State", "Condition"]]
+                for i in items:
+                    state, date, cond, note = [x.strip() for x in (i.split("|") + ["", "", ""])[:4]]
+                    label = state.capitalize() + (f" · {date}" if date else "")
+                    rows.append([inline(label), inline(cond) + (f" <i>{inline(note)}</i>" if note else "")])
+                doc.table(rows, [0.24, 0.76])
+            elif fence and fence[-1] == "facts":
                 rows = [["", ""]] + [[inline(i.split("|")[0].strip()), inline(i.split("|", 1)[1].strip())] for i in items]
                 doc.table(rows[1:], [0.28, 0.72], header=False)
             else:
@@ -99,7 +106,9 @@ def emit(doc, lines, slug):
         if fence and fence[-1] == "note" and not t.startswith("-"):
             doc.callout(inline(t)); continue
         if t.startswith("## "):
-            flush(); doc.h2(inline(t[3:])); continue
+            flush()
+            # A heading over screenshots needs room for its first image, or it strands at a page foot.
+            doc.h2(inline(t[3:]), keep_space=4.6 * inch if t == "## What it looks like" else 2.4 * inch); continue
         if t.startswith("### "):
             flush(); doc.h3(inline(t[4:])); continue
         img = re.match(r'^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$', t)
@@ -107,7 +116,9 @@ def emit(doc, lines, slug):
             flush()
             path = SITE / img.group(2).lstrip("/")
             pic = Image(str(path)); w = 6.0 * inch; h = w * pic.imageHeight / pic.imageWidth
-            if h > 3.6 * inch: h = 3.6 * inch; w = h * pic.imageWidth / pic.imageHeight
+            # Screenshots stay small; a tall diagram gets most of a page so it stays legible.
+            cap = 7.4 * inch if "/design-" in str(path) and pic.imageHeight > 2 * pic.imageWidth else 3.6 * inch
+            if h > cap: h = cap; w = h * pic.imageWidth / pic.imageHeight
             pic.drawWidth, pic.drawHeight = w, h
             parts = [pic]
             if img.group(3):
@@ -129,8 +140,8 @@ def build(slug):
     when = fm["date"]
     doc = BrandedDocument(out, brand="plumbline", title=fm["title"], running_head=f"Case study · {fm['client']}")
     doc.cover(Cover(kicker="CASE STUDY", title=fm["title"], subtitle=fm["summary"],
-                    lede=f"{fm['client']} · {fm['role']} · {fm['stack']}",
-                    byline=f"Kyle Knight · Plumbline Studio · landed {when}"))
+                    # One short credit line: a long title plus a lede and a byline overflows the cover.
+                    byline="" if len(fm["title"]) > 40 else f"{fm['client']} · Kyle Knight, Plumbline Studio · landed {when}"))
     b = sections(body)
     doc.h1("The short version", kicker="FOR OWNERS")
     emit(doc, b["plain"], slug)

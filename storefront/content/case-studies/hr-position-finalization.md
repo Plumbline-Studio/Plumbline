@@ -7,7 +7,7 @@ date: 2026-10-28
 role: Outside developer
 stack: Django · email
 reaches: Ministry leaders, coordinators and HR
-order: 2
+order: 3
 thumb: /case-studies/hr-position-finalization/img/hr-queue.jpg
 tags: [Django, Workflow, Roles]
 source: Facts from the client repo's git history and pull requests, checked November 15, 2026. "Unknown" means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred; pay shows "[sample]" on purpose.
@@ -113,5 +113,5 @@ The whole hiring process was mapped on one Figma board before the build: who act
 This case study as a branded summary, to keep or pass along.
 
 ::: docs
-- Case study summary | hr-position-finalization-summary.pdf | Both versions of this page, plus the screenshots, as one document to share. | Nov 2026 · 5 pages
+- Case study summary | hr-position-finalization-summary.pdf | Both versions of this page, plus the screenshots, as one document to share. | Nov 2026 · 7 pages
 :::

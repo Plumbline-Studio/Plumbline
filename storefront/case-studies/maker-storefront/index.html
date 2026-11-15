@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A storefront that sorts the work first — Plumbline Studio</title>
+<meta name="description" content="A one-person metal and wood shop gets three clear doors for the work it wants, one intake that asks the right questions, and a portfolio of every finished piece.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/maker-storefront/">
+<meta property="og:title" content="A storefront that sorts the work first — Plumbline Studio">
+<meta property="og:description" content="A one-person metal and wood shop gets three clear doors for the work it wants, one intake that asks the right questions, and a portfolio of every finished piece.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/maker-storefront/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/maker-storefront/img/home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <header class="case-head">
+    <p class="eyebrow">A custom metal and wood shop</p>
+    <h1>A storefront that sorts the work first</h1>
+    <p class="lede">A one-person metal and wood shop gets three clear doors for the work it wants, one intake that asks the right questions, and a portfolio of every finished piece.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>A custom metal and wood shop</dd></div><div><dt>Role</dt><dd>Builder and studio partner</dd></div><div><dt>Landed</dt><dd>Oct 2, 2026</dd></div><div><dt>Stack</dt><dd>Next.js · Supabase · Google Drive</dd></div><div><dt>Reaches</dt><dd>The owner, and buyers looking for custom work</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>A skilled maker with a body of finished work, and no clear way for the right buyers to find it or to ask for a job. A review in August named the problem: the people who needed his work could not see it.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>The site has three doors, one for each kind of work the shop wants: trade fabrication, hearth and architectural metalwork, and outdoor cooking. Each door says plainly what comes through it and what doesn't. One intake asks what a buyer wants made and how to reach them, nothing more required. A portfolio shows 43 finished pieces, each with its own page, and any piece can start a project.</p>
+</div>
+</div>
+<h2>What the client got</h2>
+<hr class="rule">
+<ul class="diamond"><li>A site that turns away the wrong work before it costs him an hour.</li><li>No published prices or lead times, on purpose. Every job is quoted after a design review.</li><li>A structured record of every inquiry, with photos and files filed for him.</li><li>One referral ask after each inquiry, and nothing pushy.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li>A Next.js storefront with three offer doors over one qualifying intake. Every screen has to answer one of three questions: what work belongs here, what proof makes this buyer trust the maker, and what lets us decide quickly whether the job is worth his time. That is why there is no About page and no services grid.</li><li>An intake that writes a structured project record to the shop's own database. Every table has row-level security forced on with no public policies; all reads go through the server.</li><li>File uploads relayed through the app into the shop's Google Drive, so a buyer's photos never sit in a public bucket.</li><li>Passwordless email sign-in, so a buyer and the maker can both see the same project. Customer emails go out only when the maker chooses to send one.</li><li>A 43-piece portfolio with a page per piece, and a &quot;start a project from this piece&quot; path.</li><li>Structured business data and an <code>llms.txt</code>, so search engines and AI assistants can read what the shop does and doesn't do.</li><li>Guards that fail the build rather than ship a mistake, like a placeholder contact address on an indexable site.</li><li>A pull-request gate that runs typecheck, lint, tests and build, plus weekly dependency updates.</li></ul>
+<h2>Connects to</h2>
+<hr class="rule">
+<ul class="diamond"><li>Supabase (the shop's own project)</li><li>Google Drive (buyer uploads)</li><li>Resend (email from the shop's own domain)</li><li>Vercel (hosting)</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>43</b><span>finished pieces, one page each</span></div><div class="fact"><b>3</b><span>offer doors over one intake</span></div><div class="fact"><b>163</b><span>tests in the repo</span></div><div class="fact"><b>48</b><span>pull requests</span></div><div class="fact"><b>0</b><span>published prices or lead times, by design</span></div><div class="fact"><b class="u">Unknown</b><span>inquiries since launch</span></div>
+</div>
+<div class="note">
+<p>This is a pilot, and the blueprint below says so honestly: the site is live, but the proof that it brings in work week after week is still open. The brand work was parked by choice so the site could carry the engagement first.</p>
+</div>
+</div>
+<h2>The blueprint</h2>
+<hr class="rule">
+<p>Before the build, the owner and I agreed in writing what &quot;done&quot; would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026. What is still open is shown as open, and what was set aside on purpose is shown as parked. Agreed October 12, 2026.</p>
+<div class="blueprint">
+<ol class="conds"><li class="met"><span class="state">Met · Nov 1, 2026</span><span class="cond">The site carries one intake path and one referral ask.</span></li><li class="met"><span class="state">Met · Oct 6, 2026</span><span class="cond">A portfolio of the owner's work is live, one page per piece.</span><span class="cnote">43 pieces.</span></li><li class="met"><span class="state">Met · Oct 26, 2026</span><span class="cond">One buyer type is chosen for the first outreach push.</span><span class="cnote">Interior designers and custom home builders nearby.</span></li><li class="met"><span class="state">Met · Oct 26, 2026</span><span class="cond">A first list of 10 named targets for that buyer type.</span><span class="cnote">Drafts only. Nothing has been sent.</span></li><li class="met"><span class="state">Met · Oct 6, 2026</span><span class="cond">An architecture note lists every layer and connection, who owns it, and where its secret is kept.</span></li><li class="met"><span class="state">Met · Oct 8, 2026</span><span class="cond">A README a newcomer can run from, and a handoff note kept current.</span></li><li class="met"><span class="state">Met · Nov 1, 2026</span><span class="cond">Every pull request runs typecheck, lint, tests and build, and posts the result.</span></li><li class="open"><span class="state">Open</span><span class="cond">A site in the chosen brand is live on a domain the owner controls.</span><span class="cnote">The site is live on his domain; the brand it waits for is parked.</span></li><li class="open"><span class="state">Open</span><span class="cond">The pilot's terms are written down: what I earn, and when.</span></li><li class="open"><span class="state">Open</span><span class="cond">A test inquiry reaches the owner the same day and lands in the shared record, with no one relaying it.</span></li><li class="open"><span class="state">Open</span><span class="cond">Local and AI-search discoverability is verified, ending with a cold search that finds the shop.</span><span class="cnote">The structured data is live. A cold search on November 5 did not find the shop yet.</span></li><li class="open"><span class="state">Open</span><span class="cond">Four weeks in a row each bring at least one new inquiry through the site.</span></li><li class="open"><span class="state">Open</span><span class="cond">A preview for every pull request, production changes only by merge, and a rollback tried once.</span></li><li class="open"><span class="state">Open</span><span class="cond">Uptime checks, error tracking and automated dependency updates.</span><span class="cnote">Dependency updates run weekly. The rest is open.</span></li><li class="open"><span class="state">Open</span><span class="cond">Clean: no dead branches, no stray TODOs, no secrets in code.</span></li><li class="parked"><span class="state">Parked · Oct 13, 2026</span><span class="cond">At least 15 hand-drawn marks are photographed and filed.</span><span class="cnote">The brand track was parked so the site could carry the engagement.</span></li><li class="parked"><span class="state">Parked · Oct 13, 2026</span><span class="cond">Three brand systems are assembled from those sketches.</span></li><li class="parked"><span class="state">Parked · Oct 13, 2026</span><span class="cond">The owner picks one in a sit-down and gets the final files.</span></li><li class="parked"><span class="state">Parked · Oct 13, 2026</span><span class="cond">The brand is locked as a versioned brand file with a guide.</span></li><li class="parked"><span class="state">Parked · Nov 4, 2026</span><span class="cond">A per-inquiry Trade Sheet with a PDF export, styled the way the owner chooses.</span><span class="cnote">Parked to put leads first.</span></li></ol>
+</div>
+<p>Ruled out before the build:</p>
+<ul class="diamond"><li>An online shop, inventory or a fixed pricing engine.</li><li>A public lead-time calculator.</li><li>Large CRM automation.</li><li>A finished brand system as a dependency for the site.</li><li>Marketing one product line the owner asked never to market.</li></ul>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/maker-storefront/img/home.jpg"><img src="/case-studies/maker-storefront/img/home.jpg" alt="The home page" loading="lazy"></a><figcaption>The home page: the work first, and two ways in.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/maker-storefront/img/trade.jpg"><img src="/case-studies/maker-storefront/img/trade.jpg" alt="One of the three offer doors" loading="lazy"></a><figcaption>An offer door says what comes through it, and what doesn't.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/maker-storefront/img/work.jpg"><img src="/case-studies/maker-storefront/img/work.jpg" alt="The portfolio" loading="lazy"></a><figcaption>The portfolio: 43 finished pieces, filtered by kind.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/maker-storefront/img/piece.jpg"><img src="/case-studies/maker-storefront/img/piece.jpg" alt="One piece's page" loading="lazy"></a><figcaption>Each piece has its own page and can start a project.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/maker-storefront/img/inquire.jpg"><img src="/case-studies/maker-storefront/img/inquire.jpg" alt="The intake" loading="lazy"></a><figcaption>The intake: two things required, the rest helpful if you have it.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/maker-storefront/img/phone-home.jpg"><img src="/case-studies/maker-storefront/img/phone-home.jpg" alt="The home page on a phone" loading="lazy"></a><figcaption>The same page on a phone.</figcaption></figure>
+<h2>The paperwork</h2>
+<hr class="rule">
+<p>This case study as a branded summary, to keep or pass along.</p>
+<div class="docs">
+<a class="doc" href="/case-studies/maker-storefront/docs/maker-storefront-summary.pdf"><span class="cover"><img src="/case-studies/maker-storefront/docs/maker-storefront-summary.jpg" alt="" loading="lazy"></span><span class="dbody"><b>Case study summary</b><span>Both versions of this page, the blueprint and the screenshots, as one document to share.</span><span class="dmeta">Nov 2026 · 8 pages · Open PDF</span></span></a>
+</div>
+  </article>
+  <p class="source">Facts from the project repo, its pull requests, the Linear project and the blueprint, checked November 15, 2026. &quot;Unknown&quot; means none of them shows it. Screenshots are of the live site, with the owner's name, the shop's name and logo, and the town blurred. <a href="/content/case-studies/maker-storefront.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>
