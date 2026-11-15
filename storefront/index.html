@@ -83,13 +83,7 @@
   a{color:var(--gold-bright);}
   a:focus-visible, .cta:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
 
-  /* particle field (adapted from Kyle's tool-maker-app particle-life engine) */
   .heroband{position:relative;}
-  #field{position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:.85;
-    -webkit-mask-image:linear-gradient(to bottom, black 55%, transparent 96%);
-    mask-image:linear-gradient(to bottom, black 55%, transparent 96%);}
-  .heroband > .plumb, .heroband > .hero{position:relative; z-index:1;}
-  @media (prefers-reduced-motion: reduce){ #field{display:none;} }
 
   /* plumb line motif */
   .plumb{display:flex; flex-direction:column; align-items:center; padding-top:56px;}
@@ -153,24 +147,52 @@
   .also b{color:var(--text); font-weight:600;}
   .about p + p{margin-top:var(--s3);}
   .about .facts{display:flex; flex-wrap:wrap; gap:var(--s2) var(--s5); margin-top:var(--s4); font:400 .82rem 'JetBrains Mono',monospace; color:var(--gold);}
+  .feature{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:var(--s6); align-items:start; margin-top:var(--s5);}
+  @media (max-width:820px){ .feature{grid-template-columns:1fr;} }
+  .ba-flat{display:grid; gap:var(--s4);}
+  .ba-flat .tag{font:400 .78rem 'JetBrains Mono',monospace; color:var(--gold); letter-spacing:.06em; text-transform:uppercase;}
+  .ba-flat p{margin:var(--s1) 0 0; color:var(--slate); font-size:.97rem;}
+  .ba-flat .stat{color:var(--text); border-top:2px solid var(--gold); padding-top:var(--s3);}
+  .ba-flat .stat b{font:500 1.6rem 'Playfair Display',Georgia,serif; color:var(--text); margin-right:6px;}
+  .cta-quiet{font-weight:600;}
+  .feature .shot{display:block; border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; transition:border-color var(--t-fast) var(--ease);}
+  .feature .shot:hover{border-color:var(--gold);}
+  .feature .shot{max-height:520px;}
+  .feature .shot img{display:block; width:100%; height:auto;}
 </style>
 </head>
 <body>
 
 <div class="heroband">
-<canvas id="field" aria-hidden="true"></canvas>
 <header class="top">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
   <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
 </header>
 <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
 <header class="hero wrap">
+  <p class="kicker">Custom software for small businesses</p>
   <h1>The heavy lifting.<br>The stuff you don't like to do.</h1>
-  <p class="lede">Every small business has one workflow that eats the owner alive — intake, scheduling, tracking, reporting. Plumbline finds it, fixes it at a fixed price, and keeps it running. You're handed a tool that runs, not a report.</p>
+  <p class="lede">Customer portals, intake forms, job tracking and reports that build themselves. Plumbline finds the one workflow eating your week, builds the fix at a fixed price, and hands you a tool that runs, not a report.</p>
   <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book the free 30-minute scoping call</a>
   <span class="subcta">Pick any open time on my calendar. Prefer email? <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></span>
+  <span class="subcta"><a href="#real-build">See a real build first ↓</a></span>
 </header>
 </div>
+
+<section class="wide" id="real-build">
+  <p class="kicker">A real build</p>
+  <h2>A due date that waits for the customer</h2>
+  <p class="muted" style="margin-top:var(--s2)">A commercial fabricator. Client anonymized until they sign off.</p>
+  <div class="feature">
+    <div class="ba-flat">
+      <div><span class="tag">Before</span><p>Every job got a due date the day the deposit cleared, before anyone knew what was ordered or where it shipped. The shop planned against dates that were going to slip, and customers confirmed their details on a PDF.</p></div>
+      <div><span class="tag">After</span><p>Each customer gets a private link to their own order and confirms the details there. The lead time starts the day they confirm; until then the date reads "Set on confirmation", for the customer and the shop alike.</p></div>
+      <p class="stat"><b>39 of 39</b> open jobs kept their due date to the day when the change went live on the shop's tracker.</p>
+      <a class="cta-quiet" href="/case-studies/fabricator-order-portal/">Read the case study →</a>
+    </div>
+    <a class="shot" href="/case-studies/fabricator-order-portal/"><img src="/case-studies/fabricator-order-portal/img/waiting.jpg" alt="The customer's order page before they confirm: the lead time hasn't started and the ship date reads Set on confirmation. Fake order." loading="lazy"></a>
+  </div>
+</section>
 
 <div class="band" id="offer">
   <section class="wide">
@@ -180,7 +202,7 @@
     <div class="ladder">
       <div class="rung"><span class="n">01 · Diagnostic</span><p class="amt">$500–$2,000</p><p>Where the time and money leak, and the first fixes in order. The fee is credited toward the build.</p></div>
       <div class="rung"><span class="n">02 · Build</span><p class="amt">$2,500–$15,000</p><p>One page defines "done" and fixes the price before work starts. Most builds take two to four weeks; bigger work is split into more than one build.</p></div>
-      <div class="rung"><span class="n">03 · Care plan</span><p class="amt">$300–$2,000 <small>a month</small></p><p>Keeps it running after handover, with named deliverables every month. Never a vague retainer.</p></div>
+      <div class="rung"><span class="n">03 · Care plan, optional</span><p class="amt">$300–$2,000 <small>a month</small></p><p>Keeps it running after handover, with named deliverables every month. Never a vague retainer.</p></div>
     </div>
     <div class="builds">
       <p class="kicker">What usually gets built</p>
@@ -217,9 +239,9 @@
   <p class="muted" style="margin-top:var(--s2)">Each one told twice: a plain-language version for owners, and a technical one for the people who'll maintain it. Some name the client; the rest stay anonymized until the client signs off.</p>
   <!-- case-studies:start (generated by scripts/build-case-studies.mjs; edit the content, not this block) -->
   <div class="cards">
-    <a class="link-card" href="/case-studies/fabricator-order-portal/"><span class="thumb"><img src="/case-studies/fabricator-order-portal/img/waiting.jpg" alt="" loading="lazy"></span><span class="body"><span class="label">A commercial fabricator</span><b>A lead-time clock that waits for the customer</b><p>A fabricator's due dates started the day a deposit cleared, before anyone knew what was ordered or where it shipped. Now customers confirm their order through a private link, and the clock starts then.</p><span class="go">Read the case study</span></span></a>
     <a class="link-card" href="/case-studies/maker-storefront/"><span class="thumb"><img src="/case-studies/maker-storefront/img/home.jpg" alt="" loading="lazy"></span><span class="body"><span class="label">A custom metal and wood shop</span><b>A storefront that sorts the work first</b><p>A one-person metal and wood shop gets three clear doors for the work it wants, one intake that asks the right questions, and a portfolio of every finished piece.</p><span class="go">Read the case study</span></span></a>
-    <a class="link-card" href="/case-studies/studio-operating-system/"><span class="thumb"><img src="/case-studies/studio-operating-system/img/core-map.jpg" alt="" loading="lazy"></span><span class="body"><span class="label">Plumbline Studio (my own studio)</span><b>The studio's own operating system</b><p>The system Plumbline runs on: a method every project follows, one container for the whole studio, a checker for &quot;should this exist?&quot;, and AI staff that never act in my name. Built in the open, with its records shown as they are.</p><span class="go">Read the case study</span></span></a>
+    <a class="link-card" href="/case-studies/renaissance/"><span class="thumb"><img src="/case-studies/renaissance/img/hospitality-home.jpg" alt="" loading="lazy"></span><span class="body"><span class="label">Renaissance Contract Lighting &amp; Furnishings</span><b>Two websites and one content system for a lighting and furniture maker</b><p>A Roanoke manufacturer with two brands, hotel lighting and outdoor site furniture, moved from old static sites to two catalogs fed by one content system its own staff run.</p><span class="go">Read the case study</span></span></a>
+    <a class="link-card" href="/case-studies/staff-platform-tools/"><span class="thumb"><img src="/case-studies/vendor-enrollment/img/dashboard.jpg" alt="" loading="lazy"></span><span class="body"><span class="label">A nonprofit staff platform</span><b>Three tools inside a nonprofit's own staff platform</b><p>A stipend check that runs itself, a hiring handoff from HR to Communications, and a safe inbox for vendor bank details. All three were built inside a platform the client's own developer runs, and handed back to that developer.</p><span class="go">Read the case study</span></span></a>
   </div>
   <p style="margin-top:var(--s4)"><a href="/case-studies/">All case studies →</a></p>
   <!-- case-studies:end -->
@@ -245,6 +267,17 @@
   </div>
 </section>
 
+<section class="wide" id="faq">
+  <p class="kicker">Questions</p>
+  <h2>Before you book</h2>
+  <div class="points" style="margin-top:var(--s5)">
+    <div class="point"><b>Do I need to know what to build?</b><p>No. Bring the work that eats your week. Finding the right fix is what the call and the diagnostic are for.</p></div>
+    <div class="point"><b>Who owns it afterwards?</b><p>You do, once it's paid for, and it can run in accounts you own. Running costs are named in the scope before work starts.</p></div>
+    <div class="point"><b>Is the care plan required?</b><p>No. It's optional, for keeping things running as your other tools change. Anything that fails the agreed "done" list gets fixed either way.</p></div>
+    <div class="point"><b>How is my data handled?</b><p>Hosting, data, access and the use of AI are agreed in writing for each project. <a href="/security-and-handover/">Security and handover →</a></p></div>
+  </div>
+</section>
+
 <div class="band" id="contact" style="text-align:center">
   <section class="wrap">
     <h2 style="text-wrap:balance">What's the one workflow you'd never miss?</h2>
@@ -261,98 +294,6 @@
   <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
 </footer>
 
-<script>
-/* Particle field — adapted from Kyle's particle-life engine
-   (tool-maker-app/src/lib/particle-life). Tamed for a storefront:
-   few particles, low alpha, hero-only, 30fps cap, pauses when hidden,
-   absent entirely under prefers-reduced-motion. */
-(function(){
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var canvas = document.getElementById('field');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var COLORS = ['#9ba5b4', '#3d4a60', '#c8a878']; // slate, deep slate, gold (glow, scarce)
-  var DIST = [0.54, 0.36, 0.10];
-  var M = [[0.30,-0.20,0.40],[-0.20,0.25,0.30],[0.10,0.10,-0.30]]; // interaction matrix
-  var R_MAX=70, R_CLOSE=15, FORCE=0.12, FRICTION=0.85, BETA=R_CLOSE/R_MAX, OMB=1-BETA, R2=R_MAX*R_MAX;
-  var W=0, H=0, dpr=1, parts=[];
-
-  function pickType(){ var r=Math.random(), a=0; for(var i=0;i<DIST.length;i++){a+=DIST[i]; if(r<a) return i;} return DIST.length-1; }
-  function size(){
-    var band = canvas.parentElement;
-    dpr = Math.min(window.devicePixelRatio||1, 1.5);
-    W = band.clientWidth; H = band.clientHeight;
-    canvas.width = W*dpr; canvas.height = H*dpr;
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  function seed(){
-    var n = Math.min(220, Math.max(70, Math.round(W*H/7000)));
-    parts = [];
-    for(var i=0;i<n;i++) parts.push({x:Math.random()*W, y:Math.random()*H, z:Math.random(),
-      vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.2, t:pickType()});
-  }
-  function forceFn(u,a){ if(u<BETA) return u/BETA-1; if(u<1){var t=(u-BETA)/OMB; return a*(1-Math.abs(2*t-1));} return 0; }
-  function step(){
-    var hw=W*0.5, hh=H*0.5, n=parts.length, i, j;
-    for(i=0;i<n;i++){
-      var p=parts[i], row=M[p.t], fx=0, fy=0;
-      for(j=0;j<n;j++){
-        if(i===j) continue;
-        var q=parts[j], dx=q.x-p.x, dy=q.y-p.y;
-        if(dx>hw)dx-=W; else if(dx<-hw)dx+=W;
-        if(dy>hh)dy-=H; else if(dy<-hh)dy+=H;
-        var r2=dx*dx+dy*dy;
-        if(r2>R2||r2===0) continue;
-        var r=Math.sqrt(r2), f=forceFn(r/R_MAX, row[q.t]), inv=1/r;
-        fx+=dx*inv*f; fy+=dy*inv*f;
-      }
-      p.vx=(p.vx+fx*FORCE)*FRICTION; p.vy=(p.vy+fy*FORCE)*FRICTION;
-    }
-    for(i=0;i<n;i++){
-      var s=parts[i];
-      s.x+=s.vx; s.y+=s.vy;
-      if(s.x<0)s.x+=W; else if(s.x>=W)s.x-=W;
-      if(s.y<0)s.y+=H; else if(s.y>=H)s.y-=H;
-    }
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    var TP=Math.PI*2, i, p, z, rad;
-    ctx.globalCompositeOperation='source-over';
-    for(i=0;i<parts.length;i++){
-      p=parts[i]; if(p.t===2) continue;
-      z=p.z; rad=2.4*(0.5+1.2*z);
-      ctx.globalAlpha=0.55*(0.3+0.7*z);
-      ctx.fillStyle=COLORS[p.t];
-      ctx.beginPath(); ctx.arc(p.x,p.y,rad,0,TP); ctx.fill();
-    }
-    ctx.globalCompositeOperation='lighter';
-    ctx.fillStyle=COLORS[2];
-    for(i=0;i<parts.length;i++){
-      p=parts[i]; if(p.t!==2) continue;
-      z=p.z;
-      ctx.globalAlpha=0.16*(0.3+0.7*z);
-      ctx.beginPath(); ctx.arc(p.x,p.y,8*(0.5+1.2*z),0,TP); ctx.fill();
-      ctx.globalAlpha=0.85*(0.3+0.7*z);
-      ctx.beginPath(); ctx.arc(p.x,p.y,2.2*(0.5+1.2*z),0,TP); ctx.fill();
-    }
-    ctx.globalCompositeOperation='source-over'; ctx.globalAlpha=1;
-  }
-  var last=0, INTERVAL=1000/30, running=true;
-  function loop(ts){
-    if(!running) return;
-    requestAnimationFrame(loop);
-    if(ts-last<INTERVAL) return;
-    last=ts; step(); draw();
-  }
-  document.addEventListener('visibilitychange', function(){
-    running = !document.hidden;
-    if(running) requestAnimationFrame(loop);
-  });
-  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(function(){ size(); seed(); }, 150); });
-  size(); seed(); requestAnimationFrame(loop);
-})();
-</script>
 
 <script src="portrait-data1.js" defer></script>
 <script src="portrait-data2.js" defer></script>

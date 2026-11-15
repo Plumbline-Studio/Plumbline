@@ -72,6 +72,9 @@
   footer .bob{display:inline-block; width:8px; height:8px; background:var(--gold); transform:rotate(45deg); margin-bottom:14px;}
   footer p{margin-left:auto; margin-right:auto;}
   footer .tag{font-family:'Playfair Display',Georgia,serif; color:var(--gold); font-size:1rem; margin:0 auto 8px;}
+  .shot-frame{display:block; margin-top:var(--s5); border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; transition:border-color var(--t-fast) var(--ease);}
+  .shot-frame:hover{border-color:var(--gold);}
+  .shot-frame img{display:block; width:100%; height:auto;}
 </style>
 </head>
 <body>
@@ -91,6 +94,14 @@
   <span class="subcta">Prefer email? <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></span>
 </header>
 </div>
+
+<section class="wrap" id="fit">
+  <p class="kicker">How I fit in</p>
+  <h2>Built inside someone else's system, then handed back</h2>
+  <p style="margin-top:var(--s3)">For a nonprofit with its own in-house developer, I built three tools inside their existing Django platform: a stipend check, a hiring handoff and a vendor document inbox. Each used the platform's own sign-in, roles and conventions, came in as a pull request with its own tests, and was handed back to that developer to keep. The platform stays theirs; 19 of its 458 commits are mine.</p>
+  <a class="shot-frame" href="/case-studies/staff-platform-tools/"><img src="/case-studies/vendor-enrollment/img/dashboard.jpg" alt="The vendor inbox inside the nonprofit's platform, as Accounts Payable sees it. Fake data, client details blurred." loading="lazy"></a>
+  <p style="margin-top:var(--s4)"><a href="/case-studies/staff-platform-tools/">Read the case study →</a> &nbsp;·&nbsp; <a href="/security-and-handover/">Security and handover: what's agreed for every project →</a></p>
+</section>
 
 <section class="wrap" id="who">
   <p class="kicker">Who it's for</p>
@@ -160,8 +171,7 @@
 <section class="wrap" id="proof">
   <p class="kicker">Proof</p>
   <h2>Work that shows how I fit in</h2>
-  <div class="cards two">
-    <a class="link-card" href="/case-studies/staff-platform-tools/"><span class="body"><b>Inside someone else's system</b><p>Three tools built inside a nonprofit's own platform, in its conventions, and handed back to its in-house developer with tests they keep running.</p><span class="go">Read the case study</span></span></a>
+  <div class="cards">
     <a class="link-card" href="/case-studies/fabricator-order-portal/"><span class="body"><b>Done, written down first</b><p>A fabricator's customer portal, held to a short list of "done" conditions agreed with the client in writing, with the open ones shown as open.</p><span class="go">Read the case study</span></span></a>
     <a class="link-card" href="/case-studies/renaissance/"><span class="body"><b>Handed to the people who run it</b><p>Two websites and one content system I built in-house as an employee, handed over with a staff handbook. The company's own people run it now.</p><span class="go">Read the case study</span></span></a>
     <a class="link-card" href="/case-studies/studio-operating-system/"><span class="body"><b>How I use AI</b><p>The method, gate and AI workers behind every build. AI drafts and checks; nothing is sent, merged or published without a person.</p><span class="go">Read the case study</span></span></a>

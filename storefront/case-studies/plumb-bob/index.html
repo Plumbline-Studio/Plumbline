@@ -32,12 +32,16 @@
     <h1>Plumb-bob, a checker that asks whether it should exist</h1>
     <p class="lede">A GitHub Action that checks a change in three layers, from &quot;does it work?&quot; to &quot;should it exist this way?&quot;. It is built and released, and honestly not yet reliable enough to gate client work.</p>
   </header>
-  <dl class="meta"><div><dt>Client</dt><dd>Plumbline Studio (my own studio)</dd></div><div><dt>Role</dt><dd>Founder and builder</dd></div><div><dt>Landed</dt><dd>Oct 1, 2026</dd></div><div><dt>Stack</dt><dd>TypeScript · Playwright · Claude · GitHub Actions</dd></div><div><dt>Reaches</dt><dd>Open source; not yet in any client's CI</dd></div></dl>
   <div class="switch" role="group" aria-label="Choose a version">
+    <span class="switch-label">Read it as</span>
     <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
     <button type="button" data-show="technical" aria-pressed="false">Technical</button>
   </div>
-  <article class="body" data-current="plain">
+  <div class="glance" aria-label="At a glance"><div class="fact"><b>3</b><span>layers: works, matches, should exist</span></div><div class="fact"><b>93</b><span>test cases</span></div><div class="fact"><b>14</b><span>weekly live evaluations recorded</span></div></div>
+
+  <dl class="meta"><div><dt>Client</dt><dd>Plumbline Studio (my own studio)</dd></div><div><dt>Role</dt><dd>Founder and builder</dd></div><div><dt>Landed</dt><dd>Oct 1, 2026</dd></div><div><dt>Stack</dt><dd>TypeScript · Playwright · Claude · GitHub Actions</dd></div><div><dt>Reaches</dt><dd>Open source; not yet in any client's CI</dd></div><div><dt>Naming</dt><dd>Anonymized until the client signs off</dd></div></dl>
+  <nav class="toc" aria-label="On this page"><span>On this page</span><a href="#the-story">The story</a><a href="#the-blueprint">The blueprint</a></nav>
+  <article class="body" id="the-story" data-current="plain">
 <div class="version" data-version="plain">
 <h2>What changed</h2>
 <hr class="rule">
@@ -69,7 +73,7 @@
 <p>I'm showing the weak number on purpose. The harness exists so the engine can't claim more than it does. Until accuracy and consistency hold up week after week, Plumb-bob stays out of client CI.</p>
 </div>
 </div>
-<h2>The blueprint</h2>
+<h2 id="the-blueprint">The blueprint</h2>
 <hr class="rule">
 <p>Plumb-bob has no blueprint of its own yet. On the studio's Core Map it shows as 35% built, a figure set by hand in a review, not from a ledger.</p>
   </article>
