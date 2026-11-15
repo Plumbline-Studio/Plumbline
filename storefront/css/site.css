@@ -11,13 +11,13 @@
 .brand { font: 500 13px var(--f-body); letter-spacing: .32em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 .brand b { color: var(--accent); font-weight: 500; }
 .links { display: flex; gap: var(--s2); flex-wrap: wrap; }
-.links a { font: 500 .8rem var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; border: 1px solid var(--line); border-radius: var(--r-pill); padding: var(--s2) var(--s3); transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease); }
+.links a { display: inline-flex; align-items: center; min-height: 44px; font: 500 .8rem var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; border: 1px solid var(--line); border-radius: var(--r-pill); padding: 0 var(--s4); transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease); }
 .links a:hover { color: var(--accent-bright); border-color: var(--accent); }
 .links a[aria-current="page"] { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
 @media (max-width: 560px) {
   .top { justify-content: center; }
   .links { justify-content: center; }
-  .links a { padding: 6px var(--s2); font-size: .74rem; }
+  .links a { padding: 0 var(--s3); font-size: .74rem; }
 }
 
 /* section heading: small label, then the heading in ink */

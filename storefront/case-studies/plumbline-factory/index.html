@@ -32,12 +32,16 @@
     <h1>The Factory, one container for the whole studio</h1>
     <p class="lede">The studio's tools, client work and AI workers folded into one Docker container and one Django app, with one gate and one set of rules. Five of nine build phases are done.</p>
   </header>
-  <dl class="meta"><div><dt>Client</dt><dd>Plumbline Studio (my own studio)</dd></div><div><dt>Role</dt><dd>Founder and builder, with a swarm of AI agents</dd></div><div><dt>Landed</dt><dd>Nov 11, 2026</dd></div><div><dt>Stack</dt><dd>Python · Django · Postgres · Docker</dd></div><div><dt>Reaches</dt><dd>The studio today; AI consultants later</dd></div></dl>
   <div class="switch" role="group" aria-label="Choose a version">
+    <span class="switch-label">Read it as</span>
     <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
     <button type="button" data-show="technical" aria-pressed="false">Technical</button>
   </div>
-  <article class="body" data-current="plain">
+  <div class="glance" aria-label="At a glance"><div class="fact"><b>5 of 9</b><span>build phases closed</span></div><div class="fact"><b>942</b><span>test functions</span></div><div class="fact"><b>8</b><span>modules</span></div></div>
+  <figure class="lead-shot"><a class="shot" href="/case-studies/plumbline-factory/img/desk.jpg"><img src="/case-studies/plumbline-factory/img/desk.jpg" alt="" loading="lazy"></a></figure>
+  <dl class="meta"><div><dt>Client</dt><dd>Plumbline Studio (my own studio)</dd></div><div><dt>Role</dt><dd>Founder and builder, with a swarm of AI agents</dd></div><div><dt>Landed</dt><dd>Nov 11, 2026</dd></div><div><dt>Stack</dt><dd>Python · Django · Postgres · Docker</dd></div><div><dt>Reaches</dt><dd>The studio today; AI consultants later</dd></div><div><dt>Naming</dt><dd>Anonymized until the client signs off</dd></div></dl>
+  <nav class="toc" aria-label="On this page"><span>On this page</span><a href="#the-story">The story</a><a href="#the-blueprint">The blueprint</a><a href="#what-it-looks-like">What it looks like</a></nav>
+  <article class="body" id="the-story" data-current="plain">
 <div class="version" data-version="plain">
 <h2>What changed</h2>
 <hr class="rule">
@@ -69,7 +73,7 @@
 <div class="fact"><b>5 of 9</b><span>build phases closed</span></div><div class="fact"><b>942</b><span>test functions</span></div><div class="fact"><b>8</b><span>modules</span></div><div class="fact"><b>9</b><span>AI agent roles in the build swarm</span></div><div class="fact"><b>80</b><span>recorded decisions, plus 21 architecture records</span></div><div class="fact"><b>9 days</b><span>first commit to the latest (Nov 3 to Nov 11)</span></div>
 </div>
 </div>
-<h2>The blueprint</h2>
+<h2 id="the-blueprint">The blueprint</h2>
 <hr class="rule">
 <p>The Factory's blueprint covers the remaining phases, 5 to 8, and was agreed on November 11, 2026. None of its conditions is met yet. Phases 0 to 4 closed before it was written, each with a passing gate run.</p>
 <div class="blueprint">
@@ -77,7 +81,7 @@
 </div>
 <p>Ruled out:</p>
 <ul class="diamond"><li>Selling it, pricing it or onboarding other operators. That is a separate blueprint.</li><li>A multi-tenant service. It is one container per operator.</li><li>New paid services, or deleting any old tool or data without my approval at that step.</li></ul>
-<h2>What it looks like</h2>
+<h2 id="what-it-looks-like">What it looks like</h2>
 <hr class="rule">
 <figure><a class="shot" href="/case-studies/plumbline-factory/img/desk.jpg"><img src="/case-studies/plumbline-factory/img/desk.jpg" alt="The Desk" loading="lazy"></a><figcaption>The Desk: one queue of what needs me. Here a worker suggested filing a document, and the Factory refused to move it because Drive is connected read-only. Test data.</figcaption></figure>
 <figure><a class="shot" href="/case-studies/plumbline-factory/img/blueprint.jpg"><img src="/case-studies/plumbline-factory/img/blueprint.jpg" alt="A blueprint in the Factory" loading="lazy"></a><figcaption>A blueprint inside the Factory: its terms, its conditions with evidence, and the worthiness check beside it. Test data.</figcaption></figure>

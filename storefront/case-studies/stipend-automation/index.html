@@ -32,12 +32,16 @@
     <h1>A stipend check that runs itself</h1>
     <p class="lede">Employees with a phone and internet stipend confirm a few times a year that they still qualify. The forms, reminders and escalation now go out on their own.</p>
   </header>
-  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit staff platform</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Landed</dt><dd>Oct 22, 2026</dd></div><div><dt>Stack</dt><dd>Django · ADP · AWS S3</dd></div><div><dt>Reaches</dt><dd>Every employee with the stipend</dd></div></dl>
   <div class="switch" role="group" aria-label="Choose a version">
+    <span class="switch-label">Read it as</span>
     <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
     <button type="button" data-show="technical" aria-pressed="false">Technical</button>
   </div>
-  <article class="body" data-current="plain">
+  <div class="glance" aria-label="At a glance"><div class="fact"><b>~94</b><span>tests from my commits</span></div><div class="fact"><b>95%</b><span>coverage at handoff</span></div><div class="fact"><b>14</b><span>review findings fixed before handoff</span></div></div>
+  <figure class="lead-shot"><a class="shot" href="/case-studies/stipend-automation/img/form.jpg"><img src="/case-studies/stipend-automation/img/form.jpg" alt="" loading="lazy"></a></figure>
+  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit staff platform</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Landed</dt><dd>Oct 22, 2026</dd></div><div><dt>Stack</dt><dd>Django · ADP · AWS S3</dd></div><div><dt>Reaches</dt><dd>Every employee with the stipend</dd></div><div><dt>Naming</dt><dd>Anonymized until the client signs off</dd></div></dl>
+  <nav class="toc" aria-label="On this page"><span>On this page</span><a href="#the-story">The story</a><a href="#the-blueprint">The blueprint</a><a href="#what-it-looks-like">What it looks like</a><a href="#the-paperwork">The paperwork</a></nav>
+  <article class="body" id="the-story" data-current="plain">
 <div class="version" data-version="plain">
 <h2>What changed</h2>
 <hr class="rule">
@@ -69,7 +73,7 @@
 <p>The client's in-house developer reviewed and merged the build, then extended it: a recipient preview, PDF-only receipts with an in-app viewer and a &quot;reviewed&quot; sign-off, rate-limit retries for ADP, a &quot;send to one person&quot; button, and the reimbursement wording Finance asked for. The test count for the app today, with their work, is 184.</p>
 </div>
 </div>
-<h2>The blueprint</h2>
+<h2 id="the-blueprint">The blueprint</h2>
 <hr class="rule">
 <p>Before the build, the client and I agreed in writing what &quot;done&quot; would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 13, 2026. It was a short one: the whole scope sat in the first condition.</p>
 <div class="blueprint">
@@ -77,11 +81,11 @@
 </div>
 <p>Ruled out before the build:</p>
 <ul class="diamond"><li>Writing anything back to payroll. It is read only.</li><li>Changes after the merge without a new request from the client.</li></ul>
-<h2>What it looks like</h2>
+<h2 id="what-it-looks-like">What it looks like</h2>
 <hr class="rule">
 <figure><a class="shot" href="/case-studies/stipend-automation/img/form.jpg"><img src="/case-studies/stipend-automation/img/form.jpg" alt="The employee's form, opened from a private link" loading="lazy"></a><figcaption>The employee's form, opened from a private link with no sign-in.</figcaption></figure>
 <figure><a class="shot" href="/case-studies/stipend-automation/img/staff.jpg"><img src="/case-studies/stipend-automation/img/staff.jpg" alt="The staff page with each round and every form's status" loading="lazy"></a><figcaption>The staff page: each round, and every form's status. It includes the client developer's later additions (the Reviewed column).</figcaption></figure>
-<h2>The paperwork</h2>
+<h2 id="the-paperwork">The paperwork</h2>
 <hr class="rule">
 <p>This case study as a branded summary, to keep or pass along.</p>
 <div class="docs">

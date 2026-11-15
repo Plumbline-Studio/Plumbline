@@ -147,7 +147,10 @@ function render(md, slug) {
         out.push(`<div class="${side}"><span class="lab">${inline(m[2])}</span>`);
         continue;
       }
-      out.push(`<h${level}>${inline(m[2])}</h${level}>`);
+      // Headings outside the plain/technical versions get an id, so the page can list and link them.
+      const inVersion = fence.includes('plain') || fence.includes('technical');
+      const id = level === 2 && !inVersion ? ` id="${m[2].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}"` : '';
+      out.push(`<h${level}${id}>${inline(m[2])}</h${level}>`);
       if (level === 2) out.push('<hr class="rule">');
       continue;
     }
@@ -228,13 +231,26 @@ function seriesBlock(cs) {
   return '';
 }
 
+// The first facts on the page, shown up top as a quick read. Nothing new is claimed: these are the
+// same tiles the technical version shows further down. "Unknown" tiles are skipped here, not hidden there.
+function glance(cs) {
+  const m = /^:::\s*facts\s*\n([\s\S]*?)\n:::/m.exec(cs.body);
+  if (!m) return '';
+  const tiles = m[1].split('\n').map((l) => /^-\s+(.*)$/.exec(l.trim())).filter(Boolean).map((x) => x[1].split('|'))
+    .filter(([v]) => !/^unknown$/i.test(v.trim())).slice(0, 3);
+  if (!tiles.length) return '';
+  return `  <div class="glance" aria-label="At a glance">${tiles.map(([v, ...r]) => `<div class="fact"><b>${inline(v.trim())}</b><span>${inline(r.join('|').trim())}</span></div>`).join('')}</div>`;
+}
+
 function casePage(cs) {
   const url = `${ORIGIN}/case-studies/${cs.slug}/`;
   const html = render(cs.body, cs.slug);
   const hasPlain = html.includes('data-version="plain"');
   const hasTech = html.includes('data-version="technical"');
+  const signoff = cs.client_name ? `Named. Sign-off: ${cs.signoff_by}, ${fmtDate(cs.signoff_date)}` : 'Anonymized until the client signs off';
   const meta = [['Client', clientLabel(cs)], ['Role', cs.role], ['Landed', fmtDate(cs.date)], ['Stack', cs.stack]]
-    .concat(cs.reaches ? [['Reaches', cs.reaches]] : []);
+    .concat(cs.reaches ? [['Reaches', cs.reaches]] : []).concat([['Naming', signoff]]);
+  const toc = [['the-story', 'The story']].concat([...html.matchAll(/<h2 id="([^"]+)">(.*?)<\/h2>/g)].map((x) => [x[1], x[2].replace(/<[^>]+>/g, '')]));
   return `${head({ title: `${cs.title} — Plumbline Studio`, description: cs.summary, canonical: url, noindex: cs.visibility === 'unlisted', image: cs.thumb ? ORIGIN + cs.thumb : null })}
 <main class="wrap case">
   <a class="back" href="/case-studies/">← All case studies</a>${cs.parent ? `
@@ -244,12 +260,16 @@ function casePage(cs) {
     <h1>${esc(cs.title)}</h1>
     <p class="lede">${esc(cs.summary)}</p>
   </header>
-  <dl class="meta">${meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
 ${hasPlain && hasTech ? `  <div class="switch" role="group" aria-label="Choose a version">
+    <span class="switch-label">Read it as</span>
     <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
     <button type="button" data-show="technical" aria-pressed="false">Technical</button>
   </div>` : ''}
-  <article class="body" data-current="plain">
+${glance(cs)}
+${cs.thumb ? `  <figure class="lead-shot"><a class="shot" href="${cs.thumb}"><img src="${cs.thumb}" alt="" loading="lazy"></a></figure>` : ''}
+  <dl class="meta">${meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+  ${toc.length > 1 ? `<nav class="toc" aria-label="On this page"><span>On this page</span>${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join('')}</nav>` : ''}
+  <article class="body" id="the-story" data-current="plain">
 ${html}
   </article>
 ${seriesBlock(cs) ? seriesBlock(cs) + '\n' : ''}  <p class="source">${esc(cs.source || '')} <a href="/content/case-studies/${cs.slug}.md">Get this case study as Markdown</a>.</p>
@@ -336,9 +356,11 @@ const llmsFile = path.join(SITE, 'llms.txt');
 outputs.set(llmsFile, replaceBlock(fs.readFileSync(llmsFile, 'utf8'), 'case-studies',
   ['## Case studies', '', `All case studies: ${ORIGIN}/case-studies/`].concat(pub.map((cs) => `- ${cs.title} (${clientLabel(cs)}): ${cs.summary} ${ORIGIN}/case-studies/${cs.slug}/ — Markdown: ${ORIGIN}/content/case-studies/${cs.slug}.md`)).join('\n'), llmsFile));
 
+// The home page shows this case study in full above the fold, and its row of three shows client work only.
+const HOME_FEATURE = 'fabricator-order-portal';
 const homeFile = path.join(SITE, 'index.html');
 outputs.set(homeFile, replaceBlock(fs.readFileSync(homeFile, 'utf8'), 'case-studies',
-  `  <div class="cards">\n${listed.slice(0, 3).map((cs) => `    <a class="link-card" href="/case-studies/${cs.slug}/">${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="" loading="lazy"></span>` : ''}<span class="body"><span class="label">${esc(clientLabel(cs))}</span><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="go">Read the case study</span></span></a>`).join('\n')}\n  </div>\n  <p style="margin-top:var(--s4)"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
+  `  <div class="cards">\n${listed.filter((cs) => cs.slug !== HOME_FEATURE && !/^Plumbline Studio/.test(cs.client)).slice(0, 3).map((cs) => `    <a class="link-card" href="/case-studies/${cs.slug}/">${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="" loading="lazy"></span>` : ''}<span class="body"><span class="label">${esc(clientLabel(cs))}</span><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="go">Read the case study</span></span></a>`).join('\n')}\n  </div>\n  <p style="margin-top:var(--s4)"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
 
 // A folder for a case study that no longer exists in content is stale, screenshots included:
 // --check flags it, a build removes it, so nothing of a withdrawn case stays in this public repo.
