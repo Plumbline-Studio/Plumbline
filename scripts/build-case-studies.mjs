@@ -210,6 +210,23 @@ const CTA = `<section class="ctaband">
 
 const clientLabel = (cs) => cs.client_name || cs.client;
 
+// A series is an umbrella case study plus the case studies whose `series:` names it. The umbrella
+// tells how the parts fit; each part stays a whole case study and links back to its siblings.
+function seriesCard(cs) {
+  return `<a class="part" href="/case-studies/${cs.slug}/"><b>${esc(cs.title)}</b><span>${esc(cs.summary)}</span></a>`;
+}
+
+function seriesBlock(cs) {
+  if (cs.members && cs.members.length) {
+    return `  <section class="series"><h2>In this series</h2><hr class="rule"><div class="parts">${cs.members.map(seriesCard).join('')}</div></section>`;
+  }
+  if (cs.parent) {
+    const others = cs.parent.members.filter((m) => m.slug !== cs.slug);
+    return `  <section class="series"><h2>The rest of the series</h2><hr class="rule"><p>Part of <a href="/case-studies/${cs.parent.slug}/">${esc(cs.parent.title)}</a>.</p>${others.length ? `<div class="parts">${others.map(seriesCard).join('')}</div>` : ''}</section>`;
+  }
+  return '';
+}
+
 function casePage(cs) {
   const url = `${ORIGIN}/case-studies/${cs.slug}/`;
   const html = render(cs.body, cs.slug);
@@ -219,7 +236,8 @@ function casePage(cs) {
     .concat(cs.reaches ? [['Reaches', cs.reaches]] : []);
   return `${head({ title: `${cs.title} — Plumbline Studio`, description: cs.summary, canonical: url, noindex: cs.visibility === 'unlisted', image: cs.thumb ? ORIGIN + cs.thumb : null })}
 <main class="wrap case">
-  <a class="back" href="/case-studies/">← All case studies</a>
+  <a class="back" href="/case-studies/">← All case studies</a>${cs.parent ? `
+  <p class="back">Part of the series <a href="/case-studies/${cs.parent.slug}/">${esc(cs.parent.title)}</a></p>` : ''}
   <header class="case-head">
     <p class="eyebrow">${esc(clientLabel(cs))}</p>
     <h1>${esc(cs.title)}</h1>
@@ -233,7 +251,7 @@ ${hasPlain && hasTech ? `  <div class="switch" role="group" aria-label="Choose a
   <article class="body" data-current="plain">
 ${html}
   </article>
-  <p class="source">${esc(cs.source || '')} <a href="/content/case-studies/${cs.slug}.md">Get this case study as Markdown</a>.</p>
+${seriesBlock(cs) ? seriesBlock(cs) + '\n' : ''}  <p class="source">${esc(cs.source || '')} <a href="/content/case-studies/${cs.slug}.md">Get this case study as Markdown</a>.</p>
 ${CTA}
 </main>
 ${FOOT}
@@ -250,7 +268,7 @@ function indexPage(list) {
       <span class="client">${esc(clientLabel(cs))}</span>
       <h2>${esc(cs.title)}</h2>
       <p>${esc(cs.summary)}</p>
-      <span class="pills"><span class="pill k">For owners</span><span class="pill k">Technical</span>${(cs.tags || []).map((t) => `<span class="pill">${esc(t)}</span>`).join('')}</span>
+      <span class="pills">${cs.members && cs.members.length ? `<span class="pill">Series · ${cs.members.length} case studies</span>` : ''}<span class="pill k">For owners</span><span class="pill k">Technical</span>${(cs.tags || []).map((t) => `<span class="pill">${esc(t)}</span>`).join('')}</span>
     </span>
   </a>`).join('\n');
   return `${head({ title: 'Case studies — Plumbline Studio', description: 'What Plumbline has built, told twice: plainly for owners, technically for the people who maintain it.', canonical: `${ORIGIN}/case-studies/` })}
@@ -289,10 +307,24 @@ const all = files.map((f) => {
   validate(cs, file);
   return cs;
 });
-const pub = all.filter((cs) => cs.visibility === 'public').sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug));
+const bySlug = new Map(all.map((cs) => [cs.slug, cs]));
+for (const cs of all) {
+  if (!cs.series) continue;
+  const file = path.join(CONTENT, `${cs.slug}.md`);
+  const parent = bySlug.get(cs.series);
+  if (!parent) fail(file, `series "${cs.series}" is not a case study`);
+  if (parent.series) fail(file, `series "${cs.series}" is itself part of a series; series are one level deep`);
+  if (cs.visibility === 'public' && parent.visibility !== 'public') fail(file, `a public part needs a public umbrella ("${cs.series}" is ${parent.visibility})`);
+  cs.parent = parent;
+}
+const byOrder = (a, b) => a.order - b.order || a.slug.localeCompare(b.slug);
+for (const cs of all) cs.members = all.filter((m) => m.parent === cs && m.visibility === 'public').sort(byOrder);
+const pub = all.filter((cs) => cs.visibility === 'public').sort(byOrder);
+// The index and the home page list whole stories: an umbrella stands for its parts.
+const listed = pub.filter((cs) => !cs.parent);
 
 const outputs = new Map();
-outputs.set(path.join(OUT, 'index.html'), indexPage(pub));
+outputs.set(path.join(OUT, 'index.html'), indexPage(listed));
 for (const cs of all) outputs.set(path.join(OUT, cs.slug, 'index.html'), casePage(cs));
 
 const sitemapFile = path.join(SITE, 'sitemap.xml');
@@ -305,7 +337,7 @@ outputs.set(llmsFile, replaceBlock(fs.readFileSync(llmsFile, 'utf8'), 'case-stud
 
 const homeFile = path.join(SITE, 'index.html');
 outputs.set(homeFile, replaceBlock(fs.readFileSync(homeFile, 'utf8'), 'case-studies',
-  `  <div class="proof cs-proof">\n${pub.slice(0, 3).map((cs) => `    <a class="case" href="/case-studies/${cs.slug}/"><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="more">Read the case study →</span></a>`).join('\n')}\n  </div>\n  <p class="muted" style="font-size:.9rem; margin-top:14px;"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
+  `  <div class="proof cs-proof">\n${listed.slice(0, 3).map((cs) => `    <a class="case" href="/case-studies/${cs.slug}/"><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="more">Read the case study →</span></a>`).join('\n')}\n  </div>\n  <p class="muted" style="font-size:.9rem; margin-top:14px;"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
 
 // A folder for a case study that no longer exists in content is stale, screenshots included:
 // --check flags it, a build removes it, so nothing of a withdrawn case stays in this public repo.

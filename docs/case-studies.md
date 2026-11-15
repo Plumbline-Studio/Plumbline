@@ -71,6 +71,10 @@ refuses any other `visibility` value. A slug with no Markdown file answers 404.
 
 Removing a case study's Markdown file withdraws it: the build deletes its generated folder, screenshots included.
 
+## Series
+
+A series is one story told as several case studies: an umbrella that explains how the parts fit, and parts that each stand alone. A part names its umbrella with `series: <umbrella-slug>` in its front matter. The umbrella is an ordinary case study; it gets an "In this series" list of its public parts, and each part gets a link back and a list of its siblings. On the index and the home page only the umbrella shows, with a "Series · N case studies" pill. The build fails if a series names a case study that doesn't exist, chains (a part of a part), or puts a public part under an unlisted umbrella.
+
 ## The body
 
 Markdown with a small, fixed set of blocks: `##` and `###` headings, paragraphs, `- ` lists, `**bold**`,

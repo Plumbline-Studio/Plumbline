@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The method behind every build — Plumbline Studio</title>
+<meta name="description" content="Every project starts from one template. It has to earn a yes before it is built, write down what &quot;done&quot; means, and pass the same automated gate on every change before a person merges it.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/plumbline-method/">
+<meta property="og:title" content="The method behind every build — Plumbline Studio">
+<meta property="og:description" content="Every project starts from one template. It has to earn a yes before it is built, write down what &quot;done&quot; means, and pass the same automated gate on every change before a person merges it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/plumbline-method/">
+<meta property="og:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <p class="back">Part of the series <a href="/case-studies/studio-operating-system/">The studio's own operating system</a></p>
+  <header class="case-head">
+    <p class="eyebrow">Plumbline Studio (my own studio)</p>
+    <h1>The method behind every build</h1>
+    <p class="lede">Every project starts from one template. It has to earn a yes before it is built, write down what &quot;done&quot; means, and pass the same automated gate on every change before a person merges it.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>Plumbline Studio (my own studio)</dd></div><div><dt>Role</dt><dd>Founder and builder</dd></div><div><dt>Landed</dt><dd>Oct 8, 2026</dd></div><div><dt>Stack</dt><dd>GitHub Actions · Node · Claude Code</dd></div><div><dt>Reaches</dt><dd>Every client project the studio builds</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>Each project was built its own way. &quot;Done&quot; meant whatever the last conversation said, and a shortcut taken under deadline pressure left no trace. When I build with AI agents, that gets worse, not better: an agent can produce more change in a day than a person can read.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>Every project starts from one template. Before anything is built it has to earn a yes, and the client and I write down what &quot;done&quot; means as a short list of conditions, each true or not. Every change passes the same automated checks, then a separate reviewer, then a person who merges it. Nothing reaches a client, and no client is ever emailed or invited, without a person pressing the button.</p>
+</div>
+</div>
+<h2>What a client gets from it</h2>
+<hr class="rule">
+<ul class="diamond"><li>A written definition of &quot;done&quot;, agreed before the build, that anyone can check.</li><li>The important flows written as numbered steps a non-engineer can read, each ending with the one thing the system must never do.</li><li>Shortcuts recorded where they can be seen, instead of hidden.</li><li>No surprise emails, shares or invitations sent in anyone's name.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What the method is made of</h2>
+<hr class="rule">
+<ul class="diamond"><li><strong>A worthiness check</strong> before any build: 13 dimensions scored from −2 to +3, green at +18 with no −2, plus two named values and an &quot;indicator light&quot; that signals drift. If the numbers only work through a dark pattern, the answer is no whatever the score.</li><li><strong>A blueprint:</strong> the conditions of done, stored as rows with a met date and the evidence for each. Every case study on this site shows its own.</li><li><strong>Playscripts:</strong> critical flows as numbered steps, one actor and one action per step. The last row is always an integrity veto (&quot;never …&quot;). Each binds to a test file, and the gate fails a playscript without its veto.</li><li><strong>The gate:</strong> one dependency-free Node script, driven by the surfaces a project declares. Eight checks always run (manifest, typecheck, lint, tests, dependency audit, design tokens, playscripts, secret scan). Three more run only where they apply: row-level security for auth, signature checks for webhooks, and a payment playscript for payments. CI runs the same script and posts the result on the pull request.</li><li><strong>Hooks:</strong> typecheck and lint after every edit an agent makes, the gate at the end of each turn. Agents are blocked from editing the gate, the workflows or their own settings.</li><li><strong>A reviewer:</strong> a fresh-context subagent that looks only for correctness, requirement and security gaps, and hunts for changes outside the stated scope. &quot;Finding nothing is a valid outcome.&quot;</li><li><strong>Lifecycle stages:</strong> scaffold, build, live. A stage changes only in its own one-line pull request, against a checklist. Each checklist item &quot;enters with the failure it prevents.&quot;</li><li><strong>Two human gates:</strong> content is born internal and crosses to client-visible only by a logged human action. Creating something never notifies anyone.</li><li><strong>Exceptions as issues:</strong> a forced shortcut becomes a GitHub issue labelled <code>exception</code>, the same day. Zero is the steady state.</li><li><strong>Session notes:</strong> every working session reads the last notes at the start and writes one at every merge or decision, so the next session starts where this one stopped.</li></ul>
+<h2>Where the rules came from</h2>
+<hr class="rule">
+<p>Each rule exists because something went wrong once:</p>
+<ul class="diamond"><li>Two broken builds shipped in one day because a check was skipped. Now typecheck and lint run after every edit, and a skipped check becomes an exception issue.</li><li>In a client portal, a folder thought to hold design mockups was in fact public, and a customer's estimate could be downloaded. Now nothing is staged with a blanket &quot;add all&quot;, and the folder's README says it is public.</li><li>A formula fix was called done because existing rows looked right. New rows then came out due in the year 1773. Now a formula change is only done when a fresh test row proves it.</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>11</b><span>checks in the gate</span></div><div class="fact"><b>297</b><span>blueprint conditions written across 35 blueprints</span></div><div class="fact"><b>71</b><span>of those met, each with its evidence</span></div><div class="fact"><b>7 of 7</b><span>playscripts carrying an integrity veto</span></div><div class="fact"><b>1 of 4</b><span>client repos born from the template (others adopted parts later)</span></div><div class="fact"><b>2026-07-25</b><span>first commit of the template</span></div>
+</div>
+<div class="note">
+<p>The honest gaps. The gate's checks are pattern matches, not proofs. Only one repo was born from the template; the others adopted the gate and playscripts later, and most have not adopted the worthiness check or the reviewer. Plumb-bob, the engine meant to run playscripts against a live preview, is not running in any client's CI yet; until it is, the bar is passing playscript tests plus a recorded walkthrough.</p>
+</div>
+</div>
+<h2>The blueprint</h2>
+<hr class="rule">
+<p>The method has no blueprint of its own: it is where blueprints come from. Each of the other case studies in this series, and on this site, shows the blueprint for its work.</p>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/studio-operating-system/img/core-parts.jpg"><img src="/case-studies/studio-operating-system/img/core-parts.jpg" alt="The Core Map" loading="lazy"></a><figcaption>Every part of the studio's system, side by side: the gold bar is how much is built, the grey tick is how many blueprint conditions are met. Where the two sit far apart, the record is out of step with the work. Snapshot of November 10, 2026.</figcaption></figure>
+  </article>
+  <section class="series"><h2>The rest of the series</h2><hr class="rule"><p>Part of <a href="/case-studies/studio-operating-system/">The studio's own operating system</a>.</p><div class="parts"><a class="part" href="/case-studies/plumbline-factory/"><b>The Factory, one container for the whole studio</b><span>The studio's tools, client work and AI workers folded into one Docker container and one Django app, with one gate and one set of rules. Five of nine build phases are done.</span></a><a class="part" href="/case-studies/plumb-bob/"><b>Plumb-bob, a checker that asks whether it should exist</b><span>A GitHub Action that checks a change in three layers, from &quot;does it work?&quot; to &quot;should it exist this way?&quot;. It is built and released, and honestly not yet reliable enough to gate client work.</span></a><a class="part" href="/case-studies/ai-staff/"><b>AI staff that never act in my name</b><span>A roster of AI workers, each with a written contract of what it may read, write and must stop before, plus a memory that carries every session into the next.</span></a></div></section>
+  <p class="source">Facts from the plumbline-template repo, the client repos that use it, and the studio's blueprint records, checked November 15, 2026. &quot;Unknown&quot; means none of them shows it. <a href="/content/case-studies/plumbline-method.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>
