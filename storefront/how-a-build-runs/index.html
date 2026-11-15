@@ -91,7 +91,7 @@
   .stage .get b{color:var(--gold-bright); font-weight:600;}
   .stage .price{font:400 .9rem 'JetBrains Mono',monospace; color:var(--gold); margin:0 0 6px;}
   figure{margin:18px 0 0;}
-  figure a{display:block; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;}
+  figure > a{display:block; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;}
   figure img{display:block; width:100%; height:auto;}
   figcaption{font-size:.85rem; color:var(--slate); margin-top:8px;}
   @media (max-width:560px){ .stage{grid-template-columns:1fr;} .stage .num{padding-top:0;} }
@@ -148,7 +148,7 @@
     <div>
       <h3>The working map</h3>
       <p>Every project follows the same path, with three gates a person has to pass: is it worth building, is the spec written before the code, and does a person press launch. The map shows where your project is at any moment.</p>
-      <figure><a href="img/lifecycle.jpg"><img src="img/lifecycle.jpg" alt="The Plumbline lifecycle: plan, a worthiness gate, scaffold, a gate for the automated checks, build, a verify-and-launch gate, then live." loading="lazy"></a><figcaption>The lifecycle every project follows: four stages, three gates.</figcaption></figure>
+      <figure><a href="img/lifecycle.jpg"><img src="img/lifecycle.jpg" alt="The Plumbline lifecycle: plan, a worthiness gate, scaffold, a gate for the automated checks, build, a verify-and-launch gate, then live." loading="lazy"></a><figcaption>The lifecycle every project follows, left to right: plan, the worthiness gate, scaffold, the gate that turns on the automated checks, build, the verify-and-launch gate, then live. Each column is that stage's checklist. Click to enlarge.</figcaption></figure>
     </div>
   </div>
 
@@ -157,7 +157,7 @@
     <div>
       <h3>A demo before you commit to the rest</h3>
       <p>Where it helps, you see a working demo with sample data early, so the decisions are made on something you can click, not a description.</p>
-      <figure><a href="img/motors-funnel.jpg"><img src="img/motors-funnel.jpg" alt="A funnel map for a dealership app: how a dealer finds it, tries the demo on their own, picks add-ons and starts." loading="lazy"></a><figcaption>Planning a demo: how a dealer would find a service app, try it on their own, and start.</figcaption></figure>
+      <figure><a href="img/motors-funnel.jpg"><img src="img/motors-funnel.jpg" alt="A funnel map for a dealership app: how a dealer finds it, tries the demo on their own, picks add-ons and starts." loading="lazy"></a><figcaption>Planning a demo for a dealership app: how a dealer finds it, tries the demo on their own, picks add-ons and sees a public quote, then either starts straight away or books a 20-minute review. Click to enlarge.</figcaption></figure>
     </div>
   </div>
 
@@ -166,7 +166,7 @@
     <div>
       <h3>The build, and how AI is used in it</h3>
       <p>Most builds take two to four weeks. AI does a lot of the drafting, checking and record-keeping; every change still passes the same automated checks and a person's review before it's merged. Nothing is sent, published or paid in your name by an AI. You get a short written status note every week.</p>
-      <figure><a href="img/system-map.jpg"><img src="img/system-map.jpg" alt="The studio's system map: capture, intake workers, a shared record, build workers, quality gates, ship, oversight, and a person at the end." loading="lazy"></a><figcaption>How the studio runs: AI workers capture, draft and check; a person steers and approves. <a href="/case-studies/ai-staff/">More on the AI staff →</a></figcaption></figure>
+      <figure><a href="img/system-map.jpg"><img src="img/system-map.jpg" alt="The studio's system map: capture, intake workers, a shared record, build workers, quality gates, ship, oversight, and a person at the end." loading="lazy"></a><figcaption>How the studio runs, left to right: notes and messages are captured, AI workers file them into one shared record, build workers draft the changes, automated checks and a second AI review them, and a person merges. Click to enlarge. <a href="/case-studies/ai-staff/">More on the AI staff →</a></figcaption></figure>
     </div>
   </div>
 
@@ -184,7 +184,7 @@
     <div>
       <h3>Handover</h3>
       <p>It has to work before you sign off; that's one of the written conditions. Switching on is planned step by step, and your team gets plain-language notes and a walkthrough.</p>
-      <figure><a href="img/j2-switch-on.jpg"><img src="img/j2-switch-on.jpg" alt="A client-facing switch-on plan for a customer portal, step by step." loading="lazy"></a><figcaption>A real switch-on plan, written for the client. Client details blurred.</figcaption></figure>
+      <figure><a href="img/j2-switch-on.jpg"><img src="img/j2-switch-on.jpg" alt="A client-facing switch-on plan for a customer portal, step by step." loading="lazy"></a><figcaption>A real switch-on plan, written for the client: everything is set up beforehand, and the one step that touches live data happens on one morning, after a dated backup. Client details blurred.</figcaption></figure>
       <p class="get"><b>You get:</b> the running tool, the keys to it, and the notes to run it without me.</p>
     </div>
   </div>
