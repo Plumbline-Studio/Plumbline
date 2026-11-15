@@ -8,6 +8,7 @@ role: Builder (sole developer)
 stack: Static site · Vercel functions · Google Sheets + Drive · SendGrid
 reaches: The fabricator's customers and production team
 order: 0
+og: /case-studies/fabricator-order-portal/img/og.jpg
 thumb: /case-studies/fabricator-order-portal/img/waiting.jpg
 tags: [Customer portal, Google Sheets, AppSheet]
 source: Facts from the project repo, its pull requests, the Linear project and the blueprint, checked November 15, 2026. "Unknown" means none of them shows it. Screenshots show the real portal page with a fake order, with the client's name, logo and contact details blurred.

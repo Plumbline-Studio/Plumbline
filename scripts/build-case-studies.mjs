@@ -172,7 +172,18 @@ function render(md, slug) {
 // ---------- page shell ----------
 const fmtDate = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 
-function head({ title, description, canonical, noindex, image }) {
+// Icons and theme colour, the same on every page (favicon.svg is the plumb bob on plum).
+const ICONS = `<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2c1f33">`;
+
+// Structured data: who publishes these pages, and where each one sits.
+const ORG = { '@type': 'ProfessionalService', '@id': ORIGIN + '/#studio', name: 'Plumbline Studio', url: ORIGIN + '/' };
+const crumbs = (items) => ({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, url], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url })) });
+
+function head({ title, description, canonical, noindex, image, jsonld }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -187,7 +198,9 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${image || ORIGIN + '/og/plumbline-studio.png'}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="twitter:image" content="${image || ORIGIN + '/og/plumbline-studio.png'}">
+${ICONS}
+${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld, null, 1)}\n</script>\n` : ''}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/tokens.css">
@@ -251,7 +264,11 @@ function casePage(cs) {
   const meta = [['Client', clientLabel(cs)], ['Role', cs.role], ['Landed', fmtDate(cs.date)], ['Stack', cs.stack]]
     .concat(cs.reaches ? [['Reaches', cs.reaches]] : []).concat([['Naming', signoff]]);
   const toc = [['the-story', 'The story']].concat([...html.matchAll(/<h2 id="([^"]+)">(.*?)<\/h2>/g)].map((x) => [x[1], x[2].replace(/<[^>]+>/g, '')]));
-  return `${head({ title: `${cs.title} — Plumbline Studio`, description: cs.summary, canonical: url, noindex: cs.visibility === 'unlisted', image: cs.thumb ? ORIGIN + cs.thumb : null })}
+  return `${head({ title: `${cs.title} — Plumbline Studio`, description: cs.summary, canonical: url, noindex: cs.visibility === 'unlisted', image: (cs.og || cs.thumb) ? ORIGIN + (cs.og || cs.thumb) : null, jsonld: { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: cs.title, description: cs.summary, url, datePublished: cs.date, image: cs.thumb ? ORIGIN + cs.thumb : undefined,
+      author: { '@type': 'Person', name: 'Kyle Knight', url: ORIGIN + '/#kyle' }, publisher: ORG, about: clientLabel(cs) },
+    crumbs([['Home', ORIGIN + '/'], ['Case studies', ORIGIN + '/case-studies/']].concat(cs.parent ? [[cs.parent.title, `${ORIGIN}/case-studies/${cs.parent.slug}/`]] : []).concat([[cs.title, url]])),
+  ] } })}
 <main class="wrap case">
   <a class="back" href="/case-studies/">← All case studies</a>${cs.parent ? `
   <p class="back">Part of the series <a href="/case-studies/${cs.parent.slug}/">${esc(cs.parent.title)}</a></p>` : ''}
@@ -292,7 +309,7 @@ function indexPage(list) {
       <span class="pills">${cs.members && cs.members.length ? `<span class="pill">Series · ${cs.members.length} case studies</span>` : ''}<span class="pill k">For owners</span><span class="pill k">Technical</span>${(cs.tags || []).map((t) => `<span class="pill">${esc(t)}</span>`).join('')}</span>
     </span>
   </a>`).join('\n');
-  return `${head({ title: 'Case studies — Plumbline Studio', description: 'What Plumbline has built, told twice: plainly for owners, technically for the people who maintain it.', canonical: `${ORIGIN}/case-studies/` })}
+  return `${head({ title: 'Case studies — Plumbline Studio', description: 'What Plumbline has built, told twice: plainly for owners, technically for the people who maintain it.', canonical: `${ORIGIN}/case-studies/`, jsonld: { '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', name: 'Case studies', url: `${ORIGIN}/case-studies/`, publisher: ORG }, crumbs([['Home', ORIGIN + '/'], ['Case studies', `${ORIGIN}/case-studies/`]])] } })}
 <main class="wide index">
   <header class="index-head">
     <p class="eyebrow">Case studies</p>
