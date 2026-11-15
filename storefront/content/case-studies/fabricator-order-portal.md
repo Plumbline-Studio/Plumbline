@@ -78,7 +78,7 @@ The client's team made the app-side changes in their own AppSheet app and grante
 
 ## The blueprint
 
-Before the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 14, 2026.
+Partway through the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 14, 2026.
 
 ::: blueprint
 - open | | The shop sends a portal invite from its live tracker, and the customer receives it from the shop's own email domain. | Mail already sends from the shop's domain. The review period is still on, so no customer has had a live invite yet.
@@ -109,7 +109,7 @@ Ruled out before the build:
 
 ## How it was designed
 
-Before the build, the whole plan lived on one shared Figma board the client could read: what the customer sees, what changes on their tracker, and what was left out on purpose. The working map underneath it is where the rules were worked out first. Client details are blurred.
+Through the build, the whole plan lived on one shared Figma board the client could read: what the customer sees, what changes on their tracker, and what was left out on purpose. The working map underneath it is where the rules were worked out first. Client details are blurred.
 
 ![The customer's path, start to finish](/case-studies/fabricator-order-portal/img/design-flow.jpg "The customer's path, colour-coded by who acts at each step, and how files come back to the shop.")
 

@@ -3,17 +3,17 @@ title: Two websites and one content system for a lighting and furniture maker
 summary: A Roanoke manufacturer with two brands, hotel lighting and outdoor site furniture, moved from old static sites to two catalogs fed by one content system its own staff run.
 client: A lighting and furniture manufacturer
 client_name: Renaissance Contract Lighting & Furnishings
-signoff_by: Kyle Knight, studio decision (no written OK from the client)
+signoff_by: Kyle Knight, studio decision (no written OK from the company)
 signoff_date: 2026-11-15
 visibility: public
 date: 2026-08-21
-role: Lead developer
+role: Lead developer (in-house, as an employee)
 stack: Next.js · Sanity · Vercel
 reaches: Hotel and restaurant designers, landscape architects, public agencies, and the company's own staff
 order: 1.7
 thumb: /case-studies/renaissance/img/hospitality-home.jpg
 tags: [Next.js, Sanity, Catalog, Content system]
-source: Facts from the two website repos (now owned by the client), their live sites and my design notes, checked November 15, 2026. "Unknown" means none of them shows it. Product pages shown; pages naming the client's customers are left out.
+source: Facts from the two website repos (now owned by the company), their live sites and my design notes, checked November 15, 2026. "Unknown" means none of them shows it. Product pages shown; pages naming the client's customers are left out.
 ---
 
 ::: plain
@@ -22,7 +22,7 @@ source: Facts from the two website repos (now owned by the client), their live s
 
 Renaissance makes lighting, furniture and finishes for hotels, restaurants and public spaces, all in its own shop in Roanoke, Virginia, and sells outdoor site furniture under a second brand. Both brands ran on old static websites with no way for staff to change a product without a developer.
 
-Between March and August 2026 I rebuilt both sites and the system behind them. Then I handed the whole thing over: the code, the hosting and the content system now belong to the company, with a staff handbook.
+I did this work as a Renaissance employee, not as a Plumbline client engagement. Between March and August 2026 I rebuilt both sites and the system behind them. Then I handed the whole thing over: the code, the hosting and the content system now belong to the company, with a staff handbook.
 
 ## The three parts in this series
 
@@ -41,7 +41,7 @@ Both sites are Next.js apps on Vercel. They read from one Sanity project. The sc
 ## By the numbers
 
 ::: facts
-- 2 | websites live on the client's own domains
+- 2 | websites live on the company's own domains
 - 351 | commits across both repos, March to August 2026
 - 25 | content types in one shared Studio
 - ~2,400 | hospitality product pages
