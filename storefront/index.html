@@ -262,6 +262,9 @@
   .ledger .price{font:400 1.05rem var(--f-mono); color:var(--accent-bright); margin-bottom:var(--s2);}
   .ledger p{color:var(--muted); font-size:.95rem;}
   @media (max-width:720px){ .ledger .r{grid-template-columns:40px 1fr;} .ledger .r > div:last-child{grid-column:2;} }
+  .about ul.bio{list-style:none; padding:0; margin:var(--s3) 0 var(--s4);}
+  .about ul.bio li{border-top:1px solid var(--line); padding-block:var(--s3); color:var(--muted); max-width:40em;}
+  .about ul.bio li b{color:var(--ink); font-weight:600;}
   .ledger-foot{display:flex; justify-content:space-between; gap:var(--s4); flex-wrap:wrap; align-items:baseline; margin-top:var(--s5); color:var(--muted);}
 
   /* method, four columns divided by rules */
@@ -406,10 +409,12 @@
     <div class="about">
       <img id="kylephoto" class="portrait" src="/kyle.jpg" width="420" height="506" alt="Kyle Knight, founder of Plumbline Studio" loading="lazy">
       <div>
-        <p>Roanoke, Virginia. Sixteen years fixing how companies actually run, then building the systems that hold the fix in place.</p>
-        <p>I restructured a janitorial company's operations and go-to-market and watched it double to $4M in revenue in two years, and landed a $2.1M municipal contract by translating between city hall and the operations floor.</p>
-        <p>As an executive at a 75,000 sq ft custom manufacturer, I stepped down from the title, and took the pay cut, to build the operating system the business actually needed: the web presence, a 2,000-item product catalog, the back-office tooling, delivered for about $100 a month where vendors had quoted $90,000 a year.</p>
-        <p>Plumbline is that same conviction made into a studio: tools that rebalance unfair equations, for the capable but constrained. I work with AI the way a machinist works with power tools. The judgment is mine, the leverage is real, and what you get is built true.</p>
+        <p>Sixteen years fixing how companies actually run, then building the systems that hold the fix in place. Two examples:</p>
+        <ul class="bio">
+          <li><b>A janitorial company.</b> I restructured its operations and go-to-market; revenue doubled to $4M in two years.</li>
+          <li><b>A 75,000 sq ft custom manufacturer.</b> I built its web presence, a 2,000-item catalog and the back-office tooling for about $100 a month, where vendors had quoted $90,000 a year.</li>
+        </ul>
+        <p>I work with AI the way a machinist works with power tools: the judgment is mine, the leverage is real.</p>
         <p style="font-size:.9rem; margin-top:var(--s4)"><a href="https://www.linkedin.com/in/kyleknight-systems/" rel="me">LinkedIn</a> · <a href="https://github.com/Plumbline-Studio" rel="me">GitHub, the work in the open</a> · <a href="/security-and-handover/">Security and handover</a> · <a href="/partners/">For partners</a></p>
       </div>
     </div>

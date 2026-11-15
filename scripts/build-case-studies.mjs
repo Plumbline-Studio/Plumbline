@@ -307,7 +307,7 @@ function indexPage(list) {
       <span class="client">${esc(clientLabel(cs))}</span>
       <h2>${esc(cs.title)}</h2>
       <p>${esc(cs.summary)}</p>
-      <span class="pills">${cs.members && cs.members.length ? `<span class="pill">Series · ${cs.members.length} case studies</span>` : ''}<span class="pill k">For owners</span><span class="pill k">Technical</span>${(cs.tags || []).map((t) => `<span class="pill">${esc(t)}</span>`).join('')}</span>
+      <span class="pills">${cs.members && cs.members.length ? `<span class="pill">Series · ${cs.members.length} case studies</span>` : ''}${(cs.tags || []).map((t) => `<span class="pill">${esc(t)}</span>`).join('')}</span>
     </span>
   </a>`).join('\n');
   return `${head({ title: 'Case studies — Plumbline Studio', description: 'What Plumbline has built, told twice: plainly for owners, technically for the people who maintain it.', canonical: `${ORIGIN}/case-studies/`, jsonld: { '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', name: 'Case studies', url: `${ORIGIN}/case-studies/`, publisher: ORG }, crumbs([['Home', ORIGIN + '/'], ['Case studies', `${ORIGIN}/case-studies/`]])] } })}
@@ -316,7 +316,7 @@ function indexPage(list) {
   <header class="index-head">
     <p class="eyebrow">Case studies</p>
     <h1>Real problems, taken off real desks</h1>
-    <p class="lede">Each one is told twice on the same page: a plain-language version for owners, and a technical version for the people who'll maintain it.</p>
+    <p class="lede">Each one is told twice on the same page: a plain-language version for owners, and a technical version for the people who'll maintain it. Switch between them at the top of any case study.</p>
   </header>
   <div class="grid">
 ${cards}
