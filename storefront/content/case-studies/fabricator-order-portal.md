@@ -76,6 +76,29 @@ The client's team made the app-side changes in their own AppSheet app and grante
 
 :::
 
+## The blueprint
+
+Before the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 14, 2026.
+
+::: blueprint
+- open | | The shop sends a portal invite from its live tracker, and the customer receives it from the shop's own email domain. | Mail already sends from the shop's domain. The review period is still on, so no customer has had a live invite yet.
+- met | Oct 2, 2026 | A customer opens their link and sees their real job: status, dates and documents, with no dead buttons. |
+- met | Oct 2, 2026 | A customer confirms the order, the tracker updates, and the lead-time clock starts. |
+- open | | Every customer email looks right the first time it sends. | The final wording is with the client for review.
+- met | Sept 11, 2026 | Estimates and job documents reach the portal through the agreed file-sharing route. | Read-only access to one folder; the portal only serves a file named on that order's own row.
+- met | Oct 2, 2026 | The shop updates a job, and the portal shows the change. |
+- met | Sept 8, 2026 | Emails come from the shop's own address, never from a test account. | The first one landed in the inbox, not spam.
+- open | | The owner walks the whole flow, start to finish, and signs off. | Agreed to happen once the shop has used it for a few weeks.
+:::
+
+Ruled out before the build:
+
+- Any accounting-system integration.
+- Customer uploads filing themselves into the job.
+- Redesigning the tracker's existing columns.
+- Merging the email suite into fewer emails (quoted separately).
+- Redesigning the status steps.
+
 ## What it looks like
 
 ![The customer's portal before they confirm](/case-studies/fabricator-order-portal/img/waiting.jpg "Before confirming: the lead time hasn't started, and the ship date reads Set on confirmation. Fake order.")

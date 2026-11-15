@@ -73,6 +73,10 @@ My first pull request was merged before the AWS key existed, which would have br
 
 :::
 
+## The blueprint
+
+This project had no blueprint. A plan and mockups came first, but no written list of what "done" meant was agreed with the client before the build.
+
 ## What it looks like
 
 ![The vendor's enrollment form](/case-studies/vendor-enrollment/img/form.jpg "The vendor's form, from a one-time link.")

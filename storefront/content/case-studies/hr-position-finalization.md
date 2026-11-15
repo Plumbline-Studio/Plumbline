@@ -71,6 +71,29 @@ This built on a first version the client's in-house developer wrote in August, w
 
 :::
 
+## The blueprint
+
+Before the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 22, 2026.
+
+::: blueprint
+- met | Oct 23, 2026 | Only ministry leaders can open or submit the request form. Everyone else, superusers included, is refused and sees no link. |
+- met | Oct 23, 2026 | An HR Coordinator role exists, and HR has a queue of approved requests that no one else can open. |
+- met | Oct 23, 2026 | HR can correct the leader's details and add the final title, pay, benefits, duties and qualifications. The leader's original answers are kept beside HR's version. |
+- met | Oct 23, 2026 | One click builds a job description from the request, HR's fields and standard text, with no AI. HR can edit it before sending. |
+- met | Oct 23, 2026 | HR emails it to Communications. The app records who sent it and when, and says so if the send failed. |
+- met | Oct 23, 2026 | Tests pass on the real database, migrations are clean, and the pull request shows a screenshot of every screen. |
+- met | Oct 28, 2026 | The client's developer reviews it and merges it. |
+:::
+
+Ruled out before the build:
+
+- The rest of hiring: careers pages, applications, the candidate board, reminders and close-out. That is a later phase.
+- AI-written text inside the app.
+- Posting to the website, social media or job boards. The app only emails Communications.
+- Payroll and onboarding work.
+- Changes to the in-house developer's code outside this feature.
+- Real employee or applicant data in tests or screenshots.
+
 ## What it looks like
 
 ![HR's queue of approved positions](/case-studies/hr-position-finalization/img/hr-queue.jpg "HR's queue: approved positions waiting for HR on top, ones sent to Communications below.")
