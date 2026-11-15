@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A stipend check that runs itself — Plumbline Studio</title>
+<meta name="description" content="Employees with a phone and internet stipend confirm a few times a year that they still qualify. The forms, reminders and escalation now go out on their own.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/stipend-automation/">
+<meta property="og:title" content="A stipend check that runs itself — Plumbline Studio">
+<meta property="og:description" content="Employees with a phone and internet stipend confirm a few times a year that they still qualify. The forms, reminders and escalation now go out on their own.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/stipend-automation/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/stipend-automation/img/form.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <header class="case-head">
+    <p class="eyebrow">A nonprofit staff platform</p>
+    <h1>A stipend check that runs itself</h1>
+    <p class="lede">Employees with a phone and internet stipend confirm a few times a year that they still qualify. The forms, reminders and escalation now go out on their own.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit staff platform</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Merged</dt><dd>Oct 22, 2026</dd></div><div><dt>Stack</dt><dd>Django · ADP · AWS S3</dd></div><div><dt>Reaches</dt><dd>Every employee with the stipend</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>Some employees get a monthly stipend for their phone and home internet. A few times a year, each of them has to confirm they still qualify, with their bills and a signed statement. Someone on staff had to send every request and chase every reply.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>On each send date, every eligible employee gets an email with a private link. They upload two bills and type their name. A reminder goes out every week until they finish, and their supervisor hears about it once at two weeks. HR and Finance get a note the moment someone submits.</p>
+</div>
+</div>
+<h2>What the client got</h2>
+<hr class="rule">
+<ul class="diamond"><li>A form employees can finish in a few minutes, with no login.</li><li>A staff page showing who is done and who is still waiting, with one-click reminders.</li><li>A spreadsheet for each year and a zip of every bill for each round, ready for the auditors.</li><li>Nothing to remember: each round starts on its own on the date staff set.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li>A written spec first: the data model, the eligibility rule, the daily flow, the test plan, and the open questions for the client, each with the default I'd use.</li><li>Two models: a send window, and one form per employee per window. The employee's name, title, email and supervisor are saved when the form is created, so later payroll changes don't rewrite history.</li><li>Eligibility read live from ADP: an active worker with an active <code>PH</code> payroll deduction, plus their supervisor from the worker record. Read only; nothing is ever written back to ADP.</li><li>A public form behind a long random token, no sign-in. Uploads are checked by extension and by file content, with a size cap, and the link closes once submitted.</li><li>Four emails, each with a staff preview: the request, a weekly reminder, a one-time supervisor email that never includes the employee's link, and a notice to HR and Finance that carries a link, never the files.</li><li>A daily job that starts due windows, reminds, escalates and retries failures. Each window and each email is claimed under a database lock, so the cron, a &quot;Send now&quot; click and a double-click can never double-send.</li><li>A staff page locked to its own role (superusers without the role are refused), a CSV per year, a receipts zip per window, and a read-only Django admin with tokens and receipts hidden.</li><li>Fake ADP data for ten employees and a one-step demo command that refuses to run in production.</li></ul>
+<h2>Connects to</h2>
+<hr class="rule">
+<ul class="diamond"><li>ADP (read only)</li><li>Email (SMTP)</li><li>AWS S3, private, with 60-second download links</li><li>A cron job on Elastic Beanstalk</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>~94</b><span>tests from my commits</span></div><div class="fact"><b>95%</b><span>coverage at handoff</span></div><div class="fact"><b>14</b><span>review findings fixed before handoff</span></div><div class="fact"><b>29/29</b><span>browser walkthrough checks passing</span></div><div class="fact"><b class="u">Unknown</b><span>go-live date</span></div><div class="fact"><b class="u">Unknown</b><span>how many employees it reaches</span></div>
+</div>
+<div class="note">
+<p>The client's in-house developer reviewed and merged the build, then extended it: a recipient preview, PDF-only receipts with an in-app viewer and a &quot;reviewed&quot; sign-off, rate-limit retries for ADP, a &quot;send to one person&quot; button, and the reimbursement wording Finance asked for. The test count for the app today, with their work, is 184.</p>
+</div>
+</div>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/stipend-automation/img/form.jpg"><img src="/case-studies/stipend-automation/img/form.jpg" alt="The employee's form, opened from a private link" loading="lazy"></a><figcaption>The employee's form, opened from a private link with no sign-in.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/stipend-automation/img/staff.jpg"><img src="/case-studies/stipend-automation/img/staff.jpg" alt="The staff page with each round and every form's status" loading="lazy"></a><figcaption>The staff page: each round, and every form's status. It includes the client developer's later additions (the Reviewed column).</figcaption></figure>
+  </article>
+  <p class="source">Facts from the client repo's git history and pull requests, checked November 15, 2026. &quot;Unknown&quot; means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred. <a href="/content/case-studies/stipend-automation.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>

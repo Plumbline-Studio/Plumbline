@@ -37,6 +37,11 @@ jobs:
             node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || { echo "Bad JSON: $f"; exit 1; }
           done
 
+      # /case-studies pages, the home page row, sitemap.xml and llms.txt match the content,
+      # and the content keeps the contract (docs/case-studies.md).
+      - name: Case studies
+        run: node scripts/build-case-studies.mjs --check
+
       # sitemap.xml must be well-formed.
       - name: Sitemap
         run: |

@@ -1,0 +1,80 @@
+---
+title: From approved request to job posting
+summary: Once a new position is approved, HR finalizes it and sends a ready job description to Communications without leaving the app.
+client: A nonprofit staff platform
+visibility: public
+date: 2026-10-28
+role: Outside developer
+stack: Django · email
+reaches: Ministry leaders, coordinators and HR
+order: 2
+thumb: /case-studies/hr-position-finalization/img/hr-queue.jpg
+tags: [Django, Workflow, Roles]
+source: Facts from the client repo's git history and pull requests, checked November 15, 2026. "Unknown" means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred; pay shows "[sample]" on purpose.
+---
+
+::: plain
+
+## What changed
+
+::: ba
+
+### Before
+
+Leaders could already request a new position online, and a coordinator could approve it. After that, HR got an email and did the rest by hand: the final title, pay, benefits, duties and the job description.
+
+### After
+
+HR has a queue of approved positions. They confirm the final details, and the app drafts the job description from them. HR edits it and sends it to Communications with one click. The leader's original request is kept, so everyone can see what HR changed.
+
+:::
+
+## What the client got
+
+- One place for HR to see every approved position and where it stands.
+- A job description drafted from the request, not retyped.
+- A record of who sent what to Communications, and when.
+- Only the right people can submit, approve or finalize.
+
+:::
+
+::: technical
+
+## What I built
+
+- A new HR Coordinator role, enforced even for superusers who don't hold it.
+- An HR queue, split into "waiting for HR" and "sent to Communications".
+- A finalize page with every field the leader filled in plus HR's own: final title, pay, benefits, duties and qualifications. Title and pay are required.
+- A frozen copy of the leader's original answers, taken on HR's first save and never overwritten, with a table on the request page of what HR changed.
+- A job description built from the request and a plain-text template. No AI. If HR changes the details later, an untouched description is rebuilt; a hand-edited one is kept, with a warning.
+- Send to Communications by email, with a copy to the sender. It records who sent it and when. A failed send records nothing, and the button can't be double-clicked.
+- Submitting is now limited to leaders with the role.
+
+## Connects to
+
+- Email (SMTP)
+
+## By the numbers
+
+::: facts
+- 31 | tests added
+- 93% | coverage at handoff
+- 16/16 | browser walkthrough checks passing
+- 12 | new fields, no new tables
+- Unknown | go-live date
+- Unknown | how many people hold the roles
+:::
+
+::: note
+This built on a first version the client's in-house developer wrote in August, which handled submitting and approving. They also wrote the plan for the rest of the hiring process, from job postings to onboarding.
+:::
+
+:::
+
+## What it looks like
+
+![HR's queue of approved positions](/case-studies/hr-position-finalization/img/hr-queue.jpg "HR's queue: approved positions waiting for HR on top, ones sent to Communications below.")
+
+![The finalize page](/case-studies/hr-position-finalization/img/hr-edit.jpg "Finalize Position: the details that go into the job description.")
+
+![The drafted job description](/case-studies/hr-position-finalization/img/job-description.jpg "The drafted job description, ready to edit and send.")
