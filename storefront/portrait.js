@@ -1,1 +1,0 @@
-document.addEventListener('DOMContentLoaded',function(){var i=document.getElementById('kylephoto');if(i&&window.__KP1&&window.__KP2){i.src='data:image/jpeg;base64,'+window.__KP1+window.__KP2;i.hidden=false;}});
