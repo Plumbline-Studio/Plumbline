@@ -105,3 +105,14 @@ footer .tag { font-family: var(--f-display); color: var(--accent); }
 .dbody b { font-weight: 600; font-size: .95rem; color: var(--ink); }
 .dbody span { font-size: .85rem; color: var(--muted); }
 .dbody .dmeta { font: 400 .72rem var(--f-mono); color: var(--accent); letter-spacing: .03em; }
+
+/* ::: blueprint: the conditions of done agreed before the build, each met or open */
+ol.conds { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+ol.conds li { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 4px 14px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+ol.conds .state { font: 400 .72rem var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding-top: 3px; grid-row: span 2; }
+ol.conds li.met .state { color: var(--accent); }
+ol.conds li.open .state { color: var(--muted); }
+ol.conds li.open { border-style: dashed; }
+ol.conds .cond { color: var(--ink); }
+ol.conds .cnote { font-size: .85rem; color: var(--muted); }
+@media (max-width: 520px) { ol.conds li { grid-template-columns: minmax(0, 1fr); } ol.conds .state { grid-row: auto; } }

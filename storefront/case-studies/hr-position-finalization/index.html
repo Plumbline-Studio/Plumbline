@@ -67,6 +67,14 @@
 <p>This built on a first version the client's in-house developer wrote in August, which handled submitting and approving. They also wrote the plan for the rest of the hiring process, from job postings to onboarding.</p>
 </div>
 </div>
+<h2>The blueprint</h2>
+<hr class="rule">
+<p>Before the build, the client and I agreed in writing what &quot;done&quot; would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 22, 2026.</p>
+<div class="blueprint">
+<ol class="conds"><li class="met"><span class="state">Met · Oct 23, 2026</span><span class="cond">Only ministry leaders can open or submit the request form. Everyone else, superusers included, is refused and sees no link.</span></li><li class="met"><span class="state">Met · Oct 23, 2026</span><span class="cond">An HR Coordinator role exists, and HR has a queue of approved requests that no one else can open.</span></li><li class="met"><span class="state">Met · Oct 23, 2026</span><span class="cond">HR can correct the leader's details and add the final title, pay, benefits, duties and qualifications. The leader's original answers are kept beside HR's version.</span></li><li class="met"><span class="state">Met · Oct 23, 2026</span><span class="cond">One click builds a job description from the request, HR's fields and standard text, with no AI. HR can edit it before sending.</span></li><li class="met"><span class="state">Met · Oct 23, 2026</span><span class="cond">HR emails it to Communications. The app records who sent it and when, and says so if the send failed.</span></li><li class="met"><span class="state">Met · Oct 23, 2026</span><span class="cond">Tests pass on the real database, migrations are clean, and the pull request shows a screenshot of every screen.</span></li><li class="met"><span class="state">Met · Oct 28, 2026</span><span class="cond">The client's developer reviews it and merges it.</span></li></ol>
+</div>
+<p>Ruled out before the build:</p>
+<ul class="diamond"><li>The rest of hiring: careers pages, applications, the candidate board, reminders and close-out. That is a later phase.</li><li>AI-written text inside the app.</li><li>Posting to the website, social media or job boards. The app only emails Communications.</li><li>Payroll and onboarding work.</li><li>Changes to the in-house developer's code outside this feature.</li><li>Real employee or applicant data in tests or screenshots.</li></ul>
 <h2>What it looks like</h2>
 <hr class="rule">
 <figure><a class="shot" href="/case-studies/hr-position-finalization/img/hr-queue.jpg"><img src="/case-studies/hr-position-finalization/img/hr-queue.jpg" alt="HR's queue of approved positions" loading="lazy"></a><figcaption>HR's queue: approved positions waiting for HR on top, ones sent to Communications below.</figcaption></figure>

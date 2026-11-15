@@ -75,6 +75,20 @@ The client's in-house developer reviewed and merged the build, then extended it:
 
 :::
 
+## The blueprint
+
+Before the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 13, 2026. It was a short one: the whole scope sat in the first condition.
+
+::: blueprint
+- met | Oct 23, 2026 | The app is built to the scope and passes a final test pass: names and titles filled from payroll, a cell receipt required and internet optional, one box for a combined bill, a typed statement, routing to HR and Finance, a yearly export, a reminder after one week and a supervisor notice after two. |
+- met | Oct 23, 2026 | The client's developer merges it to main. |
+:::
+
+Ruled out before the build:
+
+- Writing anything back to payroll. It is read only.
+- Changes after the merge without a new request from the client.
+
 ## What it looks like
 
 ![The employee's form, opened from a private link](/case-studies/stipend-automation/img/form.jpg "The employee's form, opened from a private link with no sign-in.")

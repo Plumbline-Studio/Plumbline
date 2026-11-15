@@ -72,7 +72,7 @@ function inline(s) {
 }
 
 // Blocks: ## / ### headings, paragraphs, "- " lists, images on their own line
-// (![alt](src "caption")), and ::: fences (plain, technical, ba, facts, note, docs).
+// (![alt](src "caption")), and ::: fences (plain, technical, ba, facts, note, docs, blueprint).
 // A ::: docs list item is "title | file.pdf | purpose | meta"; the PDF and its cover
 // (same name, .jpg) live in storefront/case-studies/<slug>/docs/ and must exist.
 function render(md, slug) {
@@ -89,6 +89,15 @@ function render(md, slug) {
         const val = v.trim();
         return `<div class="fact"><b${/^unknown$/i.test(val) ? ' class="u"' : ''}>${inline(val)}</b><span>${inline(rest.join('|').trim())}</span></div>`;
       }).join(''));
+    } else if (fence[fence.length - 1] === 'blueprint') {
+      // "met | date | condition | note" or "open | | condition | note": one agreed condition of done.
+      out.push('<ol class="conds">' + list.map((li) => {
+        const [state, date, cond, note] = li.split('|').map((x) => (x || '').trim());
+        if (!/^(met|open)$/i.test(state)) throw new Error(`${slug}: blueprint item must start with met or open: "${li}"`);
+        const met = /^met$/i.test(state);
+        return `<li class="${met ? 'met' : 'open'}"><span class="state">${met ? `Met${date ? ' · ' + inline(date) : ''}` : 'Open'}</span>`
+          + `<span class="cond">${inline(cond)}</span>${note ? `<span class="cnote">${inline(note)}</span>` : ''}</li>`;
+      }).join('') + '</ol>');
     } else if (fence[fence.length - 1] === 'docs') {
       out.push(list.map((li) => {
         const [title, file, purpose, meta] = li.split('|').map((x) => (x || '').trim());
@@ -108,7 +117,7 @@ function render(md, slug) {
   const flush = () => { flushPara(); flushList(); };
   for (const line of lines) {
     const t = line.trim();
-    const open = /^:::\s*(plain|technical|ba|facts|note|docs)\s*$/.exec(t);
+    const open = /^:::\s*(plain|technical|ba|facts|note|docs|blueprint)\s*$/.exec(t);
     if (open) {
       flush();
       const kind = open[1];
