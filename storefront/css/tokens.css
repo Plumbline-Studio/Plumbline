@@ -1,0 +1,21 @@
+/* Brand tokens for pages outside the home page (PLU-720, D6).
+   Every colour and font on /case-studies comes from here. Site A (PLU-660) replaces these
+   values with the plum tokens copied from plumbline-template; no case-study file changes.
+   Today's values are the live storefront's navy set, so the pages match the home page. */
+:root {
+  --bg: #1b2433;          /* page ground (navy) */
+  --surface: #292d36;     /* cards, panels */
+  --deep: #151c28;        /* wells, image frames */
+  --ink: #e8e6df;         /* text */
+  --muted: #9ba5b4;       /* secondary text (slate) */
+  --line: #323b4b;        /* rules and borders */
+  --accent: #c8a878;      /* gold */
+  --accent-bright: #d8b884;
+  --on-accent: #171d28;   /* text on a gold button */
+
+  --f-display: 'Playfair Display', Georgia, serif;
+  --f-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  color-scheme: dark;
+}

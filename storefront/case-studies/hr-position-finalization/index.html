@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From approved request to job posting — Plumbline Studio</title>
+<meta name="description" content="Once a new position is approved, HR finalizes it and sends a ready job description to Communications without leaving the app.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/hr-position-finalization/">
+<meta property="og:title" content="From approved request to job posting — Plumbline Studio">
+<meta property="og:description" content="Once a new position is approved, HR finalizes it and sends a ready job description to Communications without leaving the app.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/hr-position-finalization/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/hr-position-finalization/img/hr-queue.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <header class="case-head">
+    <p class="eyebrow">A nonprofit staff platform</p>
+    <h1>From approved request to job posting</h1>
+    <p class="lede">Once a new position is approved, HR finalizes it and sends a ready job description to Communications without leaving the app.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit staff platform</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Merged</dt><dd>Oct 28, 2026</dd></div><div><dt>Stack</dt><dd>Django · email</dd></div><div><dt>Reaches</dt><dd>Ministry leaders, coordinators and HR</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>Leaders could already request a new position online, and a coordinator could approve it. After that, HR got an email and did the rest by hand: the final title, pay, benefits, duties and the job description.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>HR has a queue of approved positions. They confirm the final details, and the app drafts the job description from them. HR edits it and sends it to Communications with one click. The leader's original request is kept, so everyone can see what HR changed.</p>
+</div>
+</div>
+<h2>What the client got</h2>
+<hr class="rule">
+<ul class="diamond"><li>One place for HR to see every approved position and where it stands.</li><li>A job description drafted from the request, not retyped.</li><li>A record of who sent what to Communications, and when.</li><li>Only the right people can submit, approve or finalize.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li>A new HR Coordinator role, enforced even for superusers who don't hold it.</li><li>An HR queue, split into &quot;waiting for HR&quot; and &quot;sent to Communications&quot;.</li><li>A finalize page with every field the leader filled in plus HR's own: final title, pay, benefits, duties and qualifications. Title and pay are required.</li><li>A frozen copy of the leader's original answers, taken on HR's first save and never overwritten, with a table on the request page of what HR changed.</li><li>A job description built from the request and a plain-text template. No AI. If HR changes the details later, an untouched description is rebuilt; a hand-edited one is kept, with a warning.</li><li>Send to Communications by email, with a copy to the sender. It records who sent it and when. A failed send records nothing, and the button can't be double-clicked.</li><li>Submitting is now limited to leaders with the role.</li></ul>
+<h2>Connects to</h2>
+<hr class="rule">
+<ul class="diamond"><li>Email (SMTP)</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>31</b><span>tests added</span></div><div class="fact"><b>93%</b><span>coverage at handoff</span></div><div class="fact"><b>16/16</b><span>browser walkthrough checks passing</span></div><div class="fact"><b>12</b><span>new fields, no new tables</span></div><div class="fact"><b class="u">Unknown</b><span>go-live date</span></div><div class="fact"><b class="u">Unknown</b><span>how many people hold the roles</span></div>
+</div>
+<div class="note">
+<p>This built on a first version the client's in-house developer wrote in August, which handled submitting and approving. They also wrote the plan for the rest of the hiring process, from job postings to onboarding.</p>
+</div>
+</div>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/hr-position-finalization/img/hr-queue.jpg"><img src="/case-studies/hr-position-finalization/img/hr-queue.jpg" alt="HR's queue of approved positions" loading="lazy"></a><figcaption>HR's queue: approved positions waiting for HR on top, ones sent to Communications below.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/hr-position-finalization/img/hr-edit.jpg"><img src="/case-studies/hr-position-finalization/img/hr-edit.jpg" alt="The finalize page" loading="lazy"></a><figcaption>Finalize Position: the details that go into the job description.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/hr-position-finalization/img/job-description.jpg"><img src="/case-studies/hr-position-finalization/img/job-description.jpg" alt="The drafted job description" loading="lazy"></a><figcaption>The drafted job description, ready to edit and send.</figcaption></figure>
+  </article>
+  <p class="source">Facts from the client repo's git history and pull requests, checked November 15, 2026. &quot;Unknown&quot; means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred; pay shows &quot;[sample]&quot; on purpose. <a href="/content/case-studies/hr-position-finalization.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>

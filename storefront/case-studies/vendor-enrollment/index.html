@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A safe inbox for vendor bank details — Plumbline Studio</title>
+<meta name="description" content="New vendors send their W-9 and bank documents through a link that works once. The files delete themselves after Accounts Payable has the vendor set up.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/vendor-enrollment/">
+<meta property="og:title" content="A safe inbox for vendor bank details — Plumbline Studio">
+<meta property="og:description" content="New vendors send their W-9 and bank documents through a link that works once. The files delete themselves after Accounts Payable has the vendor set up.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/vendor-enrollment/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/vendor-enrollment/img/dashboard.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <header class="case-head">
+    <p class="eyebrow">A nonprofit finance team</p>
+    <h1>A safe inbox for vendor bank details</h1>
+    <p class="lede">New vendors send their W-9 and bank documents through a link that works once. The files delete themselves after Accounts Payable has the vendor set up.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit finance team</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Merged</dt><dd>Nov 5, 2026</dd></div><div><dt>Stack</dt><dd>Django · AWS S3 + KMS</dd></div><div><dt>Reaches</dt><dd>New vendors and Accounts Payable</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>Vendors got a PDF and uploaded their tax form and a voided check to a file portal protected by one shared password, printed on the form. Nothing was ever deleted. Then the portal's contract ended, and Accounts Payable had nowhere to send vendors at all.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>Accounts Payable types a vendor's name and email, and the vendor gets a link that works once. They fill in the form and upload their documents. Accounts Payable reviews them, sets the vendor up in the finance system, and the documents are deleted a week later on their own.</p>
+</div>
+</div>
+<h2>What the client got</h2>
+<hr class="rule">
+<ul class="diamond"><li>No shared password, and every view and download is logged.</li><li>Bank and tax documents that don't pile up forever.</li><li>A dashboard showing who is waiting and for how long.</li><li>A warning before anything unhandled is deleted.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li>A plan and mockups first, including what the finance system's API can and can't do (it can create vendors but has no bank fields, so that step stays manual).</li><li>Three models: the enrollment, its documents (stored under random names, the vendor's file name never kept), and an access log.</li><li>A vendor form from a one-time link that expires in 14 days and closes on submit. It mirrors the old PDF but asks for no typed bank or tax numbers; that data lives only inside the uploaded files.</li><li>Encryption with the app's own AWS KMS key. Every upload is checked against it, a mismatch is deleted and refused, and the app refuses to start if the key is missing.</li><li>A daily job that expires invites, retries notices, warns Accounts Payable seven days ahead, and deletes due documents, including every stored version.</li><li>A role-locked dashboard and review page, a read-only admin, and a test that logs never hold names, file names or tokens.</li></ul>
+<h2>Connects to</h2>
+<hr class="rule">
+<ul class="diamond"><li>AWS S3 with KMS encryption</li><li>Email (SMTP)</li><li>Financial Edge NXT (entered by hand for now; the hand-off point is ready for an API)</li><li>A cron job on Elastic Beanstalk</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>73</b><span>tests from my work</span></div><div class="fact"><b>0</b><span>typed bank or tax numbers stored</span></div><div class="fact"><b>7 days</b><span>until documents are deleted after setup</span></div><div class="fact"><b>30 days</b><span>until an unhandled submission is deleted</span></div><div class="fact"><b class="u">Unknown</b><span>go-live date</span></div><div class="fact"><b class="u">Unknown</b><span>how many vendors it reaches</span></div>
+</div>
+<div class="note">
+<p>My first pull request was merged before the AWS key existed, which would have broken the next deploy. I reverted it the same day and reopened it with a setup checklist. The version that shipped carries my code and tests unchanged. The client's in-house developer added one upload fix and, after feedback from Accounts Payable, made one confirmation checkbox optional.</p>
+</div>
+</div>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/vendor-enrollment/img/form.jpg"><img src="/case-studies/vendor-enrollment/img/form.jpg" alt="The vendor's enrollment form" loading="lazy"></a><figcaption>The vendor's form, from a one-time link.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/vendor-enrollment/img/dashboard.jpg"><img src="/case-studies/vendor-enrollment/img/dashboard.jpg" alt="The Accounts Payable dashboard" loading="lazy"></a><figcaption>The Accounts Payable dashboard: who is waiting, and for how long.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/vendor-enrollment/img/review.jpg"><img src="/case-studies/vendor-enrollment/img/review.jpg" alt="The review page" loading="lazy"></a><figcaption>The review page. Every view and download is logged.</figcaption></figure>
+  </article>
+  <p class="source">Facts from the client repo's git history and pull requests, checked November 15, 2026. &quot;Unknown&quot; means the repo doesn't show it. Screenshots use fake demo data, with the client's name, logo and contact details blurred. <a href="/content/case-studies/vendor-enrollment.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>
