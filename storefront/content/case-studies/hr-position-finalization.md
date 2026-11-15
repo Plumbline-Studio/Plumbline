@@ -7,7 +7,8 @@ date: 2026-10-28
 role: Outside developer
 stack: Django · email
 reaches: Ministry leaders, coordinators and HR
-order: 3
+order: 32
+series: staff-platform-tools
 thumb: /case-studies/hr-position-finalization/img/hr-queue.jpg
 tags: [Django, Workflow, Roles]
 source: Facts from the client repo's git history and pull requests, checked November 15, 2026. "Unknown" means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred; pay shows "[sample]" on purpose.
