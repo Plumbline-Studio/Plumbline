@@ -75,3 +75,8 @@ footer p { margin-left: auto; margin-right: auto; }
 .paper h2, .paper h3, .cream h2, .cream h3, .paper b, .cream b { color: var(--paper-ink); }
 .paper a, .cream a { color: var(--paper-ink); text-decoration-color: var(--paper-accent); }
 .paper .point, .cream .point { border-color: var(--paper-line); }
+
+/* the studio's mark: a plumb line hanging from the header rule, left-aligned with the content, on every page */
+.plumb { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: var(--s5); }
+.plumb .line { width: 1px; height: 72px; margin-left: 5px; background: linear-gradient(to bottom, var(--line), var(--accent)); }
+.plumb .bob { width: 11px; height: 11px; background: var(--accent); transform: rotate(45deg); margin-top: 6px; box-shadow: 0 0 18px rgba(200, 168, 120, .45); }

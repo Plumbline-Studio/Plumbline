@@ -270,6 +270,7 @@ function casePage(cs) {
     crumbs([['Home', ORIGIN + '/'], ['Case studies', ORIGIN + '/case-studies/']].concat(cs.parent ? [[cs.parent.title, `${ORIGIN}/case-studies/${cs.parent.slug}/`]] : []).concat([[cs.title, url]])),
   ] } })}
 <main class="wrap case">
+  <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
   <a class="back" href="/case-studies/">← All case studies</a>${cs.parent ? `
   <p class="back">Part of the series <a href="/case-studies/${cs.parent.slug}/">${esc(cs.parent.title)}</a></p>` : ''}
   <header class="case-head">
@@ -311,6 +312,7 @@ function indexPage(list) {
   </a>`).join('\n');
   return `${head({ title: 'Case studies — Plumbline Studio', description: 'What Plumbline has built, told twice: plainly for owners, technically for the people who maintain it.', canonical: `${ORIGIN}/case-studies/`, jsonld: { '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', name: 'Case studies', url: `${ORIGIN}/case-studies/`, publisher: ORG }, crumbs([['Home', ORIGIN + '/'], ['Case studies', `${ORIGIN}/case-studies/`]])] } })}
 <main class="wide index">
+  <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
   <header class="index-head">
     <p class="eyebrow">Case studies</p>
     <h1>Real problems, taken off real desks</h1>

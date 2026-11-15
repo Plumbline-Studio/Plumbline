@@ -118,17 +118,14 @@
   a{color:var(--gold-bright);}
   a:focus-visible, .cta:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
 
-  .plumb{display:flex; flex-direction:column; align-items:center; padding-top:56px;}
-  .plumb .line{width:1px; height:72px; background:linear-gradient(to bottom, transparent, var(--gold));}
-  .plumb .bob{width:11px; height:11px; background:var(--gold); transform:rotate(45deg); margin-top:6px; box-shadow:0 0 18px rgba(200,168,120,.45);}
 
 
-  header.hero{text-align:center; padding:28px 24px 20px;}
+  header.hero{text-align:left; padding:0 24px 20px;}
   .word{font:500 15px 'Inter',sans-serif; letter-spacing:.34em; text-transform:uppercase; color:var(--slate); margin:26px 0 30px;}
   .word b{color:var(--gold); font-weight:500;}
   .word a{color:inherit; text-decoration:none;}
   h1{font:500 clamp(2rem,6vw,3.1rem)/1.18 'Playfair Display',Georgia,serif; margin:0 0 22px; text-wrap:balance; color:var(--text);}
-  .hero p.lede{font-size:1.13rem; color:var(--slate); max-width:36em; margin:0 auto 34px; text-wrap:pretty;}
+  .hero p.lede{font-size:1.13rem; color:var(--slate); max-width:36em; margin:0 0 34px; text-wrap:pretty;}
   .cta{display:inline-block; background:var(--gold); color:var(--on-accent); font-weight:600; text-decoration:none; padding:14px 30px; border-radius:6px; letter-spacing:.02em;}
   .cta:hover{background:var(--gold-bright);}
   .subcta{display:block; margin-top:14px; font-size:.9rem; color:var(--slate);}
@@ -167,9 +164,9 @@
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
   <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/" aria-current="page">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a><a class="book" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a call</a></nav>
 </header>
-<div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
 
 <header class="hero wrap">
+  <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
   <p class="kicker">Build partner: white-label, co-branded, or alongside you</p>
   <h1>You keep the client and the strategy.<br>I handle the build.</h1>
   <p class="lede">For AI consultants, managed IT providers, marketing agencies, fractional COOs, CTOs and CFOs, EOS implementers and coaches. When your client needs something built that you can't build, you bring in a US-based subcontract developer.</p>
