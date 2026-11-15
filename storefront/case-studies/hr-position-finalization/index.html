@@ -32,12 +32,16 @@
     <h1>From approved request to job posting</h1>
     <p class="lede">Once a new position is approved, HR finalizes it and sends a ready job description to Communications without leaving the app.</p>
   </header>
-  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit staff platform</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Landed</dt><dd>Oct 28, 2026</dd></div><div><dt>Stack</dt><dd>Django · email</dd></div><div><dt>Reaches</dt><dd>Ministry leaders, coordinators and HR</dd></div></dl>
   <div class="switch" role="group" aria-label="Choose a version">
+    <span class="switch-label">Read it as</span>
     <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
     <button type="button" data-show="technical" aria-pressed="false">Technical</button>
   </div>
-  <article class="body" data-current="plain">
+  <div class="glance" aria-label="At a glance"><div class="fact"><b>31</b><span>tests added</span></div><div class="fact"><b>93%</b><span>coverage at handoff</span></div><div class="fact"><b>16/16</b><span>browser walkthrough checks passing</span></div></div>
+  <figure class="lead-shot"><a class="shot" href="/case-studies/hr-position-finalization/img/hr-queue.jpg"><img src="/case-studies/hr-position-finalization/img/hr-queue.jpg" alt="" loading="lazy"></a></figure>
+  <dl class="meta"><div><dt>Client</dt><dd>A nonprofit staff platform</dd></div><div><dt>Role</dt><dd>Outside developer</dd></div><div><dt>Landed</dt><dd>Oct 28, 2026</dd></div><div><dt>Stack</dt><dd>Django · email</dd></div><div><dt>Reaches</dt><dd>Ministry leaders, coordinators and HR</dd></div><div><dt>Naming</dt><dd>Anonymized until the client signs off</dd></div></dl>
+  <nav class="toc" aria-label="On this page"><span>On this page</span><a href="#the-story">The story</a><a href="#the-blueprint">The blueprint</a><a href="#what-it-looks-like">What it looks like</a><a href="#how-it-was-designed">How it was designed</a><a href="#the-paperwork">The paperwork</a></nav>
+  <article class="body" id="the-story" data-current="plain">
 <div class="version" data-version="plain">
 <h2>What changed</h2>
 <hr class="rule">
@@ -69,7 +73,7 @@
 <p>This built on a first version the client's in-house developer wrote in August, which handled submitting and approving. They also wrote the plan for the rest of the hiring process, from job postings to onboarding.</p>
 </div>
 </div>
-<h2>The blueprint</h2>
+<h2 id="the-blueprint">The blueprint</h2>
 <hr class="rule">
 <p>Before the build, the client and I agreed in writing what &quot;done&quot; would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 22, 2026.</p>
 <div class="blueprint">
@@ -77,16 +81,16 @@
 </div>
 <p>Ruled out before the build:</p>
 <ul class="diamond"><li>The rest of hiring: careers pages, applications, the candidate board, reminders and close-out. That is a later phase.</li><li>AI-written text inside the app.</li><li>Posting to the website, social media or job boards. The app only emails Communications.</li><li>Payroll and onboarding work.</li><li>Changes to the in-house developer's code outside this feature.</li><li>Real employee or applicant data in tests or screenshots.</li></ul>
-<h2>What it looks like</h2>
+<h2 id="what-it-looks-like">What it looks like</h2>
 <hr class="rule">
 <figure><a class="shot" href="/case-studies/hr-position-finalization/img/hr-queue.jpg"><img src="/case-studies/hr-position-finalization/img/hr-queue.jpg" alt="HR's queue of approved positions" loading="lazy"></a><figcaption>HR's queue: approved positions waiting for HR on top, ones sent to Communications below.</figcaption></figure>
 <figure><a class="shot" href="/case-studies/hr-position-finalization/img/hr-edit.jpg"><img src="/case-studies/hr-position-finalization/img/hr-edit.jpg" alt="The finalize page" loading="lazy"></a><figcaption>Finalize Position: the details that go into the job description.</figcaption></figure>
 <figure><a class="shot" href="/case-studies/hr-position-finalization/img/job-description.jpg"><img src="/case-studies/hr-position-finalization/img/job-description.jpg" alt="The drafted job description" loading="lazy"></a><figcaption>The drafted job description, ready to edit and send.</figcaption></figure>
-<h2>How it was designed</h2>
+<h2 id="how-it-was-designed">How it was designed</h2>
 <hr class="rule">
 <p>The whole hiring process was mapped on one Figma board before the build: who acts at each step, what was already built, and which phase each later step belongs to. The client's name is blurred.</p>
 <figure><a class="shot" href="/case-studies/hr-position-finalization/img/design-workflow-map.jpg"><img src="/case-studies/hr-position-finalization/img/design-workflow-map.jpg" alt="The hiring workflow map" loading="lazy"></a><figcaption>Yellow: the request and approval that already existed. Phase 1 is the part this project built: the HR role, the queue, and finalizing title, pay and benefits. Phases 2 to 7 follow the in-house developer's plan for the rest of hiring.</figcaption></figure>
-<h2>The paperwork</h2>
+<h2 id="the-paperwork">The paperwork</h2>
 <hr class="rule">
 <p>This case study as a branded summary, to keep or pass along.</p>
 <div class="docs">
