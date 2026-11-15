@@ -189,7 +189,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/case-studies.css">
@@ -197,7 +197,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <body>
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/" aria-current="page">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/" aria-current="page">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a><a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a></nav>
 </header>`;
 }
 
