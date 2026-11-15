@@ -230,6 +230,11 @@
 
   /* hero: oversized headline left, the offer in a plumb-lined column right */
   .hero{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:var(--s7); align-items:center; padding-block:var(--s9);}
+  /* the plumb line hangs from the header rule into the hero: the studio's mark */
+  .hero{padding-top:0;}
+  .plumb{display:flex; flex-direction:column; align-items:flex-start; margin-bottom:var(--s6);}
+  .plumb .line{width:1px; height:96px; margin-left:5px; background:linear-gradient(to bottom, var(--line), var(--accent));}
+  .plumb .bob{width:11px; height:11px; background:var(--accent); transform:rotate(45deg); margin-top:6px; box-shadow:0 0 18px rgba(200,168,120,.45);}
   .hero h1{font:500 clamp(3.4rem,10vw,7rem)/.95 var(--f-display); letter-spacing:-.02em; margin-top:var(--s4);}
   .hero h1 em{font-style:italic; color:var(--accent);}
   .hero aside{border-left:1px solid var(--accent); padding-left:var(--s6); display:grid; gap:var(--s4); justify-items:start;}
@@ -312,6 +317,7 @@
 
 <section class="wide hero">
   <div>
+    <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
     <p class="kicker">Custom software for small businesses</p>
     <h1>The heavy <em>lifting.</em></h1>
   </div>
