@@ -23,7 +23,7 @@ Then open http://localhost:8000. Any static file server pointed at `storefront/`
 
 `ci-report.yml` then posts the result on the pull request as a `CI-RESULT: CI <result> on <sha>` comment. To run the same steps by hand, copy the `run:` blocks from `ci.yml` into a shell at the repo root (Node and Python 3 are all they need).
 
-**Case studies.** Write or edit `storefront/content/case-studies/<slug>.md`, then run `node scripts/build-case-studies.mjs` and commit what it writes. The contract (front matter, the `public` / `unlisted` states, sign-off before a client is named) is in [`docs/case-studies.md`](docs/case-studies.md). CI fails if the pages are out of date.
+**Case studies.** Write or edit `storefront/content/case-studies/<slug>.md`, then run `node scripts/build-case-studies.mjs` and commit what it writes. The contract (front matter, the `public` / `unlisted` states, sign-off before a client is named) is in [`docs/case-studies.md`](docs/case-studies.md). CI fails if the pages are out of date. Documents shown on a case study ("The paperwork": redacted client PDFs or a branded summary) follow the same contract.
 
 **Deploy.** Merge to `main`. The Git-connected Cloudflare Worker (config in `wrangler.toml`) redeploys on every push to `main`, serving `storefront/` as the site root for plumblinestudio.dev and www. Files outside `storefront/` (this README, `signature/`, `docs/`) are not served by it. Each pull request also gets a Cloudflare preview build; the Cloudflare bot comments its status and preview URLs on the PR.
 

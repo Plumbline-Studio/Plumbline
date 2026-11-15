@@ -72,7 +72,9 @@ function inline(s) {
 }
 
 // Blocks: ## / ### headings, paragraphs, "- " lists, images on their own line
-// (![alt](src "caption")), and ::: fences (plain, technical, ba, facts, note).
+// (![alt](src "caption")), and ::: fences (plain, technical, ba, facts, note, docs).
+// A ::: docs list item is "title | file.pdf | purpose | meta"; the PDF and its cover
+// (same name, .jpg) live in storefront/case-studies/<slug>/docs/ and must exist.
 function render(md, slug) {
   const lines = md.replace(/\r/g, '').split('\n');
   const out = [];
@@ -87,6 +89,17 @@ function render(md, slug) {
         const val = v.trim();
         return `<div class="fact"><b${/^unknown$/i.test(val) ? ' class="u"' : ''}>${inline(val)}</b><span>${inline(rest.join('|').trim())}</span></div>`;
       }).join(''));
+    } else if (fence[fence.length - 1] === 'docs') {
+      out.push(list.map((li) => {
+        const [title, file, purpose, meta] = li.split('|').map((x) => (x || '').trim());
+        if (!/^[a-z0-9-]+\.pdf$/.test(file)) throw new Error(`${slug}: docs item "${title}" needs a file like name.pdf`);
+        const base = `/case-studies/${slug}/docs/`;
+        for (const f of [file, file.replace(/\.pdf$/, '.jpg')]) {
+          if (!fs.existsSync(path.join(ROOT, 'storefront', base, f))) throw new Error(`${slug}: missing ${base}${f}`);
+        }
+        return `<a class="doc" href="${base}${file}"><span class="cover"><img src="${base}${file.replace(/\.pdf$/, '.jpg')}" alt="" loading="lazy"></span>`
+          + `<span class="dbody"><b>${inline(title)}</b><span>${inline(purpose)}</span><span class="dmeta">${inline(meta)} · Open PDF</span></span></a>`;
+      }).join(''));
     } else {
       out.push('<ul class="diamond">' + list.map((li) => `<li>${inline(li)}</li>`).join('') + '</ul>');
     }
@@ -95,7 +108,7 @@ function render(md, slug) {
   const flush = () => { flushPara(); flushList(); };
   for (const line of lines) {
     const t = line.trim();
-    const open = /^:::\s*(plain|technical|ba|facts|note)\s*$/.exec(t);
+    const open = /^:::\s*(plain|technical|ba|facts|note|docs)\s*$/.exec(t);
     if (open) {
       flush();
       const kind = open[1];

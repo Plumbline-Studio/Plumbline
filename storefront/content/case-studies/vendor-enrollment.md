@@ -80,3 +80,11 @@ My first pull request was merged before the AWS key existed, which would have br
 ![The Accounts Payable dashboard](/case-studies/vendor-enrollment/img/dashboard.jpg "The Accounts Payable dashboard: who is waiting, and for how long.")
 
 ![The review page](/case-studies/vendor-enrollment/img/review.jpg "The review page. Every view and download is logged.")
+
+## The paperwork
+
+This case study as a branded summary, to keep or pass along.
+
+::: docs
+- Case study summary | vendor-enrollment-summary.pdf | Both versions of this page, plus the screenshots, as one document to share. | Nov 2026 · 5 pages
+:::

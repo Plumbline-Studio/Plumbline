@@ -85,9 +85,29 @@ Fenced blocks open with `::: name` and close with `:::`:
 | `::: ba` | Inside a version: a `### Before` and a `### After`, shown side by side. |
 | `::: facts` | A list of `- value | label` lines, shown as tiles. A value of `Unknown` is shown as unknown, not hidden. |
 | `::: note` | A quiet aside. Used to credit other people's work. |
+| `::: docs` | "The paperwork". A list of `- title | file.pdf | purpose | date · pages` lines, shown as cover cards that open the PDF. The PDF and its cover (`file.jpg`, same name) live in `storefront/case-studies/<slug>/docs/`; the build fails if either is missing. |
 
 Every case study has both a `plain` and a `technical` version; the page shows one at a time with a switch.
 Anything outside the two versions (usually the screenshots) shows under both.
+
+## The paperwork (documents)
+
+A case study shows documents in one of two ways (Kyle, 2026-11-15):
+
+- **The client's own documents, redacted.** Proposals, addenda and reports the client received, as sent,
+  with the client's name, people, places, contact details, order numbers and prices removed. Redaction is
+  real: the words are deleted from the PDF, not covered, the client's logo image is removed, metadata is
+  cleared, and every page carries a "Redacted copy" line. Each page is checked by eye before it ships.
+  Made with `redact_pdf.py` in Drive "07 Case Studies / _tools". **The list of redacted words names the client,
+  so it lives only in that case's Drive folder (`04 Documents`), never in this repo.** The unredacted
+  originals stay there too.
+- **A branded summary**, where the client's documents aren't ours to show. Made from the case study's own
+  Markdown with `scripts/case-study-pdf.py` and the Plumbline PDF toolkit, so it can't say anything the page
+  doesn't. Rebuild it whenever the page's text changes:
+  `cd ../plumbline-pdf-toolkit && PYTHONPATH=. python ../plumbline/scripts/case-study-pdf.py <slug>`.
+
+The cover image is a small JPG of the first page that says something (for redacted documents, page 2,
+since page 1 is a near-empty cover).
 
 ## Rules the content keeps
 
