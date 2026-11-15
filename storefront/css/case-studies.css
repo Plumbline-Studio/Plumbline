@@ -94,3 +94,14 @@ footer .bob { width: 8px; height: 8px; background: var(--accent); transform: rot
 footer .tag { font-family: var(--f-display); color: var(--accent); }
 
 @media (max-width: 720px) { .ba { grid-template-columns: minmax(0, 1fr); } }
+
+/* ::: docs, "the paperwork": redacted client documents, cover + purpose + open link */
+.docs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 14px; }
+.doc { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 14px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; text-decoration: none; color: inherit; transition: border-color .15s ease; }
+.doc:hover { border-color: var(--accent); }
+.doc .cover { aspect-ratio: 8.5 / 11; overflow: hidden; border-radius: 4px; border: 1px solid var(--line); background: var(--deep); display: block; }
+.doc .cover img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.dbody { display: grid; gap: 4px; }
+.dbody b { font-weight: 600; font-size: .95rem; color: var(--ink); }
+.dbody span { font-size: .85rem; color: var(--muted); }
+.dbody .dmeta { font: 400 .72rem var(--f-mono); color: var(--accent); letter-spacing: .03em; }

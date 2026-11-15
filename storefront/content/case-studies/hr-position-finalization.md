@@ -78,3 +78,11 @@ This built on a first version the client's in-house developer wrote in August, w
 ![The finalize page](/case-studies/hr-position-finalization/img/hr-edit.jpg "Finalize Position: the details that go into the job description.")
 
 ![The drafted job description](/case-studies/hr-position-finalization/img/job-description.jpg "The drafted job description, ready to edit and send.")
+
+## The paperwork
+
+This case study as a branded summary, to keep or pass along.
+
+::: docs
+- Case study summary | hr-position-finalization-summary.pdf | Both versions of this page, plus the screenshots, as one document to share. | Nov 2026 · 5 pages
+:::

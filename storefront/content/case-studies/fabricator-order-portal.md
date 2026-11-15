@@ -83,3 +83,12 @@ The client's team made the app-side changes in their own AppSheet app and grante
 ![The same order after the customer confirms](/case-studies/fabricator-order-portal/img/confirmed.jpg "After confirming: the clock is running and the due date is set. Fake order.")
 
 ![The portal on a phone](/case-studies/fabricator-order-portal/img/phone.jpg "The same page on a phone.")
+
+## The paperwork
+
+These are the documents the client received, as sent, with the client's name, people, places, contact details and prices taken out.
+
+::: docs
+- Scope Addendum II | 2026-09-scope-addendum-ii.pdf | What was in scope, how it was paid, and the date the work was judged against. | Sept 2026 · 3 pages
+- Where we are | 2026-09-18-where-we-are.pdf | A progress report at the scope freeze: eight plain statements of done, and where each stood. | Sept 18, 2026 · 4 pages
+:::

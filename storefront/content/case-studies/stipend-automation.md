@@ -80,3 +80,11 @@ The client's in-house developer reviewed and merged the build, then extended it:
 ![The employee's form, opened from a private link](/case-studies/stipend-automation/img/form.jpg "The employee's form, opened from a private link with no sign-in.")
 
 ![The staff page with each round and every form's status](/case-studies/stipend-automation/img/staff.jpg "The staff page: each round, and every form's status. It includes the client developer's later additions (the Reviewed column).")
+
+## The paperwork
+
+This case study as a branded summary, to keep or pass along.
+
+::: docs
+- Case study summary | stipend-automation-summary.pdf | Both versions of this page, plus the screenshots, as one document to share. | Nov 2026 · 5 pages
+:::
