@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plumbline Studio — Client portal</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2c1f33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2c1f33;--peak:#3a2a42;--gold:#c8a878;--gold-bright:#d8b884;--slate:#9ba5b4;--text:#f2ece2;--line:#54435d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--navy);color:var(--text);font:16px/1.6 'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.plumb{display:flex;flex-direction:column;align-items:center;padding-top:44px}
+.plumb .line{width:1px;height:64px;background:linear-gradient(to bottom,transparent,var(--gold))}
+.plumb .bob{width:11px;height:11px;background:var(--gold);transform:rotate(45deg);margin-top:6px;box-shadow:0 0 18px rgba(200,168,120,.45)}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 60px}
+.word{text-align:center;font:600 13px/1 'Inter',sans-serif;letter-spacing:.28em;color:var(--slate);margin:22px 0 6px}
+.word b{color:var(--gold)}
+h1{font:600 clamp(26px,5vw,34px)/1.15 'Playfair Display',Georgia,serif;text-align:center;margin:0 0 8px}
+.lede{color:var(--slate);text-align:center;margin:0 0 28px;font-size:15px}
+.card{background:var(--peak);border:1px solid var(--line);border-radius:12px;padding:22px 20px}
+label{display:block;font-size:13px;color:var(--slate);margin:0 0 6px;letter-spacing:.04em;text-transform:uppercase}
+input[type=email]{width:100%;font:inherit;font-size:17px;padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:#241a2a;color:var(--text)}
+input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+button.go{margin-top:12px;width:100%;font:600 16px 'Inter',sans-serif;background:var(--gold);color:#2c1f33;border:0;border-radius:8px;padding:13px;cursor:pointer}
+button.go:hover{background:var(--gold-bright)}
+.st{min-height:22px;font-size:14px;color:var(--slate);margin-top:10px}
+.st.ok{color:#9fd8b4}.st.err{color:#f0a89b}
+.fine{color:var(--slate);font-size:13px;text-align:center;margin-top:18px}
+.fine a{color:var(--gold)}
+/* list */
+.list{display:grid;gap:12px;margin-top:8px}
+.proj{display:block;text-decoration:none;color:inherit;background:var(--peak);border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:border-color .15s}
+.proj:hover{border-color:var(--gold)}
+.proj b{display:block;font:600 18px 'Playfair Display',serif;margin:0 0 2px}
+.proj span{color:var(--slate);font-size:14px}
+.proj .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:12.5px;color:var(--slate)}
+.proj .meta i{font-style:normal;color:var(--gold)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--slate);margin:0 0 14px}
+.topbar a{color:var(--gold);text-decoration:none;cursor:pointer}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
+<div class="wrap">
+  <p class="word">PLUMBLINE <b>STUDIO</b></p>
+  <div id="login">
+    <h1>Client portal</h1>
+    <p class="lede">Your plan, your brand, your files, and the questions only you can answer. One place, kept current.</p>
+    <div class="card">
+      <form id="f">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required>
+        <button class="go" type="submit">Send me a sign-in link</button>
+        <div class="st" id="st"></div>
+      </form>
+    </div>
+    <p class="fine">No password. We email you a link that signs you in. Not sure which email? <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+  </div>
+  <div id="home" class="hide">
+    <div class="topbar"><span id="who"></span><a id="out">Sign out</a></div>
+    <h1 id="hometitle">Your projects</h1>
+    <p class="lede" id="homelede">Everything Plumbline is building with you.</p>
+    <div class="list" id="list"></div>
+    <p class="fine">Something missing? <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+<script src="portal.js"></script>
+<script>
+(async () => {
+  const P = window.PORTAL, esc = P.esc, q = new URLSearchParams(location.search);
+  // Guest link: hand straight to the project page.
+  if (q.get('g')) { sessionStorage.setItem('pl-guest', q.get('g')); location.replace('/p?g=' + encodeURIComponent(q.get('g'))); return; }
+  const next = q.get('next');
+  const sess = await P.session();
+  if (!sess) {
+    document.getElementById('f').onsubmit = async (e) => {
+      e.preventDefault(); const st = document.getElementById('st'); st.className = 'st'; st.textContent = 'Sending…';
+      const { error } = await P.sendLink(document.getElementById('email').value.trim(), next);
+      if (error) { st.className = 'st err'; st.textContent = 'Could not send: ' + error.message; }
+      else { st.className = 'st ok'; st.textContent = 'Check your email. The link signs you in on this device.'; }
+    };
+    return;
+  }
+  await P.claim();
+  let rows = []; try { rows = await P.mine(); } catch (e) {}
+  if (next && /^\/p\//.test(next)) { location.replace(next); return; }
+  if (rows.length === 1) { location.replace('/p/' + rows[0].workup.code); return; }
+  document.getElementById('login').classList.add('hide'); document.getElementById('home').classList.remove('hide');
+  document.getElementById('who').textContent = sess.user.email;
+  document.getElementById('out').onclick = P.signOut;
+  const list = document.getElementById('list');
+  if (!rows.length) { list.innerHTML = '<div class="card">Nothing is shared with this email yet. If you expected a project here, reply to the email Kyle sent you, or write to kyle@plumblinestudio.dev.</div>'; return; }
+  list.innerHTML = rows.map(r => {
+    const m = r.workup.model || {}, steps = m.steps || [];
+    const need = steps.reduce((n, s) => n + (s.need || []).filter(x => x.who !== 'kyle').length, 0);
+    return `<a class="proj" href="/p/${esc(r.workup.code)}"><b>${esc(r.client.company)}</b><span>${esc(r.engagement.title)}</span><div class="meta"><span><i>${steps.length}</i> steps</span><span><i>${need}</i> items waiting on the client</span><span>${esc(m.status || r.engagement.stage || '')}</span></div></a>`;
+  }).join('');
+})();
+</script>
+</body>
+</html>

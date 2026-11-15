@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Operating map — Plumbline Studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#A6000C;--accent:#E13A44;--ink:#1A1A1A;--mute:#6F6F6F;--line:#E2E2E2;--page:#F7F5F5;--card:#FFFFFF;--soft:#FBF3F3;
+ --c-works:#2E7D4F;--c-progress:#2F6DB5;--c-half:#B8860B;--c-none:#A6000C;--c-keeps:#4A3B73;--navy:#2c1f33;--gold:#c8a878}
+@media (prefers-color-scheme:dark){:root{--ink:#F2F2F2;--mute:#A8A8A8;--line:#333;--page:#121212;--card:#1C1C1C;--soft:#2A1A1B;--red:#E13A44;
+ --c-works:#4CAF7A;--c-progress:#5B9BE0;--c-half:#D9A520;--c-none:#E13A44;--c-keeps:#8C7CD0}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font:15px/1.45 Poppins,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+.studio{background:var(--navy);color:#fff;font:12px/1.4 Inter,system-ui,sans-serif;padding:8px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.studio b{color:var(--gold);letter-spacing:.08em}.studio .sp{flex:1}.studio a{color:#fff;opacity:.85}
+header{padding:22px 16px 6px;max-width:1500px;margin:0 auto}
+h1{font-family:'Libre Baskerville',Georgia,serif;color:var(--red);font-size:clamp(26px,4vw,38px);margin:0;line-height:1.15}
+h1 .mark{display:inline-block;width:.45em;height:.45em;background:var(--red);margin-right:.35em;vertical-align:.12em}
+.goal{margin:8px 0 0;max-width:900px}
+.hint{color:var(--mute);font-size:13px;margin-top:6px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--mute)}
+.bar input{border:1px solid var(--line);background:var(--card);padding:5px 8px;border-radius:6px;width:150px}
+.bar .st{margin-left:auto}
+.board{display:grid;grid-template-columns:repeat(5,minmax(240px,1fr));gap:12px;padding:12px 16px 40px;max-width:1500px;margin:0 auto;align-items:start}
+.col{background:var(--card);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;min-height:200px}
+.col h2{margin:0;font-family:'Libre Baskerville',serif;font-size:16px;color:#fff;padding:10px 12px;border-radius:9px 9px 0 0;display:flex;justify-content:space-between;align-items:center}
+.col h2 small{font:600 12px Poppins;opacity:.85}
+.col .d{font-size:12px;color:var(--mute);padding:8px 12px 2px}
+.list{padding:8px;display:flex;flex-direction:column;gap:8px;min-height:60px;flex:1;border-radius:8px;transition:background .15s}
+.list.over{background:var(--soft)}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--cc);border-radius:8px;padding:9px 10px 7px;cursor:grab;user-select:none;-webkit-user-select:none}
+.card:active{cursor:grabbing}.card.dragging{opacity:.4}
+.card b{display:block;font-weight:600;font-size:14px;line-height:1.3}
+.card p{margin:3px 0 0;font-size:13px;color:var(--ink);opacity:.85;white-space:pre-wrap}
+.card .need{display:inline-block;margin-top:5px;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--red)}
+.card .foot{display:flex;align-items:center;gap:4px;margin-top:6px;font-size:11px;color:var(--mute)}
+.card .foot span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .mv{border:1px solid var(--line);background:transparent;border-radius:6px;width:30px;height:28px;cursor:pointer;font-size:14px;line-height:1}
+.card .mv:disabled{opacity:.25;cursor:default}
+.add{margin:0 8px 10px;border:1px dashed var(--line);background:transparent;border-radius:8px;padding:8px;cursor:pointer;color:var(--mute);text-align:left}
+.add:hover{border-color:var(--red);color:var(--red)}
+.c-works{--cc:var(--c-works)}.c-progress{--cc:var(--c-progress)}.c-half{--cc:var(--c-half)}.c-none{--cc:var(--c-none)}.c-keeps{--cc:var(--c-keeps)}
+.col h2{background:var(--cc)}
+.rule{max-width:1500px;margin:0 auto;padding:0 16px 30px;font-size:13px;color:var(--mute)}
+.rule b{color:var(--red)}
+.notice{max-width:560px;margin:60px auto;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:10px;text-align:center}
+.notice a{color:var(--red)}
+/* editor */
+dialog{border:none;border-radius:12px;padding:0;width:min(520px,94vw);background:var(--card);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+.ed{padding:18px}
+.ed h3{margin:0 0 12px;font-family:'Libre Baskerville',serif;color:var(--red);font-size:18px}
+.ed label{display:block;font-size:12px;font-weight:600;color:var(--mute);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.04em}
+.ed input,.ed textarea,.ed select{width:100%;border:1px solid var(--line);background:var(--page);border-radius:8px;padding:8px 10px}
+.ed textarea{min-height:90px;resize:vertical}
+.ed .row{display:flex;gap:8px;margin-top:16px;align-items:center}
+.ed .row .sp{flex:1}
+.btn{border:1px solid var(--line);background:transparent;border-radius:8px;padding:8px 14px;cursor:pointer}
+.btn.pri{background:var(--red);border-color:var(--red);color:#fff}
+.btn.del{color:var(--red);border-color:transparent}
+.btn.del.armed{background:var(--red);color:#fff}
+.ed .err{color:var(--red);font-size:13px;margin-top:8px;min-height:1em}
+/* Stays-with column sits apart from the flow */
+.col.c-keeps{position:relative;margin-left:18px;border-style:dashed}
+.col.c-keeps::before{content:'';position:absolute;left:-17px;top:4px;bottom:4px;border-left:2px dashed var(--line)}
+.col .apart{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--c-keeps);margin:8px 12px 0}
+/* view-only */
+body.ro .add,body.ro .mv,body.ro .bar label{display:none}
+body.ro .card{cursor:default}body.ro .hint{display:none}
+.ro-note{display:none;margin-top:8px;font-size:13px;background:var(--soft);border-left:4px solid var(--red);padding:8px 10px;border-radius:6px}
+body.ro .ro-note{display:block}.ro-note a{color:var(--red)}
+/* phone: one column at a time, picked from a tab strip */
+.tabs{display:none}
+@media (max-width:900px){
+ .tabs{display:flex;gap:6px;overflow-x:auto;position:sticky;top:0;z-index:5;background:var(--page);padding:10px 16px;border-bottom:1px solid var(--line);scrollbar-width:none}
+ .tabs::-webkit-scrollbar{display:none}
+ .tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:13px;display:flex;gap:6px;align-items:center;cursor:pointer}
+ .tabs button i{width:9px;height:9px;border-radius:50%;background:var(--cc);display:inline-block}
+ .tabs button b{font-weight:600}
+ .tabs button[aria-selected="true"]{background:var(--cc);border-color:var(--cc);color:#fff}
+ .tabs button[aria-selected="true"] i{background:#fff}
+ .board{display:block;padding:12px 16px 30px}
+ .col{display:none}.col.on{display:flex}
+ .col.c-keeps{margin-left:0}.col.c-keeps::before{display:none}
+ .card .mv{width:40px;height:34px;font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="studio"><span><b>PLUMBLINE</b> STUDIO</span><span>Client portal</span><span class="sp"></span><span id="who"></span><a id="act" href="/">Sign in</a></div>
+<div id="app"><div class="notice">Loading…</div></div>
+
+<dialog id="dlg"><form class="ed" method="dialog" id="edform">
+ <h3 id="edh">Card</h3>
+ <label for="f-title">Title</label><input id="f-title" maxlength="200" required>
+ <label for="f-body">Notes</label><textarea id="f-body" maxlength="2000"></textarea>
+ <label for="f-needs">Needs (optional)</label><input id="f-needs" maxlength="200" placeholder="e.g. a human owner + process">
+ <label for="f-col">Column</label><select id="f-col"></select>
+ <div class="err" id="f-err"></div>
+ <div class="row"><button type="button" class="btn del" id="f-del">Delete</button><span class="sp"></span><button type="button" class="btn" id="f-cancel">Cancel</button><button type="submit" class="btn pri" id="f-save">Save</button></div>
+</form></dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+<script src="/portal.js"></script>
+<script>
+(async () => {
+const P = window.PORTAL, esc = P.esc, q = new URLSearchParams(location.search);
+const code = (location.pathname.match(/^\/p\/([a-z0-9-]+)/i) || [])[1] || q.get('code');
+const app = document.getElementById('app');
+const fail = (m, l) => app.innerHTML = `<div class="notice">${m}${l ? `<br><br><a href="${l.href}">${l.text}</a>` : ''}</div>`;
+
+// Access: signed-in member, or guest link.
+let data = null, who = '', isGuest = false;
+const token = q.get('g') || sessionStorage.getItem('pl-guest') || '';
+if (q.get('g')) { sessionStorage.setItem('pl-guest', q.get('g')); history.replaceState(null, '', location.pathname); }
+const sess = await P.session();
+if (sess) {
+  await P.claim();
+  let rows = []; try { rows = await P.mine(); } catch (e) {}
+  const r = rows.find(x => x.workup && x.workup.code === code);
+  if (r) { data = r; who = sess.user.email; }
+}
+if (!data && token) { try { const g = await P.guest(token); if (g && g.workup && g.workup.code === code) { data = g; isGuest = true; who = 'Guest link'; } } catch (e) {} }
+if (!data) {
+  if (sess) return fail('This board is not shared with ' + esc(sess.user.email) + '.', { href: '/', text: 'Back to your projects' });
+  return fail('Sign in to see this board.', { href: '/?next=' + encodeURIComponent(location.pathname), text: 'Sign in' });
+}
+const ENG = data.engagement.id, TOK = isGuest ? token : null, M = data.workup.model || {};
+const clientShort = M.clientShort || 'the client';
+document.title = (data.client && data.client.company || '') + ' — Operating map';
+document.getElementById('who').textContent = who;
+const act = document.getElementById('act');
+if (!isGuest) { act.textContent = 'Sign out'; act.onclick = e => { e.preventDefault(); P.signOut(); }; }
+
+const COLS = [
+  ['none', "Nobody's job", 'Falls back on ' + clientShort + '. Needs an owner.'],
+  ['half', 'Half-built', 'Exists, but not connected or not yet trusted.'],
+  ['progress', 'In progress', 'Being worked on now.'],
+  ['works', 'Works', 'Has an owner. Keep it.'],
+  ['keeps', 'Stays with ' + clientShort, 'On purpose. Everything else protects time for these.']];
+const IDX = Object.fromEntries(COLS.map((c, i) => [c[0], i]));
+const FLOW = 4; // first four columns are the flow; 'keeps' sits apart
+let canEdit = false;
+
+let me = ''; try { me = localStorage.getItem('pl-answerer') || ''; } catch (e) {}
+if (!me) me = isGuest ? clientShort : (who.split('@')[0] || 'Kyle');
+
+app.innerHTML = `
+<header>
+ <h1><span class="mark"></span>${esc(M.title || 'Operating map')}</h1>
+ <p class="goal">${esc(M.lede || '')}</p>
+ <div class="hint">Drag a card to move it, or use the arrows. Cards move right as work gets done. Tap a card to edit or delete it. Changes save right away and everyone sees them.</div>
+ <div class="ro-note">View only. <a href="/?next=${encodeURIComponent(location.pathname)}">Sign in with your email</a> to move, add or edit cards.</div>
+ <div class="bar"><label>Your name <input id="me" value="${esc(me)}" maxlength="80"></label><span class="st" id="st"></span></div>
+</header>
+<nav class="tabs" id="tabs" role="tablist">${COLS.map(([k, t]) => `<button type="button" role="tab" class="c-${k}" data-tab="${k}" aria-selected="false"><i></i>${esc(t)} <b data-tn="${k}">0</b></button>`).join('')}</nav>
+<main class="board" id="board">${COLS.map(([k, t, d]) => `
+ <section class="col c-${k}" data-col="${k}">
+  <h2>${esc(t)} <small data-n="${k}">0</small></h2>${k === 'keeps' ? '<span class="apart">Not part of the flow</span>' : ''}
+  <div class="d">${esc(d)}</div>
+  <div class="list" data-col="${k}"></div>
+  <button class="add" type="button" data-add="${k}">+ Add a card</button>
+ </section>`).join('')}
+</main>
+<div class="rule"><b>Cards move right as work gets done: Nobody's job → Half-built → In progress → Works.</b> A card is done when someone owns the outcome, the process works, and ${esc(clientShort)} doesn't have to keep it running. <b>Stays with ${esc(clientShort)}</b> is not part of that flow. It's what the flow protects.</div>`;
+
+// Phone tabs: show one column at a time.
+let tab = 'none'; try { tab = sessionStorage.getItem('pl-board-tab') || 'none'; } catch (e) {}
+function showTab(k) {
+  tab = k; try { sessionStorage.setItem('pl-board-tab', k); } catch (e) {}
+  document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === k ? 'true' : 'false'));
+  document.querySelectorAll('.col').forEach(c => c.classList.toggle('on', c.dataset.col === k));
+  document.querySelector(`#tabs [data-tab="${k}"]`)?.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+}
+document.getElementById('tabs').onclick = e => { const b = e.target.closest('[data-tab]'); if (b) showTab(b.dataset.tab); };
+showTab(tab);
+
+const meIn = document.getElementById('me'), stEl = document.getElementById('st');
+meIn.onchange = () => { me = meIn.value.trim() || clientShort; try { localStorage.setItem('pl-answerer', me); } catch (e) {} };
+const status = (t, ms) => { stEl.textContent = t; if (ms) setTimeout(() => { if (stEl.textContent === t) stEl.textContent = ''; }, ms); };
+
+// Data.
+let cards = [];
+async function rpc(fn, args) { const { data, error } = await P.sb.rpc(fn, args); if (error) throw error; return data; }
+async function load() { const s = await rpc('board_state', { p_eng: ENG, p_token: TOK }); cards = s.cards || []; canEdit = !!s.can_edit; document.body.classList.toggle('ro', !canEdit); render(); }
+async function save(c) {
+  status('Saving…');
+  const row = await rpc('board_save', { p_eng: ENG, p_token: TOK, p_id: c.id || null, p_col: c.col, p_title: c.title, p_body: c.body || '', p_needs: c.needs || '', p_pos: c.pos, p_by: me });
+  status('Saved', 2000); return row;
+}
+const fmt = d => d ? new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+const inCol = k => cards.filter(c => c.col === k).sort((a, b) => a.pos - b.pos);
+const endPos = k => { const l = inCol(k); return l.length ? l[l.length - 1].pos + 1 : 1; };
+
+function render() {
+  for (const [k] of COLS) {
+    const list = document.querySelector(`.list[data-col="${k}"]`), l = inCol(k), i = IDX[k];
+    document.querySelector(`[data-n="${k}"]`).textContent = l.length;
+    document.querySelector(`[data-tn="${k}"]`).textContent = l.length;
+    const inFlow = i < FLOW;
+    list.innerHTML = l.map(c => `<article class="card c-${k}" draggable="${canEdit}" data-id="${c.id}">
+      <b>${esc(c.title)}</b>${c.body ? `<p>${esc(c.body)}</p>` : ''}${c.needs ? `<span class="need">Needs: ${esc(c.needs)}</span>` : ''}
+      <div class="foot"><span>${esc(c.updated_by || '')}${c.updated_at ? ' · ' + fmt(c.updated_at) : ''}</span>${inFlow ? `
+       <button class="mv" type="button" data-mv="-1" aria-label="Move left${i > 0 ? ' to ' + esc(COLS[i - 1][1]) : ''}" ${i === 0 ? 'disabled' : ''}>‹</button>
+       <button class="mv" type="button" data-mv="1" aria-label="Move right${i < FLOW - 1 ? ' to ' + esc(COLS[i + 1][1]) : ''}" ${i === FLOW - 1 ? 'disabled' : ''}>›</button>` : ''}</div></article>`).join('');
+  }
+}
+
+async function moveTo(id, col, pos) {
+  const c = cards.find(x => x.id === id); if (!c) return;
+  const prev = { col: c.col, pos: c.pos }; c.col = col; c.pos = pos; c.updated_by = me; c.updated_at = new Date().toISOString(); render();
+  try { Object.assign(c, await save(c)); render(); } catch (e) { Object.assign(c, prev); render(); status('Could not save. Check your connection.'); }
+}
+
+// Click: arrows or open editor.
+const board = document.getElementById('board');
+board.addEventListener('click', e => {
+  if (!canEdit) return;
+  const add = e.target.closest('[data-add]'); if (add) return openEd(null, add.dataset.add);
+  const card = e.target.closest('.card'); if (!card) return;
+  const mv = e.target.closest('[data-mv]');
+  if (mv) {
+    const c = cards.find(x => x.id === card.dataset.id), ni = IDX[c.col] + +mv.dataset.mv, to = COLS[ni];
+    if (to && ni < FLOW) { moveTo(c.id, to[0], endPos(to[0])); status('Moved to ' + to[1], 2500); }
+    return;
+  }
+  openEd(cards.find(x => x.id === card.dataset.id));
+});
+
+// Drag and drop (mouse, and touch browsers that support it).
+let dragId = null;
+board.addEventListener('dragstart', e => { const c = e.target.closest('.card'); if (!c || !canEdit) return; dragId = c.dataset.id; c.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; try { e.dataTransfer.setData('text/plain', dragId); } catch (_) {} });
+board.addEventListener('dragend', e => { e.target.closest('.card')?.classList.remove('dragging'); document.querySelectorAll('.list.over').forEach(l => l.classList.remove('over')); dragId = null; });
+board.addEventListener('dragover', e => { const l = e.target.closest('.col'); if (!l || !dragId) return; e.preventDefault(); document.querySelectorAll('.list.over').forEach(x => x !== l.querySelector('.list') && x.classList.remove('over')); l.querySelector('.list').classList.add('over'); });
+board.addEventListener('drop', e => {
+  const colEl = e.target.closest('.col'); if (!colEl || !dragId) return; e.preventDefault();
+  const k = colEl.dataset.col, others = [...colEl.querySelectorAll('.card')].filter(x => x.dataset.id !== dragId);
+  const after = others.find(x => { const r = x.getBoundingClientRect(); return e.clientY < r.top + r.height / 2; });
+  const list = inCol(k).filter(c => c.id !== dragId);
+  let pos;
+  if (!after) pos = list.length ? list[list.length - 1].pos + 1 : 1;
+  else { const i = list.findIndex(c => c.id === after.dataset.id); pos = i === 0 ? list[0].pos - 1 : (list[i - 1].pos + list[i].pos) / 2; }
+  const id = dragId; dragId = null; colEl.querySelector('.list').classList.remove('over'); moveTo(id, k, pos);
+});
+
+// Editor.
+const dlg = document.getElementById('dlg'), F = id => document.getElementById(id);
+F('f-col').innerHTML = COLS.map(([k, t]) => `<option value="${k}">${esc(t)}</option>`).join('');
+let editing = null;
+function openEd(c, col) {
+  editing = c; F('edh').textContent = c ? 'Edit card' : 'New card';
+  F('f-title').value = c ? c.title : ''; F('f-body').value = c ? c.body : ''; F('f-needs').value = c ? c.needs : '';
+  F('f-col').value = c ? c.col : col; F('f-err').textContent = '';
+  F('f-del').hidden = !c; F('f-del').classList.remove('armed'); F('f-del').textContent = 'Delete';
+  dlg.showModal(); setTimeout(() => F('f-title').focus(), 30);
+}
+F('f-cancel').onclick = () => dlg.close();
+F('edform').onsubmit = async e => {
+  e.preventDefault();
+  const title = F('f-title').value.trim(); if (!title) { F('f-err').textContent = 'Give the card a title.'; return; }
+  const col = F('f-col').value;
+  const c = editing ? { ...editing } : { id: null };
+  Object.assign(c, { title, body: F('f-body').value.trim(), needs: F('f-needs').value.trim(), col, pos: editing && editing.col === col ? editing.pos : endPos(col) });
+  F('f-save').disabled = true;
+  try { const row = await save(c); if (editing) Object.assign(editing, row); else cards.push(row); render(); dlg.close(); }
+  catch (err) { F('f-err').textContent = 'Could not save. Try again.'; }
+  F('f-save').disabled = false;
+  if (window.matchMedia('(max-width:900px)').matches && F('f-col').value !== tab) showTab(F('f-col').value);
+};
+F('f-del').onclick = async () => {
+  const b = F('f-del');
+  if (!b.classList.contains('armed')) { b.classList.add('armed'); b.textContent = 'Tap again to delete'; return; }
+  try { status('Deleting…'); await rpc('board_delete', { p_eng: ENG, p_token: TOK, p_id: editing.id, p_by: me }); cards = cards.filter(x => x.id !== editing.id); render(); dlg.close(); status('Deleted', 2000); }
+  catch (err) { F('f-err').textContent = 'Could not delete. Try again.'; }
+};
+
+// Keep in sync with other viewers.
+try { await load(); } catch (e) { return fail('Could not load the board. Refresh to try again.'); }
+setInterval(() => { if (document.visibilityState === 'visible' && !dlg.open && !dragId) load().catch(() => {}); }, 15000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && !dlg.open) load().catch(() => {}); });
+})();
+</script>
+</body>
+</html>

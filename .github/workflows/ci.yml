@@ -60,6 +60,8 @@ jobs:
               if (e.isDirectory()) walk(p); else if (p.endsWith('.html')) pages.push(p);
             }
           })('.');
+          // Each deployed site resolves "/x" against its own folder: the storefront and the client portal.
+          const SITE_ROOTS = ['storefront', 'client-portal'];
           let bad = 0;
           for (const page of pages) {
             const html = fs.readFileSync(page, 'utf8');
@@ -67,7 +69,7 @@ jobs:
               const ref = m[1];
               if (/^([a-z]+:|\/\/|data:|mailto:|tel:)/i.test(ref) || ref.includes('${')) continue;
               const target = ref.startsWith('/')
-                ? path.join(path.dirname(page).startsWith('storefront') ? 'storefront' : '.', ref)
+                ? path.join(SITE_ROOTS.find((r) => path.dirname(page).startsWith(r)) || '.', ref)
                 : path.join(path.dirname(page), ref);
               const ok = fs.existsSync(target) || fs.existsSync(path.join(target, 'index.html'));
               if (!ok) { console.log(`${page}: missing ${ref}`); bad++; }
