@@ -79,6 +79,12 @@ This built on a first version the client's in-house developer wrote in August, w
 
 ![The drafted job description](/case-studies/hr-position-finalization/img/job-description.jpg "The drafted job description, ready to edit and send.")
 
+## How it was designed
+
+The whole hiring process was mapped on one Figma board before the build: who acts at each step, what was already built, and which phase each later step belongs to. The client's name is blurred.
+
+![The hiring workflow map](/case-studies/hr-position-finalization/img/design-workflow-map.jpg "Yellow: the request and approval that already existed. Phase 1 is the part this project built: the HR role, the queue, and finalizing title, pay and benefits. Phases 2 to 7 follow the in-house developer's plan for the rest of hiring.")
+
 ## The paperwork
 
 This case study as a branded summary, to keep or pass along.
