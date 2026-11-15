@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Project — Plumbline Studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link id="brandfonts" rel="stylesheet" href="">
+<style>
+/* Studio chrome (Plumbline) sits on top; everything under .wrap wears the client's brand tokens. */
+:root{--pl-navy:#1b2433;--pl-peak:#292d36;--pl-gold:#c8a878;--pl-slate:#9ba5b4}
+:root {
+  --bg:#f4f5f7; --bg2:rgba(255,255,255,.82); --fg:#201e1f; --mute:#6c6462; --line:#ddd6d0;
+  --accent:#c46948; --accent-ink:#ffffff; --accent-text:#96492f;
+  --built:#2e7d5b; --partial:#b7791f; --missing:#b3443a; --client:#4a5f9c;
+  --phone:#201e1f; --phone-fg:#fafafa; --phone-mute:#b9b2ad; --phone-line:#3a3536;
+  --display:'Barlow Semi Condensed','Arial Narrow',sans-serif; --body:'Barlow',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+/* studio bar */
+.studio{background:var(--pl-navy);color:#fff;font:13px/1.4 'Inter',system-ui,sans-serif;position:relative;z-index:2}
+.studio .in{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.studio .word{font-weight:600;letter-spacing:.24em;font-size:11px;color:var(--pl-slate);text-decoration:none;white-space:nowrap}
+.studio .word b{color:#fff}
+.studio .bob{width:7px;height:7px;background:var(--pl-gold);transform:rotate(45deg);margin:0 4px}
+.studio .proj{font:600 14px 'Playfair Display',serif;flex:1;min-width:120px}
+.studio .who{color:var(--pl-slate)}
+.studio a.act{color:var(--pl-gold);text-decoration:none;cursor:pointer;white-space:nowrap}
+.studio .tabs{display:flex;gap:2px;width:100%;margin-top:4px;border-top:1px solid rgba(255,255,255,.1);padding-top:6px}
+.studio .tabs button{appearance:none;border:0;background:transparent;color:var(--pl-slate);font:500 13px 'Inter',sans-serif;padding:7px 12px;border-radius:6px;cursor:pointer}
+.studio .tabs button[aria-selected="true"]{background:rgba(200,168,120,.16);color:#fff}
+.studio .tabs button:focus-visible{outline:2px solid var(--pl-gold)}
+#plexus{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 48px}
+.tab{display:none}.tab.on{display:block}
+.summary div,.box,.tl div,.rail button,.nav button,.card{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+header.top{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-block:20px 12px;border-bottom:1px solid var(--line)}
+header.top img{height:44px;width:auto;border-radius:6px}
+.hdr-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg2)}
+.theme button{appearance:none;border:0;background:transparent;color:var(--mute);font:inherit;font-family:var(--display);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;cursor:pointer}
+.theme button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.kicker{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--mute)}
+h1.title{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:18px 0 6px;text-wrap:balance}
+.lede{max-width:62ch;color:var(--mute);margin:0 0 18px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;margin:0 0 18px}
+.legend span::before,.chip::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.s-built::before{background:var(--built)}.s-partial::before{background:var(--partial)}.s-missing::before{background:var(--missing)}.s-client::before{background:var(--client)}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 22px}
+.summary div{background:var(--bg2);border:1px solid var(--line);padding:12px 14px;border-radius:8px}
+.summary b{font-family:var(--display);font-size:28px;display:block;line-height:1;font-variant-numeric:tabular-nums}
+.summary small{color:var(--mute);font-size:13px}
+.rail{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;margin:0 0 20px}
+.rail button{appearance:none;border:0;background:var(--bg2);border-top:4px solid var(--line);padding:8px 6px;text-align:left;cursor:pointer;color:var(--fg);font:inherit;font-size:12px;line-height:1.25;border-radius:0 0 6px 6px;min-width:0}
+.rail button b{display:block;font-family:var(--display);font-size:13px}
+.rail button.built{border-top-color:var(--built)}.rail button.partial{border-top-color:var(--partial)}.rail button.missing{border-top-color:var(--missing)}.rail button.client{border-top-color:var(--client)}
+.rail button[aria-current="step"]{outline:2px solid var(--accent);outline-offset:1px}
+@media (max-width:760px){.rail{grid-template-columns:repeat(5,minmax(0,1fr))} .rail button span{display:none}}
+.stage{display:grid;grid-template-columns:minmax(260px,340px) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:760px){.stage{grid-template-columns:1fr}}
+.phone{background:var(--phone);color:var(--phone-fg);border-radius:34px;padding:14px;border:1px solid var(--phone-line);box-shadow:0 20px 50px rgba(0,0,0,.25);max-width:340px;margin:0 auto;width:100%}
+.phone .notch{width:90px;height:6px;border-radius:3px;background:#444;margin:4px auto 14px}
+.phone .scr{min-height:460px;padding:14px 12px 18px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.4}
+.phone h1,.phone h2{font-family:var(--display);line-height:1.1;margin:0}
+.phone h1{font-size:28px}.phone h2{font-size:24px}
+.phone p{margin:0;color:var(--phone-mute)}
+.phone .btn{background:var(--accent);color:var(--accent-ink);text-align:center;padding:12px;border-radius:8px;font-weight:600;margin-top:4px}
+.phone .fine{color:var(--phone-mute);font-size:11px}
+.phone .brandbar img{width:100%;border-radius:6px}
+.phone .ph{border:1px dashed var(--phone-line);color:var(--phone-mute);text-align:center;padding:30px 10px;border-radius:8px;font-size:12px;margin-top:auto}
+.phone .feed .post{display:flex;gap:8px;align-items:center;font-size:12px}.phone .av{width:28px;height:28px;border-radius:50%;background:var(--accent)}
+.phone .post-img{aspect-ratio:1;background:#2b2728;border-radius:8px;display:grid;place-items:center;color:var(--phone-mute);font-size:12px;margin:8px 0}
+.phone .cap{font-size:12px}.phone .arrow{margin-top:auto;text-align:center;color:var(--accent);font-family:var(--display)}
+.phone .q .num{font-size:11px;color:var(--accent);font-family:var(--display);letter-spacing:.06em;text-transform:uppercase}
+.phone .opt{border:1px solid var(--phone-line);border-radius:8px;padding:10px;margin-top:6px}
+.phone .coord{display:flex;flex-wrap:wrap;gap:6px}.phone .coord span{border:1px solid var(--accent);color:var(--accent);border-radius:20px;padding:3px 9px;font-size:12px}
+.phone .harb{background:#2b2728;border-radius:8px;padding:10px;font-size:13px}
+.phone .field{border:1px solid var(--phone-line);border-radius:8px;padding:10px;color:var(--phone-mute)}
+.phone .mail{background:#f4efe9;color:#201e1f;border-radius:8px;padding:10px;font-size:12px;line-height:1.45;margin-top:auto}
+.phone .video{aspect-ratio:16/9;background:#2b2728;border-radius:8px;display:grid;place-items:center;gap:4px;font-size:12px;color:var(--phone-mute)}
+.phone .play{width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff}
+.phone .tag{font-size:11px;border-radius:6px;padding:6px 8px;background:#263d31;color:#9fe0bd}.phone .tag.miss{background:#432a27;color:#f2a79c}
+.phone .price{font-family:var(--display);font-size:44px;color:var(--accent);line-height:1}
+.phone .inbox,.phone .card{background:#2b2728;border-radius:8px;padding:10px;font-size:13px}
+.phone .check{border:1px solid var(--phone-line);border-radius:8px;padding:10px}.phone .check.hand{border-color:var(--accent);color:var(--accent)}
+.phone a.scr{text-decoration:none;color:inherit}
+.phone .livemirror{position:relative;overflow:hidden;border-radius:18px;padding:0;min-height:520px;justify-content:flex-end;background:#1b1a1d}
+.phone .livemirror .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 20%}
+.phone .livemirror .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,19,22,.55),rgba(20,19,22,.82) 55%,rgba(20,19,22,.94))}
+.phone .livepill{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:2;font-family:var(--display);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:#fff;border-radius:20px;padding:4px 10px;white-space:nowrap}
+.phone .lm-body{position:relative;z-index:1;padding:18px 16px 20px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.phone .lm-k{color:#c9a85c;letter-spacing:.3em;text-transform:uppercase;font-size:10px}
+.phone .lm-t{font-family:Georgia,'Times New Roman',serif;font-size:40px;color:#efe9df;font-weight:700}
+.phone .lm-p{color:#d9d4cd;font-size:13px;line-height:1.45}
+.phone .lm-btn{align-self:center;background:#3b8fa0;color:#0f1a1d;font-weight:700;border-radius:30px;padding:12px 28px;font-size:15px}
+.phone .lm-fine{color:#a8a39c;font-size:10px;line-height:1.4}
+.livebox{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 18px}
+.livebox a{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:#fff;background:var(--accent);text-decoration:none;border-radius:20px;padding:8px 14px}
+.livebox span{color:var(--mute);font-size:14px;flex:1;min-width:200px}
+.videos{margin:0 0 18px}
+.videos h3{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin:0 0 4px;color:var(--mute)}
+.videos .vnote{color:var(--mute);font-size:14px;margin:0 0 10px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.vcard{background:var(--bg2);border:1px solid var(--line);border-radius:8px;overflow:hidden;min-width:0}
+.vcard .frame{aspect-ratio:16/9;background:var(--phone);position:relative;display:grid;place-items:center;text-decoration:none;overflow:hidden}
+.vcard .frame::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(255,255,255,.08),transparent 70%)}
+.vcard .frame .play{position:relative;width:52px;height:52px;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .15s}
+.vcard .frame .play::after{content:"";margin-left:4px;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff}
+.vcard .frame:hover .play{transform:scale(1.08)}
+.vcard .frame .yr{position:absolute;right:10px;bottom:8px;font-family:var(--display);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--phone-mute)}
+.vcard .vt{padding:8px 10px 2px;font-family:var(--display);font-size:14px}
+.vcard .vn{padding:0 10px 10px;color:var(--mute);font-size:12.5px;line-height:1.4}
+.askbar{background:var(--bg2);border:1px solid var(--accent);border-radius:8px;padding:12px 14px;margin:0 0 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;backdrop-filter:blur(6px)}
+.askbar b{font-family:var(--display);font-size:16px}
+.askbar span{color:var(--mute);font-size:14px;flex:1;min-width:220px}
+.navlink{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--accent-text);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:6px 12px;background:var(--bg2);cursor:pointer}
+.ans{margin:6px 0 2px;padding-left:0;list-style:none}
+.ans li{background:var(--bg2);border-left:3px solid var(--built);border-radius:0 6px 6px 0;padding:6px 10px;margin:4px 0;font-size:14px}
+.ans li small{display:block;color:var(--mute);font-size:12px}
+.answer-t{font-family:var(--display);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);background:none;border:1px solid var(--line);border-radius:14px;padding:3px 10px;cursor:pointer;margin:4px 0 2px}
+.aform{display:none;margin:6px 0 8px}.aform.open{display:block}
+.aform textarea{width:100%;min-height:76px;border:1px solid var(--line);border-radius:6px;padding:8px;font:inherit;font-size:14px;background:var(--bg2);color:var(--fg)}
+.aform .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.aform input{border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit;font-size:13px;background:var(--bg2);color:var(--fg);width:160px}
+.aform button{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:#fff;background:var(--accent);border:0;border-radius:14px;padding:7px 12px;cursor:pointer}
+.aform .st{font-size:12px;color:var(--mute)}
+.opts{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0}
+.opts button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);border-radius:14px;padding:4px 10px;cursor:pointer}
+.opts button.sel{border-color:var(--accent);color:var(--accent-text)}
+.panel h2{font-family:var(--display);font-size:clamp(24px,3vw,32px);margin:0 0 4px;line-height:1.1}
+.panel .short{color:var(--mute);margin:0 0 12px}
+.chip{display:inline-block;font-size:13px;font-weight:600;border:1px solid var(--line);border-radius:20px;padding:3px 10px 3px 8px;margin-bottom:14px}
+.panel .what{max-width:62ch;margin:0 0 18px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:980px){.cols{grid-template-columns:1fr}}
+.box{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0}
+.box h3{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin:0 0 8px;color:var(--mute)}
+.box ul{margin:0;padding-left:18px}.box li{margin:0 0 6px}
+.who{font-family:var(--display);font-size:12px;letter-spacing:.05em;text-transform:uppercase;border-radius:4px;padding:1px 6px;margin-right:6px;color:#fff}
+.who.kyle{background:var(--accent)}.who.drtom{background:var(--client)}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:22px}
+.nav button{appearance:none;font:inherit;font-weight:600;border:1px solid var(--line);background:var(--bg2);color:var(--fg);padding:10px 16px;border-radius:8px;cursor:pointer}
+section.after{margin-top:44px;border-top:1px solid var(--line);padding-top:24px}
+section.after h2,.tab h2.h{font-family:var(--display);font-size:26px;margin:0 0 10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}@media (max-width:860px){.two{grid-template-columns:1fr}}
+.terms dt{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:12px;color:var(--mute);margin-top:10px}.terms dd{margin:2px 0 0}
+ol.dec{padding-left:20px}ol.dec li{margin:0 0 8px}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media (max-width:760px){.tl{grid-template-columns:1fr}}
+.tl div{background:var(--bg2);border:1px solid var(--line);border-left:4px solid var(--accent);padding:12px 14px;border-radius:8px}
+.tl b{font-family:var(--display);display:block;font-size:18px}
+footer{margin-top:40px;color:var(--mute);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+/* brand + files + answers tabs */
+.tab .pad{padding-top:22px}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:0 0 18px}
+.sw div{border-radius:8px;padding:12px;height:104px;display:flex;flex-direction:column;justify-content:flex-end;font-family:var(--display);font-size:13px;line-height:1.25;border:1px solid rgba(0,0,0,.08)}
+.sw b{display:block;font-size:15px}.sw small{opacity:.8;font-family:var(--body);font-size:11px}
+.logos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 18px}@media (max-width:600px){.logos{grid-template-columns:1fr}}
+.logobox{border-radius:10px;padding:24px;display:grid;place-items:center;border:1px solid var(--line)}
+.logobox img{width:100%;max-width:360px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{display:block;background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit}
+.card:hover{border-color:var(--accent)}
+.card b{display:block;font-family:var(--display);font-size:17px}
+.card span{color:var(--mute);font-size:13.5px}
+.card .k{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--accent-text);display:block;margin-bottom:4px}
+.group h3{font-family:var(--display);font-size:18px;margin:16px 0 8px}
+.rcard{background:var(--bg2);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 14px;margin:0 0 8px}
+.rcard.handled{border-left-color:var(--built)}
+.rcard .item{color:var(--mute);font-size:13px;margin:0 0 4px}
+.rcard .a{font-size:16px;white-space:pre-wrap}
+.rcard .meta{font-size:12px;color:var(--mute);margin-top:6px}
+.empty{color:var(--mute);padding:20px 0}
+.notice{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:30px;text-align:center;margin:40px auto;max-width:520px}
+.notice a{color:var(--accent-text)}
+</style>
+</head>
+<body>
+<div class="studio"><div class="in">
+  <a class="word" href="/">PLUMBLINE <b>STUDIO</b></a><span class="bob" aria-hidden="true"></span>
+  <span class="proj" id="s-proj">Client portal</span>
+  <span class="who" id="s-who"></span>
+  <a class="act" id="s-act" href="/">Projects</a>
+  <div class="tabs" role="tablist" id="tabs">
+    <button role="tab" data-tab="plan" aria-selected="true">Plan</button>
+    <button role="tab" data-tab="brand" aria-selected="false">Brand</button>
+    <button role="tab" data-tab="files" aria-selected="false">Files</button>
+    <button role="tab" data-tab="answers" aria-selected="false">Answers</button>
+  </div>
+</div></div>
+<canvas id="plexus" aria-hidden="true"></canvas>
+<div class="wrap" id="app"><div class="notice" id="loading">Loading…</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+<script src="/portal.js"></script>
+<script>
+(async () => {
+const P = window.PORTAL, esc = P.esc, q = new URLSearchParams(location.search);
+const code = (location.pathname.match(/^\/p\/([a-z0-9-]+)/i) || [])[1] || q.get('code');
+const app = document.getElementById('app');
+function fail(msg, link) { app.innerHTML = `<div class="notice">${msg}${link ? `<br><br><a href="${link.href}">${link.text}</a>` : ''}</div>`; }
+
+// 1. Load: guest token, or a signed-in member.
+let data = null, who = '', isGuest = false;
+const token = q.get('g') || sessionStorage.getItem('pl-guest');
+if (q.get('g')) sessionStorage.setItem('pl-guest', q.get('g'));
+const sess = await P.session();
+if (sess) {
+  await P.claim();
+  let rows = []; try { rows = await P.mine(); } catch (e) {}
+  const r = code ? rows.find(x => x.workup && x.workup.code === code) : rows[0];
+  if (r) { data = r; who = sess.user.email; }
+}
+if (!data && token) {
+  try { const g = await P.guest(token); if (g && g.workup) { data = g; isGuest = true; who = 'Guest link · ' + (g.guest.label || ''); } } catch (e) {}
+}
+if (!data) {
+  if (sess) return fail('This project is not shared with ' + esc(sess.user.email) + '.', { href: '/', text: 'Back to your projects' });
+  return fail('Sign in to see this project.', { href: '/?next=' + encodeURIComponent(location.pathname), text: 'Sign in' });
+}
+const W = data.workup, M = W.model, MOCK = W.mocks || {}, B = W.brand || {};
+const clientName = (data.client && data.client.company) || M.client || '';
+document.title = clientName + ' — Plumbline Studio';
+document.getElementById('s-proj').textContent = clientName + ' · ' + (data.engagement.title || '');
+document.getElementById('s-who').textContent = who;
+const act = document.getElementById('s-act');
+if (isGuest) { act.textContent = 'Sign in'; act.href = '/?next=' + encodeURIComponent('/p/' + (W.code || '')); }
+else { act.textContent = 'Sign out'; act.onclick = (e) => { e.preventDefault(); P.signOut(); }; }
+
+// 2. Wear the client's brand.
+const root = document.documentElement, modes = B.modes || {}, st = (modes.status || {});
+if (B.type && B.type.googleFonts) document.getElementById('brandfonts').href = B.type.googleFonts;
+if (B.type) { root.style.setProperty('--display', B.type.display || ''); root.style.setProperty('--body', B.type.body || ''); }
+function applyMode(dark) {
+  const m = dark ? (modes.dark || {}) : (modes.light || {});
+  const set = (k, v) => v && root.style.setProperty(k, v);
+  set('--bg', m.page); set('--bg2', m.surface); set('--fg', m.ink); set('--mute', m.muted); set('--line', m.border);
+  set('--accent', m.action); set('--accent-ink', m.onAction); set('--accent-text', m.accentText);
+  ['built','partial','missing','client'].forEach(k => st[k] && set('--' + k, st[k][dark ? 'dark' : 'light']));
+  const logo = document.getElementById('logo'); if (logo && B.logos) logo.src = dark ? (B.logos.dark || B.logos.light) : (B.logos.light || B.logos.dark);
+}
+const mq = matchMedia('(prefers-color-scheme: dark)');
+const isDark = () => root.dataset.theme === 'dark' || (root.dataset.theme !== 'light' && mq.matches);
+
+// 3. Answers.
+const PROJECT = W.responses_project || (W.code + '-phase1');
+let R = await P.answers(PROJECT);
+const clientLabel = M.clientShort || (data.client && data.client.contact_name) || 'the client';
+function answersFor(key) { return R.filter(x => x.item_key === key); }
+function answeredCount() { return new Set(R.filter(x => x.kind === 'need').map(x => x.item_key)).size; }
+function fmtDate(d) { return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
+function decisionOptions(i) { const o = (M.decisionOptions && M.decisionOptions[i]); if (o) return o; const m = { 0: ['As delivered','Softer','Offset'], 1: ['General MBC VSL','Skip the video'], 2: ['Practice Better','Stripe on the page'], 3: ['Google Sheet','GoHighLevel','Practice Better'], 4: ['Tuesday afternoon','Thursday afternoon'] }; return W.code === 'mbc' ? (m[i] || null) : null; }
+function answerBlock(key, kind, step, item, opts) {
+  const prior = answersFor(key).map(a => `<li>${esc(a.answer)}<small>${esc(a.answered_by)} · ${fmtDate(a.created_at)}${a.handled_at ? ' · noted by Kyle' : ''}</small></li>`).join('');
+  let name = ''; try { name = localStorage.getItem('pl-answerer') || ''; } catch (e) {}
+  if (!name) name = who && !isGuest ? who.split('@')[0] : clientLabel;
+  return `${prior ? `<ul class="ans">${prior}</ul>` : ''}<button class="answer-t" type="button" data-key="${key}">${prior ? 'Add to this' : 'Answer'}</button>
+  <div class="aform" data-key="${key}" data-kind="${kind}" data-step="${step ?? ''}" data-item="${esc(item)}">${opts ? `<div class="opts">${opts.map(o => `<button type="button" data-opt="${esc(o)}">${esc(o)}</button>`).join('')}</div>` : ''}<textarea placeholder="Your answer. A link, a sentence, or a yes is enough."></textarea><div class="row"><input placeholder="Your name" value="${esc(name)}"><button type="button" class="save">Save</button><span class="st"></span></div></div>`;
+}
+function bindAnswers(rootEl) {
+  rootEl.querySelectorAll('.answer-t').forEach(b => b.onclick = () => { const f = rootEl.querySelector(`.aform[data-key="${b.dataset.key}"]`); f.classList.toggle('open'); if (f.classList.contains('open')) f.querySelector('textarea').focus(); });
+  rootEl.querySelectorAll('.aform').forEach(f => {
+    f.querySelectorAll('.opts button').forEach(o => o.onclick = () => { f.querySelectorAll('.opts button').forEach(x => x.classList.remove('sel')); o.classList.add('sel'); const t = f.querySelector('textarea'); if (!t.value.trim()) t.value = o.dataset.opt; });
+    f.querySelector('.save').onclick = async () => {
+      const ta = f.querySelector('textarea'), whoIn = f.querySelector('input').value.trim() || 'Client', stEl = f.querySelector('.st');
+      let answer = ta.value.trim(); const sel = f.querySelector('.opts button.sel'); if (sel && !answer.startsWith(sel.dataset.opt)) answer = sel.dataset.opt + (answer ? ' — ' + answer : '');
+      if (!answer) { stEl.textContent = 'Write something first.'; return; }
+      stEl.textContent = 'Saving…'; try { localStorage.setItem('pl-answerer', whoIn); } catch (e) {}
+      try { const row = await P.saveAnswer({ project: PROJECT, step: f.dataset.step ? +f.dataset.step : null, kind: f.dataset.kind, item_key: f.dataset.key, item: f.dataset.item, answer, answered_by: whoIn }); R.push(row); stEl.textContent = 'Saved. Kyle can see it now.'; setTimeout(() => { renderSummary(); if (f.dataset.kind === 'decision') renderDecisions(); else renderStep(); renderAnswers(); }, 700); }
+      catch (e) { stEl.textContent = 'Could not save. Try again, or email Kyle.'; }
+    };
+  });
+}
+
+// 4. Shell.
+const LABEL = { built: 'Built', partial: 'Exists, needs work', missing: 'Kyle builds', client: 'Waiting on ' + esc(clientLabel) };
+app.innerHTML = `
+<header class="top">
+  <img id="logo" src="${esc((B.logos && (B.logos.dark || B.logos.light)) || '')}" alt="${esc(clientName)}" ${B.logos ? '' : 'hidden'}>
+  <div class="hdr-right"><div class="kicker">${esc(M.project ? 'Phase 1 workup' : 'Workup')} · Prepared by Plumbline Studio · ${esc(M.asOf || '')}</div>
+  <div class="theme" role="group" aria-label="Theme"><button id="th-light" data-th="light">Light</button><button id="th-auto" data-th="auto">Auto</button><button id="th-dark" data-th="dark">Dark</button></div></div>
+</header>
+<section class="tab on" data-tab="plan">
+  <h1 class="title">${esc(M.title || (data.engagement.title + ', step by step'))}</h1>
+  <p class="lede">${esc(M.lede || (M.status + ' Click through what a visitor will see. Each step shows what already exists, what Kyle still builds, and what we need from you.'))}</p>
+  <div class="legend"><span class="s-built">Built</span><span class="s-partial">Exists, needs work</span><span class="s-missing">Kyle builds</span><span class="s-client">Waiting on ${esc(clientLabel)}</span></div>
+  <div class="askbar"><b>${esc(clientLabel)}, answer right here.</b><span>Every item marked "we need from you" has an Answer button. A link, a sentence, or a yes is enough. Kyle sees it the moment you save.</span><a class="navlink" data-go="answers">All answers →</a></div>
+  <div class="summary" id="summary"></div>
+  <nav class="rail" id="rail" aria-label="Steps"></nav>
+  <div class="stage"><div class="phone"><div class="notch"></div><div id="mock"></div></div><div class="panel" id="panel"></div></div>
+  <section class="after"><div class="two"><div><h2>Working agreement</h2><dl class="terms" id="terms"></dl></div><div><h2>Decisions still open</h2><ol class="dec" id="decisions"></ol></div></div></section>
+  <section class="after"><h2>${esc(M.timelineTitle || 'Three weeks, once the inputs land')}</h2><div class="tl" id="timeline"></div></section>
+</section>
+<section class="tab" data-tab="brand"><div class="pad" id="brand"></div></section>
+<section class="tab" data-tab="files"><div class="pad" id="files"></div></section>
+<section class="tab" data-tab="answers"><div class="pad" id="answers"></div></section>
+<footer>Plumbline Studio · Build it true. · ${esc(clientName)} client portal</footer>`;
+
+// theme
+(function () {
+  const btns = [...document.querySelectorAll('.theme button')];
+  function apply(th) { if (th === 'auto') delete root.dataset.theme; else root.dataset.theme = th; btns.forEach(b => b.setAttribute('aria-pressed', b.dataset.th === th ? 'true' : 'false')); try { localStorage.setItem('pl-theme', th); } catch (e) {} applyMode(isDark()); }
+  let saved = 'auto'; try { saved = localStorage.getItem('pl-theme') || 'auto'; } catch (e) {}
+  apply(saved); btns.forEach(b => b.onclick = () => apply(b.dataset.th));
+  mq.addEventListener('change', () => applyMode(isDark()));
+})();
+
+// tabs
+function showTab(t) { document.querySelectorAll('.tab').forEach(s => s.classList.toggle('on', s.dataset.tab === t)); document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t ? 'true' : 'false')); if (t !== 'plan') history.replaceState(null, '', '#' + t); else history.replaceState(null, '', '#step-' + cur); window.scrollTo(0, 0); }
+document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => showTab(b.dataset.tab));
+document.querySelectorAll('[data-go]').forEach(a => a.onclick = () => showTab(a.dataset.go));
+
+// 5. Plan.
+let cur = 1;
+const steps = M.steps || [];
+function renderSummary() {
+  const c = { built: 0, partial: 0, missing: 0, client: 0 }; let k = 0, t = 0;
+  steps.forEach(s => { c[s.status] = (c[s.status] || 0) + 1; (s.need || []).forEach(n => { if (n.who === 'kyle') k++; else t++; }); });
+  document.getElementById('summary').innerHTML = `<div><b>${steps.length}</b><small>steps in the flow</small></div><div><b>${c.built + c.partial}</b><small>built or partly built</small></div><div><b>${k}</b><small>items Kyle owns</small></div><div><b>${t}</b><small>items we need from ${esc(clientLabel)}</small></div><div><b>${answeredCount()}</b><small>answered so far</small></div>`;
+}
+function renderRail() {
+  const rail = document.getElementById('rail'); rail.style.gridTemplateColumns = `repeat(${Math.min(10, steps.length)},minmax(0,1fr))`;
+  rail.innerHTML = steps.map(s => `<button class="${s.status}" data-id="${s.id}" aria-current="${s.id === cur ? 'step' : 'false'}"><b>${s.id}</b><span>${esc(s.title)}</span></button>`).join('');
+  rail.querySelectorAll('button').forEach(b => b.onclick = () => go(+b.dataset.id));
+}
+function renderStep() {
+  const s = steps.find(x => x.id === cur); if (!s) return;
+  document.getElementById('mock').innerHTML = MOCK[s.id] || '<div class="scr"><div class="ph">No screen for this step yet</div></div>';
+  const ml = document.getElementById('mocklogo'); if (ml && B.logos) ml.src = B.logos.dark || B.logos.light;
+  const need = w => (s.need || []).filter(n => (w === 'kyle') === (n.who === 'kyle')).map(n => { const key = `s${s.id}:${n.who}:${s.need.indexOf(n)}`; return `<li>${esc(n.item)}${w !== 'kyle' ? answerBlock(key, 'need', s.id, n.item) : ''}</li>`; }).join('') || '<li>Nothing</li>';
+  document.getElementById('panel').innerHTML = `
+    <div class="kicker">Step ${s.id} of ${steps.length}</div>
+    <h2>${esc(s.title)}</h2><p class="short">${esc(s.short || '')}</p>
+    <span class="chip s-${s.status}">${LABEL[s.status] || s.status}</span>
+    <p class="what">${esc(s.what || '')}</p>
+    ${s.videos ? `<div class="videos"><h3>Videos we have</h3><p class="vnote">${esc(s.videosNote || '')}</p><div class="vgrid">${s.videos.map(v => `<div class="vcard"><a class="frame" href="${esc(v.url || ('https://drive.google.com/file/d/' + v.drive + '/view'))}" target="_blank" rel="noopener" aria-label="Play ${esc(v.title)}"><span class="play"></span><span class="yr">${esc(v.year || '')}</span></a><div class="vt">${esc(v.title)}</div><div class="vn">${esc(v.note || '')}</div></div>`).join('')}</div></div>` : ''}
+    ${s.live ? `<div class="livebox"><a href="${esc(s.live.url)}" target="_blank" rel="noopener">${esc(s.live.label)} →</a><span>${esc(s.live.note || '')}</span></div>` : ''}
+    <div class="cols">
+      <div class="box"><h3>What we have</h3><ul>${(s.have || []).map(h => `<li>${esc(h)}</li>`).join('') || '<li>Nothing yet</li>'}</ul></div>
+      <div class="box"><h3><span class="who kyle">Kyle</span>Builds</h3><ul>${need('kyle')}</ul></div>
+      <div class="box" style="grid-column:1/-1"><h3><span class="who drtom">${esc(clientLabel)}</span>We need from you</h3><ul>${need('client')}</ul></div>
+    </div>
+    <div class="nav"><button id="prev" ${cur === 1 ? 'disabled' : ''}>← Previous</button><button id="next" ${cur === steps.length ? 'disabled' : ''}>Next step →</button></div>`;
+  bindAnswers(document.getElementById('panel'));
+  document.getElementById('prev').onclick = () => go(cur - 1);
+  document.getElementById('next').onclick = () => go(cur + 1);
+  document.querySelectorAll('.rail button').forEach(b => b.setAttribute('aria-current', +b.dataset.id === cur ? 'step' : 'false'));
+}
+function go(n) { if (n < 1 || n > steps.length) return; cur = n; history.replaceState(null, '', '#step-' + n); renderStep(); }
+function renderDecisions() { document.getElementById('decisions').innerHTML = (M.decisions || []).map((d, i) => `<li>${esc(d)}${answerBlock('decision:' + i, 'decision', null, d, decisionOptions(i))}</li>`).join('') || '<li>None open</li>'; bindAnswers(document.getElementById('decisions')); }
+document.getElementById('terms').innerHTML = Object.entries(M.terms || {}).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('');
+document.getElementById('timeline').innerHTML = (M.timeline || []).map(t => `<div><b>${esc(t.week)}</b>${esc(t.what)}</div>`).join('');
+renderSummary(); renderRail(); renderDecisions();
+{ const x = /^#step-(\d+)$/.exec(location.hash); if (x && +x[1] >= 1 && +x[1] <= steps.length) cur = +x[1]; }
+renderStep();
+
+// 6. Brand.
+(function () {
+  const el = document.getElementById('brand'); const col = B.color || {};
+  const swatches = Object.entries(col).map(([k, v]) => `<div style="background:${esc(v.hex)};color:${/^#(f|e|d|c)/i.test(v.hex) ? '#201e1f' : '#fff'}"><b>${esc(k)}</b>${esc(v.hex)}<small>${esc(v.role || '')}</small></div>`).join('');
+  const voice = B.voice || {};
+  el.innerHTML = `<h2 class="h">The brand as it exists today</h2><p class="lede">${esc(B.decision || '')}</p>
+    ${B.logos ? `<div class="logos"><div class="logobox" style="background:${esc((col.charcoal && col.charcoal.hex) || '#201e1f')}"><img src="${esc(B.logos.dark || '')}" alt="Lockup on dark"></div><div class="logobox" style="background:#fff"><img src="${esc(B.logos.light || B.logos.dark || '')}" alt="Lockup on light"></div></div>` : ''}
+    <h3 class="kicker">Color</h3><div class="sw">${swatches}</div>${B.colorPrinciple ? `<p>${esc(B.colorPrinciple)}</p>` : ''}
+    ${B.type ? `<h3 class="kicker">Type</h3><p style="font-family:${esc(B.type.display)};font-size:34px;font-weight:700;line-height:1;margin:6px 0 2px">${esc(B.type.display.split(',')[0].replace(/'/g, ''))}</p><p style="color:var(--mute);margin:0 0 6px">${esc(B.type.body)}</p><p>${esc(B.type.rule || '')}</p>` : ''}
+    ${voice.tagline ? `<h3 class="kicker">Voice</h3><p style="font-family:var(--display);font-size:28px;font-weight:700;line-height:1.1;margin:6px 0 8px">${esc(voice.tagline)}</p><p>${esc(voice.summary || '')}</p><div class="two"><div class="box"><h3>Do</h3><ul>${(voice.do || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></div><div class="box"><h3>Avoid</h3><ul>${(voice.avoid || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></div>` : ''}
+    ${(B.open || []).length ? `<h3 class="kicker" style="margin-top:18px">Open</h3><ul>${B.open.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+    <p class="lede" style="margin-top:18px">Version ${esc(B.version || '')} · ${esc(B.updated || '')}. The full brand book is under Files.</p>`;
+})();
+
+// 7. Files.
+(function () {
+  const el = document.getElementById('files'); const links = W.links || [];
+  const kinds = { demo: 'The plan', brand: 'Brand', file: 'Download', board: 'Board', product: 'Live product', drive: 'Shared folder' };
+  el.innerHTML = `<h2 class="h">Files and links</h2><p class="lede">Everything that exists for this project, in one list. Shared folders open in Google Drive.</p><div class="cards">${links.map(l => `<a class="card" href="${esc(l.url)}" target="_blank" rel="noopener"><span class="k">${esc(kinds[l.kind] || l.kind || 'Link')}</span><b>${esc(l.label)}</b><span>${esc(l.note || '')}</span></a>`).join('')}${data.engagement.drive_folder_url && !links.some(l => l.kind === 'drive') ? `<a class="card" href="${esc(data.engagement.drive_folder_url)}" target="_blank" rel="noopener"><span class="k">Shared folder</span><b>Your folder</b><span>Google Drive</span></a>` : ''}</div>`;
+})();
+
+// 8. Answers.
+function stepTitle(s) { if (s == null) return 'Decisions'; const st = steps.find(x => x.id === s); return st ? `Step ${s} · ${st.title}` : `Step ${s}`; }
+function renderAnswers() {
+  const el = document.getElementById('answers');
+  if (!R.length) { el.innerHTML = `<h2 class="h">Answers</h2><div class="empty">Nothing yet. Every "we need from you" item on the Plan has an Answer button; what you save shows up here.</div>`; return; }
+  const groups = {}; [...R].reverse().forEach(x => { const k = x.kind === 'decision' ? 'Decisions' : stepTitle(x.step); (groups[k] = groups[k] || []).push(x); });
+  el.innerHTML = `<h2 class="h">Answers</h2><p class="lede">${R.length} saved, newest first. Green means Kyle has folded it into the plan.</p>` + Object.entries(groups).map(([g, xs]) => `<div class="group"><h3>${esc(g)}</h3>${xs.map(x => `<div class="rcard ${x.handled_at ? 'handled' : ''}"><div class="item">${esc(x.item)}</div><div class="a">${esc(x.answer)}</div><div class="meta">${esc(x.answered_by)} · ${new Date(x.created_at).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}${x.handled_at ? ' · folded into the plan' + (x.handled_note ? ': ' + esc(x.handled_note) : '') : ''}</div></div>`).join('')}</div>`).join('');
+}
+renderAnswers();
+if (/^#(brand|files|answers)$/.test(location.hash)) showTab(location.hash.slice(1));
+document.getElementById('loading') && document.getElementById('loading').remove();
+})();
+</script>
+<script src="/plexus-bg.js"></script>
+</body>
+</html>
