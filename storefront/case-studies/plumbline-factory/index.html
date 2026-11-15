@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Factory, one container for the whole studio — Plumbline Studio</title>
+<meta name="description" content="The studio's tools, client work and AI workers folded into one Docker container and one Django app, with one gate and one set of rules. Five of nine build phases are done.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/plumbline-factory/">
+<meta property="og:title" content="The Factory, one container for the whole studio — Plumbline Studio">
+<meta property="og:description" content="The studio's tools, client work and AI workers folded into one Docker container and one Django app, with one gate and one set of rules. Five of nine build phases are done.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/plumbline-factory/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/plumbline-factory/img/desk.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <p class="back">Part of the series <a href="/case-studies/studio-operating-system/">The studio's own operating system</a></p>
+  <header class="case-head">
+    <p class="eyebrow">Plumbline Studio (my own studio)</p>
+    <h1>The Factory, one container for the whole studio</h1>
+    <p class="lede">The studio's tools, client work and AI workers folded into one Docker container and one Django app, with one gate and one set of rules. Five of nine build phases are done.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>Plumbline Studio (my own studio)</dd></div><div><dt>Role</dt><dd>Founder and builder, with a swarm of AI agents</dd></div><div><dt>Landed</dt><dd>Nov 11, 2026</dd></div><div><dt>Stack</dt><dd>Python · Django · Postgres · Docker</dd></div><div><dt>Reaches</dt><dd>The studio today; AI consultants later</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>The studio ran on a dozen separate tools: a dashboard, a client portal, a CRM, a document sorter, a set of AI workers on their own schedules. Each lived in its own repo with its own rules, and each drifted on its own.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>One container runs one app with five places: a Desk for what needs me today, a Board, Clients, the Factory itself, and Staff for the AI workers. Every older tool is being folded in as a module with the same shape. A Control Room holds the switches, the worker roster and the audit log. The plan is to sell it later as one container per AI consultant.</p>
+</div>
+</div>
+<h2>What it gives the studio</h2>
+<hr class="rule">
+<ul class="diamond"><li>One place to work instead of a dozen tabs.</li><li>AI workers that log what they would do, and do nothing in my name until I switch them on one by one.</li><li>New client projects stamped from one module shape, so every one starts with the same safeguards.</li><li>One gate for everything, instead of one per repo.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li><strong>Phases 0 to 4, done:</strong> the container, the shared core (accounts, audit, files, documents, integrations, jobs, a gate runner), the five-place shell, and eight modules (blueprints, board, CRM, desk, a factory atlas, funnels, QA runs, working maps). Each phase closed with a recorded passing gate run.</li><li><strong>Phases 5 and 6, in progress:</strong> the knowledge index and the staff runtime. Their work items are closed; the phases are not, yet.</li><li><strong>A build swarm:</strong> nine AI agent roles, each with a written contract of what it may write. A lead dispatches work, an inspector reviews every pull request without editing code, and a scribe writes the READMEs and decision records after each merge.</li></ul>
+<h2>The design choices</h2>
+<hr class="rule">
+<ul class="diamond"><li><strong>Deep modules.</strong> Other code reaches a module only through its <code>api.py</code> or the shared core. Import-linter fails the gate otherwise: core never imports modules, and worker modules never touch the database driver directly.</li><li><strong>Adopt, don't copy.</strong> The studio's live database is adopted as-is, with tables marked unmanaged. Migrations may only add; anything destructive stops and waits for me.</li><li><strong>The integrity veto.</strong> &quot;The container never does in Kyle's name what Kyle has not done&quot;: no worker sends, posts, pays or publishes. Every playscript ends with a veto row and the gate checks for it.</li><li><strong>Dry run by default.</strong> Workers log the writes they would make and stop. Each worker's allowed writes are enforced as an allow-list.</li><li><strong>A module skeleton.</strong> <code>stamp_module</code> makes new modules in four kinds (client intake, client portal, internal tool, quiz product). A stamped module starts switched off, and switching it on needs a passing QA run.</li><li><strong>One gate.</strong> Ruff, mypy, pytest, import-linter, a migrations check, playscript format with its veto, and conflict markers. CI runs exactly the same command.</li></ul>
+<h2>Connects to</h2>
+<hr class="rule">
+<ul class="diamond"><li>Postgres with pgvector</li><li>Django-Q2 for scheduled work, on the database as its broker</li><li>The Anthropic API, behind one integration module</li><li>Images published to GitHub's container registry</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>5 of 9</b><span>build phases closed</span></div><div class="fact"><b>942</b><span>test functions</span></div><div class="fact"><b>8</b><span>modules</span></div><div class="fact"><b>9</b><span>AI agent roles in the build swarm</span></div><div class="fact"><b>80</b><span>recorded decisions, plus 21 architecture records</span></div><div class="fact"><b>9 days</b><span>first commit to the latest (Nov 3 to Nov 11)</span></div>
+</div>
+</div>
+<h2>The blueprint</h2>
+<hr class="rule">
+<p>The Factory's blueprint covers the remaining phases, 5 to 8, and was agreed on November 11, 2026. None of its conditions is met yet. Phases 0 to 4 closed before it was written, each with a passing gate run.</p>
+<div class="blueprint">
+<ol class="conds"><li class="open"><span class="state">Open</span><span class="cond">Phase 5 closed: a knowledge index answers search over the studio's notes and recordings; brand kit and document tools ported.</span><span class="cnote">Its work items are closed; the phase is not.</span></li><li class="open"><span class="state">Open</span><span class="cond">Phase 6 closed: every live worker runs through the Factory's runner, writes only what it is allowed to, and leaves a receipt.</span><span class="cnote">Its work items are closed; the phase is not.</span></li><li class="open"><span class="state">Open</span><span class="cond">The workers run inside the Factory for real, switched from dry run one by one, with the old scheduled tasks retired.</span></li><li class="open"><span class="state">Open</span><span class="cond">Phase 7 closed: every active client engagement and product is a module stamped from the skeleton.</span></li><li class="open"><span class="state">Open</span><span class="cond">Phase 8 closed: each old tool retired after 30 quiet days, with a recorded decision for each.</span></li><li class="open"><span class="state">Open</span><span class="cond">Every table is managed by the Factory, and the image boots on an empty database from the README alone.</span></li><li class="open"><span class="state">Open</span><span class="cond">One &quot;needs you&quot; queue on the Desk for every worker's questions.</span></li><li class="open"><span class="state">Open</span><span class="cond">An autonomy dial: how much the workers may decide alone, with a hard floor.</span></li><li class="open"><span class="state">Open</span><span class="cond">A contractor seat that can work one module and see nothing else.</span></li><li class="open"><span class="state">Open</span><span class="cond">One login on the studio's site that routes clients, me and contractors in by role.</span></li><li class="open"><span class="state">Open</span><span class="cond">Architecture note, a README a newcomer can run from, and a current handoff note.</span></li><li class="open"><span class="state">Open</span><span class="cond">The gate is a required check on every pull request, with its result posted.</span></li><li class="open"><span class="state">Open</span><span class="cond">Tagged releases, production only by merge, one rollback tried.</span></li><li class="open"><span class="state">Open</span><span class="cond">Uptime check, error tracking and automated dependency updates.</span></li><li class="open"><span class="state">Open</span><span class="cond">No dead branches, no unticketed TODOs, no secrets in code.</span></li></ol>
+</div>
+<p>Ruled out:</p>
+<ul class="diamond"><li>Selling it, pricing it or onboarding other operators. That is a separate blueprint.</li><li>A multi-tenant service. It is one container per operator.</li><li>New paid services, or deleting any old tool or data without my approval at that step.</li></ul>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/plumbline-factory/img/desk.jpg"><img src="/case-studies/plumbline-factory/img/desk.jpg" alt="The Desk" loading="lazy"></a><figcaption>The Desk: one queue of what needs me. Here a worker suggested filing a document, and the Factory refused to move it because Drive is connected read-only. Test data.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/plumbline-factory/img/blueprint.jpg"><img src="/case-studies/plumbline-factory/img/blueprint.jpg" alt="A blueprint in the Factory" loading="lazy"></a><figcaption>A blueprint inside the Factory: its terms, its conditions with evidence, and the worthiness check beside it. Test data.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/plumbline-factory/img/control.jpg"><img src="/case-studies/plumbline-factory/img/control.jpg" alt="The Control Room" loading="lazy"></a><figcaption>The Control Room: switches, the worker roster, integrations and the audit log. Secret values are never shown here.</figcaption></figure>
+  </article>
+  <section class="series"><h2>The rest of the series</h2><hr class="rule"><p>Part of <a href="/case-studies/studio-operating-system/">The studio's own operating system</a>.</p><div class="parts"><a class="part" href="/case-studies/plumbline-method/"><b>The method behind every build</b><span>Every project starts from one template. It has to earn a yes before it is built, write down what &quot;done&quot; means, and pass the same automated gate on every change before a person merges it.</span></a><a class="part" href="/case-studies/plumb-bob/"><b>Plumb-bob, a checker that asks whether it should exist</b><span>A GitHub Action that checks a change in three layers, from &quot;does it work?&quot; to &quot;should it exist this way?&quot;. It is built and released, and honestly not yet reliable enough to gate client work.</span></a><a class="part" href="/case-studies/ai-staff/"><b>AI staff that never act in my name</b><span>A roster of AI workers, each with a written contract of what it may read, write and must stop before, plus a memory that carries every session into the next.</span></a></div></section>
+  <p class="source">Facts from the plumbline-factory repo, its Linear project and the studio's blueprint and worker records, checked November 15, 2026. &quot;Unknown&quot; means none of them shows it. Screenshots use the app's test data, not real clients. <a href="/content/case-studies/plumbline-factory.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>
