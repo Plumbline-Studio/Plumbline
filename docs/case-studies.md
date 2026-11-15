@@ -20,6 +20,22 @@ this shape can drive `/case-studies`.
 The build also fills the blocks between `case-studies:start` and `case-studies:end` markers in `index.html`
 (the home page's case-study row), `sitemap.xml` and `llms.txt`. Nothing outside the markers is touched.
 
+## Working files (Drive)
+
+Originals, sources and sign-off live in Google Drive, never in this public repo:
+**10-19 Plumbline Studio / 18 Plumbline / 07 Case Studies / `<slug>`**, one folder per case study, named by the slug.
+
+| Folder | What |
+|---|---|
+| `00 Published` | The blurred, full-size screenshots as they went live. The site serves resized copies. |
+| `01 Originals` | The same screens unblurred. Never published without sign-off. |
+| `02 Sources` | Every fact on the page and where it came from. |
+| `03 Sign-off` | The client's written OK to be named, and the steps to name them. |
+
+`_tools` beside them holds the scripts that re-take both screenshot sets. Each case folder is registered in
+Supabase `documents` (`source = drive`, `doc_type = folder`, tag `case-study:<slug>`), so the Factory module
+finds it by slug. A new case study gets its Drive folder before its Markdown lands here.
+
 ## Front matter
 
 Flat `key: value` lines between `---` fences. Lists are `[a, b]`.
