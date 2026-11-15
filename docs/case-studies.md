@@ -46,7 +46,7 @@ Flat `key: value` lines between `---` fences. Lists are `[a, b]`.
 | `summary` | yes | One or two sentences. Used on cards, in `llms.txt` and as the page description. |
 | `client` | yes | The public label for the client, anonymized: "A nonprofit staff platform". |
 | `visibility` | yes | `public` or `unlisted`. See below. |
-| `date` | yes | `YYYY-MM-DD`: when the work landed (merged or delivered). |
+| `date` | yes | `YYYY-MM-DD`: when the work landed (merged or delivered). Shown as "Landed". |
 | `role` | yes | Kyle's role: "Outside developer". |
 | `stack` | yes | Short, for the meta strip: "Django · ADP · AWS S3". |
 | `order` | yes | Position on the list, lowest first. |

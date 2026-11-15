@@ -192,7 +192,7 @@ function casePage(cs) {
   const html = render(cs.body, cs.slug);
   const hasPlain = html.includes('data-version="plain"');
   const hasTech = html.includes('data-version="technical"');
-  const meta = [['Client', clientLabel(cs)], ['Role', cs.role], ['Merged', fmtDate(cs.date)], ['Stack', cs.stack]]
+  const meta = [['Client', clientLabel(cs)], ['Role', cs.role], ['Landed', fmtDate(cs.date)], ['Stack', cs.stack]]
     .concat(cs.reaches ? [['Reaches', cs.reaches]] : []);
   return `${head({ title: `${cs.title} — Plumbline Studio`, description: cs.summary, canonical: url, noindex: cs.visibility === 'unlisted', image: cs.thumb ? ORIGIN + cs.thumb : null })}
 <main class="wrap case">

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A lead-time clock that waits for the customer — Plumbline Studio</title>
+<meta name="description" content="A fabricator's due dates started the day a deposit cleared, before anyone knew what was ordered or where it shipped. Now customers confirm their order through a private link, and the clock starts then.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/fabricator-order-portal/">
+<meta property="og:title" content="A lead-time clock that waits for the customer — Plumbline Studio">
+<meta property="og:description" content="A fabricator's due dates started the day a deposit cleared, before anyone knew what was ordered or where it shipped. Now customers confirm their order through a private link, and the clock starts then.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/fabricator-order-portal/">
+<meta property="og:image" content="https://plumblinestudio.dev/case-studies/fabricator-order-portal/img/waiting.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <nav class="links" aria-label="Site"><a href="/case-studies/">Case studies</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+</header>
+<main class="wrap case">
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <header class="case-head">
+    <p class="eyebrow">A commercial fabricator</p>
+    <h1>A lead-time clock that waits for the customer</h1>
+    <p class="lede">A fabricator's due dates started the day a deposit cleared, before anyone knew what was ordered or where it shipped. Now customers confirm their order through a private link, and the clock starts then.</p>
+  </header>
+  <dl class="meta"><div><dt>Client</dt><dd>A commercial fabricator</dd></div><div><dt>Role</dt><dd>Builder (sole developer)</dd></div><div><dt>Landed</dt><dd>Sep 9, 2026</dd></div><div><dt>Stack</dt><dd>Static site · Vercel functions · Google Sheets + Drive · SendGrid</dd></div><div><dt>Reaches</dt><dd>The fabricator's customers and production team</dd></div></dl>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <article class="body" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>The fabricator's tracker gave every job a due date the moment the deposit cleared: deposit date plus the quoted lead time. At that point nobody yet knew where the order shipped, who would sign for it, or whether drawings needed approval. The shop planned against a date that was going to slip, and no one could point at why. Customers confirmed their details on a PDF form.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>Each customer gets a private link to their own order. They see where it stands, open their estimate, and confirm the details the PDF used to collect. The lead time starts the day they confirm. Until then the due date reads &quot;Set on confirmation&quot;, on the customer's screen and in the shop's tracker alike, so a blank date means one thing everyone understands: waiting on the customer.</p>
+</div>
+</div>
+<h2>What the client got</h2>
+<hr class="rule">
+<ul class="diamond"><li>A due date that means something, because it starts when the order is actually ready to build.</li><li>No new system for the team. They keep working in the tracker they already use; the portal reads from it and writes back to it.</li><li>One link per order, no passwords, and no customer ever sees another customer's order.</li><li>Reminders that go out on their own, and every customer change logged where the team can see it.</li><li>The switch made safely: every job's existing due date stayed exactly where it was.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li><strong>The re-anchor.</strong> The tracker's <code>Due</code> formula moved from the deposit date to a new <code>Confirmation Complete</code> anchor. 171 cells were rewritten on the live tracker by script, after a backup, and checked against it: 39 of 39 open jobs kept their due date to the day. A dry-run tool now catches any new row that arrives on the old formula.</li><li><strong>A portal with no database of its own.</strong> A static page plus Vercel serverless functions in Node. The client's Google Sheet, behind their AppSheet app, stays the system of record. The portal reads it and writes single cells back through the Sheets API.</li><li><strong>Private links without accounts.</strong> Each order link carries an HMAC token. A wrong token gets a bare 404, so a probe can't tell &quot;no such order&quot; from &quot;wrong link&quot;.</li><li><strong>An allow-list, not a copy.</strong> The order response is built field by field from an allow-list, so a new internal column on the tracker can never reach a customer by default.</li><li><strong>Documents without exposing Drive.</strong> Estimates and drawings stream through the server after the token and ownership checks, so the Drive link never reaches the browser.</li><li><strong>Mail and reminders.</strong> SendGrid from the client's own domain, a daily cron for invites, confirmation nudges and shipping reminders, and a review mode that sends every message to the client's reviewers instead of customers.</li><li><strong>Estimate auto-fill.</strong> A tool that reads the estimate and fills only empty tracker cells, never overwriting what a person typed, and flags disagreements instead of picking a winner.</li><li><strong>Safety rails.</strong> A health endpoint that turns red on missing settings, tabs or columns, an audit log of every portal change, and tests that keep customer documents out of the public site.</li></ul>
+<h2>Connects to</h2>
+<hr class="rule">
+<ul class="diamond"><li>Google Sheets and Google Drive (the client's own)</li><li>AppSheet (the client's app, via its webhook)</li><li>SendGrid</li><li>Vercel hosting and cron</li></ul>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>171</b><span>tracker cells re-anchored on the live sheet</span></div><div class="fact"><b>39 / 39</b><span>open jobs kept their due date to the day</span></div><div class="fact"><b>~326</b><span>automated tests</span></div><div class="fact"><b>99</b><span>pull requests merged</span></div><div class="fact"><b>~50</b><span>open orders on the tracker when measured (Sept 21, 2026)</span></div><div class="fact"><b class="u">Unknown</b><span>date the portal opened to every customer</span></div>
+</div>
+<div class="note">
+<p>The client's team made the app-side changes in their own AppSheet app and granted read-only access to their Drive. Rollout is careful by design: the portal went live against the real tracker in a review period, with mail going to the client's own reviewers before customers. The client's final sign-off is still open.</p>
+</div>
+</div>
+<h2>What it looks like</h2>
+<hr class="rule">
+<figure><a class="shot" href="/case-studies/fabricator-order-portal/img/waiting.jpg"><img src="/case-studies/fabricator-order-portal/img/waiting.jpg" alt="The customer's portal before they confirm" loading="lazy"></a><figcaption>Before confirming: the lead time hasn't started, and the ship date reads Set on confirmation. Fake order.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/fabricator-order-portal/img/confirmed.jpg"><img src="/case-studies/fabricator-order-portal/img/confirmed.jpg" alt="The same order after the customer confirms" loading="lazy"></a><figcaption>After confirming: the clock is running and the due date is set. Fake order.</figcaption></figure>
+<figure><a class="shot" href="/case-studies/fabricator-order-portal/img/phone.jpg"><img src="/case-studies/fabricator-order-portal/img/phone.jpg" alt="The portal on a phone" loading="lazy"></a><figcaption>The same page on a phone.</figcaption></figure>
+  </article>
+  <p class="source">Facts from the project repo, its pull requests, the Linear project and the blueprint, checked November 15, 2026. &quot;Unknown&quot; means none of them shows it. Screenshots show the real portal page with a fake order, with the client's name, logo and contact details blurred. <a href="/content/case-studies/fabricator-order-portal.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>
