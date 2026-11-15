@@ -17,5 +17,13 @@
   --f-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 
+  /* spacing, radius and motion scales (design pass, 2026-11-15) */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --r-sm: 8px; --r-md: 12px; --r-pill: 20px;
+  --t-fast: 150ms; --ease: ease;
+  --measure: 40em;          /* longest comfortable line of body text */
+  --col-text: 820px;        /* reading column */
+  --col-wide: 1080px;       /* grids and bands */
+
   color-scheme: dark;
 }

@@ -188,12 +188,13 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/case-studies.css">
 </head>
 <body>
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
+  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/" aria-current="page">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login →</a></nav>
 </header>`;
 }
 
@@ -337,7 +338,7 @@ outputs.set(llmsFile, replaceBlock(fs.readFileSync(llmsFile, 'utf8'), 'case-stud
 
 const homeFile = path.join(SITE, 'index.html');
 outputs.set(homeFile, replaceBlock(fs.readFileSync(homeFile, 'utf8'), 'case-studies',
-  `  <div class="proof cs-proof">\n${listed.slice(0, 3).map((cs) => `    <a class="case" href="/case-studies/${cs.slug}/"><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="more">Read the case study →</span></a>`).join('\n')}\n  </div>\n  <p class="muted" style="font-size:.9rem; margin-top:14px;"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
+  `  <div class="cards">\n${listed.slice(0, 3).map((cs) => `    <a class="link-card" href="/case-studies/${cs.slug}/">${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="" loading="lazy"></span>` : ''}<span class="body"><span class="label">${esc(clientLabel(cs))}</span><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="go">Read the case study</span></span></a>`).join('\n')}\n  </div>\n  <p style="margin-top:var(--s4)"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
 
 // A folder for a case study that no longer exists in content is stale, screenshots included:
 // --check flags it, a build removes it, so nothing of a withdrawn case stays in this public repo.
