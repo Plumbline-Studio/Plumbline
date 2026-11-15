@@ -85,7 +85,7 @@ Fenced blocks open with `::: name` and close with `:::`:
 | `::: ba` | Inside a version: a `### Before` and a `### After`, shown side by side. |
 | `::: facts` | A list of `- value | label` lines, shown as tiles. A value of `Unknown` is shown as unknown, not hidden. |
 | `::: note` | A quiet aside. Used to credit other people's work. |
-| `::: blueprint` | "The blueprint". A list of `- met | date | condition | note` or `- open | | condition | note` lines: the conditions of done agreed with the client before the build. Written in plain words from the Supabase blueprint, never copied: blueprints carry names, prices and addresses. Open conditions stay open on the page. A project with no blueprint says so. |
+| `::: blueprint` | "The blueprint". A list of `- met | date | condition | note` or `- open | | condition | note` lines (or `parked`, for a condition set aside on purpose, with the date it was parked): the conditions of done agreed with the client before the build. Written in plain words from the Supabase blueprint, never copied: blueprints carry names, prices and addresses. Open conditions stay open on the page. A project with no blueprint says so. |
 | `::: docs` | "The paperwork". A list of `- title | file.pdf | purpose | date · pages` lines, shown as cover cards that open the PDF. The PDF and its cover (`file.jpg`, same name) live in `storefront/case-studies/<slug>/docs/`; the build fails if either is missing. |
 
 Every case study has both a `plain` and a `technical` version; the page shows one at a time with a switch.

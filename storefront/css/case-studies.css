@@ -116,3 +116,5 @@ ol.conds li.open { border-style: dashed; }
 ol.conds .cond { color: var(--ink); }
 ol.conds .cnote { font-size: .85rem; color: var(--muted); }
 @media (max-width: 520px) { ol.conds li { grid-template-columns: minmax(0, 1fr); } ol.conds .state { grid-row: auto; } }
+ol.conds li.parked { border-style: dotted; opacity: .78; }
+ol.conds li.parked .state { color: var(--muted); }

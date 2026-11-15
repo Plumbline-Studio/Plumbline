@@ -90,12 +90,13 @@ function render(md, slug) {
         return `<div class="fact"><b${/^unknown$/i.test(val) ? ' class="u"' : ''}>${inline(val)}</b><span>${inline(rest.join('|').trim())}</span></div>`;
       }).join(''));
     } else if (fence[fence.length - 1] === 'blueprint') {
-      // "met | date | condition | note" or "open | | condition | note": one agreed condition of done.
+      // "met|open|parked | date | condition | note": one agreed condition of done. Parked = set aside on purpose by the owner of the work, not failed.
       out.push('<ol class="conds">' + list.map((li) => {
         const [state, date, cond, note] = li.split('|').map((x) => (x || '').trim());
-        if (!/^(met|open)$/i.test(state)) throw new Error(`${slug}: blueprint item must start with met or open: "${li}"`);
-        const met = /^met$/i.test(state);
-        return `<li class="${met ? 'met' : 'open'}"><span class="state">${met ? `Met${date ? ' · ' + inline(date) : ''}` : 'Open'}</span>`
+        if (!/^(met|open|parked)$/i.test(state)) throw new Error(`${slug}: blueprint item must start with met, open or parked: "${li}"`);
+        const st = state.toLowerCase(), met = st === 'met';
+        const label = { met: 'Met', open: 'Open', parked: 'Parked' }[st];
+        return `<li class="${st}"><span class="state">${label}${date ? ' · ' + inline(date) : ''}</span>`
           + `<span class="cond">${inline(cond)}</span>${note ? `<span class="cnote">${inline(note)}</span>` : ''}</li>`;
       }).join('') + '</ol>');
     } else if (fence[fence.length - 1] === 'docs') {
