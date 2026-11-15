@@ -84,6 +84,18 @@ The client's team made the app-side changes in their own AppSheet app and grante
 
 ![The portal on a phone](/case-studies/fabricator-order-portal/img/phone.jpg "The same page on a phone.")
 
+## How it was designed
+
+Before the build, the whole plan lived on one shared Figma board the client could read: what the customer sees, what changes on their tracker, and what was left out on purpose. The working map underneath it is where the rules were worked out first. Client details are blurred.
+
+![The customer's path, start to finish](/case-studies/fabricator-order-portal/img/design-flow.jpg "The customer's path, colour-coded by who acts at each step, and how files come back to the shop.")
+
+![What changes on the tracker](/case-studies/fabricator-order-portal/img/design-tracker.jpg "The tracker gains columns and loses none. The job screen and documents list use example values.")
+
+![What the project is not](/case-studies/fabricator-order-portal/img/design-edges.jpg "The edges, agreed before the build started.")
+
+![The working map](/case-studies/fabricator-order-portal/img/design-working-map.jpg "The working map: gates that hold the clock, reminders that stop themselves, and one update button. Superseded by the plan above, kept because it shows the thinking.")
+
 ## The paperwork
 
 These are the documents the client received, as sent, with the client's name, people, places, contact details and prices taken out.
