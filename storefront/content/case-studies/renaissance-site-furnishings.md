@@ -3,18 +3,18 @@ title: An outdoor furniture catalog built for specifiers
 summary: A FrontPage-era site became a 262-model catalog for landscape architects and public agencies, with a spec sheet for every product built on request.
 client: A lighting and furniture manufacturer
 client_name: Renaissance Contract Lighting & Furnishings
-signoff_by: Kyle Knight, studio decision (no written OK from the client)
+signoff_by: Kyle Knight, studio decision (no written OK from the company)
 signoff_date: 2026-11-15
 visibility: public
 date: 2026-06-25
-role: Lead developer
+role: Lead developer (in-house, as an employee)
 stack: Next.js · Sanity · pdf-lib
 reaches: Landscape architects, public agencies and dealers
 order: 22
 series: renaissance
 thumb: /case-studies/renaissance-site-furnishings/img/products.jpg
 tags: [Next.js, Sanity, PDF]
-source: Facts from the renaissance-site-furnishings repo (now owned by the client), the shared content schemas and the live site, checked November 15, 2026. "Unknown" means none of them shows it.
+source: Facts from the renaissance-site-furnishings repo (now owned by the company), the shared content schemas and the live site, checked November 15, 2026. "Unknown" means none of them shows it.
 ---
 
 ::: plain
@@ -33,7 +33,7 @@ A catalog of 262 models in 13 categories, 34 standard finishes, a compliance pag
 
 :::
 
-## What the client got
+## What the company got
 
 - A catalog a landscape architect can specify from without a phone call.
 - One spec-sheet PDF per product, always current.

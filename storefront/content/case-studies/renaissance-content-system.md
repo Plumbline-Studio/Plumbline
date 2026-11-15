@@ -3,18 +3,18 @@ title: One content Studio for two brands
 summary: One Sanity Studio feeds both websites. Each product is one record tagged with its brands, and staff bring photos and drawings in through a queue that a person files.
 client: A lighting and furniture manufacturer
 client_name: Renaissance Contract Lighting & Furnishings
-signoff_by: Kyle Knight, studio decision (no written OK from the client)
+signoff_by: Kyle Knight, studio decision (no written OK from the company)
 signoff_date: 2026-11-15
 visibility: public
 date: 2026-08-21
-role: Lead developer
+role: Lead developer (in-house, as an employee)
 stack: Sanity · TypeScript · Node scripts
 reaches: The company's own staff
 order: 23
 series: renaissance
 thumb: /case-studies/renaissance-content-system/img/content-model.jpg
 tags: [Sanity, Content modeling, Migration]
-source: Facts from the content schemas, migration scripts and design notes in the renaissance-hospitality repo (now owned by the client), checked November 15, 2026. The diagram is drawn from the schema files. Screenshots of the Studio itself are to come; it sits behind the client's login.
+source: Facts from the content schemas, migration scripts and design notes in the renaissance-hospitality repo (now owned by the company), checked November 15, 2026. The diagram is drawn from the schema files. Screenshots of the Studio itself are to come; it sits behind the company's login.
 ---
 
 ::: plain
@@ -33,7 +33,7 @@ One Studio holds every product, finish, project and page for both brands. A prod
 
 :::
 
-## What the client got
+## What the company got
 
 - One place to edit both websites.
 - Photos and drawings that arrive matched, and wait for a person.

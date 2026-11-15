@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plumbline Studio — The Heavy Lifting</title>
-<meta name="description" content="One bounded operations problem — intake, scheduling, tracking, reporting — solved in 2–4 weeks at a fixed price. Plumbline Studio builds AI-augmented tools for small businesses and practices in Roanoke, Virginia and beyond.">
+<meta name="description" content="A paid diagnostic, a fixed-price build, and a care plan that keeps it running — for the intake, scheduling, tracking and reporting work that eats a small business owner alive. Plumbline Studio builds AI-augmented tools for small businesses and practices in Roanoke, Virginia and beyond.">
 <link rel="canonical" href="https://plumblinestudio.dev/">
 <meta property="og:title" content="Plumbline Studio — The Heavy Lifting">
-<meta property="og:description" content="One bounded operations problem, solved in 2–4 weeks at a fixed price. Build it true.">
+<meta property="og:description" content="Diagnostic, fixed-price build, care plan. The heavy lifting, taken off your plate. Build it true.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://plumblinestudio.dev/">
 <meta property="og:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
@@ -27,7 +27,7 @@
   "@type": "ProfessionalService",
   "name": "Plumbline Studio",
   "slogan": "Build it true.",
-  "description": "Plumbline Studio solves one bounded operations problem per engagement — intake, scheduling, tracking, or reporting — for small businesses and professional practices. Fixed scope, 2–4 weeks, $2,500–$5,000. The deliverable is a working tool, not a report. Clients describe the result as a cognitive prosthetic: software that remembers, coordinates, and files so the owner can do the work only they can do.",
+  "description": "Plumbline Studio solves one bounded operations problem per engagement — intake, scheduling, tracking, or reporting — for small businesses and professional practices. Three steps: a diagnostic ($500–$2,000, credited toward the build), a fixed-scope build ($2,500–$15,000), and a care plan with named monthly deliverables ($300–$2,000 a month). The deliverable is a working tool, not a report. Clients describe the result as a cognitive prosthetic: software that remembers, coordinates, and files so the owner can do the work only they can do.",
   "url": "https://plumblinestudio.dev/",
   "email": "kyle@plumblinestudio.dev",
   "founder": {
@@ -41,12 +41,26 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Roanoke", "addressRegion": "VA", "addressCountry": "US" },
   "areaServed": ["Roanoke VA", "Virginia", "United States (remote)"],
   "knowsAbout": ["business process automation", "AI-augmented workflow tools", "customer portals", "intake automation", "operations reporting", "small business software"],
-  "makesOffer": {
-    "@type": "Offer",
-    "name": "The Heavy Lifting — one bounded operations problem, solved",
-    "description": "Scoping call, a one-page outcome contract that defines done, then a working tool in 2–4 weeks.",
-    "priceSpecification": { "@type": "PriceSpecification", "minPrice": 2500, "maxPrice": 5000, "priceCurrency": "USD" }
-  },
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "name": "Diagnostic",
+      "description": "A verdict on where the time and money leak, and the first fixes in order. Credited toward the build.",
+      "priceSpecification": { "@type": "PriceSpecification", "minPrice": 500, "maxPrice": 2000, "priceCurrency": "USD" }
+    },
+    {
+      "@type": "Offer",
+      "name": "Fixed-scope build",
+      "description": "A one-page definition of done, a fixed price, then a working system handed over with a walkthrough.",
+      "priceSpecification": { "@type": "PriceSpecification", "minPrice": 2500, "maxPrice": 15000, "priceCurrency": "USD" }
+    },
+    {
+      "@type": "Offer",
+      "name": "Care plan",
+      "description": "Keeps the system running, with named deliverables every month.",
+      "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 300, "maxPrice": 2000, "priceCurrency": "USD", "unitText": "MONTH" }
+    }
+  ],
   "potentialAction": {
     "@type": "ScheduleAction",
     "name": "Book a free 30-minute scoping call",
@@ -137,6 +151,11 @@
   footer .bob{display:inline-block; width:8px; height:8px; background:var(--gold); transform:rotate(45deg); margin-bottom:14px;}
   footer p{margin-left:auto; margin-right:auto;}
   footer .tag{font-family:'Playfair Display',Georgia,serif; color:var(--gold); font-size:1rem; margin:0 0 8px;}
+  .ladder{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:16px;}
+  .rung{border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px; background:rgba(27,36,51,.5);}
+  .rung .n{font:500 .8rem 'JetBrains Mono',monospace; color:var(--gold); letter-spacing:.04em; text-transform:uppercase;}
+  .rung .price{margin:6px 0 8px;}
+  .rung p{font-size:.93rem; margin:0;}
 </style>
 </head>
 <body>
@@ -149,7 +168,7 @@
 <header class="hero wrap">
   <p class="word">PLUMBLINE <b>STUDIO</b></p>
   <h1>The heavy lifting.<br>The stuff you don't like to do.</h1>
-  <p class="lede">Every small business has one workflow that eats the owner alive — intake, scheduling, tracking, reporting. Plumbline solves exactly one of them per engagement: fixed scope, fixed price, two to four weeks, and you're handed a tool that runs — not a report.</p>
+  <p class="lede">Every small business has one workflow that eats the owner alive — intake, scheduling, tracking, reporting. Plumbline finds it, fixes it at a fixed price, and keeps it running — and you're handed a tool that runs, not a report.</p>
   <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book the free 30-minute scoping call</a>
   <span class="subcta">Pick any open time on my calendar. Prefer email? <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></span>
 </header>
@@ -159,13 +178,19 @@
   <h2>One problem. Solved. Running.</h2>
   <hr class="rule">
   <div class="offer">
-    <p style="margin-top:0"><strong>The Heavy Lifting</strong> — one bounded operations problem, taken off your plate for good.</p>
-    <p class="price">Fixed scope · 2–4 weeks · $2,500–$5,000</p>
+    <p style="margin-top:0"><strong>The Heavy Lifting</strong> — the workflow that eats your week, taken off your plate for good. Three steps, each priced up front.</p>
+    <div class="ladder">
+      <div class="rung"><span class="n">01 · Diagnostic</span><p class="price">$500–$2,000</p><p>Where the time and money leak, and the first fixes in order. The fee is credited toward the build.</p></div>
+      <div class="rung"><span class="n">02 · Build</span><p class="price">$2,500–$15,000</p><p>One page defines "done" and fixes the price before work starts. Most builds take two to four weeks; bigger work is split into more than one build.</p></div>
+      <div class="rung"><span class="n">03 · Care plan</span><p class="price">$300–$2,000 a month</p><p>Keeps it running after handover, with named deliverables every month. Never a vague retainer.</p></div>
+    </div>
+    <p style="margin:22px 0 0"><strong>What usually gets built:</strong></p>
     <ul class="diamond">
       <li><strong>Intake</strong> that fills itself in — inquiries, forms, and files that land where they belong without anyone retyping them.</li>
       <li><strong>Scheduling and tracking</strong> that stays true on its own — status your customers can see without calling you.</li>
       <li><strong>Reporting</strong> that assembles itself — enter data once, and every format your funders, partners, or franchise demand comes out the other side.</li>
     </ul>
+    <p class="muted" style="font-size:.9rem; margin:16px 0 0">Cheaper than one hire, and far cheaper than a fractional executive. The first call is free.</p>
   </div>
   <div class="quotebox">
     <p>"It's a cognitive prosthetic."</p>

@@ -3,18 +3,18 @@ title: A hospitality catalog staff can run themselves
 summary: The main brand's old static site became a 2,400-product catalog and 210-project portfolio on one content system, with copy and imagery the company's own staff now edit.
 client: A lighting and furniture manufacturer
 client_name: Renaissance Contract Lighting & Furnishings
-signoff_by: Kyle Knight, studio decision (no written OK from the client)
+signoff_by: Kyle Knight, studio decision (no written OK from the company)
 signoff_date: 2026-11-15
 visibility: public
 date: 2026-08-21
-role: Lead developer
+role: Lead developer (in-house, as an employee)
 stack: Next.js · Sanity · Vercel
 reaches: Hotel, restaurant and hospitality designers
 order: 21
 series: renaissance
 thumb: /case-studies/renaissance-hospitality/img/pendants.jpg
 tags: [Next.js, Sanity, Catalog]
-source: Facts from the renaissance-hospitality repo (now owned by the client), its handoff notes and the live site, checked November 15, 2026. "Unknown" means none of them shows it.
+source: Facts from the renaissance-hospitality repo (now owned by the company), its handoff notes and the live site, checked November 15, 2026. "Unknown" means none of them shows it.
 ---
 
 ::: plain
@@ -33,7 +33,7 @@ A catalog of about 2,400 products across lighting, furniture and fine art, a por
 
 :::
 
-## What the client got
+## What the company got
 
 - Products and projects they can add and change themselves.
 - A portfolio that only shows a project once it is ready: staged on purpose, with a hero image.
@@ -56,7 +56,7 @@ A catalog of about 2,400 products across lighting, furniture and fine art, a por
 
 ## What was left
 
-At the August 21 handover these were still open: the intake folder watcher (built, not scheduled), a staff retest of the image button, domain registrar recovery and password rotation, and moving the image-processing account to the client.
+At the August 21 handover these were still open: the intake folder watcher (built, not scheduled), a staff retest of the image button, domain registrar recovery and password rotation, and moving the image-processing account to the company.
 
 ## By the numbers
 
