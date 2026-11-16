@@ -1,0 +1,13 @@
+# Dependabot for the Plumbline site. The site has no package manifest, so the only
+# dependencies to watch are the action pins in .github/workflows/.
+# Weekly, minor+patch grouped into one PR; majors arrive one PR each.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      actions-minor-patch:
+        update-types: ["minor", "patch"]
