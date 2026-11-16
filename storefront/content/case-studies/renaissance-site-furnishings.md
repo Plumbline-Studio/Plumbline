@@ -13,6 +13,7 @@ reaches: Landscape architects, public agencies and dealers
 order: 22
 series: renaissance
 thumb: /case-studies/renaissance-site-furnishings/img/products.jpg
+thumb_link: https://www.rclfsitefurnishings.com/
 tags: [Next.js, Sanity, PDF]
 source: Facts from the renaissance-site-furnishings repo (now owned by the company), the shared content schemas and the live site, checked November 15, 2026. "Unknown" means none of them shows it.
 ---
@@ -78,12 +79,12 @@ No blueprint: this work predates them. A June 17 audit and its launch plan set t
 
 ## What it looks like
 
-![The catalog](/case-studies/renaissance-site-furnishings/img/products.jpg "The catalog: 13 categories, each with its model count.")
+![The catalog](/case-studies/renaissance-site-furnishings/img/products.jpg "The catalog: 13 categories, each with its model count.") -> https://www.rclfsitefurnishings.com/
 
-![A product page](/case-studies/renaissance-site-furnishings/img/bench.jpg "A product page, with its spec sheet and a quote request.")
+![A product page](/case-studies/renaissance-site-furnishings/img/bench.jpg "A product page, with its spec sheet and a quote request.") -> https://www.rclfsitefurnishings.com/
 
-![A generated spec sheet](/case-studies/renaissance-site-furnishings/img/spec-sheet.jpg "The spec sheet, built on request from the product's record.")
+![A generated spec sheet](/case-studies/renaissance-site-furnishings/img/spec-sheet.jpg "The spec sheet, built on request from the product's record.") -> https://www.rclfsitefurnishings.com/
 
-![Finishes](/case-studies/renaissance-site-furnishings/img/finishes.jpg "The standard powder-coat palette.")
+![Finishes](/case-studies/renaissance-site-furnishings/img/finishes.jpg "The standard powder-coat palette.") -> https://www.rclfsitefurnishings.com/
 
-![On a phone](/case-studies/renaissance-site-furnishings/img/phone.jpg "The product page on a phone.")
+![On a phone](/case-studies/renaissance-site-furnishings/img/phone.jpg "The product page on a phone.") -> https://www.rclfsitefurnishings.com/

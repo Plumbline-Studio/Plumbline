@@ -12,6 +12,7 @@ stack: Next.js · Sanity · Vercel
 reaches: Hotel and restaurant designers, landscape architects, public agencies, and the company's own staff
 order: 1.7
 thumb: /case-studies/renaissance/img/hospitality-home.jpg
+thumb_link: https://www.rclfinc.com/
 tags: [Next.js, Sanity, Catalog, Content system]
 source: Facts from the two website repos (now owned by the company), their live sites and my design notes, checked November 15, 2026. "Unknown" means none of them shows it. Product pages shown; pages naming the client's customers are left out.
 ---
@@ -61,6 +62,6 @@ No blueprint. This work predates them: my first blueprint was written on August 
 
 ## What it looks like
 
-![The hospitality site](/case-studies/renaissance/img/hospitality-home.jpg "The hospitality site's home page.")
+![The hospitality site](/case-studies/renaissance/img/hospitality-home.jpg "The hospitality site's home page.") -> https://www.rclfinc.com/
 
-![The site furnishings site](/case-studies/renaissance/img/site-furnishings-home.jpg "The site furnishings site's home page.")
+![The site furnishings site](/case-studies/renaissance/img/site-furnishings-home.jpg "The site furnishings site's home page.") -> https://www.rclfsitefurnishings.com/

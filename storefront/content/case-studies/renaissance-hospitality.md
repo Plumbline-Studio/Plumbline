@@ -13,6 +13,7 @@ reaches: Hotel, restaurant and hospitality designers
 order: 21
 series: renaissance
 thumb: /case-studies/renaissance-hospitality/img/pendants.jpg
+thumb_link: https://www.rclfinc.com/
 tags: [Next.js, Sanity, Catalog]
 source: Facts from the renaissance-hospitality repo (now owned by the company), its handoff notes and the live site, checked November 15, 2026. "Unknown" means none of them shows it.
 ---
@@ -81,6 +82,6 @@ No blueprint: this work predates them. The handover notes record what was finish
 
 ## What it looks like
 
-![A product category](/case-studies/renaissance-hospitality/img/pendants.jpg "A category page: pendants, under ceiling fixtures.")
+![A product category](/case-studies/renaissance-hospitality/img/pendants.jpg "A category page: pendants, under ceiling fixtures.") -> https://www.rclfinc.com/
 
-![Finishes](/case-studies/renaissance-hospitality/img/finishes.jpg "The finishes library: powder coats, leafing and decorative acrylics.")
+![Finishes](/case-studies/renaissance-hospitality/img/finishes.jpg "The finishes library: powder coats, leafing and decorative acrylics.") -> https://www.rclfinc.com/

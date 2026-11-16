@@ -64,6 +64,16 @@ function validate(cs, file) {
 
 // ---------- a small markdown renderer: the subset the contract allows ----------
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// A screenshot figure. With a live URL it opens the real site in a new tab, and the caption says so.
+function shot(src, alt, cap, live, cls) {
+  const host = live ? new URL(live).hostname.replace(/^www\./, '') : '';
+  const href = live || src;
+  const ext = live ? ' target="_blank" rel="noopener"' : '';
+  const note = live ? `<a href="${live}"${ext}>Visit ${host} ↗</a>` : '';
+  const caption = [cap ? inline(cap) : '', note].filter(Boolean).join(' ');
+  return `<figure${cls ? ` class="${cls}"` : ''}><a class="shot" href="${href}"${ext}><img src="${src}" alt="${esc(alt)}" loading="lazy"></a>${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`;
+}
+
 function inline(s) {
   return esc(s)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
@@ -154,10 +164,10 @@ function render(md, slug) {
       if (level === 2) out.push('<hr class="rule">');
       continue;
     }
-    if ((m = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/.exec(t))) {
+    // ![alt](src "caption") -> https://live.site   The optional "-> url" makes the image open the live site instead of the screenshot.
+    if ((m = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)(?:\s*->\s*(https:\/\/\S+))?$/.exec(t))) {
       flush();
-      const cap = m[3] || '';
-      out.push(`<figure><a class="shot" href="${m[2]}"><img src="${m[2]}" alt="${esc(m[1])}" loading="lazy"></a>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ''}</figure>`);
+      out.push(shot(m[2], m[1], m[3] || '', m[4]));
       continue;
     }
     if ((m = /^-\s+(.*)$/.exec(t))) { flushPara(); (list ||= []).push(m[1]); continue; }
@@ -284,7 +294,7 @@ ${hasPlain && hasTech ? `  <div class="switch" role="group" aria-label="Choose a
     <button type="button" data-show="technical" aria-pressed="false">Technical</button>
   </div>` : ''}
 ${glance(cs)}
-${cs.thumb ? `  <figure class="lead-shot"><a class="shot" href="${cs.thumb}"><img src="${cs.thumb}" alt="" loading="lazy"></a></figure>` : ''}
+${cs.thumb ? '  ' + shot(cs.thumb, '', '', cs.thumb_link, 'lead-shot') : ''}
   <dl class="meta">${meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
   ${toc.length > 1 ? `<nav class="toc" aria-label="On this page"><span>On this page</span>${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join('')}</nav>` : ''}
   <article class="body" id="the-story" data-current="plain">
