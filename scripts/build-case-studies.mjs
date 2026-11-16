@@ -64,6 +64,16 @@ function validate(cs, file) {
 
 // ---------- a small markdown renderer: the subset the contract allows ----------
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// A screenshot figure. With a live URL it opens the real site in a new tab, and the caption says so.
+function shot(src, alt, cap, live, cls) {
+  const host = live ? new URL(live).hostname.replace(/^www\./, '') : '';
+  const href = live || src;
+  const ext = live ? ' target="_blank" rel="noopener"' : '';
+  const note = live ? `<a href="${live}"${ext}>Visit ${host} ↗</a>` : '';
+  const caption = [cap ? inline(cap) : '', note].filter(Boolean).join(' ');
+  return `<figure${cls ? ` class="${cls}"` : ''}><a class="shot" href="${href}"${ext}><img src="${src}" alt="${esc(alt)}" loading="lazy"></a>${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`;
+}
+
 function inline(s) {
   return esc(s)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
@@ -75,7 +85,7 @@ function inline(s) {
 // (![alt](src "caption")), and ::: fences (plain, technical, ba, facts, note, docs, blueprint).
 // A ::: docs list item is "title | file.pdf | purpose | meta"; the PDF and its cover
 // (same name, .jpg) live in storefront/case-studies/<slug>/docs/ and must exist.
-function render(md, slug) {
+function render(md, slug, lead) {
   const lines = md.replace(/\r/g, '').split('\n');
   const out = [];
   let para = [], list = null, fence = [];
@@ -154,10 +164,12 @@ function render(md, slug) {
       if (level === 2) out.push('<hr class="rule">');
       continue;
     }
-    if ((m = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/.exec(t))) {
+    // ![alt](src "caption") -> https://live.site   The optional "-> url" makes the image open the live site instead of the screenshot.
+    if ((m = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)(?:\s*->\s*(https:\/\/\S+))?$/.exec(t))) {
       flush();
-      const cap = m[3] || '';
-      out.push(`<figure><a class="shot" href="${m[2]}"><img src="${m[2]}" alt="${esc(m[1])}" loading="lazy"></a>${cap ? `<figcaption>${inline(cap)}</figcaption>` : ''}</figure>`);
+      // The lead screenshot already shows this image at the top: hand it the caption and link, and don't repeat it here.
+      if (lead && lead.show && m[2] === lead.src) { lead.cap = m[3] || ''; lead.live = m[4] || lead.live; continue; }
+      out.push(shot(m[2], m[1], m[3] || '', m[4]));
       continue;
     }
     if ((m = /^-\s+(.*)$/.exec(t))) { flushPara(); (list ||= []).push(m[1]); continue; }
@@ -257,7 +269,10 @@ function glance(cs) {
 
 function casePage(cs) {
   const url = `${ORIGIN}/case-studies/${cs.slug}/`;
-  const html = render(cs.body, cs.slug);
+  // One picture, shown once. If the lead image is also the only image in the story, it stays in the story and the top goes without.
+  const bodyImgs = [...cs.body.matchAll(/^!\[[^\]]*\]\(([^)\s]+)/gm)].map((x) => x[1]);
+  const lead = { src: cs.thumb, live: cs.thumb_link, cap: '', show: !!cs.thumb && !(bodyImgs.length === 1 && bodyImgs[0] === cs.thumb) };
+  const html = render(cs.body, cs.slug, lead);
   const hasPlain = html.includes('data-version="plain"');
   const hasTech = html.includes('data-version="technical"');
   const signoff = cs.client_name ? `Named. Sign-off: ${cs.signoff_by}, ${fmtDate(cs.signoff_date)}` : 'Anonymized until the client signs off';
@@ -284,7 +299,7 @@ ${hasPlain && hasTech ? `  <div class="switch" role="group" aria-label="Choose a
     <button type="button" data-show="technical" aria-pressed="false">Technical</button>
   </div>` : ''}
 ${glance(cs)}
-${cs.thumb ? `  <figure class="lead-shot"><a class="shot" href="${cs.thumb}"><img src="${cs.thumb}" alt="" loading="lazy"></a></figure>` : ''}
+${lead.show ? '  ' + shot(lead.src, '', lead.cap, lead.live, 'lead-shot') : ''}
   <dl class="meta">${meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
   ${toc.length > 1 ? `<nav class="toc" aria-label="On this page"><span>On this page</span>${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join('')}</nav>` : ''}
   <article class="body" id="the-story" data-current="plain">

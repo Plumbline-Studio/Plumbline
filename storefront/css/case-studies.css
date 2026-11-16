@@ -131,8 +131,9 @@ ol.conds li.parked .state { color: var(--muted); }
 .glance .fact b { font: 500 1.5rem/1.2 var(--f-display); color: var(--ink); }
 .glance .fact span { font-size: .9rem; color: var(--muted); }
 .lead-shot { margin: 0; }
-.lead-shot a { display: block; border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: var(--deep); max-height: 420px; }
+.lead-shot > a { display: block; border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: var(--deep); max-height: 420px; }
 .lead-shot img { display: block; width: 100%; height: auto; }
+.lead-shot figcaption { margin-top: var(--s2); }
 .toc { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); align-items: center; font-size: .9rem; }
 .toc span { font: 400 .78rem var(--f-mono); color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
 .toc a { color: var(--muted); }
