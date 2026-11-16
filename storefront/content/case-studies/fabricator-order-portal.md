@@ -72,7 +72,7 @@ Each customer gets a private link to their own order. They see where it stands, 
 :::
 
 ::: note
-The client's team made the app-side changes in their own AppSheet app and granted read-only access to their Drive. Rollout is careful by design: the portal went live against the real tracker in a review period, with mail going to the client's own reviewers before customers. Since November 3, named customers have received their own order's mail directly. The owner has walked the whole flow and signed off, and the project is paid in full. The shop is keeping the review period on a little longer by its own choice.
+The client's team made the app-side changes in their own AppSheet app and granted read-only access to their Drive. Rollout is careful by design: the portal went live against the real tracker in a review period, with mail going to the client's own reviewers before customers. Since November 3, named customers have received their own order's mail directly. The owner has walked the whole flow and signed off. The shop is keeping the review period on a little longer by its own choice.
 :::
 
 :::
