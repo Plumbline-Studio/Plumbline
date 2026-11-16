@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How these case studies are built — Plumbline Studio</title>
+<meta name="description" content="The section you are reading, as a case study of its own. Each case study is one Markdown file, a small build turns it into a page, and the build refuses anything that would name a client without sign-off.">
+<link rel="canonical" href="https://plumblinestudio.dev/case-studies/how-case-studies-are-built/">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="How these case studies are built — Plumbline Studio">
+<meta property="og:description" content="The section you are reading, as a case study of its own. Each case study is one Markdown file, a small build turns it into a page, and the build refuses anything that would name a client without sign-off.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://plumblinestudio.dev/case-studies/how-case-studies-are-built/">
+<meta property="og:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2c1f33">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How these case studies are built",
+   "description": "The section you are reading, as a case study of its own. Each case study is one Markdown file, a small build turns it into a page, and the build refuses anything that would name a client without sign-off.",
+   "url": "https://plumblinestudio.dev/case-studies/how-case-studies-are-built/",
+   "datePublished": "2026-11-15",
+   "author": {
+    "@type": "Person",
+    "name": "Kyle Knight",
+    "url": "https://plumblinestudio.dev/#kyle"
+   },
+   "publisher": {
+    "@type": "ProfessionalService",
+    "@id": "https://plumblinestudio.dev/#studio",
+    "name": "Plumbline Studio",
+    "url": "https://plumblinestudio.dev/"
+   },
+   "about": "Plumbline Studio (my own studio)"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://plumblinestudio.dev/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Case studies",
+     "item": "https://plumblinestudio.dev/case-studies/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "How these case studies are built",
+     "item": "https://plumblinestudio.dev/case-studies/how-case-studies-are-built/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/case-studies.css">
+</head>
+<body>
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a><nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/" aria-current="page">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a></nav>
+</header>
+<main class="wrap case">
+  <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
+  <a class="back" href="/case-studies/">← All case studies</a>
+  <header class="case-head">
+    <p class="eyebrow">Plumbline Studio (my own studio)</p>
+    <h1>How these case studies are built</h1>
+    <p class="lede">The section you are reading, as a case study of its own. Each case study is one Markdown file, a small build turns it into a page, and the build refuses anything that would name a client without sign-off.</p>
+  </header>
+  <div class="switch" role="group" aria-label="Choose a version">
+    <span class="switch-label">Read it as</span>
+    <button type="button" data-show="plain" aria-pressed="true">Plain-language</button>
+    <button type="button" data-show="technical" aria-pressed="false">Technical</button>
+  </div>
+  <div class="glance" aria-label="At a glance"><div class="fact"><b>2</b><span>visibility states, and no hidden one</span></div><div class="fact"><b>15</b><span>public case studies when this was written</span></div><div class="fact"><b>0</b><span>dependencies in the build</span></div></div>
+
+  <dl class="meta"><div><dt>Client</dt><dd>Plumbline Studio (my own studio)</dd></div><div><dt>Role</dt><dd>Founder and builder, with AI agents</dd></div><div><dt>Landed</dt><dd>Nov 15, 2026</dd></div><div><dt>Stack</dt><dd>Node.js · Markdown · GitHub Actions</dd></div><div><dt>Reaches</dt><dd>Anyone with the link; this page is unlisted</dd></div><div><dt>Naming</dt><dd>Anonymized until the client signs off</dd></div></dl>
+  <nav class="toc" aria-label="On this page"><span>On this page</span><a href="#the-story">The story</a><a href="#the-blueprint">The blueprint</a></nav>
+  <article class="body" id="the-story" data-current="plain">
+<div class="version" data-version="plain">
+<h2>What changed</h2>
+<hr class="rule">
+<div class="ba">
+<div class="before"><span class="lab">Before</span>
+<p>The site had no place to show finished work. Real client work can't simply be put online: the client hasn't agreed to be named, and screenshots carry their logo, their people and their data.</p>
+</div>
+<div class="after"><span class="lab">After</span>
+<p>Each case study is one plain text file. A small program turns it into a page with two versions: one for owners, one for builders. It refuses to build a page that names a client unless the file records who at the client agreed, and when. A case study is either public (listed everywhere) or unlisted (it opens by link, like this one, and is listed nowhere). There is no third, hidden state: anything not ready stays in a private folder, off the site.</p>
+</div>
+</div>
+<h2>What it gives the studio</h2>
+<hr class="rule">
+<ul class="diamond"><li>Proof of work that is safe to show from day one, because every case study is anonymized until the client signs off.</li><li>Every fact traced to a source, and &quot;Unknown&quot; shown where the source is silent.</li><li>One file to change, not a page to rebuild by hand.</li><li>Publishing stays a person's decision. A change that makes a case study public, or names a client, is a change I make or approve.</li></ul>
+</div>
+<div class="version" data-version="technical">
+<h2>What I built</h2>
+<hr class="rule">
+<ul class="diamond"><li><strong>A content contract</strong> (<code>docs/case-studies.md</code>): flat front matter, two visibility states, the sign-off fields, and a fixed set of fenced blocks: <code>plain</code>, <code>technical</code>, before/after, facts, notes, the blueprint and the paperwork.</li><li><strong>A build with no dependencies</strong> (<code>scripts/build-case-studies.mjs</code>, about 420 lines of Node). It writes the list page, one page per case study, and the generated blocks in the home page, <code>sitemap.xml</code> and <code>llms.txt</code>, between markers, touching nothing else.</li><li><strong>Committed output, checked in CI.</strong> The generated HTML is committed, so the deploy has no build step. CI runs the build with <code>--check</code> and fails if any page is out of date.</li><li><strong>Shared tokens.</strong> Every colour and font on these pages comes from one stylesheet, so a palette change reaches them without editing a case study.</li></ul>
+<h2>What the build refuses</h2>
+<hr class="rule">
+<ul class="diamond"><li>A visibility other than <code>public</code> or <code>unlisted</code>.</li><li>A <code>client_name</code> without <code>signoff_by</code> and <code>signoff_date</code>.</li><li>A blueprint line that isn't met, open or parked.</li><li>A document card whose PDF or cover image is missing.</li><li>A series that chains, names a case study that doesn't exist, or puts a public part under an unlisted umbrella.</li><li>A generated folder left behind after its case study's file is removed. Removing the file withdraws the case study, screenshots included.</li></ul>
+<p>An unlisted page gets <code>noindex</code> and is left out of the list, the home page, the sitemap and <code>llms.txt</code>. A slug with no file answers 404.</p>
+<h2>Working files</h2>
+<hr class="rule">
+<p>Each case study has a private Drive folder named by its slug, with the published and original screenshots, its sources and a sign-off folder. Each folder is registered in the studio's documents table, so a future Factory module can find it by slug.</p>
+<h2>By the numbers</h2>
+<hr class="rule">
+<div class="facts">
+<div class="fact"><b>2</b><span>visibility states, and no hidden one</span></div><div class="fact"><b>15</b><span>public case studies when this was written</span></div><div class="fact"><b>0</b><span>dependencies in the build</span></div><div class="fact"><b>8 of 10</b><span>blueprint conditions met</span></div>
+</div>
+<div class="note">
+<p>This page exists to prove one of those conditions: that an unlisted case study answers by link and is listed nowhere. The site's code and pages were written with AI coding agents working under my review.</p>
+</div>
+</div>
+<h2 id="the-blueprint">The blueprint</h2>
+<hr class="rule">
+<p>This section's blueprint was written on November 15, 2026 and agreed on November 16. Eight of its ten conditions are met.</p>
+<div class="blueprint">
+<ol class="conds"><li class="met"><span class="state">Met · Nov 15, 2026</span><span class="cond">The list shows every public case study and nothing else, and the home page draws from the same list.</span></li><li class="open"><span class="state">Open</span><span class="cond">An unlisted case study opens by link and is listed nowhere; a slug with no case study answers 404.</span><span class="cnote">This page is the proof. It is met once this page is live and checked.</span></li><li class="met"><span class="state">Met · Nov 15, 2026</span><span class="cond">Every page has a plain-language and a technical version with a switch, and works at phone width.</span></li><li class="met"><span class="state">Met · Nov 15, 2026</span><span class="cond">A client is named only when sign-off is recorded; CI fails otherwise.</span></li><li class="met"><span class="state">Met · Nov 15, 2026</span><span class="cond">The first three case studies are live, anonymized, with every fact traced or marked unknown.</span></li><li class="met"><span class="state">Met · Nov 16, 2026</span><span class="cond">Every colour and font comes from one shared stylesheet.</span><span class="cnote">Only the browser's theme colour stays fixed, set aside on purpose.</span></li><li class="met"><span class="state">Met · Nov 15, 2026</span><span class="cond">The content contract is written down in the site repo.</span></li><li class="open"><span class="state">Open</span><span class="cond">A Factory module sets visibility and sign-off, and my Publish tap opens the change for review; no AI worker can publish.</span><span class="cnote">Not built yet.</span></li><li class="met"><span class="state">Met · Nov 15, 2026</span><span class="cond">Every case study has its own private working folder, registered by slug.</span></li><li class="met"><span class="state">Met · Nov 15, 2026</span><span class="cond">Each case study shows its paperwork: the client's documents truly redacted, or a branded summary made from the page.</span></li></ol>
+</div>
+  </article>
+  <p class="source">Facts from the public Plumbline site repo (docs/case-studies.md, scripts/build-case-studies.mjs and its commit history) and this section's blueprint, checked November 16, 2026. &quot;Unknown&quot; means none of them shows it. <a href="/content/case-studies/how-case-studies-are-built.md">Get this case study as Markdown</a>.</p>
+<section class="ctaband">
+  <h2>Got a workflow like this?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min">Book the free 30-minute scoping call</a>
+</section>
+</main>
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+</footer>
+<script src="/case-studies/switch.js" defer></script>
+</body>
+</html>
