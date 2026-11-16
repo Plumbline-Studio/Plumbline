@@ -11,7 +11,7 @@ order: 0
 og: /case-studies/fabricator-order-portal/img/og.jpg
 thumb: /case-studies/fabricator-order-portal/img/waiting.jpg
 tags: [Customer portal, Google Sheets, AppSheet]
-source: Facts from the project repo, its pull requests, the Linear project and the blueprint, checked November 15, 2026. "Unknown" means none of them shows it. Screenshots show the real portal page with a fake order, with the client's name, logo and contact details blurred.
+source: Facts from the project repo, its pull requests, the Linear project and the blueprint, checked November 16, 2026. "Unknown" means none of them shows it. Screenshots show the real portal page with a fake order, with the client's name, logo and contact details blurred.
 ---
 
 ::: plain
@@ -49,7 +49,7 @@ Each customer gets a private link to their own order. They see where it stands, 
 - **Private links without accounts.** Each order link carries an HMAC token. A wrong token gets a bare 404, so a probe can't tell "no such order" from "wrong link".
 - **An allow-list, not a copy.** The order response is built field by field from an allow-list, so a new internal column on the tracker can never reach a customer by default.
 - **Documents without exposing Drive.** Estimates and drawings stream through the server after the token and ownership checks, so the Drive link never reaches the browser.
-- **Mail and reminders.** SendGrid from the client's own domain, a daily cron for invites, confirmation nudges and shipping reminders, and a review mode that sends every message to the client's reviewers instead of customers.
+- **Mail and reminders.** SendGrid from the client's own domain, a daily cron for invites, confirmation nudges and shipping reminders, and a review mode that sends every message to the client's reviewers instead of customers, with a pass-through so named customers can receive their own order's mail.
 - **Estimate auto-fill.** A tool that reads the estimate and fills only empty tracker cells, never overwriting what a person typed, and flags disagreements instead of picking a winner.
 - **Safety rails.** A health endpoint that turns red on missing settings, tabs or columns, an audit log of every portal change, and tests that keep customer documents out of the public site.
 
@@ -72,24 +72,24 @@ Each customer gets a private link to their own order. They see where it stands, 
 :::
 
 ::: note
-The client's team made the app-side changes in their own AppSheet app and granted read-only access to their Drive. Rollout is careful by design: the portal went live against the real tracker in a review period, with mail going to the client's own reviewers before customers. The client's final sign-off is still open.
+The client's team made the app-side changes in their own AppSheet app and granted read-only access to their Drive. Rollout is careful by design: the portal went live against the real tracker in a review period, with mail going to the client's own reviewers before customers. Since November 3, named customers have received their own order's mail directly. The owner has walked the whole flow and signed off. The shop is keeping the review period on a little longer by its own choice.
 :::
 
 :::
 
 ## The blueprint
 
-Partway through the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 15, 2026, with what is still open shown as open. Agreed October 14, 2026.
+Partway through the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 16, 2026: every condition is met. Agreed October 14, 2026.
 
 ::: blueprint
-- open | | The shop sends a portal invite from its live tracker, and the customer receives it from the shop's own email domain. | Mail already sends from the shop's domain. The review period is still on, so no customer has had a live invite yet.
+- met | Nov 3, 2026 | The shop sends a portal invite from its live tracker, and the customer receives it from the shop's own email domain. | The first customer received their own order's email from the shop's domain on November 3, and a second on November 9.
 - met | Oct 2, 2026 | A customer opens their link and sees their real job: status, dates and documents, with no dead buttons. |
 - met | Oct 2, 2026 | A customer confirms the order, the tracker updates, and the lead-time clock starts. |
-- open | | Every customer email looks right the first time it sends. | The final wording is with the client for review.
+- met | Nov 16, 2026 | Every customer email looks right the first time it sends. | The client's wording changes are in, and every email, including the ones those two customers received, is correct.
 - met | Sept 11, 2026 | Estimates and job documents reach the portal through the agreed file-sharing route. | Read-only access to one folder; the portal only serves a file named on that order's own row.
 - met | Oct 2, 2026 | The shop updates a job, and the portal shows the change. |
 - met | Sept 8, 2026 | Emails come from the shop's own address, never from a test account. | The first one landed in the inbox, not spam.
-- open | | The owner walks the whole flow, start to finish, and signs off. | Agreed to happen once the shop has used it for a few weeks.
+- met | | The owner walks the whole flow, start to finish, and signs off. | He walked it himself and signed off. The exact date isn't recorded.
 :::
 
 Ruled out before the build:
