@@ -72,14 +72,14 @@ Each customer gets a private link to their own order. They see where it stands, 
 :::
 
 ::: note
-The client's team made the app-side changes in their own AppSheet app and granted read-only access to their Drive. Rollout is careful by design: the portal went live against the real tracker in a review period, with mail going to the client's own reviewers before customers. Since November 3, named customers have received their own order's mail directly. The client's final sign-off is the one condition still open.
+The client's team made the app-side changes in their own AppSheet app and granted read-only access to their Drive. Rollout is careful by design: the portal went live against the real tracker in a review period, with mail going to the client's own reviewers before customers. Since November 3, named customers have received their own order's mail directly. The owner has walked the whole flow and signed off, and the project is paid in full. The shop is keeping the review period on a little longer by its own choice.
 :::
 
 :::
 
 ## The blueprint
 
-Partway through the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 16, 2026, with what is still open shown as open. Agreed October 14, 2026.
+Partway through the build, the client and I agreed in writing what "done" would mean: a short list of conditions, each one either true or not. This is that list as of November 16, 2026: every condition is met. Agreed October 14, 2026.
 
 ::: blueprint
 - met | Nov 3, 2026 | The shop sends a portal invite from its live tracker, and the customer receives it from the shop's own email domain. | The first customer received their own order's email from the shop's domain on November 3, and a second on November 9.
@@ -89,7 +89,7 @@ Partway through the build, the client and I agreed in writing what "done" would 
 - met | Sept 11, 2026 | Estimates and job documents reach the portal through the agreed file-sharing route. | Read-only access to one folder; the portal only serves a file named on that order's own row.
 - met | Oct 2, 2026 | The shop updates a job, and the portal shows the change. |
 - met | Sept 8, 2026 | Emails come from the shop's own address, never from a test account. | The first one landed in the inbox, not spam.
-- open | | The owner walks the whole flow, start to finish, and signs off. | Agreed to happen once the shop has used it for a few weeks.
+- met | | The owner walks the whole flow, start to finish, and signs off. | He walked it himself and signed off. The exact date isn't recorded.
 :::
 
 Ruled out before the build:
