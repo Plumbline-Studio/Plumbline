@@ -147,4 +147,3 @@ h2[id], #the-story { scroll-margin-top: var(--s5); }
   .grid > .card:first-child h2 { font-size: 1.7rem; }
   .grid > .card:first-child .cbody { align-content: center; padding: var(--s6); }
 }
-.links a.book { margin-left: var(--s2); }

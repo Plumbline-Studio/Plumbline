@@ -210,7 +210,7 @@ ${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld, null, 
 <body>
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/" aria-current="page">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a><a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a></nav>
+  <a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a><nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/" aria-current="page">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a></nav>
 </header>`;
 }
 

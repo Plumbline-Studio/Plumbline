@@ -14,14 +14,23 @@
 .links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s3); font: 500 .9rem var(--f-body); color: var(--ink); text-decoration: none; border-bottom: 2px solid transparent; transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease); }
 .links a:hover { color: var(--accent-bright); }
 .links a[aria-current="page"] { border-bottom-color: var(--accent); }
-.links a.book { border: 1px solid var(--accent); border-radius: var(--r-sm); color: var(--accent-bright); margin-left: var(--s2); }
-.links a.book:hover { background: var(--accent); color: var(--on-accent); }
+.brand { margin-right: auto; }
+/* the booking button sits outside the link list so phones can put it beside the wordmark; desktop keeps it at the end of the row */
+.top .book { order: 3; display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s3); font: 500 .9rem var(--f-body); text-decoration: none; border: 1px solid var(--accent); border-radius: var(--r-sm); color: var(--accent-bright); transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+.top .book:hover { background: var(--accent); color: var(--on-accent); }
+.top .links { order: 2; }
 @media (max-width: 640px) {
   /* phones: the links wrap to two rows; give the rows, the active underline and the button room */
   .top { justify-content: flex-start; row-gap: var(--s3); padding-block: var(--s4) var(--s5); }
   .links { width: 100%; margin-left: calc(-1 * var(--s3)); row-gap: var(--s3); }
   .links a { padding: 0 var(--s3); font-size: .86rem; }
-  .links a.book { margin-left: var(--s3); }
+  .top .book { order: 1; font-size: .86rem; }
+  .top .links { order: 2; }
+}
+@media (max-width: 360px) {
+  /* smallest phones: tighten the wordmark so the button still fits beside it */
+  .brand { font-size: 12px; letter-spacing: .18em; }
+  .top .book { padding: 0 var(--s2); }
 }
 
 /* section heading: small label, then the heading in ink */
