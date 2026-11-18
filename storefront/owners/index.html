@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For business owners · Plumbline Studio</title>
+<meta name="description" content="Own a business? Plumbline Studio still builds for owners: a diagnostic, a fixed-price build and an optional care plan. In person around Roanoke, Virginia, and online across the US.">
+<link rel="canonical" href="https://plumblinestudio.dev/owners/">
+<meta property="og:title" content="For business owners · Plumbline Studio">
+<meta property="og:description" content="Own a business? Plumbline Studio still builds for owners: a diagnostic, a fixed-price build and an optional care plan. In person around Roanoke, Virginia, and online across the US.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumblinestudio.dev/owners/">
+<meta property="og:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2c1f33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/site.css">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Service",
+ "name": "Custom software for business owners",
+ "provider": {"@id": "https://plumblinestudio.dev/#studio"},
+ "areaServed": ["Roanoke, VA", "Salem, VA", "Lynchburg, VA", "Blacksburg, VA", "United States"],
+ "offers": [
+  {"@type": "Offer", "name": "Diagnostic", "description": "Where the work breaks down, what it costs, and what to fix first. Credited toward the build.", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 500, "maxPrice": 2000, "priceCurrency": "USD"}},
+  {"@type": "Offer", "name": "Fixed-scope build", "description": "One page defines done. Price, deliverables and schedule agreed before work begins.", "priceSpecification": {"@type": "PriceSpecification", "minPrice": 2500, "maxPrice": 15000, "priceCurrency": "USD"}},
+  {"@type": "Offer", "name": "Care plan (optional)", "description": "Named deliverables every month.", "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": 300, "maxPrice": 2000, "priceCurrency": "USD", "unitText": "MONTH"}}
+ ]
+}
+</script>
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none!important;} }
+  body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 var(--f-body); -webkit-font-smoothing:antialiased;}
+  a{color:var(--accent-bright);}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--col-text); margin:0 auto; padding-inline:24px;}
+  .wide{max-width:var(--col-wide); margin:0 auto; padding-inline:24px;}
+  p{max-width:var(--measure);}
+  header.hero{padding:0 24px var(--s5);}
+  h1{font:500 clamp(2.2rem,7vw,3.4rem)/1.12 var(--f-display); margin:0 0 var(--s5); text-wrap:balance;}
+  .lede{font-size:1.13rem; color:var(--muted); margin:0 0 var(--s6); text-wrap:pretty;}
+  .cta{display:inline-flex; align-items:center; min-height:48px; background:var(--accent); color:var(--on-accent); font-weight:600; text-decoration:none; padding:0 28px; border-radius:var(--r-sm);}
+  .cta:hover{background:var(--accent-bright);}
+  .subcta{display:block; margin-top:var(--s3); font-size:.9rem; color:var(--muted);}
+  section{padding-block:var(--s8) var(--s1);}
+  h2{font:500 1.7rem/1.2 var(--f-display); margin:0 0 var(--s4); text-wrap:balance;}
+  .muted{color:var(--muted);}
+  .offer{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:var(--s6);}
+  .offer .price{font:400 1.05rem var(--f-mono); color:var(--accent); margin:0 0 var(--s2);}
+  ul.plain{list-style:none; padding:0; margin:0;}
+  ul.plain li{padding:var(--s3) 0 var(--s3) 22px; position:relative; border-top:1px solid var(--line); max-width:40em;}
+  ul.plain li:first-child{border-top:0;}
+  ul.plain li::before{content:""; position:absolute; left:2px; top:1.25em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg);}
+  .quotebox{border-left:2px solid var(--accent); padding:6px 0 6px 22px; margin:var(--s6) 0 0;}
+  .quotebox p{font:500 1.25rem var(--f-display); margin:0 0 6px;}
+  .quotebox span{font-size:.85rem; color:var(--muted);}
+  .ledger{border-top:1px solid var(--line);}
+  .ledger .r{display:grid; grid-template-columns:48px minmax(0,1fr); gap:var(--s2) var(--s4); padding-block:var(--s5); border-bottom:1px solid var(--line);}
+  .ledger .n{font:400 .8rem var(--f-mono); color:var(--accent); padding-top:.5em;}
+  .ledger h3{font:500 1.45rem/1.2 var(--f-display); margin:0;}
+  .ledger .price{font:400 1rem var(--f-mono); color:var(--accent-bright); margin:var(--s2) 0 var(--s1);}
+  .ledger p{color:var(--muted); margin:0;}
+  .towns{display:flex; flex-wrap:wrap; gap:var(--s2); list-style:none; padding:0; margin:var(--s4) 0 0;}
+  .towns li{border:1px solid var(--line); border-radius:var(--r-pill); padding:4px 14px; font-size:.9rem;}
+  .paper-band{background:var(--paper); color:var(--paper-ink); margin-top:var(--s8); padding-bottom:var(--s8);}
+  .paper-band a{color:var(--paper-accent);}
+  .paper-band .kicker{color:var(--paper-accent);}
+  .paper-band .point p, .paper-band .muted{color:var(--paper-muted);}
+  .paper-band .point{border-color:var(--paper-line);}
+  .contact{text-align:center; padding-bottom:var(--s6);}
+  .contact h2{margin-bottom:var(--s5);}
+  footer{margin-top:var(--s8); border-top:1px solid var(--line); padding:var(--s6) 24px var(--s7); text-align:center; color:var(--muted); font-size:.88rem;}
+  footer p{margin:0 auto;}
+  footer .bob{display:inline-block; width:8px; height:8px; background:var(--accent); transform:rotate(45deg); margin-bottom:var(--s3);}
+  footer .tag{font:500 1.15rem var(--f-display); color:var(--accent); margin:0 auto var(--s2);}
+  footer .area{font-size:.82rem; margin-top:var(--s2);}
+</style>
+</head>
+<body>
+
+<div style="position:relative">
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <!-- partner call: swap to the partner-only Calendly event type when Kyle makes it -->
+  <a class="book" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a call</a><nav class="links" aria-label="Site"><a href="/partners/">How we work</a><a href="/trust/">Trust</a><a href="/case-studies/">Proof</a><a href="https://clients.plumblinestudio.dev/">Sign in</a></nav>
+</header>
+<header class="hero wrap">
+  <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
+  <p class="kicker">Own a business?</p>
+  <h1>You can still work with me.</h1>
+  <p class="lede">Most of my work now comes through consultants, agencies and IT firms. I still build for owners, too. Here is how it works and what it costs.</p>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a free 30-minute call</a>
+  <span class="subcta">Prefer email? <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></span>
+</header>
+</div>
+
+<section class="wrap" id="prices">
+  <p class="kicker">What it costs</p>
+  <h2>Three steps, each priced up front</h2>
+  <div class="ledger">
+    <div class="r"><span class="n">01</span><div><h3>Find the problem.</h3><p class="price">$500–$2,000</p><p>Where the work gets stuck, what it costs you, and what to fix first. This fee counts toward the build.</p></div></div>
+    <div class="r"><span class="n">02</span><div><h3>Build the right tool.</h3><p class="price">$2,500–$15,000</p><p>One page says what “finished” means. You say yes to the price, the parts and the dates before I start. Big jobs are split into smaller ones, each with its own price.</p></div></div>
+    <div class="r"><span class="n">03</span><div><h3>Keep it running.</h3><p class="price">$300–$2,000 a month · only if you want it</p><p>Each month you see what I checked, what I fixed and what changed.</p></div></div>
+  </div>
+  <p class="muted" style="margin-top:var(--s4)">At the end you get the tool, the accounts it runs in, plain notes and a walkthrough. <a href="/how-a-build-runs/">How a build runs →</a></p>
+</section>
+
+<section class="wrap" id="partner">
+  <p class="kicker">Need a plan, too?</p>
+  <h2>I can introduce you to a partner</h2>
+  <p>Some owners need advice first, like where AI fits or how to run the team. I work with consultants who do that. If it fits, I can introduce you.</p>
+</section>
+
+<section class="wrap" id="faq">
+  <p class="kicker">Questions</p>
+  <h2>Before you book</h2>
+  <div class="points">
+    <div class="point"><b>Do I need to know what to build?</b><p>No. Bring the work that eats your week. The call and the first step are for finding the right fix.</p></div>
+    <div class="point"><b>Do I have to give up my spreadsheet?</b><p>Most of the time, no. Most builds start from the sheet or system you already use, and make it do more.</p></div>
+    <div class="point"><b>How long does a build take?</b><p>It depends on the build. We agree on the dates with the price, before I start.</p></div>
+    <div class="point"><b>Who owns it when you're done?</b><p>You do, once it is paid for. It can run in accounts you own. Running costs are named up front.</p></div>
+    <div class="point"><b>How is my data handled?</b><p>Hosting, data, access and AI use are put in writing for each job. <a href="/trust/">Trust →</a></p></div>
+  </div>
+</section>
+
+<section class="wrap" id="roanoke">
+  <p class="kicker">Roanoke, Virginia</p>
+  <h2>In the Roanoke area? We can meet in person.</h2>
+  <p>I live in Roanoke. I meet owners at their shop or office across the Roanoke Valley, Lynchburg and the New River Valley. I also work with owners anywhere in the US, online.</p>
+  <ul class="towns"><li>Roanoke</li><li>Salem</li><li>Vinton</li><li>Lynchburg</li><li>Blacksburg</li><li>Christiansburg</li></ul>
+</section>
+
+<section class="wrap" id="proof">
+  <p class="kicker">Work you can look at</p>
+  <h2>Close to home, and further out</h2>
+  <div class="cards">
+    <a class="link-card" href="/case-studies/fabricator-order-portal/"><span class="body"><span class="label">A commercial fabricator</span><b>A due date that waits for the customer</b><p>Customers confirm their order through a private link. The clock starts then.</p><span class="go">Read the case study</span></span></a>
+    <a class="link-card" href="/case-studies/maker-storefront/"><span class="body"><span class="label">A custom metal and wood shop</span><b>A storefront that sorts the work first</b><p>Three clear doors for the work the shop wants, and one form that asks the right questions.</p><span class="go">Read the case study</span></span></a>
+    <a class="link-card" href="/case-studies/renaissance/"><span class="body"><span class="label">Renaissance Contract Lighting &amp; Furnishings</span><b>Two websites, one content system</b><p>A Roanoke maker moved from old sites to two catalogs its own staff run. I did this as an employee there.</p><span class="go">Read the case study</span></span></a>
+  </div>
+</section>
+
+<section class="wrap contact" id="contact">
+  <h2>What's the work you wish would run itself?</h2>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Find a time</a>
+  <span class="subcta">If I'm not the right fit, I'll say so. · <a href="/">Plumbline Studio home →</a></span>
+</section>
+
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+  <p class="area">Own a business? <a href="/owners/">Start here</a>. In the Roanoke area? <a href="/owners/#roanoke">We can meet in person</a>.</p>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a95101c74d0f4101aeef196ecb64de1e"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>

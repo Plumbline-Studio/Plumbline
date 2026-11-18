@@ -222,7 +222,7 @@ ${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld, null, 
 <body>
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a><nav class="links" aria-label="Site"><a href="/how-a-build-runs/">How it works</a><a href="/case-studies/" aria-current="page">Case studies</a><a href="/partners/">For partners</a><a href="https://clients.plumblinestudio.dev/">Client login</a></nav>
+  <a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a><nav class="links" aria-label="Site"><a href="/partners/">How we work</a><a href="/trust/">Trust</a><a href="/case-studies/" aria-current="page">Proof</a><a href="https://clients.plumblinestudio.dev/">Sign in</a></nav>
 </header>`;
 }
 
@@ -391,7 +391,7 @@ outputs.set(llmsFile, replaceBlock(fs.readFileSync(llmsFile, 'utf8'), 'case-stud
   ['## Case studies', '', `All case studies: ${ORIGIN}/case-studies/`].concat(pub.map((cs) => `- ${cs.title} (${clientLabel(cs)}): ${cs.summary} ${ORIGIN}/case-studies/${cs.slug}/ — Markdown: ${ORIGIN}/content/case-studies/${cs.slug}.md`)).join('\n'), llmsFile));
 
 // The home page shows this case study in full above the fold, and its row of three shows client work only.
-const HOME_FEATURE = 'fabricator-order-portal';
+const HOME_FEATURE = 'staff-platform-tools';
 const homeFile = path.join(SITE, 'index.html');
 outputs.set(homeFile, replaceBlock(fs.readFileSync(homeFile, 'utf8'), 'case-studies',
   `  <div class="cards">\n${listed.filter((cs) => cs.slug !== HOME_FEATURE && !/^Plumbline Studio/.test(cs.client)).slice(0, 3).map((cs) => `    <a class="link-card" href="/case-studies/${cs.slug}/">${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="" loading="lazy"></span>` : ''}<span class="body"><span class="label">${esc(clientLabel(cs))}</span><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="go">Read the case study</span></span></a>`).join('\n')}\n  </div>\n  <p style="margin-top:var(--s4)"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
