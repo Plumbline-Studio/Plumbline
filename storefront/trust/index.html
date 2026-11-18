@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust · Plumbline Studio</title>
+<meta name="description" content="What Plumbline Studio puts in writing before a build starts: where it runs, what data it touches, who can get in, how AI is used, and what you get at the end.">
+<link rel="canonical" href="https://plumblinestudio.dev/trust/">
+<meta property="og:title" content="Trust · Plumbline Studio">
+<meta property="og:description" content="What Plumbline Studio puts in writing before a build starts: where it runs, what data it touches, who can get in, how AI is used, and what you get at the end.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumblinestudio.dev/trust/">
+<meta property="og:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2c1f33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/site.css">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none!important;} }
+  body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 var(--f-body); -webkit-font-smoothing:antialiased;}
+  a{color:var(--accent-bright);}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--col-text); margin:0 auto; padding-inline:24px;}
+  .wide{max-width:var(--col-wide); margin:0 auto; padding-inline:24px;}
+  p{max-width:var(--measure);}
+  header.hero{padding:0 24px var(--s5);}
+  h1{font:500 clamp(2.2rem,7vw,3.4rem)/1.12 var(--f-display); margin:0 0 var(--s5); text-wrap:balance;}
+  .lede{font-size:1.13rem; color:var(--muted); margin:0 0 var(--s6); text-wrap:pretty;}
+  .cta{display:inline-flex; align-items:center; min-height:48px; background:var(--accent); color:var(--on-accent); font-weight:600; text-decoration:none; padding:0 28px; border-radius:var(--r-sm);}
+  .cta:hover{background:var(--accent-bright);}
+  .subcta{display:block; margin-top:var(--s3); font-size:.9rem; color:var(--muted);}
+  section{padding-block:var(--s8) var(--s1);}
+  h2{font:500 1.7rem/1.2 var(--f-display); margin:0 0 var(--s4); text-wrap:balance;}
+  .muted{color:var(--muted);}
+  .offer{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:var(--s6);}
+  .offer .price{font:400 1.05rem var(--f-mono); color:var(--accent); margin:0 0 var(--s2);}
+  ul.plain{list-style:none; padding:0; margin:0;}
+  ul.plain li{padding:var(--s3) 0 var(--s3) 22px; position:relative; border-top:1px solid var(--line); max-width:40em;}
+  ul.plain li:first-child{border-top:0;}
+  ul.plain li::before{content:""; position:absolute; left:2px; top:1.25em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg);}
+  .quotebox{border-left:2px solid var(--accent); padding:6px 0 6px 22px; margin:var(--s6) 0 0;}
+  .quotebox p{font:500 1.25rem var(--f-display); margin:0 0 6px;}
+  .quotebox span{font-size:.85rem; color:var(--muted);}
+  .ledger{border-top:1px solid var(--line);}
+  .ledger .r{display:grid; grid-template-columns:48px minmax(0,1fr); gap:var(--s2) var(--s4); padding-block:var(--s5); border-bottom:1px solid var(--line);}
+  .ledger .n{font:400 .8rem var(--f-mono); color:var(--accent); padding-top:.5em;}
+  .ledger h3{font:500 1.45rem/1.2 var(--f-display); margin:0;}
+  .ledger .price{font:400 1rem var(--f-mono); color:var(--accent-bright); margin:var(--s2) 0 var(--s1);}
+  .ledger p{color:var(--muted); margin:0;}
+  .towns{display:flex; flex-wrap:wrap; gap:var(--s2); list-style:none; padding:0; margin:var(--s4) 0 0;}
+  .towns li{border:1px solid var(--line); border-radius:var(--r-pill); padding:4px 14px; font-size:.9rem;}
+  .paper-band{background:var(--paper); color:var(--paper-ink); margin-top:var(--s8); padding-bottom:var(--s8);}
+  .paper-band a{color:var(--paper-accent);}
+  .paper-band .kicker{color:var(--paper-accent);}
+  .paper-band .point p, .paper-band .muted{color:var(--paper-muted);}
+  .paper-band .point{border-color:var(--paper-line);}
+  .contact{text-align:center; padding-bottom:var(--s6);}
+  .contact h2{margin-bottom:var(--s5);}
+  footer{margin-top:var(--s8); border-top:1px solid var(--line); padding:var(--s6) 24px var(--s7); text-align:center; color:var(--muted); font-size:.88rem;}
+  footer p{margin:0 auto;}
+  footer .bob{display:inline-block; width:8px; height:8px; background:var(--accent); transform:rotate(45deg); margin-bottom:var(--s3);}
+  footer .tag{font:500 1.15rem var(--f-display); color:var(--accent); margin:0 auto var(--s2);}
+  footer .area{font-size:.82rem; margin-top:var(--s2);}
+</style>
+</head>
+<body>
+
+<div style="position:relative">
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <!-- partner call: swap to the partner-only Calendly event type when Kyle makes it -->
+  <a class="book" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a call</a><nav class="links" aria-label="Site"><a href="/partners/">How we work</a><a href="/trust/" aria-current="page">Trust</a><a href="/case-studies/">Proof</a><a href="https://clients.plumblinestudio.dev/">Sign in</a></nav>
+</header>
+<header class="hero wrap">
+  <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
+  <p class="kicker">Trust</p>
+  <h1>What I put in writing before I start.</h1>
+  <p class="lede">Every job's scope says where it runs, what data it touches, who can get in, how AI is used, and what you get at the end. If you are an IT firm checking me for a client, start here.</p>
+</header>
+</div>
+
+<section class="wrap" id="scope">
+  <p class="kicker">In every scope</p>
+  <h2>Written down for each job</h2>
+  <div class="points">
+    <div class="point"><b>Hosting</b><p>Where it runs, whose account it is in, and what it costs each month. When I can, it runs in an account you or your client own.</p></div>
+    <div class="point"><b>Data</b><p>What the tool keeps or passes along, where it lives, and how long it stays. Private data is named. Nothing is guessed.</p></div>
+    <div class="point"><b>Access</b><p>Who can sign in to what, and how much they can do. How my own access works during the build, and after.</p></div>
+    <div class="point"><b>AI use</b><p>Which AI tools may touch your data, if any, and for what. If the answer is none, the page says none.</p></div>
+    <div class="point"><b>Your rules</b><p>If you or your client have rules for passwords, backups, logs or vendors, they go on the page and on the “done” list.</p></div>
+    <div class="point"><b>Handover</b><p>What you get at the end: the working tool, the accounts, plain notes and a walkthrough.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="rules">
+  <p class="kicker">On every job</p>
+  <h2>Rules that don't change</h2>
+  <div class="points">
+    <div class="point"><b>No secrets in code</b><p>Passwords and keys live in the host's settings. They are never in the code or its history.</p></div>
+    <div class="point"><b>Access checked before launch</b><p>Who can see what is set up for each person, and checked before the tool goes live.</p></div>
+    <div class="point"><b>A person says yes to every change</b><p>AI drafts and checks code. Every change passes automatic checks and a person's review before it goes in.</p></div>
+    <div class="point"><b>Nothing sent in your name</b><p>No email, post or payment goes to your customers or staff because an AI decided to. A person decides.</p></div>
+    <div class="point"><b>Live data touched last</b><p>Changes to live systems are planned step by step, with a backup first. <a href="/how-a-build-runs/#handover">See a real switch-on plan →</a></p></div>
+  </div>
+</section>
+
+<section class="wrap" id="owns">
+  <p class="kicker">Who owns what</p>
+  <h2>Once you pay, it's yours</h2>
+  <!-- NEW: needs Kyle's OK before this goes live -->
+  <div class="points">
+    <div class="point"><b>You own the work</b><p>The code, the prompts, the setup and what the AI makes for your job belong to you, or to your client if you say so.</p></div>
+    <div class="point"><b>Your data stays your data</b><p>Your data is used only for your job. It is not used to train AI models.</p></div>
+    <div class="point"><b>My own tools</b><p>I keep the tools I had before the job. You may use them inside your build, free, for good.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="week">
+  <p class="kicker">Every week, in writing</p>
+  <h2>You always know what changed</h2>
+  <!-- NEW: needs Kyle's OK before this goes live -->
+  <div class="points">
+    <div class="point"><b>A weekly note</b><p>What got done, what is next, and anything that is stuck. In plain words you can send to your client.</p></div>
+    <div class="point"><b>Each change on the record</b><p>What changed, what it cost, and who said yes.</p></div>
+    <div class="point"><b>Who can get in</b><p>Each person gets their own account. No shared passwords. When the job ends, my access ends too, unless you ask me to stay.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="incident">
+  <p class="kicker">If something goes wrong</p>
+  <h2>You hear from me within 24 hours</h2>
+  <p>If I find out your data, or your client's, may have been seen by someone who should not see it, I tell you within 24 hours of finding out. Then I tell you what happened, what I did, and what comes next.</p>
+  <!-- Insurance slot: Kyle has not decided on cover yet. Add one line here when he does, e.g. "I carry [kind] insurance." Do not publish until then. -->
+</section>
+
+<section class="wrap" id="plainly">
+  <p class="kicker">Plainly</p>
+  <h2>What I don't have</h2>
+  <p>I'm one builder, not a security firm. I don't have a SOC 2 report or any other certificate. If your client needs one, or has a security form to fill in, tell me on the first call. I will answer it honestly, or tell you I'm not the right fit.</p>
+</section>
+
+<section class="wrap contact" id="contact">
+  <h2>Have a client with rules to meet?</h2>
+  <p class="muted" style="margin:0 auto var(--s5)">Bring them to the first call.</p>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a partner call</a>
+  <span class="subcta"><a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a> · <a href="/partners/">How we work →</a></span>
+</section>
+
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+  <p class="area">Own a business? <a href="/owners/">Start here</a>. In the Roanoke area? <a href="/owners/#roanoke">We can meet in person</a>.</p>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a95101c74d0f4101aeef196ecb64de1e"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>

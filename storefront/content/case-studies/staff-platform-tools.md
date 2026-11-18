@@ -7,7 +7,7 @@ date: 2026-11-05
 role: Outside developer
 stack: Django · ADP · AWS S3 + KMS
 reaches: Employees, ministry leaders, HR, Finance and new vendors
-order: 1.8
+order: -1
 thumb: /case-studies/vendor-enrollment/img/dashboard.jpg
 tags: [Django, Workflow, Security]
 source: Facts from the client repo's git history and pull requests, checked November 15, 2026. "Unknown" means the repo doesn't show it. Screenshots use fake demo data, with the client's name and logo blurred.

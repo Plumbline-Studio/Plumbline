@@ -7,7 +7,7 @@ date: 2026-11-15
 role: Founder and builder
 stack: Django · TypeScript · Supabase · Claude Code
 reaches: Every client project, and later other AI consultants
-order: 1.5
+order: 10.5
 thumb: /case-studies/studio-operating-system/img/core-map.jpg
 tags: [Method, AI agents, Operating system]
 source: Facts from the studio's repos, Linear, and its blueprint and worker records, checked November 15, 2026. The Core Map pictures are a snapshot of November 10, 2026; the live map reads private records and isn't public.

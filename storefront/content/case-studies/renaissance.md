@@ -10,7 +10,7 @@ date: 2026-08-21
 role: Lead developer (in-house, as an employee)
 stack: Next.js · Sanity · Vercel
 reaches: Hotel and restaurant designers, landscape architects, public agencies, and the company's own staff
-order: 1.7
+order: 0.8
 thumb: /case-studies/renaissance/img/hospitality-home.jpg
 thumb_link: https://www.rclfinc.com/
 tags: [Next.js, Sanity, Catalog, Content system]
