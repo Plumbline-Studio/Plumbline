@@ -222,14 +222,14 @@ ${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld, null, 
 <body>
 <header class="top wide">
   <a class="brand" href="/">Plumbline <b>Studio</b></a>
-  <a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a><nav class="links" aria-label="Site"><a href="/partners/">How we work</a><a href="/trust/">Trust</a><a href="/case-studies/" aria-current="page">Proof</a><a href="https://clients.plumblinestudio.dev/">Sign in</a></nav>
+  <a class="book" href="https://calendly.com/plumblinestudio/30min">Book a call</a><nav class="links" aria-label="Site"><a href="/about/">About</a><a href="/partners/">How we work</a><a href="/trust/">Trust</a><a href="/case-studies/" aria-current="page">Proof</a><a href="https://clients.plumblinestudio.dev/">Sign in</a></nav>
 </header>`;
 }
 
 const FOOT = `<footer>
   <span class="bob" aria-hidden="true"></span>
   <p class="tag">Build it true.</p>
-  <p>Plumbline Studio · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+  <p>Plumbline Studio LLC · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
 </footer>`;
 
 const CTA = `<section class="ctaband">

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meet Kyle · Plumbline Studio</title>
+<meta name="description" content="Kyle Knight runs Plumbline Studio LLC in Roanoke, Virginia. 16 years fixing how companies run, now building the apps, portals and AI tools that partners' clients need.">
+<link rel="canonical" href="https://plumblinestudio.dev/about/">
+<meta property="og:title" content="Meet Kyle · Plumbline Studio">
+<meta property="og:description" content="Kyle Knight runs Plumbline Studio LLC in Roanoke, Virginia. 16 years fixing how companies run, now building the apps, portals and AI tools that partners' clients need.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumblinestudio.dev/about/">
+<meta property="og:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://plumblinestudio.dev/og/plumbline-studio.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2c1f33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/site.css">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none!important;} }
+  body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 var(--f-body); -webkit-font-smoothing:antialiased;}
+  a{color:var(--accent-bright);}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--col-text); margin:0 auto; padding-inline:24px;}
+  .wide{max-width:var(--col-wide); margin:0 auto; padding-inline:24px;}
+  p{max-width:var(--measure);}
+  header.hero{padding:0 24px var(--s5);}
+  h1{font:500 clamp(2.2rem,7vw,3.4rem)/1.12 var(--f-display); margin:0 0 var(--s5); text-wrap:balance;}
+  .lede{font-size:1.13rem; color:var(--muted); margin:0 0 var(--s6); text-wrap:pretty;}
+  .cta{display:inline-flex; align-items:center; min-height:48px; background:var(--accent); color:var(--on-accent); font-weight:600; text-decoration:none; padding:0 28px; border-radius:var(--r-sm);}
+  .cta:hover{background:var(--accent-bright);}
+  .subcta{display:block; margin-top:var(--s3); font-size:.9rem; color:var(--muted);}
+  section{padding-block:var(--s8) var(--s1);}
+  h2{font:500 1.7rem/1.2 var(--f-display); margin:0 0 var(--s4); text-wrap:balance;}
+  .muted{color:var(--muted);}
+  .offer{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:var(--s6);}
+  .offer .price{font:400 1.05rem var(--f-mono); color:var(--accent); margin:0 0 var(--s2);}
+  ul.plain{list-style:none; padding:0; margin:0;}
+  ul.plain li{padding:var(--s3) 0 var(--s3) 22px; position:relative; border-top:1px solid var(--line); max-width:40em;}
+  ul.plain li:first-child{border-top:0;}
+  ul.plain li::before{content:""; position:absolute; left:2px; top:1.25em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg);}
+  .quotebox{border-left:2px solid var(--accent); padding:6px 0 6px 22px; margin:var(--s6) 0 0;}
+  .quotebox p{font:500 1.25rem var(--f-display); margin:0 0 6px;}
+  .quotebox span{font-size:.85rem; color:var(--muted);}
+  .ledger{border-top:1px solid var(--line);}
+  .ledger .r{display:grid; grid-template-columns:48px minmax(0,1fr); gap:var(--s2) var(--s4); padding-block:var(--s5); border-bottom:1px solid var(--line);}
+  .ledger .n{font:400 .8rem var(--f-mono); color:var(--accent); padding-top:.5em;}
+  .ledger h3{font:500 1.45rem/1.2 var(--f-display); margin:0;}
+  .ledger .price{font:400 1rem var(--f-mono); color:var(--accent-bright); margin:var(--s2) 0 var(--s1);}
+  .ledger p{color:var(--muted); margin:0;}
+  .towns{display:flex; flex-wrap:wrap; gap:var(--s2); list-style:none; padding:0; margin:var(--s4) 0 0;}
+  .towns li{border:1px solid var(--line); border-radius:var(--r-pill); padding:4px 14px; font-size:.9rem;}
+  .paper-band{background:var(--paper); color:var(--paper-ink); margin-top:var(--s8); padding-bottom:var(--s8);}
+  .paper-band a{color:var(--paper-accent);}
+  .paper-band .kicker{color:var(--paper-accent);}
+  .paper-band .point p, .paper-band .muted{color:var(--paper-muted);}
+  .paper-band .point{border-color:var(--paper-line);}
+  .contact{text-align:center; padding-bottom:var(--s6);}
+  .contact h2{margin-bottom:var(--s5);}
+  footer{margin-top:var(--s8); border-top:1px solid var(--line); padding:var(--s6) 24px var(--s7); text-align:center; color:var(--muted); font-size:.88rem;}
+  footer p{margin:0 auto;}
+  footer .bob{display:inline-block; width:8px; height:8px; background:var(--accent); transform:rotate(45deg); margin-bottom:var(--s3);}
+  footer .tag{font:500 1.15rem var(--f-display); color:var(--accent); margin:0 auto var(--s2);}
+  footer .area{font-size:.82rem; margin-top:var(--s2);}
+  .me{display:grid; grid-template-columns:120px minmax(0,1fr); gap:var(--s5); align-items:center; margin:0 0 var(--s6);}
+  .me img{width:120px; height:120px; object-fit:cover; border-radius:50%; border:2px solid var(--accent);}
+  .me p{margin:0; color:var(--muted);}
+  @media (max-width:520px){ .me{grid-template-columns:88px minmax(0,1fr); gap:var(--s4);} .me img{width:88px; height:88px;} }
+  .timeline{border-top:1px solid var(--line);}
+  .timeline .r{display:grid; grid-template-columns:96px minmax(0,1fr); gap:var(--s2) var(--s4); padding-block:var(--s4); border-bottom:1px solid var(--line);}
+  .timeline .y{font:400 .82rem var(--f-mono); color:var(--accent); padding-top:.35em;}
+  .timeline b{display:block;}
+  .timeline p{margin:2px 0 0; color:var(--muted);}
+  .checks{list-style:none; padding:0; margin:0;}
+  .checks li{padding:var(--s3) 0 var(--s3) 22px; position:relative; border-top:1px solid var(--line);}
+  .checks li:first-child{border-top:0;}
+  .checks li::before{content:""; position:absolute; left:2px; top:1.25em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg);}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "AboutPage",
+ "@id": "https://plumblinestudio.dev/about/#page",
+ "url": "https://plumblinestudio.dev/about/",
+ "name": "Meet Kyle",
+ "about": {"@id": "https://plumblinestudio.dev/#kyle"},
+ "mainEntity": {
+  "@type": "Person",
+  "@id": "https://plumblinestudio.dev/#kyle",
+  "name": "Kyle Knight",
+  "jobTitle": "Founder, Plumbline Studio",
+  "worksFor": {"@id": "https://plumblinestudio.dev/#studio"},
+  "image": "https://plumblinestudio.dev/kyle.jpg",
+  "homeLocation": {"@type": "Place", "name": "Roanoke, Virginia"},
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "Taylor University"},
+  "hasCredential": [
+   {"@type": "EducationalOccupationalCredential", "name": "Certified Scrum Product Owner (CSPO)"},
+   {"@type": "EducationalOccupationalCredential", "name": "Certified ScrumMaster (CSM)"}
+  ],
+  "sameAs": ["https://www.linkedin.com/in/kyleknight-systems/", "https://github.com/Plumbline-Studio"]
+ }
+}
+</script>
+</head>
+<body>
+
+<div style="position:relative">
+<header class="top wide">
+  <a class="brand" href="/">Plumbline <b>Studio</b></a>
+  <!-- partner call: swap to the partner-only Calendly event type when Kyle makes it -->
+  <a class="book" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a call</a><nav class="links" aria-label="Site"><a href="/about/" aria-current="page">About</a><a href="/partners/">How we work</a><a href="/trust/">Trust</a><a href="/case-studies/">Proof</a><a href="https://clients.plumblinestudio.dev/">Sign in</a></nav>
+</header>
+<header class="hero wrap">
+  <div class="plumb" aria-hidden="true"><div class="line"></div><div class="bob"></div></div>
+  <p class="kicker">Meet Kyle</p>
+  <h1>A real person, with a real track record.</h1>
+  <div class="me">
+    <img src="/kyle.jpg" alt="Kyle Knight" width="120" height="120">
+    <p>I'm Kyle Knight. I run Plumbline Studio LLC from Roanoke, Virginia. Partners bring me the builds their clients need. I build them, test them and hand them back.</p>
+  </div>
+  <p class="lede">I spent 16 years fixing how companies run: sales, operations, products and grants. Now I build the tools that keep the fix in place.</p>
+</header>
+</div>
+
+<section class="wrap" id="path">
+  <p class="kicker">Where I come from</p>
+  <h2>16 years inside real businesses</h2>
+  <div class="timeline">
+    <div class="r"><span class="y">2026–now</span><div><b>Plumbline Studio</b><p>Founded in March 2026. Builds apps, portals and AI tools for partners and owners.</p></div></div>
+    <div class="r"><span class="y">2025–2026</span><div><b>Renaissance Contract Lighting &amp; Furnishings</b><p>Built the company's websites, a catalog of 2,000 items and its office tools. <a href="/case-studies/renaissance/">See the work →</a></p></div></div>
+    <div class="r"><span class="y">2024</span><div><b>New River Valley Regional Commission</b><p>Regional Innovation Officer. Worked on federal grants with Virginia Tech.</p></div></div>
+    <div class="r"><span class="y">Before that</span><div><b>Valley Restoration</b><p>Director of business development. Built a national partnership.</p></div></div>
+    <div class="r"><span class="y">2016–2020</span><div><b>Oasis Chiropractic</b><p>Product manager. Brought a shelved product line back to life. Ran the team on EOS.</p></div></div>
+    <div class="r"><span class="y">2014–2016</span><div><b>Independent consultant</b><p>Helped a janitorial company find its real problem. Two years later, it had grown from $2M to $4M.</p></div></div>
+    <div class="r"><span class="y">2010–2014</span><div><b>HOODZ and Republic Services</b><p>Built sales for a franchise. Helped land a $2.1M recycling contract in Roanoke.</p></div></div>
+  </div>
+  <p class="muted" style="margin-top:var(--s4)">B.A., Taylor University. Certified Scrum Product Owner and ScrumMaster.</p>
+</section>
+
+<section class="wrap" id="crew">
+  <p class="kicker">How Plumbline runs</p>
+  <h2>One builder, with a crew of AI helpers</h2>
+  <p>I lead every build and sign off on every change. AI helpers do much of the legwork. Each one has one job, and each one is clearly AI.</p>
+  <div class="points">
+    <div class="point"><b>Finding partners</b><p>Looks for firms I could build for, and drafts notes. I say yes before anything goes out.</p></div>
+    <div class="point"><b>Building</b><p>Drafts code and tests it. A person reviews every change before it goes in.</p></div>
+    <div class="point"><b>Keeping you informed</b><p>Writes the weekly note, so you always know what changed.</p></div>
+    <div class="point"><b>Checking the work</b><p>Checks each build against its scope before I hand it over.</p></div>
+  </div>
+  <p class="muted">I'm building Plumbline to run like a real company, with a scorecard and a weekly check. Some of that crew is still being built. I review everything it makes.</p>
+</section>
+
+<section class="wrap" id="believe">
+  <p class="kicker">What I believe</p>
+  <h2>Build it true.</h2>
+  <p>A good tool should make people more able, not more stuck. I build so a business can grow past what its owner can carry alone. If a tool steals people's time or attention, it isn't done yet.</p>
+</section>
+
+<section class="wrap" id="check">
+  <p class="kicker">Check me</p>
+  <h2>Don't take my word for it</h2>
+  <ul class="checks">
+    <li><a href="https://www.linkedin.com/in/kyleknight-systems/">My LinkedIn</a>, with my work history.</li>
+    <li><a href="https://github.com/Plumbline-Studio">Plumbline on GitHub</a>, with the work in the open.</li>
+    <li><a href="/case-studies/">Case studies</a> from real builds, with what changed and how.</li>
+    <li><a href="/trust/">What I put in writing</a> before any job starts.</li>
+    <li>Plumbline Studio LLC is a registered Virginia company.</li>
+  </ul>
+  <!-- Reviews slot: add the Google profile link and 1-3 short quotes here once people say yes to being quoted. -->
+</section>
+
+<section class="wrap contact" id="contact">
+  <h2>Have a client who needs something built?</h2>
+  <p class="muted" style="margin:0 auto var(--s5)">Start with a free 30-minute call. Bring one job.</p>
+  <a class="cta" href="https://calendly.com/plumblinestudio/30min" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/plumblinestudio/30min'});return false;}">Book a partner call</a>
+  <span class="subcta"><a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a> · <a href="/partners/">How we work →</a></span>
+</section>
+
+<footer>
+  <span class="bob" aria-hidden="true"></span>
+  <p class="tag">Build it true.</p>
+  <p>Plumbline Studio LLC · Roanoke, Virginia · <a href="mailto:kyle@plumblinestudio.dev">kyle@plumblinestudio.dev</a></p>
+  <p class="area"><a href="/about/">Meet Kyle</a> · <a href="/trust/#privacy">Privacy</a> · Own a business? <a href="/owners/">Start here</a>.</p>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a95101c74d0f4101aeef196ecb64de1e"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>
