@@ -25,7 +25,7 @@
   /* the page links share one row with a hairline between each, like a tab bar.
      Side padding grows with the screen so the row always fills edge to edge and each line sits midway. */
   .links { width: 100%; flex-wrap: nowrap; gap: 0; }
-  .links a { white-space: nowrap; font-size: .78rem; position: relative; padding: 0 min(16px, max(2px, calc((100vw - 358px) / 10))); }
+  .links a { white-space: nowrap; font-size: .74rem; position: relative; padding: 0 min(16px, max(2px, calc((100vw - 375px) / 10))); }
   .links a:first-child { padding-left: 0; }
   .links a:last-child { padding-right: 0; }
   .links a + a::before { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 14px; margin-top: -7px; background: var(--line); }
