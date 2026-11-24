@@ -72,8 +72,8 @@
   ul.plain li:first-child{border-top:0;}
   ul.plain li::before{content:""; position:absolute; left:2px; top:1.2em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg);}
   ul.plain b{color:var(--ink);}
-  .paper ul.plain li, .cream ul.plain li{border-color:var(--paper-line);}
-  .paper ul.plain b, .cream ul.plain b{color:var(--paper-ink);}
+  .band-paper ul.plain li{border-color:var(--paper-line);}
+  .band-paper ul.plain b{color:var(--paper-ink);}
 
   /* the chart sits on white, the same as in the printed version */
   .chart{margin:var(--s5) 0 0;}
@@ -87,8 +87,8 @@
   figure.shot img{display:block; width:100%; height:auto;}
   figure.shot.narrow{max-width:420px;}
   figure.shot figcaption{color:var(--muted);}
-  .paper figure.shot a, .cream figure.shot a{border-color:var(--paper-line);}
-  .paper figure.shot figcaption, .cream figure.shot figcaption{color:var(--paper-muted);}
+  .band-paper figure.shot a{border-color:var(--paper-line);}
+  .band-paper figure.shot figcaption{color:var(--paper-muted);}
   .snaps{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s5);}
   .snaps a{display:block; border:1px solid var(--line); border-radius:var(--r-sm); overflow:hidden;}
   .snaps img{display:block; width:100%; height:auto;}
@@ -120,9 +120,6 @@
   .rows .lab{display:block; font:400 .74rem var(--f-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--paper-accent); margin-bottom:var(--s1);}
   .rows b{display:block; font:500 1.15rem/1.3 var(--f-display); margin-bottom:var(--s1);}
   .rows p{margin:0 0 var(--s2);}
-  .rows p.eg{font-size:.92rem;}
-  .rows p.eg::before{content:"In the sample: "; font-weight:600; color:var(--paper-ink);}
-  .dark .rows{border-color:var(--line);}
 
   .band-paper{background:var(--paper); color:var(--paper-ink); margin-top:var(--s8); padding-bottom:var(--s8);}
   .band-paper section{padding-top:var(--s8);}
