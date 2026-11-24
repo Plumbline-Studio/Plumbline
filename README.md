@@ -1,6 +1,6 @@
 # Plumbline
 
-**Live storefront: [plumblinestudio.dev](https://plumblinestudio.dev)** · Plumbline Studio is a build partner for EOS Integrators. You run the plan. I build what it needs. Integrators start with the free [Orchestrator](https://orchestrator.plumblinestudio.dev/?eos=on). Each build has a one page scope with its price, paid before work starts. *Build it true.*
+**Live storefront: [plumblinestudio.dev](https://plumblinestudio.dev)** · Plumbline Studio is a build partner for EOS Integrators. You run the plan. I build what it's missing. Integrators start with the free [Orchestrator](https://orchestrator.plumblinestudio.dev/?eos=on). Each build has a one page scope with its price, paid before work starts. *Build it true.*
 
 EOS and its role names belong to EOS Worldwide. Plumbline Studio is not part of EOS Worldwide.
 
