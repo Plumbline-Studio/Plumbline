@@ -317,7 +317,7 @@ ${FOOT}
 
 function indexPage(list) {
   const cards = list.map((cs) => `  <a class="card" href="/case-studies/${cs.slug}/">
-    ${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="" loading="lazy"></span>` : '<span class="thumb blank"><span></span></span>'}
+    ${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="${esc(cs.thumb_alt || '')}" loading="lazy"></span>` : '<span class="thumb blank"><span></span></span>'}
     <span class="cbody">
       <span class="client">${esc(clientLabel(cs))}</span>
       <h2>${esc(cs.title)}</h2>
@@ -394,7 +394,7 @@ outputs.set(llmsFile, replaceBlock(fs.readFileSync(llmsFile, 'utf8'), 'case-stud
 const HOME_FEATURE = 'staff-platform-tools';
 const homeFile = path.join(SITE, 'index.html');
 outputs.set(homeFile, replaceBlock(fs.readFileSync(homeFile, 'utf8'), 'case-studies',
-  `  <div class="cards">\n${listed.filter((cs) => cs.slug !== HOME_FEATURE && !/^Plumbline Studio/.test(cs.client)).slice(0, 3).map((cs) => `    <a class="link-card" href="/case-studies/${cs.slug}/">${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="" loading="lazy"></span>` : ''}<span class="body"><span class="label">${esc(clientLabel(cs))}</span><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="go">Read the case study</span></span></a>`).join('\n')}\n  </div>\n  <p style="margin-top:var(--s4)"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
+  `  <div class="cards">\n${listed.filter((cs) => cs.slug !== HOME_FEATURE && !/^Plumbline Studio/.test(cs.client)).slice(0, 3).map((cs) => `    <a class="link-card" href="/case-studies/${cs.slug}/">${cs.thumb ? `<span class="thumb"><img src="${cs.thumb}" alt="${esc(cs.thumb_alt || '')}" loading="lazy"></span>` : ''}<span class="body"><span class="label">${esc(clientLabel(cs))}</span><b>${esc(cs.title)}</b><p>${esc(cs.summary)}</p><span class="go">Read the case study</span></span></a>`).join('\n')}\n  </div>\n  <p style="margin-top:var(--s4)"><a href="/case-studies/">All case studies →</a></p>`, homeFile));
 
 // A folder for a case study that no longer exists in content is stale, screenshots included:
 // --check flags it, a build removes it, so nothing of a withdrawn case stays in this public repo.

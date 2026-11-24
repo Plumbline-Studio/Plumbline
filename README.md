@@ -1,6 +1,8 @@
 # Plumbline
 
-**Live storefront: [plumblinestudio.dev](https://plumblinestudio.dev)** — Plumbline Studio solves one bounded operations problem per engagement (intake, scheduling, tracking, reporting) for small businesses and professional practices. Diagnostic, fixed-scope build, optional care plan; price and schedule agreed per project. *Build it true.*
+**Live storefront: [plumblinestudio.dev](https://plumblinestudio.dev)** · Plumbline Studio is a build partner for EOS Integrators. You run the plan. I build what it needs. Integrators start with the free [Orchestrator](https://orchestrator.plumblinestudio.dev/?eos=on). Each build has a one page scope with its price, paid before work starts. *Build it true.*
+
+EOS and its role names belong to EOS Worldwide. Plumbline Studio is not part of EOS Worldwide.
 
 Source for the storefront lives in [`storefront/`](storefront/) (static files, no build step; deployed via a Git-connected Cloudflare Worker — every push to `main` redeploys). Agent-readable surface: [`storefront/llms.txt`](storefront/llms.txt), JSON-LD in `storefront/index.html`, `robots.txt` + `sitemap.xml`.
 
