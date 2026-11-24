@@ -175,6 +175,23 @@
   .flow p{font-size:.92rem; color:var(--muted);}
   .flow-back{margin-top:var(--s5); color:var(--muted); border-top:1px dashed var(--line); padding-top:var(--s4); max-width:none;}
   .flow-back span{color:var(--accent); font-size:1.2rem; margin-right:var(--s2);}
+  /* the Orchestrator box opens the Orchestrator */
+  .flow .node.go{padding:0; transition:border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);}
+  .flow .node.go:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .flow .node-link{display:block; height:100%; padding:var(--s4) var(--s4) var(--s5); color:inherit; text-decoration:none;}
+  .flow .node-link:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:var(--r-sm);}
+  .flow .open{display:inline-block; margin-top:var(--s3); font-weight:600; font-size:.92rem; color:var(--accent);}
+  /* try it here: one problem, handed to the Orchestrator */
+  .tryit{margin-top:var(--s6); border:1px solid var(--accent); border-radius:var(--r-md); background:var(--surface); padding:var(--s5);}
+  .tryit label{display:block; margin-bottom:var(--s3);}
+  .tryit .lab{display:block; font:400 .74rem var(--f-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:var(--s2);}
+  .tryit b{display:block; font:500 1.5rem/1.2 var(--f-display);}
+  .tryit textarea{display:block; width:100%; box-sizing:border-box; resize:vertical; min-height:96px; padding:var(--s3) var(--s4); background:var(--deep); color:var(--ink); border:1px solid var(--line); border-radius:var(--r-sm); font:1rem/1.5 var(--f-body);}
+  .tryit textarea::placeholder{color:var(--muted);}
+  .tryit textarea:focus{outline:none; border-color:var(--accent);}
+  .tryit-row{display:flex; align-items:center; justify-content:space-between; gap:var(--s4); margin-top:var(--s4); flex-wrap:wrap;}
+  .tryit-row p{font-size:.9rem; color:var(--muted); margin:0; flex:1 1 260px;}
+  .tryit .btn{border:0; cursor:pointer; font:600 1rem var(--f-body);}
   @media (max-width:820px){
     .flow{grid-template-columns:1fr; gap:var(--s6);}
     .flow .node + .node::before{content:"↓"; left:0; right:0; width:auto; top:calc(-1 * var(--s6)); height:var(--s6); transform:none; line-height:var(--s6);}
@@ -224,10 +241,19 @@
     <ol class="flow" aria-label="How work flows to Plumbline">
       <li class="node"><span class="lab">The intro</span><b>A Visionary or an EOS Implementer</b><p>Sees a plan that needs a tool. Sends the Integrator to me.</p></li>
       <li class="node key"><span class="lab">The owner</span><b>The Integrator</b><p>Brings what is stuck. Keeps the plan, the team and the client.</p></li>
-      <li class="node"><span class="lab">The map</span><b>The Orchestrator</b><p>Asks a few questions. Maps what is stuck. Names three moves, each with a first step.</p></li>
+      <li class="node go"><a class="node-link" href="https://orchestrator.plumblinestudio.dev/?eos=on"><span class="lab">The map</span><b>The Orchestrator</b><p>Asks a few questions. Maps what is stuck. Names three moves, each with a first step.</p><span class="open">Open it <span aria-hidden="true">→</span></span></a></li>
       <li class="node"><span class="lab">The build</span><b>Plumbline</b><p>Builds the tool the moves call for. Tests it. Hands it back.</p></li>
     </ol>
     <p class="flow-back"><span aria-hidden="true">↺</span> Then it goes back to the Integrator, who runs it from there. The plan stays true.</p>
+    <form class="tryit" action="https://orchestrator.plumblinestudio.dev/" method="get">
+      <input type="hidden" name="eos" value="on">
+      <label for="tryit-q"><span class="lab">Try it here</span><b>What is stuck right now?</b></label>
+      <textarea id="tryit-q" name="q" rows="3" maxlength="2000" required placeholder="One problem, in your own words. Like: our weekly numbers live in three places, and no one trusts them."></textarea>
+      <div class="tryit-row">
+        <p>The Orchestrator opens with your words in it. Nothing is sent until you press Begin there.</p>
+        <button class="btn" type="submit">Ask the Orchestrator</button>
+      </div>
+    </form>
   </div>
 </section>
 
