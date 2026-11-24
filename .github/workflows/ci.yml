@@ -42,6 +42,11 @@ jobs:
       - name: Case studies
         run: node scripts/build-case-studies.mjs --check
 
+      # /resources pages, feed.xml and their sitemap and llms.txt blocks match the content
+      # (docs/resources.md).
+      - name: Resources
+        run: node scripts/build-resources.mjs --check
+
       # sitemap.xml must be well-formed.
       - name: Sitemap
         run: |
