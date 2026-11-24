@@ -208,6 +208,15 @@
   .companion .plate.phone a{max-height:none;}
   @media (max-width:820px){ .companion{grid-template-columns:1fr;} }
 
+  /* the guide: a clickable picture of the who does what chart, then the link */
+  .guide{margin:var(--s6) 0 0; max-width:460px;}
+  .guide-thumb{display:block; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-sm); padding:var(--s2); box-shadow:8px 8px 0 var(--paper-line); transition:transform var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);}
+  .guide-thumb:hover{transform:translateY(-2px); border-color:var(--paper-accent);}
+  .guide-thumb img{display:block; width:100%; height:auto;}
+  .guide figcaption{margin-top:var(--s4); font-size:.92rem; color:var(--paper-muted);}
+  .guide figcaption .textlink{color:var(--paper-ink); margin-right:var(--s2);}
+  .guide figcaption span{display:block; margin-top:var(--s2);}
+
   /* footer: the same on every page. The bob, the slogan, the studio. */
   footer{border-top:1px solid var(--line); padding:var(--s6) 24px var(--s7); text-align:center; color:var(--muted); font-size:.88rem;}
   footer p{margin:0 auto;}
@@ -287,6 +296,10 @@
         <div class="point"><b>No call needed</b><p>If it gets you there, you are done. If a tool would help, I build it.</p></div>
       </div>
       <p style="margin-top:var(--s5)"><a class="btn" href="https://orchestrator.plumblinestudio.dev/?eos=on">Try it now</a></p>
+      <figure class="guide">
+        <a class="guide-thumb" href="/orchestrator-guide/" aria-label="Open the Orchestrator Guide"><img src="/orchestrator-guide/img/who-does-what.png" width="1722" height="999" alt="Chart of who does what: the Visionary and the EOS Implementer point to the Integrator. The Orchestrator makes the need clear for Plumbline Studio, and the tool goes back to the Integrator." loading="lazy"></a>
+        <figcaption><a class="textlink" href="/orchestrator-guide/">Orchestrator Guide</a> <span>Who does what, how it fits with EOS, and a full sample run.</span></figcaption>
+      </figure>
     </div>
     <figure class="plate phone">
       <a href="https://orchestrator.plumblinestudio.dev/?eos=on"><img src="/img/orchestrator-eos-moves.jpg" width="500" height="900" alt="The Orchestrator on a phone with EOS words on. It names three moves: a Core Process, a Seat and a Scorecard line, each with a To-Do." loading="lazy"></a>

@@ -33,6 +33,7 @@ checks it understood, maps the work, and names three moves, each with a first st
 plus a snapshot PDF. With EOS words on (https://orchestrator.plumblinestudio.dev/?eos=on)
 the moves use EOS terms such as Seat, Scorecard, Core Process and To-Do. If a move calls
 for a tool, Plumbline can build it.
+A plain words guide to how it works, with a full sample run: https://plumblinestudio.dev/orchestrator-guide/
 
 EOS and its role and tool names (Integrator, Visionary, EOS Implementer, Scorecard and
 others) belong to EOS Worldwide. Plumbline Studio is not part of EOS Worldwide.
