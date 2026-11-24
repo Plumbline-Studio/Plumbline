@@ -208,9 +208,9 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${image || ORIGIN + '/og/plumbline-studio.png'}">
+<meta property="og:image" content="${image || ORIGIN + '/og/plumbline-studio-eos.png'}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${image || ORIGIN + '/og/plumbline-studio.png'}">
+<meta name="twitter:image" content="${image || ORIGIN + '/og/plumbline-studio-eos.png'}">
 ${ICONS}
 ${jsonld ? `<script type="application/ld+json">\n${JSON.stringify(jsonld, null, 1)}\n</script>\n` : ''}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
