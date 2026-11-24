@@ -10,6 +10,7 @@ reaches: The fabricator's customers and production team
 order: 0
 og: /case-studies/fabricator-order-portal/img/og.jpg
 thumb: /case-studies/fabricator-order-portal/img/waiting.jpg
+thumb_alt: The customer order page, with steps to confirm before the lead-time clock starts. Sample data.
 tags: [Customer portal, Google Sheets, AppSheet]
 source: Facts from the project repo, its pull requests, the Linear project and the blueprint, checked November 16, 2026. "Unknown" means none of them shows it. Screenshots show the real portal page with a fake order, with the client's name, logo and contact details blurred.
 ---

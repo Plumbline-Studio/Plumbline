@@ -9,6 +9,7 @@ stack: Next.js · Supabase · Google Drive
 reaches: The owner, and buyers looking for custom work
 order: 1
 thumb: /case-studies/maker-storefront/img/home.jpg
+thumb_alt: The shop's home page: "Wood and iron, made by hand," with three pieces of selected work. Names blurred.
 tags: [Next.js, Storefront, Intake]
 source: Facts from the project repo, its pull requests, the Linear project and the blueprint, checked November 15, 2026. "Unknown" means none of them shows it. Screenshots are of the live site, with the owner's name, the shop's name and logo, and the town blurred.
 ---

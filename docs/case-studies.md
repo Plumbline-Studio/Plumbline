@@ -52,6 +52,7 @@ Flat `key: value` lines between `---` fences. Lists are `[a, b]`.
 | `order` | yes | Position on the list, lowest first. |
 | `reaches` | no | Who the tool reaches, in words. Never a number the source doesn't show. |
 | `thumb` | no | Card image path. |
+| `thumb_alt` | no | Words for the card image, for screen readers and search. Leave it out and the card image is treated as decoration. |
 | `tags` | no | A few short tags. |
 | `source` | no | Where the facts come from and when they were checked. Shown at the foot of the page. |
 | `client_name` | no | The client's real name. **Only with `signoff_by` and `signoff_date`**; the build refuses it otherwise. |

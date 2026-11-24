@@ -12,6 +12,7 @@ stack: Next.js · Sanity · Vercel
 reaches: Hotel and restaurant designers, landscape architects, public agencies, and the company's own staff
 order: 0.8
 thumb: /case-studies/renaissance/img/hospitality-home.jpg
+thumb_alt: The Renaissance hospitality site's home page, with pendant lights over a hotel bar.
 thumb_link: https://www.rclfinc.com/
 tags: [Next.js, Sanity, Catalog, Content system]
 source: Facts from the two website repos (now owned by the company), their live sites and my design notes, checked November 15, 2026. "Unknown" means none of them shows it. Product pages shown; pages naming the client's customers are left out.
