@@ -1,0 +1,29 @@
+/* /resources pages. Built on case-studies.css; colours and fonts come only from tokens.css. */
+
+/* "coming soon" while there are no articles */
+.soon { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--s6); display: grid; gap: var(--s4); max-width: var(--col-text); }
+.soon h2 { font-size: 1.45rem; }
+.soon p { color: var(--muted); }
+ol.next { list-style: none; counter-reset: n; padding: 0; margin: var(--s2) 0; display: grid; gap: var(--s3); }
+ol.next li { counter-increment: n; display: grid; grid-template-columns: 2.2rem 1fr; gap: 2px var(--s3); padding: var(--s3) var(--s4); background: var(--deep); border: 1px solid var(--line); border-radius: var(--r-sm); }
+ol.next li::before { content: counter(n); grid-row: span 2; font: 500 1.4rem/1 var(--f-display); color: var(--accent); align-self: center; }
+ol.next b { font-weight: 600; }
+ol.next span { color: var(--muted); font-size: .92rem; }
+.muted-note { font-size: .92rem; }
+
+/* article */
+.article .body ol { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; max-width: 40em; }
+pre.code { margin: 0; background: var(--deep); border: 1px solid var(--line); border-radius: var(--r-sm); padding: var(--s4); overflow-x: auto; font: 400 .86rem/1.55 var(--f-mono); color: var(--ink); max-width: 100%; }
+pre.code code { background: none; padding: 0; font: inherit; }
+.runbox { background: var(--surface); border: 1px solid var(--accent); border-radius: var(--r-md); padding: var(--s5); display: grid; gap: var(--s3); }
+.runbox .cta { justify-self: start; }
+
+/* share bar: plain links, so it works with no script */
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); padding-block: var(--s2); border-block: 1px solid var(--line); }
+.share-label { font: 400 .74rem var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-right: var(--s2); }
+.share-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s4); font: 500 .86rem var(--f-body); color: var(--ink); background: var(--deep); border: 1px solid var(--line); border-radius: var(--r-pill); text-decoration: none; cursor: pointer; transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+.share-btn:hover { border-color: var(--accent); color: var(--accent-bright); }
+@media (max-width: 520px) {
+  .soon { padding: var(--s5); }
+  .share-label { width: 100%; }
+}
